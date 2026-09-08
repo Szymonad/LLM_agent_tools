@@ -5,6 +5,12 @@ from pathlib import Path
 URL = "http://127.0.0.1:8080/v1/chat/completions"
 DATA_DIR = Path(r"C:\Users\szymo\Desktop\kodzik\stacjonarny llm\dane")
 
+BEHAVIOUR = """You are a chat assistant. Always answer in Polish.
+
+Pick one function for every message:
+- answer_user_with_text for conversation, questions, etc
+- write_file only when the user asks to save something to a file"""
+
 # Fixed by the API (these keys must be spelled exactly like this):
 #   type          - always "function"
 #   parameters    - holds a JSON Schema:
@@ -16,6 +22,20 @@ DATA_DIR = Path(r"C:\Users\szymo\Desktop\kodzik\stacjonarny llm\dane")
 #   description   - the MODEL reads this and picks the tool based on it
 #   argument names in properties and their list in required
 TOOLS = [
+    {
+        "type": "function",
+        "function": {
+            "name": "answer_user_with_text",
+            "description": "Reply to the user in conversation.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "text": {"type": "string"}
+                    },
+                "required": ["text"],
+            },
+        },
+    },
     {
         "type": "function",
         "function": {
@@ -37,6 +57,7 @@ prompt = input("> ")
 
 request_body = {
     "messages": [
+        {"role": "system", "content": BEHAVIOUR},
         {"role": "user", "content": prompt},
     ],
     "tools": TOOLS,
@@ -62,7 +83,9 @@ if message.get("tool_calls"):
     name = call["name"]
     args = json.loads(call["arguments"])
 
-    if name == "write_file":
+    if name == "answer_user_with_text":
+        print("\n" + args["text"])
+    elif name == "write_file":
         DATA_DIR.mkdir(exist_ok=True)
         file = DATA_DIR / args["name"]
         file.write_text(args["text"], encoding="utf-8")
