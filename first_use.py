@@ -5,7 +5,9 @@ from pathlib import Path
 URL = "http://127.0.0.1:8080/v1/chat/completions"
 DATA_DIR = Path(r"C:\Users\szymo\Desktop\kodzik\stacjonarny llm\dane")
 
-BEHAVIOUR = """You are a chat assistant. Always answer in Polish.
+# This model doesn't remember tools, to make it rementer write (Remember tools whith you use: answear_user_with_text and write_file)
+
+BEHAVIOUR = """You are a chat assistant. Remember tools whith you use: answear_user_with_text and write_file.
 
 Pick one function for every message:
 - answer_user_with_text for conversation, questions, etc
@@ -61,12 +63,12 @@ while True:
     if not prompt:
         continue
 
-    prompt_message = [{"role": "user", "content": prompt}]
+    prompt_message = {"role": "user", "content": prompt}
     messages.append(prompt_message)
 
 
     request_body = {
-        "messages": prompt_message,
+        "messages": messages,
         "tools": TOOLS,
         "temperature": 0,
     }
@@ -82,8 +84,8 @@ while True:
     with urllib.request.urlopen(request) as response:  # POST, same as requests.post
         message = json.load(response)["choices"][0]["message"]
 
-    print("\nRAW MODEL OUTPUT:")
-    print(json.dumps(message, indent=2, ensure_ascii=False))
+    # print("\nRAW MODEL OUTPUT:")
+    # print(json.dumps(message, indent=2, ensure_ascii=False))
 
     messages.append(message)
 
