@@ -1,6 +1,7 @@
-# Ignoruj wszystko...
+# Ignore everything...
 *
 
-# ...poza tym
+# ...except these
 !.gitignore
 !first_use.py
+!README.md
