@@ -1,0 +1,6 @@
+# Ignoruj wszystko...
+*
+
+# ...poza tym
+!.gitignore
+!first_use.py
