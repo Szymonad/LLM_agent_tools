@@ -61,10 +61,12 @@ while True:
     if not prompt:
         continue
 
-    messages.append({"role": "user", "content": prompt})
+    prompt_message = [{"role": "user", "content": prompt}]
+    messages.append(prompt_message)
+
 
     request_body = {
-        "messages": prompt,
+        "messages": prompt_message,
         "tools": TOOLS,
         "temperature": 0,
     }
