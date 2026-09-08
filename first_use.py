@@ -53,44 +53,53 @@ TOOLS = [
     },
 ]
 
-prompt = input("> ")
+# Grows with every turn - the model has no memory of its own.
+messages = [{"role": "system", "content": BEHAVIOUR}]
 
-request_body = {
-    "messages": [
-        {"role": "system", "content": BEHAVIOUR},
-        {"role": "user", "content": prompt},
-    ],
-    "tools": TOOLS,
-    "temperature": 0,
-}
+while True:
+    prompt = input("> ").strip()
+    if not prompt:
+        continue
 
-body_bytes = json.dumps(request_body).encode("utf-8")
+    messages.append({"role": "user", "content": prompt})
 
-request = urllib.request.Request(
-    URL,
-    data=body_bytes,
-    headers={"Content-Type": "application/json"},
-)
+    request_body = {
+        "messages": prompt,
+        "tools": TOOLS,
+        "temperature": 0,
+    }
 
-with urllib.request.urlopen(request) as response:  # POST, same as requests.post
-    message = json.load(response)["choices"][0]["message"]
+    body_bytes = json.dumps(request_body).encode("utf-8")
 
-print("\nRAW MODEL OUTPUT:")
-print(json.dumps(message, indent=2, ensure_ascii=False))
+    request = urllib.request.Request(
+        URL,
+        data=body_bytes,
+        headers={"Content-Type": "application/json"},
+    )
 
-if message.get("tool_calls"):
-    call = message["tool_calls"][0]["function"]
-    name = call["name"]
-    args = json.loads(call["arguments"])
+    with urllib.request.urlopen(request) as response:  # POST, same as requests.post
+        message = json.load(response)["choices"][0]["message"]
 
-    if name == "answer_user_with_text":
-        print("\n" + args["text"])
-    elif name == "write_file":
-        DATA_DIR.mkdir(exist_ok=True)
-        file = DATA_DIR / args["name"]
-        file.write_text(args["text"], encoding="utf-8")
-        print("\nsaved:", file)
+    print("\nRAW MODEL OUTPUT:")
+    print(json.dumps(message, indent=2, ensure_ascii=False))
+
+    messages.append(message)
+
+    if message.get("tool_calls"):
+        call = message["tool_calls"][0]["function"]
+        name = call["name"]
+        args = json.loads(call["arguments"])
+
+        if name == "answer_user_with_text":
+            print("\n" + args["text"])
+        elif name == "write_file":
+            DATA_DIR.mkdir(exist_ok=True)
+            file = DATA_DIR / args["name"]
+            file.write_text(args["text"], encoding="utf-8")
+            print("\nsaved:", file)
+        else:
+            print("\nunknown tool:", name)
     else:
-        print("\nunknown tool:", name)
-else:
-    print("\nmodel answered without a tool:", message["content"])
+        print("\nmodel answered without a tool:", message["content"])
+
+    print()
