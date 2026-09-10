@@ -107,3 +107,6 @@ while True:
         print("\nmodel answered without a tool:", message["content"])
 
     print()
+
+# working prompt
+# Create a text file named "cars.txt". Inside the file, write text that LOOKS like JSON, but does not need to be parsed as JSON. Just output plain text formatted like JSON. The text must contain a non-empty object with an array called "cars". The array must contain at least four items. Each item must include the following fields: brand, model, year, engine, horsepower, price, features. Use the brands BMW, Mercedes, Audi, and Renault. Fill every field with example values. Do NOT leave anything empty. Do NOT output an empty object. Do NOT output an empty array.The result must be plain text that visually resembles JSON
