@@ -8,8 +8,10 @@ Credentials come from environment variables, never from this file:
     $env:ORACLE_PASSWORD = "..."
 """
 import json
+import logging
 import os
 import urllib.request
+from pathlib import Path
 
 import oracledb
 
@@ -23,6 +25,16 @@ PERSON_TABLE = "PRACOWNICY"
 #   SELECT column_name FROM user_tab_columns WHERE table_name = 'PRACOWNICY'
 FIRST_NAME_COLUMN = "IMIE"
 LAST_NAME_COLUMN = "NAZWISKO"
+
+# Next to this script, not in whatever folder the terminal happens to be in.
+LOG_FILE = Path(__file__).with_name("agent.log")
+logging.basicConfig(
+    filename=LOG_FILE,
+    level=logging.INFO,
+    format="%(asctime)s %(message)s",
+    encoding="utf-8",
+)
+log = logging.getLogger("db_agent")
 
 BEHAVIOUR = """You are a read-only database assistant. Always answer in English.
 
@@ -84,10 +96,17 @@ def connect():
     )
 
 
+def run_sql(cursor, sql, **params):
+    # Every query goes through here, so the log shows exactly what reached the database.
+    # Result rows are not logged - they hold personal data.
+    log.info("SQL: %s | params: %s", sql, params)
+    cursor.execute(sql, **params)
+
+
 def list_tables():
     with connect() as connection:
         with connection.cursor() as cursor:
-            cursor.execute("SELECT table_name FROM user_tables ORDER BY table_name")
+            run_sql(cursor, "SELECT table_name FROM user_tables ORDER BY table_name")
             return [row[0] for row in cursor.fetchall()]
 
 
@@ -102,7 +121,7 @@ def find_person(first_name, last_name):
     )
     with connect() as connection:
         with connection.cursor() as cursor:
-            cursor.execute(sql, first_name=first_name, last_name=last_name)
+            run_sql(cursor, sql, first_name=first_name, last_name=last_name)
             columns = [column[0] for column in cursor.description]
             rows = [dict(zip(columns, row)) for row in cursor.fetchall()]
 
@@ -113,6 +132,7 @@ def find_person(first_name, last_name):
 
 
 def run_tool(name, args):
+    log.info("TOOL: %s | args: %s", name, args)
     if name == "list_tables":
         return list_tables()
     if name == "find_person":
@@ -182,10 +202,10 @@ while True:
 #   [1] find_person
 #       -> [{"ID": 2, "IMIE": "Marek", "NAZWISKO": "Nowak", "EMAIL": "m.nowak@firma.pl", "ZATRUDNIONY": "2016-06-15 00:00:00", "PENSJA": 18500.0, "DZIAL_ID": 10, "STANOWISKO_ID": 2, "KIEROWNIK_ID": 1}]
 #   [2] answer_user_with_text
-# There is an employee named MAREK NOWAK in the database. 
+# There is an employee named MAREK NOWAK in the database.
 
 # > do you have more information abut him?
 #   [1] answer_user_with_text
-# Marek Nowak has been working at the company since 2016, his email is m.nowak@firma.pl, and his salary is 18500.0 PLN. 
+# Marek Nowak has been working at the company since 2016, his email is m.nowak@firma.pl, and his salary is 18500.0 PLN.
 
-# > 
+# >
