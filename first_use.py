@@ -83,6 +83,7 @@ while True:
 
     with urllib.request.urlopen(request) as response:  # POST, same as requests.post
         message = json.load(response)["choices"][0]["message"]
+        print(f"message: ===={message}")
 
     # print("\nRAW MODEL OUTPUT:")
     # print(json.dumps(message, indent=2, ensure_ascii=False))
