@@ -1,0 +1,30 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "db_agent (asks for Oracle login)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/db_agent.py",
+            "console": "integratedTerminal",
+            "env": {
+                "ORACLE_USER": "${input:oracleUser}",
+                "ORACLE_PASSWORD": "${input:oraclePassword}"
+            }
+        }
+    ],
+    "inputs": [
+        {
+            "id": "oracleUser",
+            "type": "promptString",
+            "description": "Oracle user",
+            "default": "szymon"
+        },
+        {
+            "id": "oraclePassword",
+            "type": "promptString",
+            "description": "Oracle password",
+            "password": true
+        }
+    ]
+}

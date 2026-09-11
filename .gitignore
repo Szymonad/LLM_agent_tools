@@ -8,3 +8,5 @@
 !tokenize.py
 !show_tokens.py
 !db_agent.py
+!.vscode/
+!.vscode/launch.json
