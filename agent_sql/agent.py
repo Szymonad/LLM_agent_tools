@@ -11,7 +11,8 @@ from pathlib import Path
 
 import db
 
-LLM_URL = "http://127.0.0.1:8080/v1/chat/completions"
+SERVER = "http://127.0.0.1:8080"
+LLM_URL = SERVER + "/v1/chat/completions"
 # Measured path: refused query, list_tables, describe_table, a failed query, the fixed query, answer.
 MAX_STEPS = 12
 
@@ -97,11 +98,49 @@ TOOL_FUNCTIONS = {
 }
 
 
-def ask_model(messages):
-    body = json.dumps({"messages": messages, "tools": TOOLS, "temperature": 0}).encode("utf-8")
-    request = urllib.request.Request(LLM_URL, data=body, headers={"Content-Type": "application/json"})
+def post(path, body):
+    request = urllib.request.Request(
+        SERVER + path, data=json.dumps(body).encode("utf-8"), headers={"Content-Type": "application/json"}
+    )
     with urllib.request.urlopen(request) as response:
-        return json.load(response)["choices"][0]["message"]
+        return json.load(response)
+
+
+def ask_model(messages):
+    return post("/v1/chat/completions", {"messages": messages, "tools": TOOLS, "temperature": 0})["choices"][0]["message"]
+
+
+def render_prompt(messages):
+    """The flat text the model really receives, tool definitions included."""
+    return post("/apply-template", {"messages": messages, "tools": TOOLS})["prompt"]
+
+
+def context_size():
+    """Window size the server was started with (-c), so the counter is not hard-coded."""
+    with urllib.request.urlopen(SERVER + "/props", timeout=5) as response:
+        return json.load(response)["default_generation_settings"]["n_ctx"]
+
+
+def used_tokens(messages):
+    """Tokens the next request would take, counted on a history the template accepts.
+
+    Two shapes are rejected by the Llama 3.1 template and both occur here:
+    tools without any user message (before the first question), and a trailing
+    assistant tool call with no result (after a turn ended by answer_user).
+    """
+    messages = list(messages)
+    if not any(message.get("role") == "user" for message in messages):
+        messages.append({"role": "user", "content": ""})
+
+    last = messages[-1]
+    if last.get("role") == "assistant" and last.get("tool_calls"):
+        messages.append({"role": "tool", "tool_call_id": last["tool_calls"][0]["id"], "content": ""})
+
+    try:
+        return len(post("/tokenize", {"content": render_prompt(messages)})["tokens"])
+    except urllib.error.URLError:
+        # A counter is not worth crashing the program for.
+        return "?"
 
 
 previous_prompt = ""
@@ -115,13 +154,7 @@ def show_prompt(messages):
     """
     global previous_prompt
 
-    body = json.dumps({"messages": messages, "tools": TOOLS}).encode("utf-8")
-    request = urllib.request.Request(
-        "http://127.0.0.1:8080/apply-template", data=body, headers={"Content-Type": "application/json"}
-    )
-    with urllib.request.urlopen(request) as response:
-        prompt = json.load(response)["prompt"]
-
+    prompt = render_prompt(messages)
     if previous_prompt and prompt.startswith(previous_prompt):
         print("----- PROMPT: new part -----")
         print(prompt[len(previous_prompt):])
@@ -156,7 +189,7 @@ def schema_checked(messages):
 
 def answer(messages):
     for step in range(1, MAX_STEPS + 1):
-        show_prompt(messages)
+        # show_prompt(messages)
         message = ask_model(messages)
         messages.append(message)
         # print(f"message ===== {message}")
@@ -199,12 +232,13 @@ def main():
     if missing:
         raise SystemExit(f"set these environment variables in this terminal first: {', '.join(missing)}")
 
+    context = context_size()
     messages = [{"role": "system", "content": BEHAVIOUR}]
     print("SQL agent - ask about the database, Ctrl+C to quit\n")
 
     try:
         while True:
-            question = input("> ").strip()
+            question = input(f"tokens {context}/{used_tokens(messages)} > ").strip()
             if not question:
                 continue
             log.info("QUESTION: %s", question)
