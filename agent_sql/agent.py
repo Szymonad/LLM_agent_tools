@@ -4,13 +4,24 @@ Run:
     python agent_sql/agent.py
 """
 import json
+import logging
 import os
 import urllib.request
+from pathlib import Path
 
 import db
 
 LLM_URL = "http://127.0.0.1:8080/v1/chat/completions"
 MAX_STEPS = 8
+
+# Next to this script, not in whatever folder the terminal happens to be in.
+logging.basicConfig(
+    filename=Path(__file__).with_name("agent.log"),
+    level=logging.INFO,
+    format="%(asctime)s %(message)s",
+    encoding="utf-8",
+)
+log = logging.getLogger("agent_sql")
 
 BEHAVIOUR = """You are a read-only assistant for an Oracle database. Always answer in English.
 
@@ -118,6 +129,7 @@ def show_prompt(messages):
 
 
 def run_tool(name, args):
+    log.info("TOOL: %s | args: %s", name, args)
     function = TOOL_FUNCTIONS.get(name)
     if function is None:
         return f"ERROR: unknown tool {name}"
@@ -144,6 +156,7 @@ def answer(messages):
         args = json.loads(call["function"]["arguments"] or "{}")
 
         if name == "answer_user":
+            log.info("ANSWER: %s", args.get("reply"))
             print(args.get("reply", "(no reply)"), "\n")
             return
 
@@ -154,6 +167,7 @@ def answer(messages):
         print(f"      -> {content[:300]}")
         messages.append({"role": "tool", "tool_call_id": call["id"], "content": content})
 
+    log.info("STOPPED after %d steps", MAX_STEPS)
     print(f"stopped: {MAX_STEPS} steps without a final answer\n")
 
 
@@ -170,6 +184,7 @@ def main():
             question = input("> ").strip()
             if not question:
                 continue
+            log.info("QUESTION: %s", question)
             messages.append({"role": "user", "content": question})
             answer(messages)
     except KeyboardInterrupt:

@@ -1,4 +1,5 @@
 """Database side of the SQL agent."""
+import logging
 import os
 import re
 
@@ -8,6 +9,9 @@ ORACLE_DSN = "localhost:1521/xepdb1"
 # One query result has to leave room in the 4096 token window for the rest of the conversation.
 MAX_ROWS = 20
 MAX_CELL_CHARS = 200
+
+# Configured in agent.py; here only used.
+log = logging.getLogger("agent_sql")
 
 # The model writes the SQL, so read-only is enforced here - a rule in the prompt is not a guarantee.
 ALLOWED_START = re.compile(r"^\s*(SELECT|WITH)\b", re.IGNORECASE)
@@ -44,10 +48,16 @@ def connect():
     return connection
 
 
+def run_sql(cursor, sql, **params):
+    # Every query goes through here, so the log shows exactly what reached the database.
+    log.info("SQL: %s | params: %s", sql, params)
+    cursor.execute(sql, **params)
+
+
 def list_tables():
     with connect() as connection:
         with connection.cursor() as cursor:
-            cursor.execute("SELECT table_name FROM user_tables ORDER BY table_name")
+            run_sql(cursor, "SELECT table_name FROM user_tables ORDER BY table_name")
             return [row[0] for row in cursor.fetchall()]
 
 
@@ -59,7 +69,7 @@ def describe_table(table):
     with connect() as connection:
         with connection.cursor() as cursor:
             # The table name comes from the model, so it travels as a bind variable.
-            cursor.execute(sql, table_name=table)
+            run_sql(cursor, sql, table_name=table)
             rows = cursor.fetchall()
 
     if not rows:
@@ -78,11 +88,14 @@ def run_query(sql):
     sql = check_query(sql)
     with connect() as connection:
         with connection.cursor() as cursor:
-            cursor.execute(sql)
+            run_sql(cursor, sql)
             columns = [column[0] for column in cursor.description]
             # fetchmany instead of fetchall: a SELECT * on a big table would fill the window.
             rows = cursor.fetchmany(MAX_ROWS)
 
+    # Row count only, not the rows - enough to check the model's answer against reality,
+    # without copying personal data into the log.
+    log.info("ROWS: %d | columns: %s", len(rows), columns)
     if not rows:
         return "The query returned no rows."
     return {
