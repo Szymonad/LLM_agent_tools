@@ -10,12 +10,13 @@ import urllib.request
 import db
 
 LLM_URL = "http://127.0.0.1:8080/v1/chat/completions"
-MAX_STEPS = 4
+MAX_STEPS = 6
 
 BEHAVIOUR = """You are a read-only assistant for an Oracle database. Always answer in English.
 
 Pick one function for every step:
 - list_tables to see which tables exist
+- describe_table to see the columns of one table
 - answer_user to give the final answer"""
 
 TOOLS = [
@@ -25,6 +26,18 @@ TOOLS = [
             "name": "list_tables",
             "description": "Return the names of all tables in the database.",
             "parameters": {"type": "object", "properties": {}},
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "describe_table",
+            "description": "Return the columns and data types of one table.",
+            "parameters": {
+                "type": "object",
+                "properties": {"table": {"type": "string", "description": "Exact table name returned by list_tables."}},
+                "required": ["table"],
+            },
         },
     },
     {
@@ -45,6 +58,7 @@ TOOLS = [
 
 TOOL_FUNCTIONS = {
     "list_tables": db.list_tables,
+    "describe_table": db.describe_table,
 }
 
 
