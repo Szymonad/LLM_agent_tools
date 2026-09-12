@@ -1,9 +1,31 @@
 """Database side of the SQL agent."""
 import os
+import re
 
 import oracledb
 
 ORACLE_DSN = "localhost:1521/xepdb1"
+
+# The model writes the SQL, so read-only is enforced here - a rule in the prompt is not a guarantee.
+ALLOWED_START = re.compile(r"^\s*(SELECT|WITH)\b", re.IGNORECASE)
+FORBIDDEN_WORDS = re.compile(
+    r"\b(INSERT|UPDATE|DELETE|MERGE|DROP|ALTER|CREATE|TRUNCATE|RENAME|GRANT|REVOKE"
+    r"|BEGIN|DECLARE|EXECUTE|CALL|COMMIT|ROLLBACK|LOCK)\b",
+    re.IGNORECASE,
+)
+
+
+def check_query(sql):
+    """Returns the cleaned query or raises ValueError if it is not a single read-only SELECT."""
+    sql = sql.strip().rstrip(";").strip()
+    if ";" in sql:
+        raise ValueError("only one statement is allowed")
+    if not ALLOWED_START.match(sql):
+        raise ValueError("only SELECT or WITH queries are allowed")
+    forbidden = FORBIDDEN_WORDS.search(sql)
+    if forbidden:
+        raise ValueError(f"forbidden keyword: {forbidden.group(0).upper()}")
+    return sql
 
 
 def connect():
@@ -39,6 +61,7 @@ def describe_table(table):
 
 
 def run_query(sql):
+    sql = check_query(sql)
     with connect() as connection:
         with connection.cursor() as cursor:
             cursor.execute(sql)
