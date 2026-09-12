@@ -29,11 +29,16 @@ def check_query(sql):
 
 
 def connect():
-    return oracledb.connect(
+    connection = oracledb.connect(
         user=os.environ["ORACLE_USER"],
         password=os.environ["ORACLE_PASSWORD"],
         dsn=ORACLE_DSN,
     )
+    # Second layer, below check_query: the database itself refuses data changes
+    # in this transaction. Nothing is ever committed either - oracledb does not autocommit.
+    with connection.cursor() as cursor:
+        cursor.execute("SET TRANSACTION READ ONLY")
+    return connection
 
 
 def list_tables():
