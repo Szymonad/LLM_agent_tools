@@ -36,3 +36,15 @@ def describe_table(table):
         return f"Table {table} does not exist. Call list_tables to see the available tables."
     # Short "NAME TYPE" lines cost far fewer tokens than a list of dictionaries.
     return [f"{name} {data_type}" + ("" if nullable == "Y" else " NOT NULL") for name, data_type, nullable in rows]
+
+
+def run_query(sql):
+    with connect() as connection:
+        with connection.cursor() as cursor:
+            cursor.execute(sql)
+            columns = [column[0] for column in cursor.description]
+            rows = cursor.fetchall()
+
+    if not rows:
+        return "The query returned no rows."
+    return {"columns": columns, "rows": rows}

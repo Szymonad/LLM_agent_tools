@@ -10,14 +10,21 @@ import urllib.request
 import db
 
 LLM_URL = "http://127.0.0.1:8080/v1/chat/completions"
-MAX_STEPS = 6
+MAX_STEPS = 8
 
 BEHAVIOUR = """You are a read-only assistant for an Oracle database. Always answer in English.
 
 Pick one function for every step:
 - list_tables to see which tables exist
 - describe_table to see the columns of one table
-- answer_user to give the final answer"""
+- run_query to run one SELECT statement
+- answer_user to give the final answer
+
+Oracle SQL rules:
+- use FETCH FIRST n ROWS ONLY, never LIMIT
+- no semicolon at the end
+- compare text with UPPER(column) = UPPER('value')
+If run_query returns an ERROR, fix the SQL and call run_query again."""
 
 TOOLS = [
     {
@@ -43,6 +50,18 @@ TOOLS = [
     {
         "type": "function",
         "function": {
+            "name": "run_query",
+            "description": "Run one Oracle SELECT query and return the rows.",
+            "parameters": {
+                "type": "object",
+                "properties": {"sql": {"type": "string", "description": "A single Oracle SELECT statement."}},
+                "required": ["sql"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
             "name": "answer_user",
             "description": "Reply to the user with a new, original answer. Never copy or repeat the user's message.",
             "parameters": {
@@ -59,6 +78,7 @@ TOOLS = [
 TOOL_FUNCTIONS = {
     "list_tables": db.list_tables,
     "describe_table": db.describe_table,
+    "run_query": db.run_query,
 }
 
 
@@ -84,7 +104,7 @@ def answer(messages):
     for step in range(1, MAX_STEPS + 1):
         message = ask_model(messages)
         messages.append(message)
-
+        # print(f"message ===== {message}")
         calls = message.get("tool_calls")
         if not calls:
             print(message.get("content") or "(empty answer)", "\n")
@@ -100,6 +120,7 @@ def answer(messages):
 
         print(f"  [{step}] {name} {args}")
         result = run_tool(name, args)
+        # default=str: Oracle dates are not JSON types on their own.
         content = json.dumps(result, ensure_ascii=False, default=str)
         print(f"      -> {content[:300]}")
         messages.append({"role": "tool", "tool_call_id": call["id"], "content": content})
