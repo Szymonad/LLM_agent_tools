@@ -12,7 +12,8 @@ from pathlib import Path
 import db
 
 LLM_URL = "http://127.0.0.1:8080/v1/chat/completions"
-MAX_STEPS = 8
+# Measured path: refused query, list_tables, describe_table, a failed query, the fixed query, answer.
+MAX_STEPS = 12
 
 # Next to this script, not in whatever folder the terminal happens to be in.
 logging.basicConfig(
@@ -30,6 +31,9 @@ Pick one function for every step:
 - describe_table to see the columns of one table
 - run_query to run one SELECT statement
 - answer_user to give the final answer
+
+Never guess table or column names. Before the first run_query, call list_tables and
+describe_table for every table the query uses, unless their results are already in this conversation.
 
 Oracle SQL rules:
 - use FETCH FIRST n ROWS ONLY, never LIMIT
@@ -140,6 +144,16 @@ def run_tool(name, args):
         return f"ERROR: {type(error).__name__}: {error}"
 
 
+def schema_checked(messages):
+    """True if describe_table was already called in the conversation still held in the history."""
+    return any(
+        call["function"]["name"] == "describe_table"
+        for message in messages
+        if message.get("role") == "assistant"
+        for call in message.get("tool_calls") or []
+    )
+
+
 def answer(messages):
     for step in range(1, MAX_STEPS + 1):
         show_prompt(messages)
@@ -161,7 +175,16 @@ def answer(messages):
             return
 
         print(f"  [{step}] {name} {args}")
-        result = run_tool(name, args)
+        # The prompt alone did not stop the model from guessing names like "employees",
+        # so the first query is refused until the schema has been looked at.
+        if name == "run_query" and not schema_checked(messages):
+            result = (
+                "ERROR: never guess table or column names. Call list_tables, "
+                "then describe_table only for the tables this query needs."
+            )
+        else:
+            result = run_tool(name, args)
+
         # default=str: Oracle dates are not JSON types on their own.
         content = json.dumps(result, ensure_ascii=False, default=str)
         print(f"      -> {content[:300]}")
