@@ -5,6 +5,9 @@ import re
 import oracledb
 
 ORACLE_DSN = "localhost:1521/xepdb1"
+# One query result has to leave room in the 4096 token window for the rest of the conversation.
+MAX_ROWS = 20
+MAX_CELL_CHARS = 200
 
 # The model writes the SQL, so read-only is enforced here - a rule in the prompt is not a guarantee.
 ALLOWED_START = re.compile(r"^\s*(SELECT|WITH)\b", re.IGNORECASE)
@@ -65,14 +68,25 @@ def describe_table(table):
     return [f"{name} {data_type}" + ("" if nullable == "Y" else " NOT NULL") for name, data_type, nullable in rows]
 
 
+def shorten(value):
+    if isinstance(value, str) and len(value) > MAX_CELL_CHARS:
+        return value[:MAX_CELL_CHARS] + "..."
+    return value
+
+
 def run_query(sql):
     sql = check_query(sql)
     with connect() as connection:
         with connection.cursor() as cursor:
             cursor.execute(sql)
             columns = [column[0] for column in cursor.description]
-            rows = cursor.fetchall()
+            # fetchmany instead of fetchall: a SELECT * on a big table would fill the window.
+            rows = cursor.fetchmany(MAX_ROWS)
 
     if not rows:
         return "The query returned no rows."
-    return {"columns": columns, "rows": rows}
+    return {
+        "columns": columns,
+        "rows": [[shorten(value) for value in row] for row in rows],
+        "note": f"at most {MAX_ROWS} rows are returned",
+    }
