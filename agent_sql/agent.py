@@ -89,16 +89,32 @@ def ask_model(messages):
         return json.load(response)["choices"][0]["message"]
 
 
+previous_prompt = ""
+
+
 def show_prompt(messages):
-    """Prints the flat text the model really receives, with the role markers."""
+    """Prints the flat text the model really receives, with the role markers.
+
+    The head with the tool definitions never changes, so only the new tail is printed
+    after the first call - that tail is exactly what one turn adds to the prompt.
+    """
+    global previous_prompt
+
     body = json.dumps({"messages": messages, "tools": TOOLS}).encode("utf-8")
     request = urllib.request.Request(
         "http://127.0.0.1:8080/apply-template", data=body, headers={"Content-Type": "application/json"}
     )
     with urllib.request.urlopen(request) as response:
-        print("----- PROMPT -----")
-        print(json.load(response)["prompt"])
-        print("----- END -----")
+        prompt = json.load(response)["prompt"]
+
+    if previous_prompt and prompt.startswith(previous_prompt):
+        print("----- PROMPT: new part -----")
+        print(prompt[len(previous_prompt):])
+    else:
+        print("----- PROMPT: full -----")
+        print(prompt)
+    print("----- END -----")
+    previous_prompt = prompt
 
 
 def run_tool(name, args):
