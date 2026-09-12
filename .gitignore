@@ -10,3 +10,6 @@
 !db_agent.py
 !.vscode/
 !.vscode/launch.json
+!agent_sql/
+!agent_sql/agent.py
+!agent_sql/db.py
