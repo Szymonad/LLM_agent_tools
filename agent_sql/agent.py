@@ -89,6 +89,18 @@ def ask_model(messages):
         return json.load(response)["choices"][0]["message"]
 
 
+def show_prompt(messages):
+    """Prints the flat text the model really receives, with the role markers."""
+    body = json.dumps({"messages": messages, "tools": TOOLS}).encode("utf-8")
+    request = urllib.request.Request(
+        "http://127.0.0.1:8080/apply-template", data=body, headers={"Content-Type": "application/json"}
+    )
+    with urllib.request.urlopen(request) as response:
+        print("----- PROMPT -----")
+        print(json.load(response)["prompt"])
+        print("----- END -----")
+
+
 def run_tool(name, args):
     function = TOOL_FUNCTIONS.get(name)
     if function is None:
@@ -102,6 +114,7 @@ def run_tool(name, args):
 
 def answer(messages):
     for step in range(1, MAX_STEPS + 1):
+        show_prompt(messages)
         message = ask_model(messages)
         messages.append(message)
         # print(f"message ===== {message}")
