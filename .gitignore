@@ -13,3 +13,4 @@
 !agent_sql/
 !agent_sql/agent.py
 !agent_sql/db.py
+!agent_sql/tools.py
