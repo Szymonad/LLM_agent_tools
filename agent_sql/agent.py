@@ -127,8 +127,15 @@ def context_full(error):
 
 
 def ask_model(messages):
-    """Returns the whole choice, not just the message: finish_reason tells a finished answer from a cut-off one."""
-    return post("/v1/chat/completions", {"messages": messages, "tools": TOOLS, "temperature": 0})["choices"][0]
+    """Returns the whole choice, not just the message: finish_reason tells a finished answer from a cut-off one.
+
+    Also remembers the size the server reports in "usage", so main() can show it
+    without a separate tokenize call.
+    """
+    global last_total_tokens
+    body = post("/v1/chat/completions", {"messages": messages, "tools": TOOLS, "temperature": 0})
+    last_total_tokens = body.get("usage", {}).get("total_tokens", "?")
+    return body["choices"][0]
 
 
 def render_prompt(messages):
@@ -140,28 +147,6 @@ def context_size():
     """Window size the server was started with (-c), so the counter is not hard-coded."""
     with urllib.request.urlopen(SERVER + "/props", timeout=5) as response:
         return json.load(response)["default_generation_settings"]["n_ctx"]
-
-
-def used_tokens(messages):
-    """Tokens the next request would take, counted on a history the template accepts.
-
-    Two shapes are rejected by the Llama 3.1 template and both occur here:
-    tools without any user message (before the first question), and a trailing
-    assistant tool call with no result (after a turn ended by answer_user).
-    """
-    messages = list(messages)
-    if not any(message.get("role") == "user" for message in messages):
-        messages.append({"role": "user", "content": ""})
-
-    last = messages[-1]
-    if last.get("role") == "assistant" and last.get("tool_calls"):
-        messages.append({"role": "tool", "tool_call_id": last["tool_calls"][0]["id"], "content": ""})
-
-    try:
-        return len(post("/tokenize", {"content": render_prompt(messages)})["tokens"])
-    except urllib.error.URLError:
-        # A counter is not worth crashing the program for.
-        return "?"
 
 
 def trim(messages):
@@ -232,6 +217,10 @@ def ask_model_within_context(messages):
 
 
 previous_prompt = ""
+# Set by ask_model from the server's "usage" field. total_tokens, not prompt_tokens, because
+# the history now also holds the reply that was just generated - the server keeps no state of
+# its own, so this count is the only thing standing in for one. Stays "?" until the first request.
+last_total_tokens = "?"
 
 
 def show_prompt(messages):
@@ -343,7 +332,7 @@ def main():
 
     try:
         while True:
-            question = input(f"tokens {context}/{used_tokens(messages)} > ").strip()
+            question = input(f"tokens {context}/{last_total_tokens} > ").strip()
             if not question:
                 continue
             log.info("QUESTION: %s", question)
