@@ -24,6 +24,17 @@ The model writes the SQL itself. Two helper tools let it look at the schema firs
 - `pip install oracledb`
 - Oracle XE with service `xepdb1` on port 1521
 
+## Machine everything here was measured on
+
+Acer Nitro AN515-58, Windows 11 Home (10.0.26200)
+
+| Part | |
+|---|---|
+| GPU | NVIDIA GeForce RTX 3060 Laptop, 6 GB VRAM, driver 616.56 |
+| CPU | Intel Core i7-12700H, 14 cores / 20 threads |
+| RAM | 16 GB |
+| llama.cpp | b10842, CUDA 13.3 |
+
 ## Which models work
 
 A model only works here if its chat template declares tools. Weights, size and language
