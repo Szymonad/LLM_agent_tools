@@ -20,9 +20,6 @@ MAX_STEPS = 12
 DROP_OLDEST = 10
 
 
-class ContextFull(Exception):
-    """The server refused the request because the history no longer fits in the window."""
-
 # Next to this script, not in whatever folder the terminal happens to be in.
 logging.basicConfig(
     filename=Path(__file__).with_name("agent.log"),
@@ -109,25 +106,29 @@ def post(path, body):
     request = urllib.request.Request(
         SERVER + path, data=json.dumps(body).encode("utf-8"), headers={"Content-Type": "application/json"}
     )
+    with urllib.request.urlopen(request) as response:
+        return json.load(response)
+
+
+def context_full(error):
+    """True when the server refused the request because the history no longer fits.
+
+    Measured on the running server: HTTP 400 with
+    {"error": {"type": "exceed_context_size_error", "message": "request (14086 tokens) exceeds ..."}}.
+    Only that one type is recoverable by shortening the history, so every other 400 stays an error.
+    The body of an HTTPError can only be read once, so this must be the only place that reads it.
+    """
+    detail = error.read().decode("utf-8", "replace")
     try:
-        with urllib.request.urlopen(request) as response:
-            return json.load(response)
-    except urllib.error.HTTPError as error:
-        # Measured on the running server: HTTP 400 with
-        # {"error": {"type": "exceed_context_size_error", "message": "request (14086 tokens) exceeds ..."}}.
-        # Only that one type is recoverable by shortening the history, so every other 400 stays an error.
-        detail = error.read().decode("utf-8", "replace")
-        try:
-            kind = json.loads(detail)["error"]["type"]
-        except (ValueError, KeyError, TypeError):
-            kind = ""
-        if kind == "exceed_context_size_error":
-            raise ContextFull(detail) from None
-        raise
+        kind = json.loads(detail)["error"]["type"]
+    except (ValueError, KeyError, TypeError):
+        kind = ""
+    return kind == "exceed_context_size_error"
 
 
 def ask_model(messages):
-    return post("/v1/chat/completions", {"messages": messages, "tools": TOOLS, "temperature": 0})["choices"][0]["message"]
+    """Returns the whole choice, not just the message: finish_reason tells a finished answer from a cut-off one."""
+    return post("/v1/chat/completions", {"messages": messages, "tools": TOOLS, "temperature": 0})["choices"][0]
 
 
 def render_prompt(messages):
@@ -158,7 +159,7 @@ def used_tokens(messages):
 
     try:
         return len(post("/tokenize", {"content": render_prompt(messages)})["tokens"])
-    except (urllib.error.URLError, ContextFull):
+    except urllib.error.URLError:
         # A counter is not worth crashing the program for.
         return "?"
 
@@ -189,29 +190,45 @@ def hard_reset(messages):
         messages.append(question)
 
 
-def ask_model_within_context(messages):
-    """Asks the model, shrinking the history whenever the server says it no longer fits.
+def make_room(messages, reason):
+    """Frees space in the history. False when there is nothing left to free."""
+    dropped = trim(messages)
+    if dropped:
+        print(f"[{reason} - dropped the {dropped} oldest messages, retrying]")
+        return True
+    if len(messages) > 2:
+        hard_reset(messages)
+        print(f"[{reason} - hard reset: only the system prompt and your question were kept]")
+        return True
+    return False
 
-    The step is retried after every trim, so the question the user typed is answered
-    rather than lost - only the older conversation is spent to make room for it.
+
+def ask_model_within_context(messages):
+    """Asks the model, shrinking the history whenever there is no room left.
+
+    Running out of context arrives in two different shapes and only one of them is an error.
+    When the history alone is bigger than the window, the server refuses it with HTTP 400.
+    When the history merely leaves too little room, the server answers normally and the reply
+    is cut off mid-token, marked finish_reason "length" - measured on this server, the tool
+    arguments then came back as the single character '{', which is what crashed json.loads.
+
+    The step is retried after every trim, so the question the user typed is answered rather
+    than lost - only the older conversation is spent to make room for it.
     """
-    reset_done = False
     while True:
         try:
-            return ask_model(messages)
-        except ContextFull:
-            dropped = trim(messages)
-            if dropped:
-                print(f"[context full - dropped the {dropped} oldest messages, retrying]")
-            elif not reset_done:
-                hard_reset(messages)
-                reset_done = True
-                print("[context full - hard reset: only the system prompt and your question were kept]")
-            else:
-                raise ContextFull(
-                    "Unavailable: this request does not fit the server context window. "
-                    "Ask a narrower question, or restart llama-server with a larger -c."
-                ) from None
+            choice = ask_model(messages)
+        except urllib.error.HTTPError as error:
+            if not context_full(error):
+                raise
+            if not make_room(messages, "context full"):
+                return None
+            continue
+        if choice.get("finish_reason") == "length":
+            if not make_room(messages, "no room left to answer"):
+                return None
+            continue
+        return choice["message"]
 
 
 previous_prompt = ""
@@ -261,11 +278,14 @@ def schema_checked(messages):
 def answer(messages):
     for step in range(1, MAX_STEPS + 1):
         # show_prompt(messages)
-        try:
-            message = ask_model_within_context(messages)
-        except ContextFull as error:
-            log.info("CONTEXT: %s", error)
-            print(error, "\n")
+        message = ask_model_within_context(messages)
+        if message is None:
+            notice = (
+                "Unavailable: this request does not fit the server context window. "
+                "Ask a narrower question, or restart llama-server with a larger -c."
+            )
+            log.info(notice)
+            print(notice, "\n")
             return
         messages.append(message)
         # print(f"message ===== {message}")
@@ -276,7 +296,16 @@ def answer(messages):
 
         call = calls[0]
         name = call["function"]["name"]
-        args = json.loads(call["function"]["arguments"] or "{}")
+        try:
+            args = json.loads(call["function"]["arguments"] or "{}")
+        except json.JSONDecodeError as error:
+            # The model writes these arguments as plain text and gets them wrong now and then.
+            # A bad call is the model's mistake to fix, like any failed query, not a reason to quit.
+            result = f"ERROR: the arguments of your {name} call were not valid JSON ({error}). Send the call again."
+            print(f"  [{step}] {name} <malformed arguments>")
+            print(f"      -> {result}")
+            messages.append({"role": "tool", "tool_call_id": call["id"], "content": json.dumps(result)})
+            continue
 
         if name == "answer_user":
             log.info("ANSWER: %s", args.get("reply"))
