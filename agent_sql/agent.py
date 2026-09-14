@@ -193,6 +193,42 @@ def schema_checked(messages):
 # --- loop ---
 
 
+def handle_call(messages, call, step):
+    """Runs one tool call and appends its result. True when the turn is over."""
+    name = call["function"]["name"]
+    try:
+        args = json.loads(call["function"]["arguments"] or "{}")
+    except json.JSONDecodeError as error:
+        # The model writes these arguments as plain text and gets them wrong now and then;
+        # a bad call goes back to it to fix, like any failed query.
+        result = f"ERROR: the arguments of your {name} call were not valid JSON ({error}). Send the call again."
+        print(f"  [{step}] {name} <malformed arguments>")
+        print(f"      -> {result}")
+        messages.append({"role": "tool", "tool_call_id": call["id"], "content": json.dumps(result)})
+        return False
+
+    if name == "answer_user":
+        log.info("ANSWER: %s", args.get("reply"))
+        print(args.get("reply", "(no reply)"), "\n")
+        return True
+
+    print(f"  [{step}] {name} {args}")
+    # The prompt alone did not stop the model from guessing table names, so the first
+    # query is refused until the schema has been looked at.
+    if name == "run_query" and not schema_checked(messages):
+        result = (
+            "ERROR: never guess table or column names. Call list_tables, "
+            "then describe_table only for the tables this query needs."
+        )
+    else:
+        result = run_tool(name, args)
+
+    content = json.dumps(result, ensure_ascii=False, default=str)  # Oracle dates are not JSON types on their own.
+    print(f"      -> {content[:300]}")
+    messages.append({"role": "tool", "tool_call_id": call["id"], "content": content})
+    return False
+
+
 def answer(messages):
     for step in range(1, MAX_STEPS + 1):
         # show_prompt(messages)
@@ -211,38 +247,8 @@ def answer(messages):
             print(message.get("content") or "(empty answer)", "\n")
             return
 
-        call = calls[0]
-        name = call["function"]["name"]
-        try:
-            args = json.loads(call["function"]["arguments"] or "{}")
-        except json.JSONDecodeError as error:
-            # The model writes these arguments as plain text and gets them wrong now and then;
-            # a bad call goes back to it to fix, like any failed query.
-            result = f"ERROR: the arguments of your {name} call were not valid JSON ({error}). Send the call again."
-            print(f"  [{step}] {name} <malformed arguments>")
-            print(f"      -> {result}")
-            messages.append({"role": "tool", "tool_call_id": call["id"], "content": json.dumps(result)})
-            continue
-
-        if name == "answer_user":
-            log.info("ANSWER: %s", args.get("reply"))
-            print(args.get("reply", "(no reply)"), "\n")
+        if handle_call(messages, calls[0], step):
             return
-
-        print(f"  [{step}] {name} {args}")
-        # The prompt alone did not stop the model from guessing table names, so the first
-        # query is refused until the schema has been looked at.
-        if name == "run_query" and not schema_checked(messages):
-            result = (
-                "ERROR: never guess table or column names. Call list_tables, "
-                "then describe_table only for the tables this query needs."
-            )
-        else:
-            result = run_tool(name, args)
-
-        content = json.dumps(result, ensure_ascii=False, default=str)  # Oracle dates are not JSON types on their own.
-        print(f"      -> {content[:300]}")
-        messages.append({"role": "tool", "tool_call_id": call["id"], "content": content})
 
     log.info("STOPPED after %d steps", MAX_STEPS)
     print(f"stopped: {MAX_STEPS} steps without a final answer\n")
