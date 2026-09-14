@@ -6,6 +6,7 @@ Run:
 import json
 import logging
 import os
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -15,6 +16,12 @@ SERVER = "http://127.0.0.1:8080"
 LLM_URL = SERVER + "/v1/chat/completions"
 # Measured path: refused query, list_tables, describe_table, a failed query, the fixed query, answer.
 MAX_STEPS = 12
+# How many of the oldest messages one round of trimming removes.
+DROP_OLDEST = 10
+
+
+class ContextFull(Exception):
+    """The server refused the request because the history no longer fits in the window."""
 
 # Next to this script, not in whatever folder the terminal happens to be in.
 logging.basicConfig(
@@ -102,8 +109,21 @@ def post(path, body):
     request = urllib.request.Request(
         SERVER + path, data=json.dumps(body).encode("utf-8"), headers={"Content-Type": "application/json"}
     )
-    with urllib.request.urlopen(request) as response:
-        return json.load(response)
+    try:
+        with urllib.request.urlopen(request) as response:
+            return json.load(response)
+    except urllib.error.HTTPError as error:
+        # Measured on the running server: HTTP 400 with
+        # {"error": {"type": "exceed_context_size_error", "message": "request (14086 tokens) exceeds ..."}}.
+        # Only that one type is recoverable by shortening the history, so every other 400 stays an error.
+        detail = error.read().decode("utf-8", "replace")
+        try:
+            kind = json.loads(detail)["error"]["type"]
+        except (ValueError, KeyError, TypeError):
+            kind = ""
+        if kind == "exceed_context_size_error":
+            raise ContextFull(detail) from None
+        raise
 
 
 def ask_model(messages):
@@ -138,9 +158,60 @@ def used_tokens(messages):
 
     try:
         return len(post("/tokenize", {"content": render_prompt(messages)})["tokens"])
-    except urllib.error.URLError:
+    except (urllib.error.URLError, ContextFull):
         # A counter is not worth crashing the program for.
         return "?"
+
+
+def trim(messages):
+    """Drops the oldest messages and returns how many went. None means there is nothing left to drop.
+
+    messages[0] is the system prompt and is never touched, so the rules and the tool
+    definitions survive every trim. The cut is then pushed forward to the next user
+    message, because that is the only place where no tool call is separated from its
+    result - a half-cut pair is rejected by the template with the same HTTP 400 that
+    trimming is trying to repair.
+    """
+    cut = 1 + DROP_OLDEST
+    while cut < len(messages) and messages[cut].get("role") != "user":
+        cut += 1
+    if cut >= len(messages):
+        return None
+    del messages[1:cut]
+    return cut - 1
+
+
+def hard_reset(messages):
+    """Last resort before giving up: keeps the system prompt and the question being answered."""
+    question = next((message for message in reversed(messages) if message.get("role") == "user"), None)
+    del messages[1:]
+    if question is not None:
+        messages.append(question)
+
+
+def ask_model_within_context(messages):
+    """Asks the model, shrinking the history whenever the server says it no longer fits.
+
+    The step is retried after every trim, so the question the user typed is answered
+    rather than lost - only the older conversation is spent to make room for it.
+    """
+    reset_done = False
+    while True:
+        try:
+            return ask_model(messages)
+        except ContextFull:
+            dropped = trim(messages)
+            if dropped:
+                print(f"[context full - dropped the {dropped} oldest messages, retrying]")
+            elif not reset_done:
+                hard_reset(messages)
+                reset_done = True
+                print("[context full - hard reset: only the system prompt and your question were kept]")
+            else:
+                raise ContextFull(
+                    "Unavailable: this request does not fit the server context window. "
+                    "Ask a narrower question, or restart llama-server with a larger -c."
+                ) from None
 
 
 previous_prompt = ""
@@ -190,7 +261,12 @@ def schema_checked(messages):
 def answer(messages):
     for step in range(1, MAX_STEPS + 1):
         # show_prompt(messages)
-        message = ask_model(messages)
+        try:
+            message = ask_model_within_context(messages)
+        except ContextFull as error:
+            log.info("CONTEXT: %s", error)
+            print(error, "\n")
+            return
         messages.append(message)
         # print(f"message ===== {message}")
         calls = message.get("tool_calls")
