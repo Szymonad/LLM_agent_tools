@@ -269,8 +269,16 @@ def main():
             if not question:
                 continue
             log.info("QUESTION: %s", question)
+            before = len(messages)
             messages.append({"role": "user", "content": question})
-            answer(messages)
+            try:
+                answer(messages)
+            except (urllib.error.URLError, KeyError) as error:
+                log.info("SERVER ERROR: %s", error)
+                print(f"server error: {error}")
+                print("the conversation is unaffected, try again\n")
+                # Drop the unanswered question so a failed turn does not leave half a message.
+                del messages[before:]
     except KeyboardInterrupt:
         print("\nbye")
 
