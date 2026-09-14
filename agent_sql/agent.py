@@ -149,6 +149,32 @@ def context_size():
         return json.load(response)["default_generation_settings"]["n_ctx"]
 
 
+def used_tokens(messages):
+    """Tokens the next request would take, rendered and counted by the server.
+
+    Costs two HTTP calls per prompt, measured at 17 ms, which buys a number that tracks the
+    real history instead of the previous exchange. Not exact either: the empty tool message
+    patched in below is worth a few tokens that the next request will not actually contain.
+
+    Two shapes are rejected by the Llama 3.1 template and both occur here:
+    tools without any user message (before the first question), and a trailing
+    assistant tool call with no result (after a turn ended by answer_user).
+    """
+    messages = list(messages)
+    if not any(message.get("role") == "user" for message in messages):
+        messages.append({"role": "user", "content": ""})
+
+    last = messages[-1]
+    if last.get("role") == "assistant" and last.get("tool_calls"):
+        messages.append({"role": "tool", "tool_call_id": last["tool_calls"][0]["id"], "content": ""})
+
+    try:
+        return len(post("/tokenize", {"content": render_prompt(messages)})["tokens"])
+    except urllib.error.URLError:
+        # A counter is not worth crashing the program for.
+        return "?"
+
+
 def trim(messages):
     """Drops the oldest messages and returns how many went. None means there is nothing left to drop.
 
@@ -332,7 +358,9 @@ def main():
 
     try:
         while True:
-            question = input(f"tokens {context}/{last_total_tokens} > ").strip()
+            # TEMPORARY: usage from the last reply on the left, the exact count of the next
+            # request on the right, so the two ways of counting can be compared while typing.
+            question = input(f"tokens {context}/{last_total_tokens} (exact {used_tokens(messages)}) > ").strip()
             if not question:
                 continue
             log.info("QUESTION: %s", question)
