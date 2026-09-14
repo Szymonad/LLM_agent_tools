@@ -13,11 +13,17 @@ from pathlib import Path
 import db
 
 SERVER = "http://127.0.0.1:8080"
-LLM_URL = SERVER + "/v1/chat/completions"
-# Measured path: refused query, list_tables, describe_table, a failed query, the fixed query, answer.
+# MAX_STEPS = 12: measured path - refused query, list_tables, describe_table, a failed
+# query, the fixed query, answer.
 MAX_STEPS = 12
 # How many of the oldest messages one round of trimming removes.
 DROP_OLDEST = 10
+
+previous_prompt = ""
+# Set by ask_model from the server's "usage" field, sent by every OpenAI-compatible server.
+# The number is roughly 10 tokens behind, since it excludes the role markers of the turn
+# not sent yet.
+last_total_tokens = "?"
 
 
 # Next to this script, not in whatever folder the terminal happens to be in.
@@ -102,6 +108,9 @@ TOOL_FUNCTIONS = {
 }
 
 
+# --- HTTP ---
+
+
 def post(path, body):
     request = urllib.request.Request(
         SERVER + path, data=json.dumps(body).encode("utf-8"), headers={"Content-Type": "application/json"}
@@ -110,13 +119,26 @@ def post(path, body):
         return json.load(response)
 
 
+def context_size():
+    """Window size the server was started with (-c), so the counter is not hard-coded."""
+    with urllib.request.urlopen(SERVER + "/props", timeout=5) as response:
+        return json.load(response)["default_generation_settings"]["n_ctx"]
+
+
+def render_prompt(messages):
+    """The flat text the model really receives, tool definitions included."""
+    return post("/apply-template", {"messages": messages, "tools": TOOLS})["prompt"]
+
+
+# --- model ---
+
+
 def context_full(error):
     """True when the server refused the request because the history no longer fits.
 
-    Measured on the running server: HTTP 400 with
-    {"error": {"type": "exceed_context_size_error", "message": "request (14086 tokens) exceeds ..."}}.
-    Only that one type is recoverable by shortening the history, so every other 400 stays an error.
-    The body of an HTTPError can only be read once, so this must be the only place that reads it.
+    exceed_context_size_error is the only 400 type recoverable by shortening the history,
+    so every other 400 stays an error. The body of an HTTPError can only be read once,
+    so this must be the only place that reads it.
     """
     detail = error.read().decode("utf-8", "replace")
     try:
@@ -127,62 +149,19 @@ def context_full(error):
 
 
 def ask_model(messages):
-    """Returns the whole choice, not just the message: finish_reason tells a finished answer from a cut-off one.
-
-    Also remembers the size the server reports in "usage", so main() can show it
-    without a separate tokenize call.
-    """
+    """Returns the whole choice, not just the message: finish_reason tells a finished answer from a cut-off one."""
     global last_total_tokens
     body = post("/v1/chat/completions", {"messages": messages, "tools": TOOLS, "temperature": 0})
     last_total_tokens = body.get("usage", {}).get("total_tokens", "?")
     return body["choices"][0]
 
 
-def render_prompt(messages):
-    """The flat text the model really receives, tool definitions included."""
-    return post("/apply-template", {"messages": messages, "tools": TOOLS})["prompt"]
-
-
-def context_size():
-    """Window size the server was started with (-c), so the counter is not hard-coded."""
-    with urllib.request.urlopen(SERVER + "/props", timeout=5) as response:
-        return json.load(response)["default_generation_settings"]["n_ctx"]
-
-
-def used_tokens(messages):
-    """Tokens the next request would take, rendered and counted by the server.
-
-    Costs two HTTP calls per prompt, measured at 17 ms, which buys a number that tracks the
-    real history instead of the previous exchange. Not exact either: the empty tool message
-    patched in below is worth a few tokens that the next request will not actually contain.
-
-    Two shapes are rejected by the Llama 3.1 template and both occur here:
-    tools without any user message (before the first question), and a trailing
-    assistant tool call with no result (after a turn ended by answer_user).
-    """
-    messages = list(messages)
-    if not any(message.get("role") == "user" for message in messages):
-        messages.append({"role": "user", "content": ""})
-
-    last = messages[-1]
-    if last.get("role") == "assistant" and last.get("tool_calls"):
-        messages.append({"role": "tool", "tool_call_id": last["tool_calls"][0]["id"], "content": ""})
-
-    try:
-        return len(post("/tokenize", {"content": render_prompt(messages)})["tokens"])
-    except urllib.error.URLError:
-        # A counter is not worth crashing the program for.
-        return "?"
-
-
 def trim(messages):
     """Drops the oldest messages and returns how many went. None means there is nothing left to drop.
 
-    messages[0] is the system prompt and is never touched, so the rules and the tool
-    definitions survive every trim. The cut is then pushed forward to the next user
-    message, because that is the only place where no tool call is separated from its
-    result - a half-cut pair is rejected by the template with the same HTTP 400 that
-    trimming is trying to repair.
+    messages[0] is the system prompt and is never touched. The cut is pushed forward to the
+    next user message, because that is the only place where no tool call is separated from
+    its result.
     """
     cut = 1 + DROP_OLDEST
     while cut < len(messages) and messages[cut].get("role") != "user":
@@ -217,14 +196,9 @@ def make_room(messages, reason):
 def ask_model_within_context(messages):
     """Asks the model, shrinking the history whenever there is no room left.
 
-    Running out of context arrives in two different shapes and only one of them is an error.
-    When the history alone is bigger than the window, the server refuses it with HTTP 400.
-    When the history merely leaves too little room, the server answers normally and the reply
-    is cut off mid-token, marked finish_reason "length" - measured on this server, the tool
-    arguments then came back as the single character '{', which is what crashed json.loads.
-
-    The step is retried after every trim, so the question the user typed is answered rather
-    than lost - only the older conversation is spent to make room for it.
+    Running out of context arrives in two shapes: HTTP 400 when the history alone is
+    bigger than the window, or finish_reason "length" when the reply gets cut off mid-token.
+    The step is retried after every trim, so the question is answered rather than lost.
     """
     while True:
         try:
@@ -242,18 +216,14 @@ def ask_model_within_context(messages):
         return choice["message"]
 
 
-previous_prompt = ""
-# Set by ask_model from the server's "usage" field. total_tokens, not prompt_tokens, because
-# the history now also holds the reply that was just generated - the server keeps no state of
-# its own, so this count is the only thing standing in for one. Stays "?" until the first request.
-last_total_tokens = "?"
+# --- debug ---
 
 
 def show_prompt(messages):
-    """Prints the flat text the model really receives, with the role markers.
+    """Prints the flat text the model really receives.
 
     The head with the tool definitions never changes, so only the new tail is printed
-    after the first call - that tail is exactly what one turn adds to the prompt.
+    after the first call.
     """
     global previous_prompt
 
@@ -268,6 +238,9 @@ def show_prompt(messages):
     previous_prompt = prompt
 
 
+# --- tools ---
+
+
 def run_tool(name, args):
     log.info("TOOL: %s | args: %s", name, args)
     function = TOOL_FUNCTIONS.get(name)
@@ -276,7 +249,6 @@ def run_tool(name, args):
     try:
         return function(**args)
     except Exception as error:
-        # The error goes back to the model instead of stopping the program.
         return f"ERROR: {type(error).__name__}: {error}"
 
 
@@ -288,6 +260,9 @@ def schema_checked(messages):
         if message.get("role") == "assistant"
         for call in message.get("tool_calls") or []
     )
+
+
+# --- loop ---
 
 
 def answer(messages):
@@ -303,7 +278,6 @@ def answer(messages):
             print(notice, "\n")
             return
         messages.append(message)
-        # print(f"message ===== {message}")
         calls = message.get("tool_calls")
         if not calls:
             print(message.get("content") or "(empty answer)", "\n")
@@ -314,8 +288,8 @@ def answer(messages):
         try:
             args = json.loads(call["function"]["arguments"] or "{}")
         except json.JSONDecodeError as error:
-            # The model writes these arguments as plain text and gets them wrong now and then.
-            # A bad call is the model's mistake to fix, like any failed query, not a reason to quit.
+            # The model writes these arguments as plain text and gets them wrong now and then;
+            # a bad call goes back to it to fix, like any failed query.
             result = f"ERROR: the arguments of your {name} call were not valid JSON ({error}). Send the call again."
             print(f"  [{step}] {name} <malformed arguments>")
             print(f"      -> {result}")
@@ -328,8 +302,8 @@ def answer(messages):
             return
 
         print(f"  [{step}] {name} {args}")
-        # The prompt alone did not stop the model from guessing names like "employees",
-        # so the first query is refused until the schema has been looked at.
+        # The prompt alone did not stop the model from guessing table names, so the first
+        # query is refused until the schema has been looked at.
         if name == "run_query" and not schema_checked(messages):
             result = (
                 "ERROR: never guess table or column names. Call list_tables, "
@@ -338,8 +312,7 @@ def answer(messages):
         else:
             result = run_tool(name, args)
 
-        # default=str: Oracle dates are not JSON types on their own.
-        content = json.dumps(result, ensure_ascii=False, default=str)
+        content = json.dumps(result, ensure_ascii=False, default=str)  # Oracle dates are not JSON types on their own.
         print(f"      -> {content[:300]}")
         messages.append({"role": "tool", "tool_call_id": call["id"], "content": content})
 
@@ -358,9 +331,7 @@ def main():
 
     try:
         while True:
-            # TEMPORARY: usage from the last reply on the left, the exact count of the next
-            # request on the right, so the two ways of counting can be compared while typing.
-            question = input(f"tokens {context}/{last_total_tokens} (exact {used_tokens(messages)}) > ").strip()
+            question = input(f"tokens {context}/{last_total_tokens} > ").strip()
             if not question:
                 continue
             log.info("QUESTION: %s", question)
