@@ -6,9 +6,9 @@ Run:
 import json
 import logging
 import os
-import urllib.error
-import urllib.request
 from pathlib import Path
+
+import requests
 
 from tools import BEHAVIOUR, TOOLS, TOOL_FUNCTIONS
 
@@ -18,6 +18,8 @@ SERVER = "http://127.0.0.1:8080"
 MAX_STEPS = 12
 # How many of the oldest messages one round of trimming removes.
 DROP_OLDEST = 10
+# Without this, a hung server stalls the agent forever.
+HTTP_TIMEOUT = 60
 
 previous_prompt = ""
 # Set by ask_model from the server's "usage" field, sent by every OpenAI-compatible server.
@@ -40,17 +42,16 @@ log = logging.getLogger("agent_sql")
 
 
 def post(path, body):
-    request = urllib.request.Request(
-        SERVER + path, data=json.dumps(body).encode("utf-8"), headers={"Content-Type": "application/json"}
-    )
-    with urllib.request.urlopen(request) as response:
-        return json.load(response)
+    response = requests.post(SERVER + path, json=body, timeout=HTTP_TIMEOUT)
+    response.raise_for_status()
+    return response.json()
 
 
 def context_size():
     """Window size the server was started with (-c), so the counter is not hard-coded."""
-    with urllib.request.urlopen(SERVER + "/props", timeout=5) as response:
-        return json.load(response)["default_generation_settings"]["n_ctx"]
+    response = requests.get(SERVER + "/props", timeout=5)
+    response.raise_for_status()
+    return response.json()["default_generation_settings"]["n_ctx"]
 
 
 def render_prompt(messages):
@@ -61,19 +62,16 @@ def render_prompt(messages):
 # --- model ---
 
 
-def context_full(error):
+def context_full(response):
     """True when the server refused the request because the history no longer fits.
 
     exceed_context_size_error is the only 400 type recoverable by shortening the history,
-    so every other 400 stays an error. The body of an HTTPError can only be read once,
-    so this must be the only place that reads it.
+    so every other 400 stays an error.
     """
-    detail = error.read().decode("utf-8", "replace")
     try:
-        kind = json.loads(detail)["error"]["type"]
+        return response.json()["error"]["type"] == "exceed_context_size_error"
     except (ValueError, KeyError, TypeError):
-        kind = ""
-    return kind == "exceed_context_size_error"
+        return False
 
 
 def ask_model(messages):
@@ -131,8 +129,8 @@ def ask_model_within_context(messages):
     while True:
         try:
             choice = ask_model(messages)
-        except urllib.error.HTTPError as error:
-            if not context_full(error):
+        except requests.HTTPError as error:
+            if not context_full(error.response):
                 raise
             if not make_room(messages, "context full"):
                 return None
@@ -274,7 +272,7 @@ def main():
             messages.append({"role": "user", "content": question})
             try:
                 answer(messages)
-            except (urllib.error.URLError, KeyError) as error:
+            except (requests.RequestException, KeyError) as error:
                 log.info("SERVER ERROR: %s", error)
                 print(f"server error: {error}")
                 print("the conversation is unaffected, try again\n")
@@ -282,7 +280,6 @@ def main():
                 del messages[before:]
     except KeyboardInterrupt:
         print("\nbye")
-
 
 if __name__ == "__main__":
     main()

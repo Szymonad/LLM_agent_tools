@@ -21,7 +21,7 @@ The model writes the SQL itself. Two helper tools let it look at the schema firs
 ## Requirements
 
 - llama-server running on `http://127.0.0.1:8080`
-- `pip install oracledb`
+- `pip install oracledb requests`
 - Oracle XE with service `xepdb1` on port 1521
 
 ## Machine everything here was measured on
