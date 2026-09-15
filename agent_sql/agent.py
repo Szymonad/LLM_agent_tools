@@ -236,13 +236,14 @@ def answer(messages):
         if message is None:
             notice = (
                 "Unavailable: this request does not fit the server context window. "
-                "Ask a narrower question, or restart llama-server with a larger -c."
+                "Ask a narrower question."
             )
             log.info(notice)
             print(notice, "\n")
             return
         messages.append(message)
         calls = message.get("tool_calls")
+        # stop when model responded with text without tool
         if not calls:
             print(message.get("content") or "(empty answer)", "\n")
             return
