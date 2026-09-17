@@ -54,11 +54,6 @@ def context_size():
     return response.json()["default_generation_settings"]["n_ctx"]
 
 
-def render_prompt(messages):
-    """The flat text the model really receives, tool definitions included."""
-    return post("/apply-template", {"messages": messages, "tools": TOOLS})["prompt"]
-
-
 # --- model ---
 
 
@@ -153,7 +148,9 @@ def show_prompt(messages):
     """
     global previous_prompt
 
-    prompt = render_prompt(messages)
+    # /apply-template is llama.cpp's own endpoint: it glues the messages into the flat
+    # text the model receives, tool definitions included, without generating anything.
+    prompt = post("/apply-template", {"messages": messages, "tools": TOOLS})["prompt"]
     if previous_prompt and prompt.startswith(previous_prompt):
         print("----- PROMPT: new part -----")
         print(prompt[len(previous_prompt):])
