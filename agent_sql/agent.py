@@ -164,6 +164,24 @@ def show_prompt(messages):
     previous_prompt = prompt
 
 
+def print_message(message):
+    """Prints a model message as indented JSON, with tool arguments unpacked for reading."""
+    if isinstance(message, list):
+        for item in message:
+            print_message(item)
+        return
+    if message is None:
+        print("None")
+        return
+    shown = json.loads(json.dumps(message))
+    for call in shown.get("tool_calls") or []:
+        try:
+            call["function"]["arguments"] = json.loads(call["function"]["arguments"])
+        except (ValueError, TypeError):
+            pass
+    print(json.dumps(shown, indent=4, ensure_ascii=False))
+
+
 # --- tools ---
 
 
@@ -230,7 +248,9 @@ def handle_call(messages, call, step):
 def answer(messages):
     for step in range(1, MAX_STEPS + 1):
         # show_prompt(messages)
+
         message = ask_model_within_context(messages)
+        print_message(messages)
         if message is None:
             notice = (
                 "Unavailable: this request does not fit the server context window. "
@@ -241,9 +261,14 @@ def answer(messages):
             return
         messages.append(message)
         calls = message.get("tool_calls")
+
         # stop when model responded with text without tool
         if not calls:
-            print(message.get("content") or "(empty answer)", "\n")
+            # Qwen keeps its thinking in reasoning_content, so content can be empty
+            # while the model did produce text.
+            text = message.get("content")
+            log.info("NO TOOL CALL: %s", message)
+            print(text or f"(empty answer) {message}", "\n")
             return
 
         if handle_call(messages, calls[0], step):
