@@ -1,6 +1,10 @@
 """Contract between the model and the database: system prompt, tool declarations, and their implementations."""
 import db
 
+ANSWER_TOOL = "answer_user"
+SCHEMA_TOOL = "describe_table"
+QUERY_TOOL = "run_query"
+
 BEHAVIOUR = """You are a read-only assistant for an Oracle database. Always answer in English.
 
 Pick one function for every step:
