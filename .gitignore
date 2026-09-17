@@ -14,4 +14,6 @@
 !agent_sql/agent.py
 !agent_sql/db.py
 !agent_sql/tools.py
+!agent_sql/llama_client.py
 !llama_serwer_info_endpoints.py
+!llama_scanner.py
