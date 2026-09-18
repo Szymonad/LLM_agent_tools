@@ -5,10 +5,7 @@ import re
 
 import oracledb
 
-ORACLE_DSN = "localhost:1521/xepdb1"
-# One query result has to leave room in the 4096 token window for the rest of the conversation.
-MAX_ROWS = 20
-MAX_CELL_CHARS = 200
+from config import MAX_CELL_CHARS, MAX_ROWS, ORACLE_DSN
 
 # Configured in agent.py; here only used.
 log = logging.getLogger("agent_sql")

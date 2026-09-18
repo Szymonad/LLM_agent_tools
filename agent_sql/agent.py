@@ -10,14 +10,9 @@ from pathlib import Path
 
 import requests
 
+from config import DROP_OLDEST, MAX_STEPS
 from llama_client import LlamaClient, context_full
 from tools import ANSWER_TOOL, BEHAVIOUR, QUERY_TOOL, SCHEMA_TOOL, TOOL_FUNCTIONS, TOOLS
-
-# MAX_STEPS = 12: measured path - refused query, list_tables, describe_table, a failed
-# query, the fixed query, answer.
-MAX_STEPS = 12
-# How many of the oldest messages one round of trimming removes.
-DROP_OLDEST = 10
 
 
 # Next to this script, not in whatever folder the terminal happens to be in.

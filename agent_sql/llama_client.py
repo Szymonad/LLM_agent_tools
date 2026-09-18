@@ -1,9 +1,7 @@
 """Talks to llama-server over HTTP, with no knowledge of what the conversation is about."""
 import requests
 
-SERVER = "http://127.0.0.1:8080"
-# Without this, a hung server stalls the agent forever.
-HTTP_TIMEOUT = 60
+from config import HTTP_TIMEOUT, SERVER
 
 
 def context_full(response):
@@ -39,13 +37,12 @@ class LlamaClient:
         return response.json()
 
     def chat(self, messages):
-        """Returns the whole choice, not just the message: finish_reason tells a finished answer from a cut-off one."""
         body = self.post("/v1/chat/completions", {"messages": messages, "tools": self.tools, "temperature": 0})
         self.last_total_tokens = body.get("usage", {}).get("total_tokens", "?")
         return body["choices"][0]
 
     def context_window(self):
-        """Window size the server was started with (-c), so the counter is not hard-coded."""
+        """Window size the server was started with (-c)"""
         return self.get("/props")["default_generation_settings"]["n_ctx"]
 
     def render_prompt(self, messages):
