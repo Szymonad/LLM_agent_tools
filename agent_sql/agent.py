@@ -51,7 +51,9 @@ class Agent:
             # self.show_prompt()
 
             message = self.call_model()
+            print("======================================================================================")
             self.print_message(self.messages)
+            print("======================================================================================")
             if message is None:
                 notice = (
                     "Unavailable: this request does not fit the server context window. "

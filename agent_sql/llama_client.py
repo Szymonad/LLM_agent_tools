@@ -4,14 +4,14 @@ import requests
 from config import HTTP_TIMEOUT, SERVER
 
 
-def context_full(response):
+def context_full(error_response):
     """True when the server refused the request because the history no longer fits.
 
     exceed_context_size_error is the only 400 type recoverable by shortening the history,
     so every other 400 stays an error.
     """
     try:
-        return response.json()["error"]["type"] == "exceed_context_size_error"
+        return error_response.json()["error"]["type"] == "exceed_context_size_error"
     except (ValueError, KeyError, TypeError):
         return False
 

@@ -17,7 +17,7 @@ Endpoints deliberately NOT called, and why:
 
 import requests
 
-SERVER = "http://127.0.0.1:8080"
+SERVER = "http://127.0.0.1:8081"
 TIMEOUT = 30
 
 SAMPLE_TEXT = "How many departments are there?"

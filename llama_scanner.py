@@ -5,7 +5,7 @@ import requests
 
 from llama_serwer_info_endpoints import apply_template, props, slots, tokenize, v1_models
 
-SERVER = "http://127.0.0.1:8080"
+SERVER = "http://127.0.0.1:8081"
 TIMEOUT = 30
 
 PRZYKLADOWE_NARZEDZIE = [

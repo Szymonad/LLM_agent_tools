@@ -6,7 +6,7 @@ text = input("> ")
 
 body = json.dumps({"content": text, "with_pieces": True}).encode("utf-8")
 request = urllib.request.Request(
-    "http://127.0.0.1:8080/tokenize",
+    "http://127.0.0.1:8081/tokenize",
     data=body,
     headers={"Content-Type": "application/json"},
 )
