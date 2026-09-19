@@ -1,4 +1,6 @@
 """Database side of the SQL agent."""
+import ast
+import json
 import logging
 import os
 import re
@@ -81,11 +83,40 @@ def shorten(value):
     return value
 
 
-def run_query(sql):
+def parse_params(params):
+    """Returns a dict with string keys, or raises ValueError if params is not shaped like one.
+
+    The model sometimes sends params as a JSON string or as a Python-style dict string
+    instead of a JSON object, so both are accepted alongside an already-parsed dict.
+    """
+    if isinstance(params, str):
+        try:
+            params = json.loads(params)
+        except json.JSONDecodeError:
+            try:
+                params = ast.literal_eval(params)
+            except (ValueError, SyntaxError):
+                params = None
+    if not isinstance(params, dict) or not all(isinstance(key, str) for key in params):
+        raise ValueError(
+            'params must be a JSON object of string keys to values, e.g. {"imie": "Marek"}'
+        )
+    return params
+
+
+def run_query(sql, params=None):
     sql = check_query(sql)
+    params = parse_params(params) if params is not None else {}
     with connect() as connection:
         with connection.cursor() as cursor:
-            run_sql(cursor, sql)
+            try:
+                run_sql(cursor, sql, **params)
+            except oracledb.DatabaseError as error:
+                if "DPY-4010" in str(error):
+                    raise ValueError(
+                        f"params must contain every :name placeholder used in sql ({error})"
+                    )
+                raise
             columns = [column[0] for column in cursor.description]
             # fetchmany instead of fetchall: a SELECT * on a big table would fill the window.
             rows = cursor.fetchmany(MAX_ROWS)

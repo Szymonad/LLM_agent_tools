@@ -19,7 +19,9 @@ describe_table for every table the query uses, unless their results are already 
 Oracle SQL rules:
 - use FETCH FIRST n ROWS ONLY, never LIMIT
 - no semicolon at the end
-- compare text with UPPER(column) = UPPER('value')
+- never write text/number/date values in quotes inside sql; use :name placeholders and pass
+  the values in params, e.g. sql "SELECT * FROM PRACOWNICY WHERE UPPER(IMIE) = UPPER(:imie)",
+  params {"imie": "Marek"}
 If run_query returns an ERROR, fix the SQL and call run_query again."""
 
 TOOLS = [
@@ -50,7 +52,21 @@ TOOLS = [
             "description": "Run one Oracle SELECT query and return the rows.",
             "parameters": {
                 "type": "object",
-                "properties": {"sql": {"type": "string", "description": "A single Oracle SELECT statement."}},
+                "properties": {
+                    "sql": {
+                        "type": "string",
+                        "description": (
+                            "A single Oracle SELECT statement. Never put text/number/date values "
+                            "directly in the SQL; use :name placeholders and pass the values in params."
+                        ),
+                    },
+                    "params": {
+                        "type": "object",
+                        "description": (
+                            "Values for the :name placeholders in sql"
+                        ),
+                    },
+                },
                 "required": ["sql"],
             },
         },
