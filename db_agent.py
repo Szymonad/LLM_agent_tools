@@ -15,7 +15,7 @@ from pathlib import Path
 
 import oracledb
 
-LLM_URL = "http://127.0.0.1:8080/v1/chat/completions"
+LLM_URL = "http://127.0.0.1:8081/v1/chat/completions"
 ORACLE_DSN = "localhost:1521/xepdb1"
 MAX_STEPS = 5
 MAX_ROWS = 10
