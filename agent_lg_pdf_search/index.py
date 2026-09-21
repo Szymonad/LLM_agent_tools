@@ -1,4 +1,5 @@
 from functools import lru_cache
+import time
 
 import requests
 from langchain_core.documents import Document
@@ -38,6 +39,13 @@ def split(pages):
 
 
 if __name__ == "__main__":
-    page = read_pages()[0]
-    chunks = split([page])
-    print(len(chunks))
+    start = time.perf_counter()
+    pages = read_pages()
+    print(f"read_pages: {time.perf_counter() - start:.1f} s")
+
+    start = time.perf_counter()
+    spli = split(pages)
+    print(f"split: {time.perf_counter() - start:.1f} s")
+
+    for chunk in spli:
+        print(chunk.metadata["page"], count_tokens(chunk.page_content))
