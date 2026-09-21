@@ -1,8 +1,11 @@
+from functools import lru_cache
+
+import requests
 from langchain_core.documents import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from pypdf import PdfReader
 
-from config import CHUNK_CHARS, CHUNK_OVERLAP, PDF_PATH
+from config import CHUNK_OVERLAP, CHUNK_TOKENS, EMBED_SERVER, HTTP_TIMEOUT, PDF_PATH
 
 
 def read_pages():
@@ -18,12 +21,23 @@ def read_pages():
     return pages
 
 
+@lru_cache(maxsize=None)
+def count_tokens(text):
+    """Token count as the embedding server sees it; cached because the splitter measures the same pieces many times."""
+    response = requests.post(f"{EMBED_SERVER}/tokenize", json={"content": text}, timeout=HTTP_TIMEOUT)
+    response.raise_for_status()
+    return len(response.json()["tokens"])
+
+
 def split(pages):
     """Pages cut into chunks the embedding server accepts; each chunk keeps its page number."""
-    splitter = RecursiveCharacterTextSplitter(chunk_size=CHUNK_CHARS, chunk_overlap=CHUNK_OVERLAP)
+    splitter = RecursiveCharacterTextSplitter(
+        chunk_size=CHUNK_TOKENS, chunk_overlap=CHUNK_OVERLAP, length_function=count_tokens
+    )
     return splitter.split_documents(pages)
 
 
 if __name__ == "__main__":
-    for page in read_pages():
-        print(page.metadata["page"], len(page.page_content), repr(page.page_content[:120]))
+    page = read_pages()[0]
+    chunks = split([page])
+    print(len(chunks))

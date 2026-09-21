@@ -8,9 +8,14 @@ SERVER = "http://127.0.0.1:8081"
 # Next to this file, not in whatever folder the terminal happens to be in.
 PDF_PATH = Path(__file__).with_name("pdf") / "Selected_Filtration_Methods_of_ISO-16610.pdf"
 
+# --- embeddings ---
+EMBED_SERVER = "http://127.0.0.1:8082"
+# Without this, a hung server stalls the agent forever.
+HTTP_TIMEOUT = 60
+
 # --- chunks ---
-# The embedding server rejects inputs over 512 tokens; at ~4 characters per token
-# 1200 characters leaves room for the prefix and for text that tokenizes worse.
-CHUNK_CHARS = 1200
+# Counted in EmbeddingGemma tokens: the server rejects inputs over 512, and formulas
+# in the PDF take up to one token per character, so a character limit gives no guarantee.
+CHUNK_TOKENS = 400
 # Text shared by neighbouring chunks, so a sentence cut at the boundary is not lost from both.
-CHUNK_OVERLAP = 150
+CHUNK_OVERLAP = 50
