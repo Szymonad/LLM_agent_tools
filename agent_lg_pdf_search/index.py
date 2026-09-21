@@ -1,4 +1,5 @@
 import time
+from functools import lru_cache
 
 import requests
 from langchain_core.documents import Document
@@ -20,7 +21,7 @@ def read_pages():
         pages.append(Document(page_content=text, metadata={"page": number}))
     return pages
 
-
+@lru_cache(maxsize=None)
 def count_tokens(text):
     """Token count as the embedding server sees it; cached because the splitter measures the same pieces many times."""
     response = requests.post(f"{EMBED_SERVER}/tokenize", json={"content": text}, timeout=HTTP_TIMEOUT)
