@@ -17,4 +17,3 @@ DROP_OLDEST = 10
 ORACLE_DSN = "localhost:1521/xepdb1"
 # One query result has to leave room in the 4096 token window for the rest of the conversation.
 MAX_ROWS = 20
-MAX_CELL_CHARS = 200

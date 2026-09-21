@@ -1,13 +1,11 @@
 """Database side of the SQL agent."""
-import ast
-import json
 import logging
 import os
 import re
 
 import oracledb
 
-from config import MAX_CELL_CHARS, MAX_ROWS, ORACLE_DSN
+from config import MAX_ROWS, ORACLE_DSN
 
 # Configured in agent.py; here only used.
 log = logging.getLogger("agent_sql")
@@ -77,36 +75,8 @@ def describe_table(table):
     return [f"{name} {data_type}" + ("" if nullable == "Y" else " NOT NULL") for name, data_type, nullable in rows]
 
 
-def shorten(value):
-    if isinstance(value, str) and len(value) > MAX_CELL_CHARS:
-        return value[:MAX_CELL_CHARS] + "..."
-    return value
-
-
-def parse_params(params):
-    """Returns a dict with string keys, or raises ValueError if params is not shaped like one.
-
-    The model sometimes sends params as a JSON string or as a Python-style dict string
-    instead of a JSON object, so both are accepted alongside an already-parsed dict.
-    """
-    if isinstance(params, str):
-        try:
-            params = json.loads(params)
-        except json.JSONDecodeError:
-            try:
-                params = ast.literal_eval(params)
-            except (ValueError, SyntaxError):
-                params = None
-    if not isinstance(params, dict) or not all(isinstance(key, str) for key in params):
-        raise ValueError(
-            'params must be a JSON object of string keys to values, e.g. {"imie": "Marek"}'
-        )
-    return params
-
-
 def run_query(sql, params=None):
     sql = check_query(sql)
-    params = parse_params(params) if params is not None else {}
     with connect() as connection:
         with connection.cursor() as cursor:
             try:
@@ -128,6 +98,6 @@ def run_query(sql, params=None):
         return "The query returned no rows."
     return {
         "columns": columns,
-        "rows": [[shorten(value) for value in row] for row in rows],
-        "note": f"at most {MAX_ROWS} rows are returned",
+        "rows": rows,
+        # "note": f"at most {MAX_ROWS} rows are returned", # addional text fo model after running querry 
     }
