@@ -18,3 +18,6 @@
 !agent_sql/config.py
 !llama_serwer_info_endpoints.py
 !llama_scanner.py
+!agent_lg_pdf_search/
+!agent_lg_pdf_search/config.py
+!agent_lg_pdf_search/README.md
