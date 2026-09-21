@@ -5,7 +5,7 @@ import re
 
 import oracledb
 
-from config import MAX_ROWS, ORACLE_DSN
+from agent_sql.config import MAX_ROWS, ORACLE_DSN
 
 # Configured in agent.py; here only used.
 log = logging.getLogger("agent_sql")

@@ -1,7 +1,7 @@
 """Talks to llama-server over HTTP, with no knowledge of what the conversation is about."""
 import requests
 
-from config import HTTP_TIMEOUT, SERVER
+from agent_sql.config import HTTP_TIMEOUT, SERVER
 
 
 def context_full(error_response):

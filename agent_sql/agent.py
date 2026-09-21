@@ -6,13 +6,15 @@ Run:
 import json
 import logging
 import os
+import sys
 from pathlib import Path
 
 import requests
 
-from config import DROP_OLDEST, MAX_STEPS
-from llama_client import LlamaClient, context_full
-from tools import ANSWER_TOOL, BEHAVIOUR, QUERY_TOOL, SCHEMA_TOOL, TOOL_FUNCTIONS, TOOLS
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from agent_sql.config import DROP_OLDEST, MAX_STEPS
+from agent_sql.llama_client import LlamaClient, context_full
+from agent_sql.tools import ANSWER_TOOL, BEHAVIOUR, QUERY_TOOL, SCHEMA_TOOL, TOOL_FUNCTIONS, TOOLS
 
 
 # Next to this script, not in whatever folder the terminal happens to be in.

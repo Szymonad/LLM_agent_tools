@@ -1,5 +1,5 @@
 """Contract between the model and the database: system prompt, tool declarations, and their implementations."""
-import db
+from agent_sql import db
 
 ANSWER_TOOL = "answer_user"
 SCHEMA_TOOL = "describe_table"
