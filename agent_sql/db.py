@@ -99,5 +99,5 @@ def run_query(sql, params=None):
     return {
         "columns": columns,
         "rows": rows,
-        # "note": f"at most {MAX_ROWS} rows are returned", # addional text fo model after running querry 
+        # "note": f"at most {MAX_ROWS} rows are returned", # addional text to model after running querry 
     }
