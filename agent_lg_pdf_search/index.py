@@ -1,4 +1,3 @@
-from functools import lru_cache
 import time
 
 import requests
@@ -22,7 +21,6 @@ def read_pages():
     return pages
 
 
-@lru_cache(maxsize=None)
 def count_tokens(text):
     """Token count as the embedding server sees it; cached because the splitter measures the same pieces many times."""
     response = requests.post(f"{EMBED_SERVER}/tokenize", json={"content": text}, timeout=HTTP_TIMEOUT)
@@ -47,5 +45,7 @@ if __name__ == "__main__":
     spli = split(pages)
     print(f"split: {time.perf_counter() - start:.1f} s")
 
+    start = time.perf_counter()
     for chunk in spli:
         print(chunk.metadata["page"], count_tokens(chunk.page_content))
+    print(f"tokens: {time.perf_counter() - start:.3f} s")
