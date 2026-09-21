@@ -29,4 +29,4 @@ Download (334 MB): https://huggingface.co/ggml-org/embeddinggemma-300M-GGUF/reso
 .\LIama\llama-server.exe -m .\embeddinggemma-300M-Q8_0.gguf --embeddings -ngl 0 --port 8082
 ```
 
-`-ngl 0` keeps the whole model on the CPU: with Qwen at 8192 context the 6 GB GPU has about 440 MiB left.
+`-ngl 0` keeps the whole EmbeddingGemma 300M on the CPU
