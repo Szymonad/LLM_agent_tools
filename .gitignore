@@ -21,3 +21,4 @@
 !agent_lg_pdf_search/
 !agent_lg_pdf_search/config.py
 !agent_lg_pdf_search/README.md
+!agent_lg_pdf_search/index.py
