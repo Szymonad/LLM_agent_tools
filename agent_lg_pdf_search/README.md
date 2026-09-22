@@ -2,6 +2,20 @@
 
 Terminal agent that answers questions about a PDF document.
 
+## Requirements
+
+```powershell
+pip install langchain langchain-openai langchain-text-splitters pypdf numpy requests
+```
+
+| Package | Used for |
+|---|---|
+| `langchain`, `langchain-openai` | the agent loop, `OpenAIEmbeddings` against llama-server |
+| `langchain-text-splitters` | `RecursiveCharacterTextSplitter` in `split()` |
+| `pypdf` | reading the PDF in `read_pages()` |
+| `numpy` | similarity search inside `InMemoryVectorStore` |
+| `requests` | the `/tokenize` endpoint in `count_tokens()` |
+
 ## Servers
 
 Two llama-server processes, each in its own PowerShell window, both started from the repo root.

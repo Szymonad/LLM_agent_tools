@@ -14,6 +14,7 @@ from config import (
     EMBED_SERVER,
     HTTP_TIMEOUT,
     INDEX_PATH,
+    TOP_K,
     PASSAGE_PREFIX,
     PDF_PATH,
     QUERY_PREFIX,
@@ -100,6 +101,21 @@ def build():
     return store
 
 
+@lru_cache(maxsize=1)
+def load_store():
+    """The index built earlier, read once per run; the agent needs no PDF and no splitting."""
+    return InMemoryVectorStore.load(str(INDEX_PATH), EMBEDDINGS)
+
+
+def search(query, k=TOP_K):
+    """The k chunks closest to the question, best first."""
+    return load_store().similarity_search(query, k=k)
+
+
 if __name__ == "__main__":
-    build()
+    if not INDEX_PATH.exists():
+        build()
+    question = "jakie są wnioski wynikające z tego bania i pomiarów?"
+    for document, score in load_store().similarity_search_with_score(question, k=TOP_K):
+        print(f"{score:.3f} pages {document.metadata['pages']}: {document.page_content[:80]!r}")
 

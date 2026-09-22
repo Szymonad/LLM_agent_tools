@@ -6,7 +6,7 @@ SERVER = "http://127.0.0.1:8081"
 
 # --- pdf ---
 # Next to this file, not in whatever folder the terminal happens to be in.
-PDF_PATH = Path(__file__).with_name("pdf") / "repeated_terms.pdf"
+PDF_PATH = Path(__file__).with_name("pdf") / "EmbeddingGemma_technical_report.pdf"
 
 # --- embeddings ---
 EMBED_SERVER = "http://127.0.0.1:8082"
@@ -27,3 +27,5 @@ CHUNK_OVERLAP = 50
 # Built by "python index.py" and read by the agent; rebuild after changing the PDF,
 # the chunk settings or the embedding model.
 INDEX_PATH = Path(__file__).with_name("index.json")
+# How many chunks reach the model; each one costs context in the answer.
+TOP_K = 5
