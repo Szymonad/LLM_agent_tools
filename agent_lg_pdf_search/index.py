@@ -76,4 +76,5 @@ if __name__ == "__main__":
             if a.endswith(b[:size]):
                 shared = b[:size]
                 break
-        print(f"chunk {number} -> {number + 1}: {count_tokens(shared)} shared tokens")
+        pages = f"pages {previous.metadata['pages']} -> {current.metadata['pages']}"
+        print(f"{pages} chunk {number} -> {number + 1}: {count_tokens(shared)} shared tokens")
