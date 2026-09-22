@@ -29,15 +29,20 @@ def count_tokens(text):
     return len(response.json()["tokens"])
 
 
+def join_pages(pages):
+    """All pages as one text, plus the position where each page starts in it."""
+    text = ""
+    starts = []
+    for page in pages:
+        starts.append(len(text))
+        text += page.page_content + "\n"
+    return text, starts
+
+
 def split(pages):
     """Whole PDF cut as one text, so the overlap also crosses page boundaries; each chunk lists its pages."""
-    text = "\n".join(page.page_content for page in pages)
-    # Where each page starts in text, to map a chunk back to the pages it came from.
-    starts = []
-    position = 0
-    for page in pages:
-        starts.append(position)
-        position += len(page.page_content) + 1  # +1 for the "\n" that joins the pages
+    # starts maps a chunk back to the pages it came from.
+    text, starts = join_pages(pages)
 
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=CHUNK_TOKENS, chunk_overlap=CHUNK_OVERLAP, length_function=count_tokens
@@ -64,10 +69,6 @@ if __name__ == "__main__":
     print(f"read_pages and split: {time.perf_counter() - start:.1f} s")
     # enumerate numbers the pairs from 1: chunk 1 -> 2, chunk 2 -> 3, ...
     for number, (previous, current) in enumerate(zip(chunks, chunks[1:]), start=1):
-        # Pages are split separately, so there is no overlap across them.
-        if previous.metadata["page"] != current.metadata["page"]:
-            print(f"chunk {number} -> {number + 1}: 0 shared tokens (different pages)")
-            continue
         a, b = previous.page_content, current.page_content
         # Longest end of a that is also the start of b; trying the longest first, so the first hit wins.
         shared = ""
