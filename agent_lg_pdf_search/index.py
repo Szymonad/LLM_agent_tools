@@ -16,21 +16,21 @@ from config import (
     INDEX_PATH,
     TOP_K,
     PASSAGE_PREFIX,
-    PDF_PATH,
+    PDF_DIR,
     QUERY_PREFIX,
 )
 
 
-def read_pages():
-    """One Document per PDF page, with its 1-based page number in metadata."""
-    reader = PdfReader(PDF_PATH)
+def read_pages(path):
+    """One Document per PDF page, with the file name and its 1-based page number in metadata."""
+    reader = PdfReader(path)
     pages = []
     for number, page in enumerate(reader.pages, start=1):
         text = page.extract_text()
         if not text.strip():
-            print(f"page {number}: no text, skipped")
+            print(f"{path.name} page {number}: no text, skipped")
             continue
-        pages.append(Document(page_content=text, metadata={"page": number}))
+        pages.append(Document(page_content=text, metadata={"source": path.name, "page": number}))
     return pages
 
 @lru_cache(maxsize=None)
@@ -53,6 +53,9 @@ def join_pages(pages):
 
 def split(pages):
     """Whole PDF cut as one text, so the overlap also crosses page boundaries; each chunk lists its pages."""
+    if not pages:
+        return []
+    source = pages[0].metadata["source"]
     text, spans = join_pages(pages)
 
     splitter = RecursiveCharacterTextSplitter(
@@ -65,7 +68,7 @@ def split(pages):
         end = start + len(chunk_text)
         print(start, end)
         numbers = [number for number, page_start, page_end in spans if page_start < end and page_end > start]
-        chunks.append(Document(page_content=chunk_text, metadata={"pages": numbers}))
+        chunks.append(Document(page_content=chunk_text, metadata={"source": source, "pages": numbers}))
     return chunks
 
 
@@ -92,8 +95,14 @@ EMBEDDINGS = PrefixedEmbeddings(
 
 
 def build():
-    """Reads the PDF, cuts it into chunks, embeds them and writes the index to disk."""
-    chunks = split(read_pages())
+    """Reads every PDF in PDF_DIR, cuts them into chunks, embeds them and writes one index to disk."""
+    chunks = []
+    for path in sorted(PDF_DIR.glob("*.pdf")):
+        # Each file is split on its own, so a chunk never joins the end of one PDF with the start of another.
+        pages = read_pages(path)
+        file_chunks = split(pages)
+        print(f"{path.name}: {len(pages)} pages, {len(file_chunks)} chunks")
+        chunks += file_chunks
     store = InMemoryVectorStore(EMBEDDINGS)
     # add_documents is what calls EMBEDDINGS.embed_documents under the hood.
     store.add_documents(chunks)

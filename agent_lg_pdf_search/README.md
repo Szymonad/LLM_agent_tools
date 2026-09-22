@@ -4,17 +4,34 @@ Terminal agent that answers questions about a PDF document.
 
 ## Requirements
 
+Python 3.14. Everything this agent needs:
+
+```powershell
+pip install langchain
+pip install langchain-openai
+pip install langchain-text-splitters
+pip install pypdf
+pip install numpy
+pip install requests
+```
+
+Or in one line:
+
 ```powershell
 pip install langchain langchain-openai langchain-text-splitters pypdf numpy requests
 ```
 
-| Package | Used for |
-|---|---|
-| `langchain`, `langchain-openai` | the agent loop, `OpenAIEmbeddings` against llama-server |
-| `langchain-text-splitters` | `RecursiveCharacterTextSplitter` in `split()` |
-| `pypdf` | reading the PDF in `read_pages()` |
-| `numpy` | similarity search inside `InMemoryVectorStore` |
-| `requests` | the `/tokenize` endpoint in `count_tokens()` |
+| Package | Version it was run with | Used for |
+|---|---|---|
+| `langchain` | 1.4.2 | `create_agent` and the middleware in `agent.py` |
+| `langchain-openai` | 1.6.2 | `OpenAIEmbeddings` and `ChatOpenAI` against llama-server |
+| `langchain-text-splitters` | 1.1.2 | `RecursiveCharacterTextSplitter` in `split()` |
+| `pypdf` | 6.14.2 | reading the PDF in `read_pages()` |
+| `numpy` | 2.5.3 | similarity search inside `InMemoryVectorStore` |
+| `requests` | 2.34.2 | the `/tokenize` endpoint in `count_tokens()` |
+
+Pulled in automatically, no need to install them by hand: `langchain-core`, `langgraph`,
+`pydantic` (by `langchain`), `openai`, `tiktoken` (by `langchain-openai`).
 
 ## Servers
 
