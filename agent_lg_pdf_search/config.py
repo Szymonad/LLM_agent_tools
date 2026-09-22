@@ -12,6 +12,9 @@ PDF_PATH = Path(__file__).with_name("pdf") / "repeated_terms.pdf"
 EMBED_SERVER = "http://127.0.0.1:8082"
 # Without this, a hung server stalls the agent forever.
 HTTP_TIMEOUT = 60
+# EmbeddingGemma was trained with these prefixes on queries and passages; without them retrieval gets worse.
+QUERY_PREFIX = "task: search result | query: "
+PASSAGE_PREFIX = "title: none | text: "
 
 # --- chunks ---
 # Counted in EmbeddingGemma tokens: the server rejects inputs over 512, and formulas

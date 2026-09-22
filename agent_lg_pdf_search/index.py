@@ -3,10 +3,19 @@ from functools import lru_cache
 
 import requests
 from langchain_core.documents import Document
+from langchain_openai import OpenAIEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from pypdf import PdfReader
 
-from config import CHUNK_OVERLAP, CHUNK_TOKENS, EMBED_SERVER, HTTP_TIMEOUT, PDF_PATH
+from config import (
+    CHUNK_OVERLAP,
+    CHUNK_TOKENS,
+    EMBED_SERVER,
+    HTTP_TIMEOUT,
+    PASSAGE_PREFIX,
+    PDF_PATH,
+    QUERY_PREFIX,
+)
 
 
 def read_pages():
@@ -57,16 +66,32 @@ def split(pages):
     return chunks
 
 
+class PrefixedEmbeddings(OpenAIEmbeddings):
+    """EmbeddingGemma on llama-server, with the prefix it expects on each passage and query."""
+
+    def embed_documents(self, texts, chunk_size=None, **kwargs):
+        return super().embed_documents([PASSAGE_PREFIX + text for text in texts], chunk_size, **kwargs)
+
+    def embed_query(self, text, **kwargs):
+        # The parent's embed_query goes through embed_documents above and would add PASSAGE_PREFIX as well.
+        return super().embed_documents([QUERY_PREFIX + text], **kwargs)[0]
+
+
+EMBEDDINGS = PrefixedEmbeddings(
+    base_url=f"{EMBED_SERVER}/v1",
+    # llama-server runs without --api-key and serves one model, so neither value is checked.
+    api_key="unused",
+    model="embeddinggemma",
+    # Otherwise LangChain tokenizes with OpenAI's tiktoken and sends token ids that mean nothing to Gemma.
+    check_embedding_ctx_length=False,
+    timeout=HTTP_TIMEOUT,
+)
+
+
 if __name__ == "__main__":
-    start = time.perf_counter()
     chunks = split(read_pages())
-    print(f"read_pages and split: {time.perf_counter() - start:.1f} s")
-    for number, (previous, current) in enumerate(zip(chunks, chunks[1:]), start=1):
-        a, b = previous.page_content, current.page_content
-        shared = ""
-        for size in range(min(len(a), len(b)), 0, -1):
-            if a.endswith(b[:size]):
-                shared = b[:size]
-                break
-        pages = f"pages {previous.metadata['pages']} -> {current.metadata['pages']}"
-        print(f"{pages} chunk {number} -> {number + 1}: {count_tokens(shared)} shared tokens")
+    start = time.perf_counter()
+    vectors = EMBEDDINGS.embed_documents([chunk.page_content for chunk in chunks])
+    print(f"embed: {len(vectors)} vectors x {len(vectors[0])} numbers, {time.perf_counter() - start:.1f} s")
+    # The server returns vectors of length 1, which is what lets search use a plain dot product.
+    print("length of the first vector:", round(sum(x * x for x in vectors[0]) ** 0.5, 4))
