@@ -38,15 +38,18 @@ def split(pages):
 
 
 if __name__ == "__main__":
-    start = time.perf_counter()
-    pages = read_pages()
-    print(f"read_pages: {time.perf_counter() - start:.1f} s")
-
-    start = time.perf_counter()
-    spli = split(pages)
-    print(f"split: {time.perf_counter() - start:.1f} s")
-
-    start = time.perf_counter()
-    for chunk in spli:
-        print(chunk.metadata["page"], count_tokens(chunk.page_content))
-    print(f"tokens: {time.perf_counter() - start:.3f} s")
+    chunks = split(read_pages())
+    # enumerate numbers the pairs from 1: chunk 1 -> 2, chunk 2 -> 3, ...
+    for number, (previous, current) in enumerate(zip(chunks, chunks[1:]), start=1):
+        # Pages are split separately, so there is no overlap across them.
+        if previous.metadata["page"] != current.metadata["page"]:
+            print(f"chunk {number} -> {number + 1}: 0 shared tokens (different pages)")
+            continue
+        a, b = previous.page_content, current.page_content
+        # Longest end of a that is also the start of b; trying the longest first, so the first hit wins.
+        shared = ""
+        for size in range(min(len(a), len(b)), 0, -1):
+            if a.endswith(b[:size]):
+                shared = b[:size]
+                break
+        print(f"chunk {number} -> {number + 1}: {count_tokens(shared)} shared tokens")
