@@ -47,13 +47,11 @@ def split(pages):
         chunk_size=CHUNK_TOKENS, chunk_overlap=CHUNK_OVERLAP, length_function=count_tokens
     )
     chunks = []
-    start = -1
+    start = 0
     for chunk_text in splitter.split_text(text):
-        # Own search instead of add_start_index: it mixes characters with our token overlap
-        # and put 26 of 60 chunks at the wrong position.
-        start = text.find(chunk_text, start + 1)
+        start = text.find(chunk_text, start)
         end = start + len(chunk_text)
-        # A page belongs to the chunk if their ranges overlap.
+        print(start, end)
         numbers = [number for number, page_start, page_end in spans if page_start < end and page_end > start]
         chunks.append(Document(page_content=chunk_text, metadata={"pages": numbers}))
     return chunks
@@ -63,10 +61,8 @@ if __name__ == "__main__":
     start = time.perf_counter()
     chunks = split(read_pages())
     print(f"read_pages and split: {time.perf_counter() - start:.1f} s")
-    # enumerate numbers the pairs from 1: chunk 1 -> 2, chunk 2 -> 3, ...
     for number, (previous, current) in enumerate(zip(chunks, chunks[1:]), start=1):
         a, b = previous.page_content, current.page_content
-        # Longest end of a that is also the start of b; trying the longest first, so the first hit wins.
         shared = ""
         for size in range(min(len(a), len(b)), 0, -1):
             if a.endswith(b[:size]):
