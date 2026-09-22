@@ -30,36 +30,32 @@ def count_tokens(text):
 
 
 def join_pages(pages):
-    """All pages as one text, plus the position where each page starts in it."""
+    """All pages as one text, plus where each page lies in it: (page number, start, end)."""
     text = ""
-    starts = []
+    spans = []
     for page in pages:
-        starts.append(len(text))
+        spans.append((page.metadata["page"], len(text), len(text) + len(page.page_content)))
         text += page.page_content + "\n"
-    return text, starts
+    return text, spans
 
 
 def split(pages):
     """Whole PDF cut as one text, so the overlap also crosses page boundaries; each chunk lists its pages."""
-    # starts maps a chunk back to the pages it came from.
-    text, starts = join_pages(pages)
+    text, spans = join_pages(pages)
 
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=CHUNK_TOKENS, chunk_overlap=CHUNK_OVERLAP, length_function=count_tokens
     )
     chunks = []
     start = -1
-    for piece in splitter.split_text(text):
+    for chunk_text in splitter.split_text(text):
         # Own search instead of add_start_index: it mixes characters with our token overlap
         # and put 26 of 60 chunks at the wrong position.
-        start = text.find(piece, start + 1)
-        end = start + len(piece)
-        numbers = [
-            page.metadata["page"]
-            for page, page_start in zip(pages, starts)
-            if page_start < end and page_start + len(page.page_content) > start
-        ]
-        chunks.append(Document(page_content=piece, metadata={"pages": numbers}))
+        start = text.find(chunk_text, start + 1)
+        end = start + len(chunk_text)
+        # A page belongs to the chunk if their ranges overlap.
+        numbers = [number for number, page_start, page_end in spans if page_start < end and page_end > start]
+        chunks.append(Document(page_content=chunk_text, metadata={"pages": numbers}))
     return chunks
 
 
