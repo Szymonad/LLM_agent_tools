@@ -122,8 +122,8 @@ def search(query, k=TOP_K):
 
 
 if __name__ == "__main__":
-    if not INDEX_PATH.exists():
-        build()
+
+    build()
     question = "jakie są wnioski wynikające z tego bania i pomiarów?"
     for document, score in load_store().similarity_search_with_score(question, k=TOP_K):
         print(f"{score:.3f} pages {document.metadata['pages']}: {document.page_content[:80]!r}")
