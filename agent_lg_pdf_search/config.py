@@ -22,3 +22,8 @@ PASSAGE_PREFIX = "title: none | text: "
 CHUNK_TOKENS = 400
 # Text shared by neighbouring chunks, so a sentence cut at the boundary is not lost from both.
 CHUNK_OVERLAP = 50
+
+# --- index ---
+# Built by "python index.py" and read by the agent; rebuild after changing the PDF,
+# the chunk settings or the embedding model.
+INDEX_PATH = Path(__file__).with_name("index.json")

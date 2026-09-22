@@ -3,6 +3,7 @@ from functools import lru_cache
 
 import requests
 from langchain_core.documents import Document
+from langchain_core.vectorstores import InMemoryVectorStore
 from langchain_openai import OpenAIEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from pypdf import PdfReader
@@ -12,6 +13,7 @@ from config import (
     CHUNK_TOKENS,
     EMBED_SERVER,
     HTTP_TIMEOUT,
+    INDEX_PATH,
     PASSAGE_PREFIX,
     PDF_PATH,
     QUERY_PREFIX,
@@ -88,10 +90,16 @@ EMBEDDINGS = PrefixedEmbeddings(
 )
 
 
-if __name__ == "__main__":
+def build():
+    """Reads the PDF, cuts it into chunks, embeds them and writes the index to disk."""
     chunks = split(read_pages())
-    start = time.perf_counter()
-    vectors = EMBEDDINGS.embed_documents([chunk.page_content for chunk in chunks])
-    print(f"embed: {len(vectors)} vectors x {len(vectors[0])} numbers, {time.perf_counter() - start:.1f} s")
-    # The server returns vectors of length 1, which is what lets search use a plain dot product.
-    print("length of the first vector:", round(sum(x * x for x in vectors[0]) ** 0.5, 4))
+    store = InMemoryVectorStore(EMBEDDINGS)
+    # add_documents is what calls EMBEDDINGS.embed_documents under the hood.
+    store.add_documents(chunks)
+    store.dump(str(INDEX_PATH))
+    return store
+
+
+if __name__ == "__main__":
+    build()
+
