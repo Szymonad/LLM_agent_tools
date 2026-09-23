@@ -28,5 +28,5 @@ CHUNK_OVERLAP = 50
 # Built by "python index.py" and read by the agent; rebuild after changing the PDF,
 # the chunk settings or the embedding model.
 INDEX_PATH = Path(__file__).with_name("index.json")
-# How many chunks reach the model; each one costs context in the answer.
+# How many chunks reach the model; 5 chunks of 400 tokens is about 2000 of the 8192 context.
 TOP_K = 5
