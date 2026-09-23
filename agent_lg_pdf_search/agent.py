@@ -1,13 +1,15 @@
 """Terminal agent that answers questions about the PDFs in the index."""
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_openai import ChatOpenAI
+from langgraph.checkpoint.memory import InMemorySaver
+from langgraph.graph import END, START, MessagesState, StateGraph
 
 from config import HTTP_TIMEOUT, SERVER
 from index import search
 from tools import BEHAVIOUR, format_chunks
 
 MODEL = ChatOpenAI(
-    base_url=f"{SERVER}/v1",
+    base_url=f"{SERVER}",
     # llama-server runs without --api-key and serves one model, so neither value is checked.
     api_key="unused",
     model="qwen3",
@@ -17,15 +19,60 @@ MODEL = ChatOpenAI(
 )
 
 
-def ask(question):
-    """One turn: find the chunks, hand them to the model, return its answer."""
-    chunks = search(question)
-    messages = [
-        SystemMessage(BEHAVIOUR),
-        HumanMessage(f"{format_chunks(chunks)}\n\nQuestion: {question}"),
-    ]
-    return MODEL.invoke(messages).content
+class State(MessagesState):
+    """Conversation plus the chunks found for the last question."""
+
+    context: str
+
+
+def retrieve(state):
+    """Searches the index with the last question and puts the chunks in the state."""
+    question = state["messages"][-1].content
+    return {"context": format_chunks(search(question))}
+
+
+def answer(state):
+    """Asks the model with the chunks from retrieve; the answer goes back into messages."""
+    messages = [SystemMessage(BEHAVIOUR), SystemMessage(state["context"]), *state["messages"]]
+    return {"messages": [MODEL.invoke(messages)]}
+
+
+def build_graph():
+    """The whole agent: every question goes through retrieve and then answer."""
+    graph = StateGraph(State)
+    graph.add_node("retrieve", retrieve)
+    graph.add_node("answer", answer)
+    graph.add_edge(START, "retrieve")
+    graph.add_edge("retrieve", "answer")
+    graph.add_edge("answer", END)
+    # The checkpointer keeps the conversation between questions, under the thread id below.
+    return graph.compile(checkpointer=InMemorySaver())
+
+
+def print_state(state):
+    """The state in a readable form: what is in it, of what type and how big."""
+    print(f"state: {len(state['messages'])} messages, context {len(state.get('context', ''))} chars")
+    for message in state["messages"]:
+        text = message.content.replace("\n", " ")
+        print(f"  {type(message).__name__:13} str {len(message.content):5} chars | {text[:60]}")
+    for line in state.get("context", "").splitlines():
+        if line.startswith("["):
+            print(f"  chunk header  {line}")
+            
+
+THREAD = {"configurable": {"thread_id": "agent_lg_pdf_search"}}
+
+
+def main():
+    """Terminal loop; an empty line ends it."""
+    agent = build_graph()
+    while True:
+        question = input("\n> ").strip()
+        if not question:
+            break
+        state = agent.invoke({"messages": [HumanMessage(question)]}, THREAD)
+        print(state["messages"][-1].content)
 
 
 if __name__ == "__main__":
-    print(ask("how many parameters does EmbeddingGemma have?"))
+    main()
