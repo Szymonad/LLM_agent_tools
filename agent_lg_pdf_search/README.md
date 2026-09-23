@@ -61,3 +61,26 @@ Download (334 MB): https://huggingface.co/ggml-org/embeddinggemma-300M-GGUF/reso
 ```
 
 `-ngl 0` keeps the whole EmbeddingGemma 300M on the CPU
+
+## Running it
+
+Both commands are run from this folder.
+
+```powershell
+python index.py
+```
+Reads every PDF in `pdf/`, cuts it into chunks, embeds them and writes `index.json`.
+Run it again after adding a PDF or changing the chunk settings.
+
+```powershell
+python agent.py
+```
+Asks questions about the indexed PDFs; an empty line ends the loop.
+
+### Seeing the graph
+
+```powershell
+python -c "import agent; print(agent.build_graph().get_graph().draw_mermaid())"
+```
+Prints the graph as Mermaid: `__start__ --> retrieve --> answer --> __end__`.
+Paste the output into https://mermaid.live to see it drawn.
