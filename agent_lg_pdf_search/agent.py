@@ -1,4 +1,7 @@
 """Terminal agent that answers questions about the PDFs in the index."""
+import logging
+from pathlib import Path
+
 import requests
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_openai import ChatOpenAI
@@ -8,6 +11,15 @@ from langgraph.graph import END, START, MessagesState, StateGraph
 from config import HTTP_TIMEOUT, SERVER
 from index import search
 from tools import BEHAVIOUR, expand_citations, format_chunks, sources_of
+
+logging.basicConfig(
+    # Next to this file, not in whatever folder the terminal happens to be in.
+    filename=Path(__file__).with_name("agent.log"),
+    level=logging.INFO,
+    format="%(asctime)s %(message)s",
+    encoding="utf-8",
+)
+log = logging.getLogger("agent_lg_pdf_search")
 
 MODEL = ChatOpenAI(
     base_url=f"{SERVER}",
@@ -85,6 +97,26 @@ def print_state(state):
 THREAD = {"configurable": {"thread_id": "agent_lg_pdf_search"}}
 
 
+def ask(agent, question):
+    """One turn, logged step by step; returns the state after the turn."""
+    log.info("question: %s", question)
+    for step in agent.stream({"messages": [HumanMessage(question)]}, THREAD, stream_mode="updates"):
+        for node, update in step.items():
+            if node == "retrieve":
+                log.info("chunks: %s", " | ".join(update["sources"]))
+            if node == "answer":
+                reply = update["messages"][-1]
+                usage = reply.usage_metadata or {}
+                log.info("answer: %s", reply.content.replace("\n", " "))
+                log.info(
+                    "tokens: %s in + %s out, finish=%s",
+                    usage.get("input_tokens"),
+                    usage.get("output_tokens"),
+                    reply.response_metadata.get("finish_reason"),
+                )
+    return agent.get_state(THREAD).values
+
+
 def main():
     """Terminal loop; an empty line ends it."""
     agent = build_graph()
@@ -94,7 +126,7 @@ def main():
         question = input(f"\n{used}/{context_lim} > ").strip()
         if not question:
             break
-        state = agent.invoke({"messages": [HumanMessage(question)]}, THREAD)
+        state = ask(agent, question)
         print(state["messages"][-1].content)
         print('=======================')
         print_state(state)
