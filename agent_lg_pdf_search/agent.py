@@ -1,6 +1,4 @@
 """Terminal agent that answers questions about the PDFs in the index."""
-from functools import lru_cache
-
 import requests
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_openai import ChatOpenAI
@@ -9,7 +7,7 @@ from langgraph.graph import END, START, MessagesState, StateGraph
 
 from config import HTTP_TIMEOUT, SERVER
 from index import search
-from tools import BEHAVIOUR, format_chunks
+from tools import BEHAVIOUR, expand_citations, format_chunks, sources_of
 
 MODEL = ChatOpenAI(
     base_url=f"{SERVER}",
@@ -23,21 +21,25 @@ MODEL = ChatOpenAI(
 
 
 class State(MessagesState):
-    """Conversation plus the chunks found for the last question."""
+    """Conversation, the chunks found for the last question and where each of them came from."""
 
     context: str
+    sources: list[str]
 
 
 def retrieve(state):
     """Searches the index with the last question and puts the chunks in the state."""
-    question = state["messages"][-1].content
-    return {"context": format_chunks(search(question))}
+    chunks = search(state["messages"][-1].content)
+    return {"context": format_chunks(chunks), "sources": sources_of(chunks)}
 
 
 def answer(state):
     """Asks the model with the chunks from retrieve; the answer goes back into messages."""
     messages = [SystemMessage(BEHAVIOUR), SystemMessage(state["context"]), *state["messages"]]
-    return {"messages": [MODEL.invoke(messages)]}
+    reply = MODEL.invoke(messages)
+    # The numbers mean different fragments next turn, so the history keeps the real sources.
+    reply.content = expand_citations(reply.content, state["sources"])
+    return {"messages": [reply]}
 
 
 def build_graph():
@@ -61,7 +63,7 @@ def build_graph():
     )
 
 
-@lru_cache(maxsize=1)
+
 def context_limit():
     """The context window the chat server was started with, read once per run."""
     response = requests.get(f"{SERVER}/props", timeout=HTTP_TIMEOUT)
@@ -87,8 +89,9 @@ def main():
     """Terminal loop; an empty line ends it."""
     agent = build_graph()
     used = 0
+    context_lim = context_limit()
     while True:
-        question = input(f"\n{used}/{context_limit()} > ").strip()
+        question = input(f"\n{used}/{context_lim} > ").strip()
         if not question:
             break
         state = agent.invoke({"messages": [HumanMessage(question)]}, THREAD)
