@@ -1,4 +1,7 @@
 """Terminal agent that answers questions about the PDFs in the index."""
+# import operator
+# from typing import Annotated
+
 import logging
 from pathlib import Path
 
@@ -10,7 +13,7 @@ from langgraph.graph import END, START, MessagesState, StateGraph
 
 from config import HTTP_TIMEOUT, SERVER
 from index import search
-from tools import BEHAVIOUR, expand_citations, format_chunks, sources_of
+from tools import BEHAVIOUR, REPHRASE, expand_citations, format_chunks, sources_of
 
 logging.basicConfig(
     # Next to this file, not in whatever folder the terminal happens to be in.
@@ -37,6 +40,7 @@ class State(MessagesState):
 
     context: str
     sources: list[str]
+    # sources: Annotated[list[str], operator.add] 
 
 
 def retrieve(state):
@@ -134,6 +138,9 @@ def main():
             break
         state = ask(agent, question)
         print(state["messages"][-1].content)
+        print("================================================================")
+        print_state(state)
+        print("================================================================")
         used = (state["messages"][-1].usage_metadata or {}).get("total_tokens", 0)
 
 
