@@ -89,9 +89,8 @@ def print_state(state):
     for message in state["messages"]:
         text = message.content.replace("\n", " ")
         print(f"  {type(message).__name__:13} str {len(message.content):5} chars | {text[:60]}")
-    for line in state.get("context", "").splitlines():
-        if line.startswith("["):
-            print(f"  chunk header  {line}")
+    for number, source in enumerate(state.get("sources", []), start=1):
+        print(f"  chunk [{number}]     {source}")
             
 
 THREAD = {"configurable": {"thread_id": "agent_lg_pdf_search"}}
