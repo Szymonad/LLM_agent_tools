@@ -47,7 +47,14 @@ def retrieve(state):
 
 def answer(state):
     """Asks the model with the chunks from retrieve; the answer goes back into messages."""
-    messages = [SystemMessage(BEHAVIOUR), SystemMessage(state["context"]), *state["messages"]]
+    # Chunks last, right before the new question: the rules and the older turns are the same
+    # tokens every turn, so the server can reuse its prompt cache for them.
+    messages = [
+        SystemMessage(BEHAVIOUR),
+        *state["messages"][:-1],
+        SystemMessage(state["context"]),
+        state["messages"][-1],
+    ]
     reply = MODEL.invoke(messages)
     # The numbers mean different fragments next turn, so the history keeps the real sources.
     reply.content = expand_citations(reply.content, state["sources"])
@@ -127,10 +134,6 @@ def main():
             break
         state = ask(agent, question)
         print(state["messages"][-1].content)
-        print('=======================')
-        print_state(state)
-        print('=======================')
-        # What the last turn cost, shown in the prompt before the next question.
         used = (state["messages"][-1].usage_metadata or {}).get("total_tokens", 0)
 
 
