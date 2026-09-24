@@ -1,4 +1,7 @@
 """Terminal agent that answers questions about the PDFs in the index."""
+from functools import lru_cache
+
+import requests
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_openai import ChatOpenAI
 from langgraph.checkpoint.memory import InMemorySaver
@@ -45,8 +48,25 @@ def build_graph():
     graph.add_edge(START, "retrieve")
     graph.add_edge("retrieve", "answer")
     graph.add_edge("answer", END)
-    # The checkpointer keeps the conversation between questions, under the thread id below.
-    return graph.compile(checkpointer=InMemorySaver())
+    # The checkpointer keeps the conversation between questions, under the thread id below. rest are defaut values (for learning)
+    return graph.compile(
+    checkpointer=InMemorySaver(),
+    cache=None,
+    store=None,
+    interrupt_before=None,
+    interrupt_after=None,
+    debug=False,
+    name=None,
+    transformers=None,
+    )
+
+
+@lru_cache(maxsize=1)
+def context_limit():
+    """The context window the chat server was started with, read once per run."""
+    response = requests.get(f"{SERVER}/props", timeout=HTTP_TIMEOUT)
+    response.raise_for_status()
+    return response.json()["default_generation_settings"]["n_ctx"]
 
 
 def print_state(state):
@@ -66,12 +86,18 @@ THREAD = {"configurable": {"thread_id": "agent_lg_pdf_search"}}
 def main():
     """Terminal loop; an empty line ends it."""
     agent = build_graph()
+    used = 0
     while True:
-        question = input("\n> ").strip()
+        question = input(f"\n{used}/{context_limit()} > ").strip()
         if not question:
             break
         state = agent.invoke({"messages": [HumanMessage(question)]}, THREAD)
         print(state["messages"][-1].content)
+        print('=======================')
+        print_state(state)
+        print('=======================')
+        # What the last turn cost, shown in the prompt before the next question.
+        used = (state["messages"][-1].usage_metadata or {}).get("total_tokens", 0)
 
 
 if __name__ == "__main__":
