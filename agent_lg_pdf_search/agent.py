@@ -45,17 +45,13 @@ class State(MessagesState):
 
 
 def rephrase(state):
-    """Turns a follow-up question into a standalone search query; the first question is used as is."""
-    question = state["messages"][-1].content
-    if len(state["messages"]) == 1:
-        return {"query": question}
+    """Turns the question into a standalone English search query; the documents are mostly English."""
     reply = MODEL.invoke(
-        # Only the recent turns, and without Qwen's reasoning block: it costs 195 tokens instead of 11.
-        [SystemMessage(REPHRASE), *state["messages"][-5:]],
+        [SystemMessage(REPHRASE), *state["messages"]],
         extra_body={"chat_template_kwargs": {"enable_thinking": False}},
     )
     lines = reply.content.strip().splitlines()
-    return {"query": lines[0].strip('"') if lines else question}
+    return {"query": lines[0].strip('"') if lines else state["messages"][-1].content}
 
 
 def retrieve(state):
