@@ -122,20 +122,23 @@ THREAD = {"configurable": {"thread_id": "agent_lg_pdf_search"}}
 
 def ask(agent, question):
     """One turn, logged step by step; returns the state after the turn."""
-    log.info("question: %s", question)
+    log.info("QUESTION: %s", question)
     for step in agent.stream({"messages": [HumanMessage(question)]}, THREAD, stream_mode="updates"):
         for node, update in step.items():
             if node == "rephrase":
-                log.info("query: %s", update["query"])
+                log.info("QUERY:    %s", update["query"])
             if node == "retrieve":
-                log.info("chunks: %s", " | ".join(update["sources"]))
+                log.info("CHUNKS:   %s", " | ".join(update["sources"]))
             if node == "answer":
                 reply = update["messages"][-1]
                 usage = reply.usage_metadata or {}
-                log.info("answer: %s", reply.content.replace("\n", " "))
+                cached = usage.get("input_token_details", {}).get("cache_read", 0)
+                log.info("ANSWER:   %s", reply.content.replace("\n", " "))
                 log.info(
-                    "tokens: %s in + %s out, finish=%s",
+                    "TOKENS:   prompt %s (%s cached, %s prefilled), answer %s, finish=%s",
                     usage.get("input_tokens"),
+                    cached,
+                    usage.get("input_tokens", 0) - cached,
                     usage.get("output_tokens"),
                     reply.response_metadata.get("finish_reason"),
                 )
