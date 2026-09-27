@@ -38,14 +38,29 @@ MODEL = ChatOpenAI(
 class State(MessagesState):
     """Conversation, the chunks found for the last question and where each of them came from."""
 
+    query: str
     context: str
     sources: list[str]
-    # sources: Annotated[list[str], operator.add] 
+    # sources: Annotated[list[str], operator.add]
+
+
+def rephrase(state):
+    """Turns a follow-up question into a standalone search query; the first question is used as is."""
+    question = state["messages"][-1].content
+    if len(state["messages"]) == 1:
+        return {"query": question}
+    reply = MODEL.invoke(
+        # Only the recent turns, and without Qwen's reasoning block: it costs 195 tokens instead of 11.
+        [SystemMessage(REPHRASE), *state["messages"][-5:]],
+        extra_body={"chat_template_kwargs": {"enable_thinking": False}},
+    )
+    lines = reply.content.strip().splitlines()
+    return {"query": lines[0].strip('"') if lines else question}
 
 
 def retrieve(state):
-    """Searches the index with the last question and puts the chunks in the state."""
-    chunks = search(state["messages"][-1].content)
+    """Searches the index with the rewritten query and puts the chunks in the state."""
+    chunks = search(state["query"])
     return {"context": format_chunks(chunks), "sources": sources_of(chunks)}
 
 
@@ -68,9 +83,11 @@ def answer(state):
 def build_graph():
     """The whole agent: every question goes through retrieve and then answer."""
     graph = StateGraph(State)
+    graph.add_node("rephrase", rephrase)
     graph.add_node("retrieve", retrieve)
     graph.add_node("answer", answer)
-    graph.add_edge(START, "retrieve")
+    graph.add_edge(START, "rephrase")
+    graph.add_edge("rephrase", "retrieve")
     graph.add_edge("retrieve", "answer")
     graph.add_edge("answer", END)
     # The checkpointer keeps the conversation between questions, under the thread id below. rest are defaut values (for learning)
@@ -112,6 +129,8 @@ def ask(agent, question):
     log.info("question: %s", question)
     for step in agent.stream({"messages": [HumanMessage(question)]}, THREAD, stream_mode="updates"):
         for node, update in step.items():
+            if node == "rephrase":
+                log.info("query: %s", update["query"])
             if node == "retrieve":
                 log.info("chunks: %s", " | ".join(update["sources"]))
             if node == "answer":
