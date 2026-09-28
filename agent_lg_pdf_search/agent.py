@@ -121,8 +121,10 @@ def print_state(state):
     for message in state["messages"]:
         text = message.content.replace("\n", " ")
         print(f"  {type(message).__name__:13} str {len(message.content):5} chars | {text[:60]}")
+    scores = state.get("scores", [])
     for number, source in enumerate(state.get("sources", []), start=1):
-        print(f"  chunk [{number}]     {source}")
+        score = scores[number - 1] if number <= len(scores) else "?"
+        print(f"  chunk [{number}]     {score}  {source}")
             
 
 ANSWER_SLOT = 0
