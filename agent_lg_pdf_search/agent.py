@@ -12,8 +12,8 @@ from langchain_openai import ChatOpenAI
 from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.graph import END, START, MessagesState, StateGraph
 
-from config import HTTP_TIMEOUT, SERVER
-from index import search
+from config import CHUNK_OVERLAP, CHUNK_TOKENS, HTTP_TIMEOUT, SERVER, TOP_K
+from index import load_store, search
 from tools import BEHAVIOUR, REPHRASE, expand_citations, format_chunks, sources_of
 
 logging.basicConfig(
@@ -125,6 +125,20 @@ REPHRASE_SLOT = 1
 THREAD = {"configurable": {"thread_id": "agent_lg_pdf_search"}}
 
 
+def log_settings():
+    """One line per run, so old log entries stay comparable."""
+    store = load_store()
+    log.info(
+        "SETUP:    model=%s n_ctx=%s TOP_K=%s CHUNK_TOKENS=%s overlap=%s index=%s chunks",
+        MODEL.model_name,
+        context_limit(),
+        TOP_K,
+        CHUNK_TOKENS,
+        CHUNK_OVERLAP,
+        len(store.store),
+    )
+
+
 def ask(agent, question):
     """One turn, logged step by step; returns the state after the turn."""
     log.info("QUESTION: %s", question)
@@ -161,11 +175,17 @@ def main():
     agent = build_graph()
     used = 0
     context_lim = context_limit()
+    log_settings()
     while True:
         question = input(f"\n{used}/{context_lim} > ").strip()
         if not question:
             break
-        state = ask(agent, question)
+        try:
+            state = ask(agent, question)
+        except Exception as error:
+            log.error("FAILED:   %s: %s", type(error).__name__, error)
+            print(f"blad: {type(error).__name__}: {error}")
+            continue
         print(state["messages"][-1].content)
         print("================================================================")
         print_state(state)
