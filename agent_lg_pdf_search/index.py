@@ -121,6 +121,11 @@ def search(query, k=TOP_K):
     return load_store().similarity_search(query, k=k)
 
 
+def search_scored(query, k=TOP_K):
+    """The same chunks with their similarity, best first."""
+    return load_store().similarity_search_with_score(query, k=k)
+
+
 if __name__ == "__main__":
     if not INDEX_PATH.exists():
         build()

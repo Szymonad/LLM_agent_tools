@@ -13,7 +13,7 @@ from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.graph import END, START, MessagesState, StateGraph
 
 from config import CHUNK_OVERLAP, CHUNK_TOKENS, HTTP_TIMEOUT, SERVER, TOP_K
-from index import load_store, search
+from index import load_store, search_scored
 from tools import BEHAVIOUR, REPHRASE, expand_citations, format_chunks, sources_of
 
 logging.basicConfig(
@@ -42,6 +42,7 @@ class State(MessagesState):
     query: str
     context: str
     sources: list[str]
+    scores: list[float]
     # sources: Annotated[list[str], operator.add]
 
 
@@ -66,8 +67,13 @@ def rephrase(state):
 
 def retrieve(state):
     """Searches the index with the rewritten query and puts the chunks in the state."""
-    chunks = search(state["query"])
-    return {"context": format_chunks(chunks), "sources": sources_of(chunks)}
+    hits = search_scored(state["query"])
+    chunks = [chunk for chunk, score in hits]
+    return {
+        "context": format_chunks(chunks),
+        "sources": sources_of(chunks),
+        "scores": [round(score, 3) for chunk, score in hits],
+    }
 
 
 def answer(state):
@@ -152,7 +158,10 @@ def ask(agent, question):
             if node == "rephrase":
                 log.info("QUERY:    %s", update["query"])
             if node == "retrieve":
-                log.info("CHUNKS:   %s", " | ".join(update["sources"]))
+                log.info(
+                    "CHUNKS:   %s",
+                    " | ".join(f"{score} {source}" for score, source in zip(update["scores"], update["sources"])),
+                )
             if node == "answer":
                 reply = update["messages"][-1]
                 usage = reply.usage_metadata or {}
