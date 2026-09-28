@@ -24,9 +24,6 @@ logging.basicConfig(
 )
 log = logging.getLogger("agent_lg_pdf_search")
 
-ANSWER_SLOT = 0
-REPHRASE_SLOT = 1
-
 MODEL = ChatOpenAI(
     base_url=f"{SERVER}",
     # llama-server runs without --api-key and serves one model, so neither value is checked.
@@ -50,8 +47,8 @@ class State(MessagesState):
 def rephrase(state):
     """Turns the question into a standalone English search query; the documents are mostly English."""
     reply = MODEL.invoke(
-        [SystemMessage(REPHRASE), *state["messages"]],
-        extra_body={"chat_template_kwargs": {"enable_thinking": False}, "id_slot": REPHRASE_SLOT},
+        [SystemMessage(BEHAVIOUR), *state["messages"], SystemMessage(REPHRASE)],
+        extra_body={"chat_template_kwargs": {"enable_thinking": False}},
     )
     usage = reply.usage_metadata or {}
     cached = usage.get("input_token_details", {}).get("cache_read", 0)
@@ -74,16 +71,8 @@ def retrieve(state):
 
 def answer(state):
     """Asks the model with the chunks from retrieve; the answer goes back into messages."""
-    # Chunks last, right before the new question: the rules and the older turns are the same
-    # tokens every turn, so the server can reuse its prompt cache for them.
-    messages = [
-        SystemMessage(BEHAVIOUR),
-        *state["messages"][:-1],
-        SystemMessage(state["context"]),
-        state["messages"][-1],
-    ]
-    reply = MODEL.invoke(messages, extra_body={"id_slot": ANSWER_SLOT})
-    # The numbers mean different fragments next turn, so the history keeps the real sources.
+    messages = [SystemMessage(BEHAVIOUR), *state["messages"], SystemMessage(state["context"])]
+    reply = MODEL.invoke(messages)
     reply.content = expand_citations(reply.content, state["sources"])
     return {"messages": [reply]}
 
@@ -128,6 +117,9 @@ def print_state(state):
     for number, source in enumerate(state.get("sources", []), start=1):
         print(f"  chunk [{number}]     {source}")
             
+
+ANSWER_SLOT = 0
+REPHRASE_SLOT = 1
 
 THREAD = {"configurable": {"thread_id": "agent_lg_pdf_search"}}
 
