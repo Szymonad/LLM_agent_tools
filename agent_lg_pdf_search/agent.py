@@ -3,6 +3,7 @@
 # from typing import Annotated
 
 import logging
+import time
 from pathlib import Path
 
 import requests
@@ -127,8 +128,13 @@ THREAD = {"configurable": {"thread_id": "agent_lg_pdf_search"}}
 def ask(agent, question):
     """One turn, logged step by step; returns the state after the turn."""
     log.info("QUESTION: %s", question)
+    started = time.perf_counter()
+    previous = started
     for step in agent.stream({"messages": [HumanMessage(question)]}, THREAD, stream_mode="updates"):
         for node, update in step.items():
+            took = time.perf_counter() - previous
+            previous = time.perf_counter()
+            log.info("TIME:     %s %.1f s", node, took)
             if node == "rephrase":
                 log.info("QUERY:    %s", update["query"])
             if node == "retrieve":
@@ -146,6 +152,7 @@ def ask(agent, question):
                     usage.get("output_tokens"),
                     reply.response_metadata.get("finish_reason"),
                 )
+    log.info("TURN:     %.1f s", time.perf_counter() - started)
     return agent.get_state(THREAD).values
 
 
