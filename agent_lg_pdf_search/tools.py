@@ -14,7 +14,7 @@ REPHRASE = """You rewrite questions into search queries. You never answer them.
 Given the conversation, rewrite the last user question so that it can be understood on its own,
 filling in names the question leaves out. Always write the query in English, even when the question
 is in another language, and name the subject instead of writing "it" or "this".
-Keep it under 15 words. Write only the query."""
+Keep it under 50 words. Write only the query."""
 
 
 def format_chunks(chunks):
@@ -37,20 +37,20 @@ def expand_citations(answer, sources):
     return answer
 
 
-from langchain_core.documents import Document
+# from langchain_core.documents import Document
 
-def main():
-    chunks = [
-    Document(page_content='EmbeddingGemma (768d) 578 308M 16 69.7 65.1',
-             metadata={'source': 'EmbeddingGemma_technical_report.pdf', 'pages': [10]}),
-    Document(page_content='Gaussian filters are standardized in ISO 16610-21.',
-             metadata={'source': 'Selected_Filtration_Methods_of_ISO-16610.pdf', 'pages': [27, 28]}),
-    Document(page_content='Mieszanie liniowe obrazow (tzw. mieszanie alfa).',
-             metadata={'source': 'CPIK W06.pdf', 'pages': [2]}),
-]
-    a = format_chunks(chunks)
-    b = sources_of(chunks)
-    print(b)
+# def main():
+#     chunks = [
+#     Document(page_content='EmbeddingGemma (768d) 578 308M 16 69.7 65.1',
+#              metadata={'source': 'EmbeddingGemma_technical_report.pdf', 'pages': [10]}),
+#     Document(page_content='Gaussian filters are standardized in ISO 16610-21.',
+#              metadata={'source': 'Selected_Filtration_Methods_of_ISO-16610.pdf', 'pages': [27, 28]}),
+#     Document(page_content='Mieszanie liniowe obrazow (tzw. mieszanie alfa).',
+#              metadata={'source': 'CPIK W06.pdf', 'pages': [2]}),
+# ]
+#     a = format_chunks(chunks)
+#     b = sources_of(chunks)
+#     print(b)
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()

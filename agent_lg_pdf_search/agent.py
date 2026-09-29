@@ -7,6 +7,7 @@ import time
 from pathlib import Path
 
 import requests
+from langchain_core.globals import set_debug
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_openai import ChatOpenAI
 from langgraph.checkpoint.memory import InMemorySaver
@@ -24,6 +25,8 @@ logging.basicConfig(
     encoding="utf-8",
 )
 log = logging.getLogger("agent_lg_pdf_search")
+
+set_debug(True)
 
 MODEL = ChatOpenAI(
     base_url=f"{SERVER}",
