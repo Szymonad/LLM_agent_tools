@@ -26,7 +26,7 @@ logging.basicConfig(
 )
 log = logging.getLogger("agent_lg_pdf_search")
 
-set_debug(True)
+# set_debug(True)
 
 MODEL = ChatOpenAI(
     base_url=f"{SERVER}",

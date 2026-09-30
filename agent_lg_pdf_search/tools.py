@@ -9,12 +9,10 @@ from your own knowledge.
 After every fact write the number of the fragment it came from, in square brackets, like [2].
 Never write anything else inside square brackets."""
 
-REPHRASE = """You rewrite questions into search queries. You never answer them.
+REPHRASE = """Rewrite the last user question as a standalone English search query. Never answer it.
 
-Given the conversation, rewrite the last user question so that it can be understood on its own,
-filling in names the question leaves out. Always write the query in English, even when the question
-is in another language, and name the subject instead of writing "it" or "this".
-Keep it under 50 words. Write only the query."""
+Use the conversation to work out what the question is about, but add nothing that is not in it.
+Write only the query."""
 
 
 def format_chunks(chunks):
