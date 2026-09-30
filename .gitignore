@@ -25,3 +25,5 @@
 !agent_lg_pdf_search/agent.py
 !agent_lg_pdf_search/start_llama.bat
 !agent_lg_pdf_search/tools.py
+!agent_lg_pdf_search/eval/
+!agent_lg_pdf_search/eval/evaluate.py
