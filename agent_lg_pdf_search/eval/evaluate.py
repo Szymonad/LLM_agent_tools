@@ -27,7 +27,7 @@ def load_questions():
     return json.loads(QUESTIONS.read_text(encoding="utf-8"))
 
 
-def rewrite(question):
+def rewrite(question, temp):
     from langchain_core.messages import HumanMessage, SystemMessage
 
     from agent import MODEL
@@ -35,6 +35,7 @@ def rewrite(question):
 
     reply = MODEL.invoke(
         [SystemMessage(BEHAVIOUR), HumanMessage(question), SystemMessage(REPHRASE)],
+        temperature=temp,
         extra_body={"chat_template_kwargs": {"enable_thinking": False}},
     )
     lines = reply.content.strip().splitlines()
@@ -54,7 +55,7 @@ def check(hits, expected_doc, expected_pages):
     return wynik
 
 
-def run(rebuild, use_rephrase, k, label):
+def run(rebuild, use_rephrase, k, label, temp):
     if rebuild or not index.INDEX_PATH.exists():
         print("buduje indeks z", index.PDF_DIR)
         started = time.perf_counter()
@@ -66,7 +67,7 @@ def run(rebuild, use_rephrase, k, label):
     rows = []
     started = time.perf_counter()
     for number, item in enumerate(questions, start=1):
-        query = rewrite(item["question"]) if use_rephrase else item["question"]
+        query = rewrite(item["question"], temp) if use_rephrase else item["question"]
         hits = index.search_scored(query, k=k)
         row = {
             "question": item["question"],
@@ -87,6 +88,7 @@ def run(rebuild, use_rephrase, k, label):
     summary = {
         "label": label,
         "rephrase": use_rephrase,
+        "temperature": temp if use_rephrase else None,
         "k": k,
         "chunk_tokens": CHUNK_TOKENS,
         "chunk_overlap": CHUNK_OVERLAP,
@@ -117,12 +119,12 @@ def compare():
         print("brak wynikow w", RESULTS)
         return
     keys = ("file@1", "file@3", "file@5", "page@1", "page@3", "page@5", "mean_best_score", "seconds")
-    print(f"{'label':28} {'chunk':>7} {'k':>2} {'reph':>5} " + " ".join(f"{key:>10}" for key in keys))
+    print(f"{'label':34} {'chunk':>7} {'k':>2} {'reph':>5} " + " ".join(f"{key:>10}" for key in keys))
     for path in files:
         s = json.loads(path.read_text(encoding="utf-8"))["summary"]
         chunk = f"{s['chunk_tokens']}/{s['chunk_overlap']}"
         print(
-            f"{s['label'][:28]:28} {chunk:>7} {s['k']:>2} {str(s['rephrase']):>5} "
+            f"{s['label'][:34]:34} {chunk:>7} {s['k']:>2} {str(s['rephrase']):>5} "
             + " ".join(f"{s[key]:>10}" for key in keys)
         )
 
@@ -136,8 +138,16 @@ if __name__ == "__main__":
     parser.add_argument("--compare", action="store_true", help="only print the saved runs")
     args = parser.parse_args()
 
+    temperatures = [2.0, 3.0, 5.0, 7.0, 9.9] if args.rephrase else [0.0]
+    repeats = 5 if args.rephrase else 1
+
     if args.compare:
         compare()
     else:
-        etykieta = args.label or f"chunk{CHUNK_TOKENS}-k{args.k}" + ("-rephrase" if args.rephrase else "")
-        run(args.rebuild, args.rephrase, args.k, etykieta)
+        etykieta = args.label or f"chunk{CHUNK_TOKENS}" + ("-rephrase" if args.rephrase else "") + f"_k{args.k}"
+        rebuild = args.rebuild
+        for temperature in temperatures:
+            for repeat in range(1, repeats + 1):
+                temp_text = f"{temperature:.1f}".replace(".", "")
+                run(rebuild, args.rephrase, args.k, f"{etykieta}_temp_{temp_text}_{repeat}", temperature)
+                rebuild = False
