@@ -1,0 +1,40 @@
+{
+  "cars": [
+    {
+      "brand": "BMW",
+      "model": "M3",
+      "year": 2020,
+      "engine": "Petrol",
+      "horsepower": 420,
+      "price": 55000,
+      "features": ["ABS", "ESP", "Airbags"]
+    },
+    {
+      "brand": "Mercedes",
+      "model": "C-Class",
+      "year": 2019,
+      "engine": "Diesel",
+      "horsepower": 150,
+      "price": 30000,
+      "features": ["ABS", "ESP", "Airbags", "Heated seats"]
+    },
+    {
+      "brand": "Audi",
+      "model": "A4",
+      "year": 2018,
+      "engine": "Petrol",
+      "horsepower": 220,
+      "price": 40000,
+      "features": ["ABS", "ESP", "Airbags", "Heated seats", "Navigation"]
+    },
+    {
+      "brand": "Renault",
+      "model": "Clio",
+      "year": 2017,
+      "engine": "Petrol",
+      "horsepower": 100,
+      "price": 20000,
+      "features": ["ABS", "ESP", "Airbags", "Heated seats"]
+    }
+  ]
+}

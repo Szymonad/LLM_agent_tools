@@ -1,0 +1,19 @@
+2026-09-11 18:30:00,760 TOOL: find_person | args: {'first_name': 'marek', 'last_name': 'nowak'}
+2026-09-11 18:30:00,826 SQL: SELECT * FROM PRACOWNICY WHERE UPPER(IMIE) = UPPER(:first_name) AND UPPER(NAZWISKO) = UPPER(:last_name) FETCH FIRST 10 ROWS ONLY | params: {'first_name': 'marek', 'last_name': 'nowak'}
+2026-09-11 18:31:01,194 TOOL: find_person | args: {'first_name': 'Marek', 'last_name': 'Nowak'}
+2026-09-11 18:31:01,222 SQL: SELECT * FROM PRACOWNICY WHERE UPPER(IMIE) = UPPER(:first_name) AND UPPER(NAZWISKO) = UPPER(:last_name) FETCH FIRST 10 ROWS ONLY | params: {'first_name': 'Marek', 'last_name': 'Nowak'}
+2026-09-11 19:32:53,821 TOOL: find_person | args: {'first_name': 'Marka', 'last_name': 'Nowak'}
+2026-09-11 19:32:58,418 SQL: SELECT * FROM PRACOWNICY WHERE UPPER(IMIE) = UPPER(:first_name) AND UPPER(NAZWISKO) = UPPER(:last_name) FETCH FIRST 10 ROWS ONLY | params: {'first_name': 'Marka', 'last_name': 'Nowak'}
+2026-09-12 11:19:27,600 TOOL: find_person | args: {'first_name': 'Marek', 'last_name': 'unknown'}
+2026-09-12 11:20:24,298 TOOL: find_person | args: {'first_name': 'marek', 'last_name': ''}
+2026-09-12 11:20:24,362 SQL: SELECT * FROM PRACOWNICY WHERE UPPER(IMIE) = UPPER(:first_name) AND UPPER(NAZWISKO) = UPPER(:last_name) FETCH FIRST 10 ROWS ONLY | params: {'first_name': 'marek', 'last_name': ''}
+2026-09-19 18:12:01,259 TOOL: find_person | args: {'first_name': 'marek', 'last_name': ''}
+2026-09-19 18:12:01,319 SQL: SELECT * FROM PRACOWNICY WHERE UPPER(IMIE) = UPPER(:first_name) AND UPPER(NAZWISKO) = UPPER(:last_name) FETCH FIRST 10 ROWS ONLY | params: {'first_name': 'marek', 'last_name': ''}
+2026-09-19 18:12:14,091 TOOL: find_person | args: {'first_name': 'marek', 'last_name': 'nowak'}
+2026-09-19 18:12:14,110 SQL: SELECT * FROM PRACOWNICY WHERE UPPER(IMIE) = UPPER(:first_name) AND UPPER(NAZWISKO) = UPPER(:last_name) FETCH FIRST 10 ROWS ONLY | params: {'first_name': 'marek', 'last_name': 'nowak'}
+2026-09-19 18:12:53,857 TOOL: find_person | args: {'first_name': 'marek', 'last_name': 'unknown'}
+2026-09-19 18:12:53,907 SQL: SELECT * FROM PRACOWNICY WHERE UPPER(IMIE) = UPPER(:first_name) AND UPPER(NAZWISKO) = UPPER(:last_name) FETCH FIRST 10 ROWS ONLY | params: {'first_name': 'marek', 'last_name': 'unknown'}
+2026-09-19 18:14:19,448 TOOL: list_tables | args: {}
+2026-09-19 18:14:19,494 SQL: SELECT table_name FROM user_tables ORDER BY table_name | params: {}
+2026-09-19 18:14:19,964 TOOL: find_person | args: {'first_name': 'marek', 'last_name': 'unknown'}
+2026-09-19 18:14:19,990 SQL: SELECT * FROM PRACOWNICY WHERE UPPER(IMIE) = UPPER(:first_name) AND UPPER(NAZWISKO) = UPPER(:last_name) FETCH FIRST 10 ROWS ONLY | params: {'first_name': 'marek', 'last_name': 'unknown'}
