@@ -20,6 +20,15 @@
             "module": "agent_lg_pdf_search.agent",
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal"
+        },
+        {
+            "name": "agent_lg_pdf_search evaluate",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "agent_lg_pdf_search.eval.evaluate",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "args": []
         }
     ],
     "inputs": [
