@@ -8,6 +8,7 @@
 !.vscode/
 !.vscode/launch.json
 !agent_sql/
+!agent_sql/__init__.py
 !agent_sql/agent.py
 !agent_sql/db.py
 !agent_sql/tools.py
@@ -23,10 +24,11 @@
 !agent_lg_pdf_search/eval/
 !agent_lg_pdf_search/eval/__init__.py
 !agent_lg_pdf_search/eval/evaluate.py
-!narzedzia/
-!narzedzia/__init__.py
-!narzedzia/llama_scanner.py
-!narzedzia/llama_serwer_info_endpoints.py
-!narzedzia/show_tokens.py
-!archiwum/
-!archiwum/**
+!scanners/
+!scanners/__init__.py
+!scanners/llama_scanner.py
+!scanners/llama_server_info_endpoints.py
+!scanners/show_tokens.py
+!scanners/server_info.py
+!archive/
+!archive/**
