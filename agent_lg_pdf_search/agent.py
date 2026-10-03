@@ -40,7 +40,19 @@ MODEL = ChatOpenAI(
 
 
 class State(MessagesState):
-    """Conversation, the chunks found for the last question and where each of them came from."""
+    """State passed between the nodes of the graph.
+
+    ``messages`` is inherited from ``MessagesState`` and holds the whole
+    conversation. The other fields describe the last question only and are
+    overwritten on every turn.
+
+    Attributes:
+        query (str): Standalone search query written by ``rephrase``.
+        context (str): Found chunks formatted as one text for the model.
+        sources (list[str]): Origin of each chunk, in the order of
+            ``context``.
+        scores (list[float]): Similarity of each chunk, in the same order.
+    """
 
     query: str
     context: str
@@ -50,7 +62,20 @@ class State(MessagesState):
 
 
 def rephrase(state):
-    """Turns the question into a standalone English search query; the documents are mostly English."""
+    """Rewrite the last question into a standalone English search query.
+
+    The documents are mostly English, and a follow-up question often makes
+    no sense without the earlier turns. The model is called with thinking
+    disabled and only the first line of its reply is used. Token usage is
+    written to the log.
+
+    Args:
+        state (State): Current state; ``messages`` is read.
+
+    Returns:
+        dict: Update with ``query``. If the model returns nothing, the
+        last message is used unchanged.
+    """
     reply = MODEL.invoke(
         [SystemMessage(BEHAVIOUR), *state["messages"], SystemMessage(REPHRASE)],
         extra_body={"chat_template_kwargs": {"enable_thinking": False}},
@@ -69,7 +94,15 @@ def rephrase(state):
 
 
 def retrieve(state):
-    """Searches the index with the rewritten query and puts the chunks in the state."""
+    """Search the index with the rewritten query.
+
+    Args:
+        state (State): Current state; ``query`` is read.
+
+    Returns:
+        dict: Update with ``context``, ``sources`` and ``scores`` (rounded
+        to three decimals), all in the order returned by the search.
+    """
     hits = search_scored(state["query"])
     chunks = [chunk for chunk, score in hits]
     return {
@@ -80,7 +113,19 @@ def retrieve(state):
 
 
 def answer(state):
-    """Asks the model with the chunks from retrieve; the answer goes back into messages."""
+    """Answer the question from the chunks found by ``retrieve``.
+
+    The chunks are sent as a system message after the conversation.
+    Citation markers in the reply are expanded into their sources.
+
+    Args:
+        state (State): Current state; ``messages``, ``context`` and
+            ``sources`` are read.
+
+    Returns:
+        dict: Update with ``messages`` holding the reply, which is appended
+        to the conversation.
+    """
     messages = [SystemMessage(BEHAVIOUR), *state["messages"], SystemMessage(state["context"])]
     reply = MODEL.invoke(messages)
     reply.content = expand_citations(reply.content, state["sources"])
@@ -88,7 +133,15 @@ def answer(state):
 
 
 def build_graph():
-    """The whole agent: every question goes through retrieve and then answer."""
+    """Build the agent graph.
+
+    Every question goes through ``rephrase``, ``retrieve`` and ``answer``,
+    in that order. An in-memory checkpointer keeps the conversation between
+    questions for as long as the process runs.
+
+    Returns:
+        CompiledStateGraph: The agent, ready for ``invoke`` or ``stream``.
+    """
     graph = StateGraph(State)
     graph.add_node("rephrase", rephrase)
     graph.add_node("retrieve", retrieve)
@@ -112,14 +165,31 @@ def build_graph():
 
 
 def context_limit():
-    """The context window the chat server was started with, read once per run."""
+    """Read the context window the chat server was started with.
+
+    Returns:
+        int: Context size in tokens (``n_ctx``).
+
+    Raises:
+        requests.HTTPError: If the server answers with an error status.
+        requests.ConnectionError: If the server cannot be reached.
+        requests.Timeout: If the server does not answer within
+            ``HTTP_TIMEOUT``.
+    """
     response = requests.get(f"{SERVER}/props", timeout=HTTP_TIMEOUT)
     response.raise_for_status()
     return response.json()["default_generation_settings"]["n_ctx"]
 
 
 def print_state(state):
-    """The state in a readable form: what is in it, of what type and how big."""
+    """Print the state on stdout in a readable form.
+
+    One line per message (type, length, first 60 characters) and one line
+    per chunk (number, similarity, source).
+
+    Args:
+        state (dict): State values as returned by ``ask``.
+    """
     print(f"state: {len(state['messages'])} messages, context {len(state.get('context', ''))} chars")
     for message in state["messages"]:
         text = message.content.replace("\n", " ")
@@ -137,7 +207,11 @@ THREAD = {"configurable": {"thread_id": "agent_lg_pdf_search"}}
 
 
 def log_settings():
-    """One line per run, so old log entries stay comparable."""
+    """Write the settings of this run to the log.
+
+    One line per run with the model, context size, ``TOP_K``, chunk
+    settings and index size, so old log entries stay comparable.
+    """
     store = load_store()
     log.info(
         "SETUP:    model=%s n_ctx=%s TOP_K=%s CHUNK_TOKENS=%s overlap=%s index=%s chunks",
@@ -151,7 +225,18 @@ def log_settings():
 
 
 def ask(agent, question):
-    """One turn, logged step by step; returns the state after the turn."""
+    """Run one turn of the conversation and log it step by step.
+
+    For each node the log gets its duration and its result: the rewritten
+    query, the found chunks, the answer and its token usage.
+
+    Args:
+        agent (CompiledStateGraph): Graph returned by ``build_graph``.
+        question (str): Question typed by the user.
+
+    Returns:
+        dict: State values after the turn.
+    """
     log.info("QUESTION: %s", question)
     started = time.perf_counter()
     previous = started
@@ -185,7 +270,12 @@ def ask(agent, question):
 
 
 def main():
-    """Terminal loop; an empty line ends it."""
+    """Run the terminal loop.
+
+    The prompt shows the tokens used by the last turn against the context
+    limit. A failed turn is logged and printed, and the loop goes on. An
+    empty line ends it.
+    """
     agent = build_graph()
     used = 0
     context_lim = context_limit()

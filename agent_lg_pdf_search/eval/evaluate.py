@@ -24,10 +24,30 @@ index.INDEX_PATH = HERE / "index.json"
 
 
 def load_questions():
+    """Read the evaluation questions from ``questions.json``.
+
+    Returns:
+        list[dict]: One item per question, with ``question`` (text),
+        ``doc`` (expected file name) and ``pages`` (expected page numbers).
+    """
     return json.loads(QUESTIONS.read_text(encoding="utf-8"))
 
 
 def rewrite(question, temp):
+    """Rewrite a question into a search query, as the agent does.
+
+    Uses the same model and prompts as ``agent.rephrase``, but with a
+    single question instead of a conversation. The agent is imported here,
+    so a run without ``--rephrase`` needs no chat server.
+
+    Args:
+        question (str): Question from the evaluation set.
+        temp (float): Sampling temperature for the model.
+
+    Returns:
+        str: First line of the reply, or ``question`` unchanged if the
+        model returns nothing.
+    """
     from langchain_core.messages import HumanMessage, SystemMessage
 
     from agent import MODEL
@@ -43,7 +63,22 @@ def rewrite(question, temp):
 
 
 def check(hits, expected_doc, expected_pages):
-    """For each cut-off: whether the right file, and the right page, is among the first k chunks."""
+    """Check whether the search found the expected file and page.
+
+    Measured at three cut-offs: the first 1, 3 and 5 chunks. A page counts
+    as found when a chunk from the expected file covers at least one of
+    the expected pages.
+
+    Args:
+        hits (list[tuple[Document, float]]): Chunks with their similarity,
+            best first, as returned by ``index.search_scored``.
+        expected_doc (str): File name the answer is in.
+        expected_pages (list[int]): Page numbers the answer is on.
+
+    Returns:
+        dict[str, bool]: Keys ``file@1``, ``file@3``, ``file@5``,
+        ``page@1``, ``page@3`` and ``page@5``.
+    """
     wynik = {}
     for k in (1, 3, 5):
         wziete = hits[:k]
@@ -56,6 +91,22 @@ def check(hits, expected_doc, expected_pages):
 
 
 def run(rebuild, use_rephrase, k, label, temp):
+    """Measure retrieval on every question and save the result.
+
+    Each question is searched in the index and checked with ``check``.
+    The summary and the per-question rows are written to
+    ``results/<label>.json`` and the summary is printed on stdout.
+
+    Args:
+        rebuild (bool): Build the index first. It is also built when the
+            index file does not exist.
+        use_rephrase (bool): Rewrite each question with the model before
+            searching.
+        k (int): Number of chunks to fetch per question.
+        label (str): Name of the run, used as the result file name.
+        temp (float): Temperature for the rewrite; ignored without
+            ``use_rephrase``.
+    """
     if rebuild or not index.INDEX_PATH.exists():
         print("buduje indeks z", index.PDF_DIR)
         started = time.perf_counter()
@@ -113,7 +164,10 @@ def run(rebuild, use_rephrase, k, label, temp):
 
 
 def compare():
-    """Prints every saved run next to each other."""
+    """Print the summaries of all saved runs as one table on stdout.
+
+    One row per file in ``results``, sorted by file name.
+    """
     files = sorted(RESULTS.glob("*.json"))
     if not files:
         print("brak wynikow w", RESULTS)
