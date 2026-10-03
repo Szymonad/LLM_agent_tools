@@ -64,6 +64,9 @@ def count_tokens(text):
 
     Raises:
         requests.HTTPError: If the server answers with an error status.
+        requests.ConnectionError: If the server cannot be reached.
+        requests.Timeout: If the server does not answer within
+            ``HTTP_TIMEOUT``.
     """
     response = requests.post(f"{EMBED_SERVER}/tokenize", json={"content": text}, timeout=HTTP_TIMEOUT)
     response.raise_for_status()
@@ -124,12 +127,36 @@ def split(pages):
 
 
 class PrefixedEmbeddings(OpenAIEmbeddings):
-    """EmbeddingGemma on llama-server, with the prefix it expects on each passage and query."""
+    """Embed texts with EmbeddingGemma on llama-server.
+
+    EmbeddingGemma expects a different prefix on passages and on queries,
+    so each method adds its own before sending the text.
+    """
 
     def embed_documents(self, texts, chunk_size=None, **kwargs):
+        """Embed passages, each with ``PASSAGE_PREFIX`` in front.
+
+        Args:
+            texts (list[str]): Passages to embed.
+            chunk_size (int | None): Number of texts sent per request.
+                ``None`` keeps the default of ``OpenAIEmbeddings``.
+            **kwargs: Passed on to ``OpenAIEmbeddings.embed_documents``.
+
+        Returns:
+            list[list[float]]: One vector per passage, in input order.
+        """
         return super().embed_documents([PASSAGE_PREFIX + text for text in texts], chunk_size, **kwargs)
 
     def embed_query(self, text, **kwargs):
+        """Embed a search query with ``QUERY_PREFIX`` in front.
+
+        Args:
+            text (str): Query to embed.
+            **kwargs: Passed on to ``OpenAIEmbeddings.embed_documents``.
+
+        Returns:
+            list[float]: Vector of the query.
+        """
         # The parent's embed_query goes through embed_documents above and would add PASSAGE_PREFIX as well.
         return super().embed_documents([QUERY_PREFIX + text], **kwargs)[0]
 
@@ -146,7 +173,15 @@ EMBEDDINGS = PrefixedEmbeddings(
 
 
 def build():
-    """Reads every PDF in PDF_DIR, cuts them into chunks, embeds them and writes one index to disk."""
+    """Build the index from every PDF in ``PDF_DIR`` and write it to disk.
+
+    Each file is read, split into chunks and embedded. All chunks go into
+    one index, saved at ``INDEX_PATH``. A summary line per file is printed
+    on stdout.
+
+    Returns:
+        InMemoryVectorStore: The index that was written.
+    """
     chunks = []
     for path in sorted(PDF_DIR.glob("*.pdf")):
         # Each file is split on its own, so a chunk never joins the end of one PDF with the start of another.
@@ -163,17 +198,41 @@ def build():
 
 @lru_cache(maxsize=1)
 def load_store():
-    """The index built earlier, read once per run; the agent needs no PDF and no splitting."""
+    """Load the index written by ``build``.
+
+    The result is cached, so the file at ``INDEX_PATH`` is read once per
+    run. No PDF is read and nothing is split or embedded here.
+
+    Returns:
+        InMemoryVectorStore: The loaded index.
+    """
     return InMemoryVectorStore.load(str(INDEX_PATH), EMBEDDINGS)
 
 
 def search(query, k=TOP_K):
-    """The k chunks closest to the question, best first."""
+    """Find the chunks closest to a query.
+
+    Args:
+        query (str): Question to search for.
+        k (int): Number of chunks to return.
+
+    Returns:
+        list[Document]: Up to ``k`` chunks, best match first.
+    """
     return load_store().similarity_search(query, k=k)
 
 
 def search_scored(query, k=TOP_K):
-    """The same chunks with their similarity, best first."""
+    """Find the chunks closest to a query, with their similarity.
+
+    Args:
+        query (str): Question to search for.
+        k (int): Number of chunks to return.
+
+    Returns:
+        list[tuple[Document, float]]: Up to ``k`` pairs of chunk and
+        cosine similarity, best match first.
+    """
     return load_store().similarity_search_with_score(query, k=k)
 
 
