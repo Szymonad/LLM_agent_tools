@@ -1,3 +1,9 @@
+"""Build and query the vector index of PDF chunks.
+
+Reading PDFs, splitting them into token-sized chunks, embedding the chunks
+with EmbeddingGemma on llama-server and searching the saved index.
+"""
+
 import time
 from functools import lru_cache
 
@@ -22,7 +28,17 @@ from config import (
 
 
 def read_pages(path):
-    """One Document per PDF page, with the file name and its 1-based page number in metadata."""
+    """Read a PDF into one Document per page.
+
+    Pages without extractable text are skipped and reported on stdout.
+
+    Args:
+        path (pathlib.Path): PDF file to read.
+
+    Returns:
+        list[Document]: Pages in file order. Metadata holds ``source``
+        (file name) and ``page`` (1-based page number).
+    """
     reader = PdfReader(path)
     pages = []
     for number, page in enumerate(reader.pages, start=1):
@@ -35,14 +51,36 @@ def read_pages(path):
 
 @lru_cache(maxsize=None)
 def count_tokens(text):
-    """Token count as the embedding server sees it; cached because the splitter measures the same pieces many times."""
+    """Count the tokens of a text as the embedding server sees it.
+
+    Results are cached, because the splitter measures the same pieces many
+    times.
+
+    Args:
+        text (str): Text to tokenize.
+
+    Returns:
+        int: Number of tokens.
+
+    Raises:
+        requests.HTTPError: If the server answers with an error status.
+    """
     response = requests.post(f"{EMBED_SERVER}/tokenize", json={"content": text}, timeout=HTTP_TIMEOUT)
     response.raise_for_status()
     return len(response.json()["tokens"])
 
 
 def join_pages(pages):
-    """All pages as one text, plus where each page lies in it: (page number, start, end)."""
+    """Join pages into one text and record where each page lies in it.
+
+    Args:
+        pages (list[Document]): Pages as returned by ``read_pages``.
+
+    Returns:
+        tuple[str, list[tuple[int, int, int]]]: The joined text and one
+        ``(page number, start, end)`` span per page, as character offsets
+        into that text.
+    """
     text = ""
     spans = []
     for page in pages:
@@ -52,7 +90,20 @@ def join_pages(pages):
 
 
 def split(pages):
-    """Whole PDF cut as one text, so the overlap also crosses page boundaries; each chunk lists its pages."""
+    """Split the pages of one PDF into overlapping chunks.
+
+    The whole PDF is cut as one text, so the overlap also crosses page
+    boundaries.
+
+    Args:
+        pages (list[Document]): Pages of a single PDF, as returned by
+            ``read_pages``.
+
+    Returns:
+        list[Document]: Chunks in text order. Metadata holds ``source``
+        (file name) and ``pages`` (numbers of the pages the chunk covers).
+        Empty if ``pages`` is empty.
+    """
     if not pages:
         return []
     source = pages[0].metadata["source"]
