@@ -78,15 +78,15 @@ def check(hits, expected_doc, expected_pages):
         dict[str, bool]: Keys ``file@1``, ``file@3``, ``file@5``,
         ``page@1``, ``page@3`` and ``page@5``.
     """
-    wynik = {}
+    result = {}
     for k in (1, 3, 5):
-        wziete = hits[:k]
-        wynik[f"file@{k}"] = any(chunk.metadata["source"] == expected_doc for chunk, score in wziete)
-        wynik[f"page@{k}"] = any(
+        taken = hits[:k]
+        result[f"file@{k}"] = any(chunk.metadata["source"] == expected_doc for chunk, score in taken)
+        result[f"page@{k}"] = any(
             chunk.metadata["source"] == expected_doc and set(chunk.metadata["pages"]) & set(expected_pages)
-            for chunk, score in wziete
+            for chunk, score in taken
         )
-    return wynik
+    return result
 
 
 def run(rebuild, use_rephrase, k, label, temp):
@@ -107,11 +107,11 @@ def run(rebuild, use_rephrase, k, label, temp):
             ``use_rephrase``.
     """
     if rebuild or not index.INDEX_PATH.exists():
-        print("buduje indeks z", index.PDF_DIR)
+        print("building the index from", index.PDF_DIR)
         started = time.perf_counter()
         index.build()
         index.load_store.cache_clear()
-        print(f"indeks gotowy w {time.perf_counter() - started:.1f} s")
+        print(f"index ready in {time.perf_counter() - started:.1f} s")
 
     questions = load_questions()
     rows = []
@@ -158,8 +158,8 @@ def run(rebuild, use_rephrase, k, label, temp):
     print(f"--- {label}: chunk={CHUNK_TOKENS}/{CHUNK_OVERLAP} k={k} rephrase={use_rephrase} ({took:.1f} s)")
     for key in ("file@1", "file@3", "file@5", "page@1", "page@3", "page@5"):
         print(f"    {key}: {summary[key]:3}/{len(rows)}")
-    print(f"    srednia najlepsza ocena: {summary['mean_best_score']}")
-    print(f"    zapisano {out}")
+    print(f"    mean best score: {summary['mean_best_score']}")
+    print(f"    saved {out}")
 
 
 def compare():
@@ -169,7 +169,7 @@ def compare():
     """
     files = sorted(RESULTS.rglob("*.json"))
     if not files:
-        print("brak wynikow w", RESULTS)
+        print("no results in", RESULTS)
         return
     keys = ("file@1", "file@3", "file@5", "page@1", "page@3", "page@5", "mean_best_score", "seconds")
     print(f"{'label':34} {'chunk':>7} {'k':>2} {'reph':>5} " + " ".join(f"{key:>10}" for key in keys))
@@ -197,10 +197,10 @@ if __name__ == "__main__":
     if args.compare:
         compare()
     else:
-        etykieta = args.label or f"chunk{CHUNK_TOKENS}" + ("-rephrase" if args.rephrase else "") + f"_k{args.k}"
+        label = args.label or f"chunk{CHUNK_TOKENS}" + ("-rephrase" if args.rephrase else "") + f"_k{args.k}"
         rebuild = args.rebuild
         for temperature in temperatures:
             for repeat in range(1, repeats + 1):
                 temp_text = f"{temperature:.1f}".replace(".", "")
-                run(rebuild, args.rephrase, args.k, f"{etykieta}_temp_{temp_text}_{repeat}", temperature)
+                run(rebuild, args.rephrase, args.k, f"{label}_temp_{temp_text}_{repeat}", temperature)
                 rebuild = False

@@ -288,7 +288,7 @@ def main():
             state = ask(agent, question)
         except Exception as error:
             log.error("FAILED:   %s: %s", type(error).__name__, error)
-            print(f"blad: {type(error).__name__}: {error}")
+            print(f"error: {type(error).__name__}: {error}")
             continue
         print(state["messages"][-1].content)
         print("================================================================")

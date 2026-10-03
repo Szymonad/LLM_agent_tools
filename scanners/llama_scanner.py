@@ -3,7 +3,7 @@ import subprocess
 
 import requests
 
-from narzedzia.llama_serwer_info_endpoints import apply_template, props, slots, tokenize, v1_models
+from scanners.llama_server_info_endpoints import apply_template, props, slots, tokenize, v1_models
 
 SERVER = "http://127.0.0.1:8081"
 TIMEOUT = 30
@@ -33,7 +33,7 @@ GGUF_SCALAR_FORMATS = {
 
 
 def data(result):
-    """Unwraps a result from llama_serwer_info_endpoints, raising when the call failed."""
+    """Unwraps a result from llama_server_info_endpoints, raising when the call failed."""
     if not result["ok"]:
         raise RuntimeError(f"{result['status']}: {result['error']}")
     return result["data"]

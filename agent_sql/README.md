@@ -50,7 +50,7 @@ do not decide this - the template does, and it is a text file the publisher writ
 
 
 ```powershell
-.\modele\LIama\llama-server.exe -m ".\modele\llm\Qwen_Qwen3-8B-IQ4_XS.gguf" -c 4096
+.\models\LIama\llama-server.exe -m ".\models\llm\Qwen_Qwen3-8B-IQ4_XS.gguf" -c 4096
 ```
 
 Check a model before downloading it. The template lives in the GGUF header.

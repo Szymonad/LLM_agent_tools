@@ -50,7 +50,7 @@ Two llama-server processes, each in its own window, both started from the repo r
 Download (4.56 GB): https://huggingface.co/bartowski/Qwen_Qwen3-8B-GGUF/resolve/main/Qwen_Qwen3-8B-IQ4_XS.gguf
 
 ```powershell
-.\modele\LIama\llama-server.exe -m .\modele\llm\Qwen_Qwen3-8B-IQ4_XS.gguf -c 8192 --port 8081
+.\models\LIama\llama-server.exe -m .\models\llm\Qwen_Qwen3-8B-IQ4_XS.gguf -c 8192 --port 8081
 ```
 
 ### Embeddings: EmbeddingGemma 300M
@@ -58,7 +58,7 @@ Download (4.56 GB): https://huggingface.co/bartowski/Qwen_Qwen3-8B-GGUF/resolve/
 Download (334 MB): https://huggingface.co/ggml-org/embeddinggemma-300M-GGUF/resolve/main/embeddinggemma-300M-Q8_0.gguf
 
 ```powershell
-.\modele\LIama\llama-server.exe -m .\modele\embeddingi\embeddinggemma-300M-Q8_0.gguf --embeddings -ngl 0 --port 8082
+.\models\LIama\llama-server.exe -m .\models\embeddings\embeddinggemma-300M-Q8_0.gguf --embeddings -ngl 0 --port 8082
 ```
 
 `-ngl 0` keeps the whole EmbeddingGemma 300M on the CPU
