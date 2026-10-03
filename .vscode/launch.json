@@ -5,8 +5,8 @@
             "name": "agent_sql (asks for Oracle login)",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/agent_sql/agent.py",
-            "cwd": "${workspaceFolder}/agent_sql",
+            "module": "agent_sql.agent",
+            "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",
             "env": {
                 "ORACLE_USER": "${input:oracleUser}",
@@ -14,27 +14,12 @@
             }
         },
         {
-            "name": "agent_lg (asks for Oracle login)",
+            "name": "agent_lg_pdf_search",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/agent_lg/agent.py",
-            "cwd": "${workspaceFolder}/agent_lg",
-            "console": "integratedTerminal",
-            "env": {
-                "ORACLE_USER": "${input:oracleUser}",
-                "ORACLE_PASSWORD": "${input:oraclePassword}"
-            }
-        },
-        {
-            "name": "db_agent (asks for Oracle login)",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "${workspaceFolder}/db_agent.py",
-            "console": "integratedTerminal",
-            "env": {
-                "ORACLE_USER": "${input:oracleUser}",
-                "ORACLE_PASSWORD": "${input:oraclePassword}"
-            }
+            "module": "agent_lg_pdf_search.agent",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
         }
     ],
     "inputs": [

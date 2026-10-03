@@ -35,7 +35,8 @@ Pulled in automatically, no need to install them by hand: `langchain-core`, `lan
 
 ## Servers
 
-Two llama-server processes, each in its own PowerShell window, both started from the repo root.
+Two llama-server processes, each in its own window, both started from the repo root.
+`start_llama.bat` in the repo root starts both; the commands below do the same by hand.
 
 | Port | Role | Model | Runs on |
 |---|---|---|---|
@@ -49,7 +50,7 @@ Two llama-server processes, each in its own PowerShell window, both started from
 Download (4.56 GB): https://huggingface.co/bartowski/Qwen_Qwen3-8B-GGUF/resolve/main/Qwen_Qwen3-8B-IQ4_XS.gguf
 
 ```powershell
-.\LIama\llama-server.exe -m .\Qwen_Qwen3-8B-IQ4_XS.gguf -c 8192 --port 8081
+.\modele\LIama\llama-server.exe -m .\modele\llm\Qwen_Qwen3-8B-IQ4_XS.gguf -c 8192 --port 8081
 ```
 
 ### Embeddings: EmbeddingGemma 300M
@@ -57,30 +58,30 @@ Download (4.56 GB): https://huggingface.co/bartowski/Qwen_Qwen3-8B-GGUF/resolve/
 Download (334 MB): https://huggingface.co/ggml-org/embeddinggemma-300M-GGUF/resolve/main/embeddinggemma-300M-Q8_0.gguf
 
 ```powershell
-.\LIama\llama-server.exe -m .\embeddinggemma-300M-Q8_0.gguf --embeddings -ngl 0 --port 8082
+.\modele\LIama\llama-server.exe -m .\modele\embeddingi\embeddinggemma-300M-Q8_0.gguf --embeddings -ngl 0 --port 8082
 ```
 
 `-ngl 0` keeps the whole EmbeddingGemma 300M on the CPU
 
 ## Running it
 
-Both commands are run from this folder.
+Both commands are run from the repo root.
 
 ```powershell
-python index.py
+python -m agent_lg_pdf_search.index
 ```
 Reads every PDF in `pdf/`, cuts it into chunks, embeds them and writes `index.json`.
 Run it again after adding a PDF or changing the chunk settings.
 
 ```powershell
-python agent.py
+python -m agent_lg_pdf_search.agent
 ```
 Asks questions about the indexed PDFs; an empty line ends the loop.
 
 ### Seeing the graph
 
 ```powershell
-python -c "import agent; print(agent.build_graph().get_graph().draw_mermaid())"
+python -c "from agent_lg_pdf_search import agent; print(agent.build_graph().get_graph().draw_mermaid())"
 ```
 Prints the graph as Mermaid: `__start__ --> retrieve --> answer --> __end__`.
 Paste the output into https://mermaid.live to see it drawn.

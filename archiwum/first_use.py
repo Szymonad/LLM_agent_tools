@@ -2,8 +2,8 @@ import json
 import urllib.request
 from pathlib import Path
 
-URL = "http://127.0.0.1:8080/v1/chat/completions"
-DATA_DIR = Path(r"C:\Users\szymo\Desktop\kodzik\stacjonarny llm\dane")
+URL = "http://127.0.0.1:8081/v1/chat/completions"
+DATA_DIR = Path(__file__).with_name("dane")
 
 # This model doesn't remember tools, to make it rementer write (Remember tools whith you use: answear_user_with_text and write_file)
 

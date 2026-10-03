@@ -1,21 +1,18 @@
 """Measures retrieval on the MMLongBench-Doc questions in this folder.
 
-Run from the agent folder:
+Run from the repo root:
 
-    python agent_lg_pdf_search/eval/evaluate.py --rebuild
-    python agent_lg_pdf_search/eval/evaluate.py --rephrase
-    python agent_lg_pdf_search/eval/evaluate.py --compare
+    python -m agent_lg_pdf_search.eval.evaluate --rebuild
+    python -m agent_lg_pdf_search.eval.evaluate --rephrase
+    python -m agent_lg_pdf_search.eval.evaluate --compare
 """
 import argparse
 import json
-import sys
 import time
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-
-import index
-from config import CHUNK_OVERLAP, CHUNK_TOKENS, TOP_K
+from agent_lg_pdf_search import index
+from agent_lg_pdf_search.config import CHUNK_OVERLAP, CHUNK_TOKENS, TOP_K
 
 HERE = Path(__file__).resolve().parent
 QUESTIONS = HERE / "questions.json"
@@ -52,8 +49,8 @@ def rewrite(question, temp):
     """
     from langchain_core.messages import HumanMessage, SystemMessage
 
-    from agent import MODEL
-    from tools import BEHAVIOUR, REPHRASE
+    from agent_lg_pdf_search.agent import MODEL
+    from agent_lg_pdf_search.tools import BEHAVIOUR, REPHRASE
 
     reply = MODEL.invoke(
         [SystemMessage(BEHAVIOUR), HumanMessage(question), SystemMessage(REPHRASE)],
@@ -170,7 +167,7 @@ def compare():
 
     One row per file in ``results``, sorted by file name.
     """
-    files = sorted(RESULTS.glob("*.json"))
+    files = sorted(RESULTS.rglob("*.json"))
     if not files:
         print("brak wynikow w", RESULTS)
         return

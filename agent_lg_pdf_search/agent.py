@@ -13,9 +13,9 @@ from langchain_openai import ChatOpenAI
 from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.graph import END, START, MessagesState, StateGraph
 
-from config import CHUNK_OVERLAP, CHUNK_TOKENS, HTTP_TIMEOUT, SERVER, TOP_K
-from index import load_store, search_scored
-from tools import BEHAVIOUR, REPHRASE, expand_citations, format_chunks, sources_of
+from agent_lg_pdf_search.config import CHUNK_OVERLAP, CHUNK_TOKENS, HTTP_TIMEOUT, SERVER, TOP_K
+from agent_lg_pdf_search.index import load_store, search_scored
+from agent_lg_pdf_search.tools import BEHAVIOUR, REPHRASE, expand_citations, format_chunks, sources_of
 
 logging.basicConfig(
     # Next to this file, not in whatever folder the terminal happens to be in.

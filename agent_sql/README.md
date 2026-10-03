@@ -50,7 +50,7 @@ do not decide this - the template does, and it is a text file the publisher writ
 
 
 ```powershell
-.\llama-server.exe -m ".\Qwen_Qwen3-8B-IQ4_XS.gguf" -c 4096
+.\modele\LIama\llama-server.exe -m ".\modele\llm\Qwen_Qwen3-8B-IQ4_XS.gguf" -c 4096
 ```
 
 Check a model before downloading it. The template lives in the GGUF header.
@@ -70,7 +70,7 @@ In one PowerShell window:
 ```powershell
 $env:ORACLE_USER = "your_user"
 $env:ORACLE_PASSWORD = Read-Host "password"
-python agent_sql/agent.py
+python -m agent_sql.agent
 ```
 
 The text after `Read-Host` is only the prompt - type the password after `password:` appears.

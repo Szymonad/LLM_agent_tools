@@ -14,7 +14,7 @@ from langchain_openai import OpenAIEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from pypdf import PdfReader
 
-from config import (
+from agent_lg_pdf_search.config import (
     CHUNK_OVERLAP,
     CHUNK_TOKENS,
     EMBED_SERVER,
@@ -236,10 +236,10 @@ def search_scored(query, k=TOP_K):
     return load_store().similarity_search_with_score(query, k=k)
 
 
-# if __name__ == "__main__":
-#     if not INDEX_PATH.exists():
-#         build()
-#     question = "what is EmbeddingGemma model"
-#     for document, score in load_store().similarity_search_with_score(question, k=TOP_K):
-#         print(f"{score:.3f} pdf {document.metadata['source']} pages {document.metadata['pages']}: {document.page_content[:50]!r}")
+if __name__ == "__main__":
+    if not INDEX_PATH.exists():
+        build()
+    question = "what is EmbeddingGemma model"
+    for document, score in load_store().similarity_search_with_score(question, k=TOP_K):
+        print(f"{score:.3f} pdf {document.metadata['source']} pages {document.metadata['pages']}: {document.page_content[:50]!r}")
 
