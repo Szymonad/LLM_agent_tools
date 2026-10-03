@@ -1,8 +1,10 @@
 """Measures retrieval on the MMLongBench-Doc questions in this folder.
 
 Run from the agent folder:
+
     python agent_lg_pdf_search/eval/evaluate.py --rebuild
-    python agent_lg_pdf_search/eval/evaluate.py --rephrase --label chunk200-rephrase
+    python agent_lg_pdf_search/eval/evaluate.py --rephrase
+    python agent_lg_pdf_search/eval/evaluate.py --compare
 """
 import argparse
 import json
