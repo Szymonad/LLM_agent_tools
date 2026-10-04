@@ -61,25 +61,26 @@ def rewrite(question, temp):
     return lines[0].strip('"') if lines else question
 
 
-def check(hits, expected_doc, expected_pages):
+def check(hits, expected_doc, expected_pages, cutoffs):
     """Check whether the search found the expected file and page.
 
-    Measured at three cut-offs: the first 1, 3 and 5 chunks. A page counts
-    as found when a chunk from the expected file covers at least one of
-    the expected pages.
+    Measured at every cut-off in ``cutoffs``: the first N chunks. A page
+    counts as found when a chunk from the expected file covers at least
+    one of the expected pages.
 
     Args:
         hits (list[tuple[Document, float]]): Chunks with their similarity,
             best first, as returned by ``index.search_scored``.
         expected_doc (str): File name the answer is in.
         expected_pages (list[int]): Page numbers the answer is on.
+        cutoffs (list[int]): Numbers of top chunks to measure at.
 
     Returns:
-        dict[str, bool]: Keys ``file@1``, ``file@3``, ``file@5``,
-        ``page@1``, ``page@3`` and ``page@5``.
+        dict[str, bool]: Keys ``file@N`` and ``page@N`` for every N in
+        ``cutoffs``.
     """
     result = {}
-    for k in (1, 3, 5):
+    for k in cutoffs:
         taken = hits[:k]
         result[f"file@{k}"] = any(chunk.metadata["source"] == expected_doc for chunk, score in taken)
         result[f"page@{k}"] = any(
@@ -130,7 +131,7 @@ def run(rebuild, use_rephrase, k, label, temp):
                 for chunk, score in hits
             ],
         }
-        row.update(check(hits, item["doc"], item["pages"]))
+        row.update(check(hits, item["doc"], item["pages"], [1, 3, 5]))
         rows.append(row)
         print(f"{number:3}/{len(questions)} file@5={row['file@5']} page@5={row['page@5']} | {item['question'][:60]}")
     took = time.perf_counter() - started
