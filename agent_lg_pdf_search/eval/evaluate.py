@@ -68,7 +68,8 @@ def check(hits, expected_doc, expected_pages, cutoffs):
 
     Measured at every cut-off in ``cutoffs``: the first N chunks. A page
     counts as found when a chunk from the expected file covers at least
-    one of the expected pages.
+    one of the expected pages. The recall is the share of the expected
+    pages that the chunks from the expected file cover.
 
     Args:
         hits (list[tuple[Document, float]]): Chunks with their similarity,
@@ -78,8 +79,9 @@ def check(hits, expected_doc, expected_pages, cutoffs):
         cutoffs (list[int]): Numbers of top chunks to measure at.
 
     Returns:
-        dict[str, bool]: Keys ``file@N`` and ``page@N`` for every N in
-        ``cutoffs``.
+        dict[str, bool | float]: For every N in ``cutoffs``, keys
+        ``file@N`` and ``page@N`` (bool) and ``recall@N`` (float from 0
+        to 1).
     """
     result = {}
     for k in cutoffs:
@@ -89,6 +91,11 @@ def check(hits, expected_doc, expected_pages, cutoffs):
             chunk.metadata["source"] == expected_doc and set(chunk.metadata["pages"]) & set(expected_pages)
             for chunk, score in taken
         )
+        found_pages = set()
+        for chunk, score in taken:
+            if chunk.metadata["source"] == expected_doc:
+                found_pages.update(chunk.metadata["pages"])
+        result[f"recall@{k}"] = round(len(found_pages & set(expected_pages)) / len(expected_pages), 3)
     return result
 
 
@@ -124,6 +131,7 @@ def run(rebuild, use_rephrase, k, step, label, temp):
     if cutoffs[-1] != k:
         cutoffs.append(k)
     keys = [f"{kind}@{n}" for kind in ("file", "page") for n in cutoffs]
+    recall_keys = [f"recall@{n}" for n in cutoffs]
 
     questions = load_questions()
     rows = []
@@ -160,6 +168,8 @@ def run(rebuild, use_rephrase, k, step, label, temp):
     }
     for key in keys:
         summary[key] = sum(1 for row in rows if row[key])
+    for key in recall_keys:
+        summary[key] = round(sum(row[key] for row in rows) / len(rows), 3)
     summary["mean_best_score"] = round(sum(row["best_score"] or 0 for row in rows) / len(rows), 3)
 
     RESULTS.mkdir(exist_ok=True)
@@ -170,6 +180,8 @@ def run(rebuild, use_rephrase, k, step, label, temp):
     print(f"--- {label}: chunk={CHUNK_TOKENS}/{CHUNK_OVERLAP} k={k} rephrase={use_rephrase} ({took:.1f} s)")
     for key in keys:
         print(f"    {key}: {summary[key]:3}/{len(rows)}")
+    for key in recall_keys:
+        print(f"    {key}: {summary[key]}")
     print(f"    mean best score: {summary['mean_best_score']}")
     print(f"    saved {out}")
 
@@ -205,7 +217,8 @@ def compare():
     table = pd.DataFrame(summaries)
 
     metrics = sorted([column for column in table.columns if "@" in column], key=metric_order)
-    table[metrics] = table[metrics].astype("Int64")
+    counts = [column for column in metrics if not column.startswith("recall")]
+    table[counts] = table[counts].astype("Int64")
     settings = ["chunk_tokens", "chunk_overlap", "k", "rephrase", "temperature"]
 
     print(table[["label"] + settings + metrics + ["mean_best_score", "seconds"]].to_string(index=False))
