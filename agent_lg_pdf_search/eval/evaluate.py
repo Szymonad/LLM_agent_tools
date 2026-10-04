@@ -90,10 +90,11 @@ def check(hits, expected_doc, expected_pages, cutoffs):
     return result
 
 
-def run(rebuild, use_rephrase, k, label, temp):
+def run(rebuild, use_rephrase, k, step, label, temp):
     """Measure retrieval on every question and save the result.
 
-    Each question is searched in the index and checked with ``check``.
+    Each question is searched in the index and checked with ``check`` at
+    every ``step``-th cut-off starting from 1, and at ``k`` itself.
     The summary and the per-question rows are written to
     ``results/<label>.json`` and the summary is printed on stdout.
 
@@ -102,7 +103,10 @@ def run(rebuild, use_rephrase, k, label, temp):
             index file does not exist.
         use_rephrase (bool): Rewrite each question with the model before
             searching.
-        k (int): Number of chunks to fetch per question.
+        k (int): Number of chunks to fetch per question. Also the last
+            cut-off.
+        step (int): Distance between cut-offs: 1 gives 1, 2, 3, ...,
+            2 gives 1, 3, 5, ...
         label (str): Name of the run, used as the result file name.
         temp (float): Temperature for the rewrite; ignored without
             ``use_rephrase``.
@@ -113,6 +117,11 @@ def run(rebuild, use_rephrase, k, label, temp):
         index.build()
         index.load_store.cache_clear()
         print(f"index ready in {time.perf_counter() - started:.1f} s")
+
+    cutoffs = list(range(1, k + 1, step))
+    if cutoffs[-1] != k:
+        cutoffs.append(k)
+    keys = [f"{kind}@{n}" for kind in ("file", "page") for n in cutoffs]
 
     questions = load_questions()
     rows = []
@@ -131,9 +140,9 @@ def run(rebuild, use_rephrase, k, label, temp):
                 for chunk, score in hits
             ],
         }
-        row.update(check(hits, item["doc"], item["pages"], [1, 3, 5]))
+        row.update(check(hits, item["doc"], item["pages"], cutoffs))
         rows.append(row)
-        print(f"{number:3}/{len(questions)} file@5={row['file@5']} page@5={row['page@5']} | {item['question'][:60]}")
+        print(f"{number:3}/{len(questions)} file@{k}={row[f'file@{k}']} page@{k}={row[f'page@{k}']} | {item['question'][:60]}")
     took = time.perf_counter() - started
 
     summary = {
@@ -147,7 +156,7 @@ def run(rebuild, use_rephrase, k, label, temp):
         "questions": len(rows),
         "seconds": round(took, 1),
     }
-    for key in ("file@1", "file@3", "file@5", "page@1", "page@3", "page@5"):
+    for key in keys:
         summary[key] = sum(1 for row in rows if row[key])
     summary["mean_best_score"] = round(sum(row["best_score"] or 0 for row in rows) / len(rows), 3)
 
@@ -157,7 +166,7 @@ def run(rebuild, use_rephrase, k, label, temp):
 
     print()
     print(f"--- {label}: chunk={CHUNK_TOKENS}/{CHUNK_OVERLAP} k={k} rephrase={use_rephrase} ({took:.1f} s)")
-    for key in ("file@1", "file@3", "file@5", "page@1", "page@3", "page@5"):
+    for key in keys:
         print(f"    {key}: {summary[key]:3}/{len(rows)}")
     print(f"    mean best score: {summary['mean_best_score']}")
     print(f"    saved {out}")
@@ -188,6 +197,7 @@ if __name__ == "__main__":
     parser.add_argument("--rebuild", action="store_true", help="rebuild eval/index.json before measuring")
     parser.add_argument("--rephrase", action="store_true", help="rewrite each question with the model first")
     parser.add_argument("--k", type=int, default=5)
+    parser.add_argument("--step", type=int, default=1, help="distance between cut-offs, from 1 up to k")
     parser.add_argument("--label", default=None)
     parser.add_argument("--compare", action="store_true", help="only print the saved runs")
     args = parser.parse_args()
@@ -203,5 +213,5 @@ if __name__ == "__main__":
         for temperature in temperatures:
             for repeat in range(1, repeats + 1):
                 temp_text = f"{temperature:.1f}".replace(".", "")
-                run(rebuild, args.rephrase, args.k, f"{label}_temp_{temp_text}_{repeat}", temperature)
+                run(rebuild, args.rephrase, args.k, args.step, f"{label}_temp_{temp_text}_{repeat}", temperature)
                 rebuild = False
