@@ -11,6 +11,8 @@ import json
 import time
 from pathlib import Path
 
+import pandas as pd
+
 from agent_lg_pdf_search import index
 from agent_lg_pdf_search.config import CHUNK_OVERLAP, CHUNK_TOKENS, TOP_K
 
@@ -172,24 +174,47 @@ def run(rebuild, use_rephrase, k, step, label, temp):
     print(f"    saved {out}")
 
 
-def compare():
-    """Print the summaries of all saved runs as one table on stdout.
+def metric_order(name):
+    """Give the sort key of a metric name such as ``file@10``.
 
-    One row per file in ``results``, sorted by file name.
+    Args:
+        name (str): Metric name, kind and cut-off joined by ``@``.
+
+    Returns:
+        tuple[str, int]: Kind and cut-off, so ``file@10`` sorts after
+        ``file@5``.
+    """
+    kind, cutoff = name.split("@")
+    return kind, int(cutoff)
+
+
+def compare():
+    """Print all saved runs and their averages as two tables on stdout.
+
+    The first table has one row per file in ``results``, sorted by file
+    name. The second groups the runs with the same settings, so the
+    repeats of one temperature, and shows the mean and the standard
+    deviation of every metric. A metric that a run did not measure is
+    shown as ``<NA>``.
     """
     files = sorted(RESULTS.rglob("*.json"))
     if not files:
         print("no results in", RESULTS)
         return
-    keys = ("file@1", "file@3", "file@5", "page@1", "page@3", "page@5", "mean_best_score", "seconds")
-    print(f"{'label':34} {'chunk':>7} {'k':>2} {'reph':>5} " + " ".join(f"{key:>10}" for key in keys))
-    for path in files:
-        s = json.loads(path.read_text(encoding="utf-8"))["summary"]
-        chunk = f"{s['chunk_tokens']}/{s['chunk_overlap']}"
-        print(
-            f"{s['label'][:34]:34} {chunk:>7} {s['k']:>2} {str(s['rephrase']):>5} "
-            + " ".join(f"{s[key]:>10}" for key in keys)
-        )
+    summaries = [json.loads(path.read_text(encoding="utf-8"))["summary"] for path in files]
+    table = pd.DataFrame(summaries)
+
+    metrics = sorted([column for column in table.columns if "@" in column], key=metric_order)
+    table[metrics] = table[metrics].astype("Int64")
+    settings = ["chunk_tokens", "chunk_overlap", "k", "rephrase", "temperature"]
+
+    print(table[["label"] + settings + metrics + ["mean_best_score", "seconds"]].to_string(index=False))
+
+    groups = table.groupby(settings, dropna=False)
+    averages = groups[metrics].agg(["mean", "std"]).round(2)
+    averages.insert(0, "runs", groups.size())
+    print()
+    print(averages.to_string())
 
 
 if __name__ == "__main__":
