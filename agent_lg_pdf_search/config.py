@@ -26,6 +26,7 @@ HTTP_TIMEOUT = 30
 QUERY_PREFIX = "task: search result | query: "
 #: Prefix put in front of every chunk. ``none`` stands for a missing document title.
 PASSAGE_PREFIX = "title: none | text: "
+EMBED_DIM = 768
 
 # --- chunks ---
 

@@ -17,6 +17,7 @@ from pypdf import PdfReader
 from agent_lg_pdf_search.config import (
     CHUNK_OVERLAP,
     CHUNK_TOKENS,
+    EMBED_DIM,
     EMBED_SERVER,
     HTTP_TIMEOUT,
     INDEX_PATH,
@@ -130,7 +131,9 @@ class PrefixedEmbeddings(OpenAIEmbeddings):
     """Embed texts with EmbeddingGemma on llama-server.
 
     EmbeddingGemma expects a different prefix on passages and on queries,
-    so each method adds its own before sending the text.
+    so each method adds its own before sending the text. The server always
+    returns 768 numbers; each method keeps the first ``EMBED_DIM`` of
+    them, which EmbeddingGemma supports for 512, 256 and 128.
     """
 
     def embed_documents(self, texts, chunk_size=None, **kwargs):
@@ -145,7 +148,8 @@ class PrefixedEmbeddings(OpenAIEmbeddings):
         Returns:
             list[list[float]]: One vector per passage, in input order.
         """
-        return super().embed_documents([PASSAGE_PREFIX + text for text in texts], chunk_size, **kwargs)
+        vectors = super().embed_documents([PASSAGE_PREFIX + text for text in texts], chunk_size, **kwargs)
+        return [vector[:EMBED_DIM] for vector in vectors]
 
     def embed_query(self, text, **kwargs):
         """Embed a search query with ``QUERY_PREFIX`` in front.
@@ -158,7 +162,7 @@ class PrefixedEmbeddings(OpenAIEmbeddings):
             list[float]: Vector of the query.
         """
         # The parent's embed_query goes through embed_documents above and would add PASSAGE_PREFIX as well.
-        return super().embed_documents([QUERY_PREFIX + text], **kwargs)[0]
+        return super().embed_documents([QUERY_PREFIX + text], **kwargs)[0][:EMBED_DIM]
 
 
 EMBEDDINGS = PrefixedEmbeddings(

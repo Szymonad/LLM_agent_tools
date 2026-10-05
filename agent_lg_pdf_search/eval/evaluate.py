@@ -14,7 +14,7 @@ from pathlib import Path
 import pandas as pd
 
 from agent_lg_pdf_search import index
-from agent_lg_pdf_search.config import CHUNK_OVERLAP, CHUNK_TOKENS, TOP_K
+from agent_lg_pdf_search.config import CHUNK_OVERLAP, CHUNK_TOKENS, EMBED_DIM, TOP_K
 
 HERE = Path(__file__).resolve().parent
 QUESTIONS = HERE / "questions.json"
@@ -162,6 +162,7 @@ def run(rebuild, use_rephrase, k, step, label, temp):
         "k": k,
         "chunk_tokens": CHUNK_TOKENS,
         "chunk_overlap": CHUNK_OVERLAP,
+        "embed_dim": index.EMBED_DIM,
         "top_k_config": TOP_K,
         "questions": len(rows),
         "seconds": round(took, 1),
@@ -212,7 +213,7 @@ def compare():
     Raises:
         PermissionError: If ``compare.xlsx`` is open in Excel.
     """
-    files = sorted(RESULTS.rglob("*.json"))
+    files = sorted(RESULTS.glob("*.json"))
     if not files:
         print("no results in", RESULTS)
         return
@@ -222,7 +223,10 @@ def compare():
     metrics = sorted([column for column in table.columns if "@" in column], key=metric_order)
     counts = [column for column in metrics if not column.startswith("recall")]
     table[counts] = table[counts].astype("Int64")
-    settings = ["chunk_tokens", "chunk_overlap", "k", "rephrase", "temperature"]
+    if "embed_dim" not in table.columns:
+        table["embed_dim"] = 768
+    table["embed_dim"] = table["embed_dim"].fillna(768).astype(int)
+    settings = ["chunk_tokens", "chunk_overlap", "embed_dim", "k", "rephrase", "temperature"]
 
     runs = table[["label"] + settings + metrics + ["mean_best_score", "seconds"]]
 
@@ -243,9 +247,14 @@ if __name__ == "__main__":
     parser.add_argument("--rephrase", action="store_true", help="rewrite each question with the model first")
     parser.add_argument("--k", type=int, default=5)
     parser.add_argument("--step", type=int, default=1, help="distance between cut-offs, from 1 up to k")
+    parser.add_argument("--dim", type=int, default=EMBED_DIM, choices=[768, 512, 256, 128], help="length of the embedding vectors")
     parser.add_argument("--label", default=None)
     parser.add_argument("--compare", action="store_true", help="only print the saved runs")
     args = parser.parse_args()
+
+    index.EMBED_DIM = args.dim
+    if args.dim != EMBED_DIM:
+        index.INDEX_PATH = HERE / f"index_dim{args.dim}.json"
 
     temperatures = [2.0, 3.0, 5.0, 7.0, 9.9] if args.rephrase else [0.0]
     repeats = 5 if args.rephrase else 1
@@ -253,7 +262,7 @@ if __name__ == "__main__":
     if args.compare:
         compare()
     else:
-        label = args.label or f"chunk{CHUNK_TOKENS}" + ("-rephrase" if args.rephrase else "") + f"_k{args.k}"
+        label = args.label or f"chunk{CHUNK_TOKENS}" + ("-rephrase" if args.rephrase else "") + f"_k{args.k}_dim{args.dim}"
         rebuild = args.rebuild
         for temperature in temperatures:
             for repeat in range(1, repeats + 1):
