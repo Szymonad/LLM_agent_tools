@@ -29,6 +29,15 @@
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",
             "args": []
+        },
+        {
+            "name": "agent_lg_pdf_search evaluate --rebuild",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "agent_lg_pdf_search.eval.evaluate",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "args": ["--rebuild"]
         }
     ],
     "inputs": [
