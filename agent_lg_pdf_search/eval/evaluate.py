@@ -201,13 +201,16 @@ def metric_order(name):
 
 
 def compare():
-    """Print all saved runs and their averages as two tables on stdout.
+    """Save all saved runs and their averages to ``results/compare.xlsx``.
 
-    The first table has one row per file in ``results``, sorted by file
-    name. The second groups the runs with the same settings, so the
-    repeats of one temperature, and shows the mean and the standard
+    The sheet ``runs`` has one row per file in ``results``, sorted by file
+    name. The sheet ``averages`` groups the runs with the same settings,
+    so the repeats of one temperature, and shows the mean and the standard
     deviation of every metric. A metric that a run did not measure is
-    shown as ``<NA>``.
+    left empty.
+
+    Raises:
+        PermissionError: If ``compare.xlsx`` is open in Excel.
     """
     files = sorted(RESULTS.rglob("*.json"))
     if not files:
@@ -221,13 +224,17 @@ def compare():
     table[counts] = table[counts].astype("Int64")
     settings = ["chunk_tokens", "chunk_overlap", "k", "rephrase", "temperature"]
 
-    print(table[["label"] + settings + metrics + ["mean_best_score", "seconds"]].to_string(index=False))
+    runs = table[["label"] + settings + metrics + ["mean_best_score", "seconds"]]
 
     groups = table.groupby(settings, dropna=False)
     averages = groups[metrics].agg(["mean", "std"]).round(2)
     averages.insert(0, "runs", groups.size())
-    print()
-    print(averages.to_string())
+
+    out = RESULTS / "compare.xlsx"
+    with pd.ExcelWriter(out) as writer:
+        runs.to_excel(writer, sheet_name="runs", index=False)
+        averages.to_excel(writer, sheet_name="averages")
+    print("saved", out)
 
 
 if __name__ == "__main__":
