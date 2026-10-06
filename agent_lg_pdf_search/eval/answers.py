@@ -6,10 +6,11 @@ Run from the repo root:
 """
 import time
 
+import pandas as pd
 from langchain_core.messages import HumanMessage
 
 from agent_lg_pdf_search.agent import build_graph
-from agent_lg_pdf_search.eval.evaluate import load_questions
+from agent_lg_pdf_search.eval.evaluate import RESULTS, load_questions
 
 
 def ask(agent, item, number):
@@ -64,3 +65,25 @@ def run():
         rows.append(row)
         print(f"{number:3}/{len(questions)} {time.perf_counter() - started:5.1f} s | {item['question'][:60]}")
     return rows
+
+
+def save(rows):
+    """Write the answers to ``results/answers.xlsx``.
+
+    One row per question, with the columns ``question``, ``query``,
+    ``answer`` and ``expected``.
+
+    Args:
+        rows (list[dict]): Rows as returned by ``run``.
+
+    Returns:
+        pathlib.Path: The file that was written.
+
+    Raises:
+        PermissionError: If ``answers.xlsx`` is open in Excel.
+    """
+    RESULTS.mkdir(exist_ok=True)
+    out = RESULTS / "answers.xlsx"
+    table = pd.DataFrame(rows, columns=["question", "query", "answer", "expected"])
+    table.to_excel(out, index=False)
+    return out
