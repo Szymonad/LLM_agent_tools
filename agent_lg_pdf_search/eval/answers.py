@@ -29,17 +29,23 @@ def ask(agent, item, number):
 
     Returns:
         dict: Keys ``question``, ``query`` (the search query the agent
-        wrote), ``answer``, ``expected`` and ``chunks`` (ids of the chunks
-        the model got, best first, separated by commas).
+        wrote), ``answer``, ``expected``, ``input_tokens`` and
+        ``output_tokens`` (of the answer step only, ``None`` if the server
+        did not report them) and ``chunks`` (ids of the chunks the model
+        got, best first, separated by commas).
     """
     thread = {"configurable": {"thread_id": str(number)}}
     state = agent.invoke({"messages": [HumanMessage(item["question"])]}, thread)
     hits = index.search_scored(state["query"])
+    reply = state["messages"][-1]
+    usage = reply.usage_metadata or {}
     return {
         "question": item["question"],
         "query": state["query"],
-        "answer": state["messages"][-1].content,
+        "answer": reply.content,
         "expected": item["answer"],
+        "input_tokens": usage.get("input_tokens"),
+        "output_tokens": usage.get("output_tokens"),
         "chunks": ", ".join(chunk.id for chunk, score in hits),
     }
 
@@ -49,7 +55,7 @@ def run():
 
     One line per question is printed on stdout as it finishes. A question
     that fails does not stop the run: its row gets the error as the answer
-    and an empty query and chunk list.
+    and an empty query, chunk list and token counts.
 
     Returns:
         list[dict]: One row per question, as returned by ``ask``, with
@@ -68,6 +74,8 @@ def run():
                 "query": "",
                 "answer": f"ERROR {type(error).__name__}: {error}",
                 "expected": item["answer"],
+                "input_tokens": None,
+                "output_tokens": None,
                 "chunks": "",
             }
         row["seconds"] = round(time.perf_counter() - started, 1)
@@ -80,7 +88,8 @@ def save(rows):
     """Write the answers to ``results/answers.xlsx``.
 
     One row per question, with the columns ``question``, ``query``,
-    ``answer``, ``expected``, ``seconds`` and ``chunks``.
+    ``answer``, ``expected``, ``seconds``, ``input_tokens``,
+    ``output_tokens`` and ``chunks``.
 
     Args:
         rows (list[dict]): Rows as returned by ``run``.
@@ -93,7 +102,7 @@ def save(rows):
     """
     RESULTS.mkdir(exist_ok=True)
     out = RESULTS / "answers.xlsx"
-    table = pd.DataFrame(rows, columns=["question", "query", "answer", "expected", "seconds", "chunks"])
+    table = pd.DataFrame(rows, columns=["question", "query", "answer", "expected", "seconds", "input_tokens", "output_tokens", "chunks"])
     table.to_excel(out, index=False)
     return out
 
