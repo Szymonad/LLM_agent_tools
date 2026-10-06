@@ -1,0 +1,9583 @@
+{
+ "summary": {
+  "label": "chunk200_k30_dim128_temp_00_1",
+  "rephrase": false,
+  "temperature": null,
+  "k": 30,
+  "chunk_tokens": 200,
+  "chunk_overlap": 50,
+  "embed_dim": 128,
+  "top_k_config": 5,
+  "questions": 30,
+  "seconds": 1.1,
+  "file@1": 22,
+  "file@2": 23,
+  "file@3": 23,
+  "file@4": 24,
+  "file@5": 24,
+  "file@6": 24,
+  "file@7": 26,
+  "file@8": 27,
+  "file@9": 27,
+  "file@10": 27,
+  "file@11": 27,
+  "file@12": 27,
+  "file@13": 27,
+  "file@14": 27,
+  "file@15": 27,
+  "file@16": 27,
+  "file@17": 27,
+  "file@18": 27,
+  "file@19": 27,
+  "file@20": 27,
+  "file@21": 27,
+  "file@22": 27,
+  "file@23": 27,
+  "file@24": 27,
+  "file@25": 27,
+  "file@26": 27,
+  "file@27": 27,
+  "file@28": 27,
+  "file@29": 27,
+  "file@30": 27,
+  "page@1": 10,
+  "page@2": 12,
+  "page@3": 15,
+  "page@4": 16,
+  "page@5": 16,
+  "page@6": 17,
+  "page@7": 19,
+  "page@8": 20,
+  "page@9": 21,
+  "page@10": 21,
+  "page@11": 21,
+  "page@12": 21,
+  "page@13": 21,
+  "page@14": 21,
+  "page@15": 22,
+  "page@16": 22,
+  "page@17": 22,
+  "page@18": 22,
+  "page@19": 22,
+  "page@20": 22,
+  "page@21": 22,
+  "page@22": 22,
+  "page@23": 22,
+  "page@24": 22,
+  "page@25": 22,
+  "page@26": 22,
+  "page@27": 22,
+  "page@28": 22,
+  "page@29": 22,
+  "page@30": 22,
+  "recall@1": 0.272,
+  "recall@2": 0.333,
+  "recall@3": 0.428,
+  "recall@4": 0.486,
+  "recall@5": 0.494,
+  "recall@6": 0.503,
+  "recall@7": 0.548,
+  "recall@8": 0.593,
+  "recall@9": 0.634,
+  "recall@10": 0.634,
+  "recall@11": 0.634,
+  "recall@12": 0.646,
+  "recall@13": 0.646,
+  "recall@14": 0.646,
+  "recall@15": 0.679,
+  "recall@16": 0.679,
+  "recall@17": 0.69,
+  "recall@18": 0.69,
+  "recall@19": 0.69,
+  "recall@20": 0.69,
+  "recall@21": 0.69,
+  "recall@22": 0.69,
+  "recall@23": 0.69,
+  "recall@24": 0.69,
+  "recall@25": 0.69,
+  "recall@26": 0.69,
+  "recall@27": 0.69,
+  "recall@28": 0.69,
+  "recall@29": 0.69,
+  "recall@30": 0.69,
+  "mean_best_score": 0.58
+ },
+ "rows": [
+  {
+   "question": "What is the Email address in this document on the second cover page?",
+   "query": "What is the Email address in this document on the second cover page?",
+   "doc": "698bba535087fa9a7f9009e172a7f763.pdf",
+   "pages": [
+    3
+   ],
+   "best_score": 0.536,
+   "found": [
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.536
+    },
+    {
+     "source": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+     "pages": [
+      1,
+      2
+     ],
+     "score": 0.485
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      1
+     ],
+     "score": 0.481
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      5,
+      6
+     ],
+     "score": 0.463
+    },
+    {
+     "source": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.459
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      85
+     ],
+     "score": 0.45
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      78
+     ],
+     "score": 0.443
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      83
+     ],
+     "score": 0.439
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.438
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      5
+     ],
+     "score": 0.433
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      4
+     ],
+     "score": 0.433
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.433
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      30
+     ],
+     "score": 0.433
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      47
+     ],
+     "score": 0.433
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.433
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      69
+     ],
+     "score": 0.432
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      43
+     ],
+     "score": 0.432
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      13
+     ],
+     "score": 0.432
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      24
+     ],
+     "score": 0.432
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      45
+     ],
+     "score": 0.432
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      62
+     ],
+     "score": 0.432
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      41
+     ],
+     "score": 0.432
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      20
+     ],
+     "score": 0.432
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      54
+     ],
+     "score": 0.432
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      21
+     ],
+     "score": 0.432
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      58
+     ],
+     "score": 0.432
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      53
+     ],
+     "score": 0.432
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      27
+     ],
+     "score": 0.432
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      39
+     ],
+     "score": 0.432
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      22
+     ],
+     "score": 0.432
+    }
+   ],
+   "file@1": false,
+   "page@1": false,
+   "recall@1": 0.0,
+   "file@2": false,
+   "page@2": false,
+   "recall@2": 0.0,
+   "file@3": false,
+   "page@3": false,
+   "recall@3": 0.0,
+   "file@4": true,
+   "page@4": false,
+   "recall@4": 0.0,
+   "file@5": true,
+   "page@5": false,
+   "recall@5": 0.0,
+   "file@6": true,
+   "page@6": false,
+   "recall@6": 0.0,
+   "file@7": true,
+   "page@7": false,
+   "recall@7": 0.0,
+   "file@8": true,
+   "page@8": false,
+   "recall@8": 0.0,
+   "file@9": true,
+   "page@9": false,
+   "recall@9": 0.0,
+   "file@10": true,
+   "page@10": false,
+   "recall@10": 0.0,
+   "file@11": true,
+   "page@11": false,
+   "recall@11": 0.0,
+   "file@12": true,
+   "page@12": false,
+   "recall@12": 0.0,
+   "file@13": true,
+   "page@13": false,
+   "recall@13": 0.0,
+   "file@14": true,
+   "page@14": false,
+   "recall@14": 0.0,
+   "file@15": true,
+   "page@15": false,
+   "recall@15": 0.0,
+   "file@16": true,
+   "page@16": false,
+   "recall@16": 0.0,
+   "file@17": true,
+   "page@17": false,
+   "recall@17": 0.0,
+   "file@18": true,
+   "page@18": false,
+   "recall@18": 0.0,
+   "file@19": true,
+   "page@19": false,
+   "recall@19": 0.0,
+   "file@20": true,
+   "page@20": false,
+   "recall@20": 0.0,
+   "file@21": true,
+   "page@21": false,
+   "recall@21": 0.0,
+   "file@22": true,
+   "page@22": false,
+   "recall@22": 0.0,
+   "file@23": true,
+   "page@23": false,
+   "recall@23": 0.0,
+   "file@24": true,
+   "page@24": false,
+   "recall@24": 0.0,
+   "file@25": true,
+   "page@25": false,
+   "recall@25": 0.0,
+   "file@26": true,
+   "page@26": false,
+   "recall@26": 0.0,
+   "file@27": true,
+   "page@27": false,
+   "recall@27": 0.0,
+   "file@28": true,
+   "page@28": false,
+   "recall@28": 0.0,
+   "file@29": true,
+   "page@29": false,
+   "recall@29": 0.0,
+   "file@30": true,
+   "page@30": false,
+   "recall@30": 0.0
+  },
+  {
+   "question": "How many square miles did the Hamilton country covers on year 1882? Return me a rounded integer.",
+   "query": "How many square miles did the Hamilton country covers on year 1882? Return me a rounded integer.",
+   "doc": "698bba535087fa9a7f9009e172a7f763.pdf",
+   "pages": [
+    11
+   ],
+   "best_score": 0.634,
+   "found": [
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      11
+     ],
+     "score": 0.634
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      14,
+      15
+     ],
+     "score": 0.622
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      9,
+      10
+     ],
+     "score": 0.606
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.586
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      10
+     ],
+     "score": 0.584
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      14
+     ],
+     "score": 0.578
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      10,
+      11
+     ],
+     "score": 0.572
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      11
+     ],
+     "score": 0.546
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      14
+     ],
+     "score": 0.542
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      14
+     ],
+     "score": 0.541
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      16
+     ],
+     "score": 0.536
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      12
+     ],
+     "score": 0.529
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      12
+     ],
+     "score": 0.526
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.513
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      7,
+      8,
+      9
+     ],
+     "score": 0.506
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.501
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      10,
+      11
+     ],
+     "score": 0.5
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.495
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      15,
+      16
+     ],
+     "score": 0.489
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.486
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      12
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      11,
+      12
+     ],
+     "score": 0.479
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      10
+     ],
+     "score": 0.466
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.46
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      18
+     ],
+     "score": 0.447
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      20
+     ],
+     "score": 0.435
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      17
+     ],
+     "score": 0.433
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      17
+     ],
+     "score": 0.427
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      10
+     ],
+     "score": 0.426
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      18
+     ],
+     "score": 0.421
+    }
+   ],
+   "file@1": true,
+   "page@1": true,
+   "recall@1": 1.0,
+   "file@2": true,
+   "page@2": true,
+   "recall@2": 1.0,
+   "file@3": true,
+   "page@3": true,
+   "recall@3": 1.0,
+   "file@4": true,
+   "page@4": true,
+   "recall@4": 1.0,
+   "file@5": true,
+   "page@5": true,
+   "recall@5": 1.0,
+   "file@6": true,
+   "page@6": true,
+   "recall@6": 1.0,
+   "file@7": true,
+   "page@7": true,
+   "recall@7": 1.0,
+   "file@8": true,
+   "page@8": true,
+   "recall@8": 1.0,
+   "file@9": true,
+   "page@9": true,
+   "recall@9": 1.0,
+   "file@10": true,
+   "page@10": true,
+   "recall@10": 1.0,
+   "file@11": true,
+   "page@11": true,
+   "recall@11": 1.0,
+   "file@12": true,
+   "page@12": true,
+   "recall@12": 1.0,
+   "file@13": true,
+   "page@13": true,
+   "recall@13": 1.0,
+   "file@14": true,
+   "page@14": true,
+   "recall@14": 1.0,
+   "file@15": true,
+   "page@15": true,
+   "recall@15": 1.0,
+   "file@16": true,
+   "page@16": true,
+   "recall@16": 1.0,
+   "file@17": true,
+   "page@17": true,
+   "recall@17": 1.0,
+   "file@18": true,
+   "page@18": true,
+   "recall@18": 1.0,
+   "file@19": true,
+   "page@19": true,
+   "recall@19": 1.0,
+   "file@20": true,
+   "page@20": true,
+   "recall@20": 1.0,
+   "file@21": true,
+   "page@21": true,
+   "recall@21": 1.0,
+   "file@22": true,
+   "page@22": true,
+   "recall@22": 1.0,
+   "file@23": true,
+   "page@23": true,
+   "recall@23": 1.0,
+   "file@24": true,
+   "page@24": true,
+   "recall@24": 1.0,
+   "file@25": true,
+   "page@25": true,
+   "recall@25": 1.0,
+   "file@26": true,
+   "page@26": true,
+   "recall@26": 1.0,
+   "file@27": true,
+   "page@27": true,
+   "recall@27": 1.0,
+   "file@28": true,
+   "page@28": true,
+   "recall@28": 1.0,
+   "file@29": true,
+   "page@29": true,
+   "recall@29": 1.0,
+   "file@30": true,
+   "page@30": true,
+   "recall@30": 1.0
+  },
+  {
+   "question": "How many pages does websites address appeared? List all the pages in list format, for example [\"p1\",\"p2\"]",
+   "query": "How many pages does websites address appeared? List all the pages in list format, for example [\"p1\",\"p2\"]",
+   "doc": "698bba535087fa9a7f9009e172a7f763.pdf",
+   "pages": [
+    12,
+    15,
+    17
+   ],
+   "best_score": 0.537,
+   "found": [
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      5
+     ],
+     "score": 0.537
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      4
+     ],
+     "score": 0.537
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      30
+     ],
+     "score": 0.537
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.537
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      55
+     ],
+     "score": 0.537
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      17
+     ],
+     "score": 0.536
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      26
+     ],
+     "score": 0.536
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      71
+     ],
+     "score": 0.536
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      64
+     ],
+     "score": 0.536
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      61
+     ],
+     "score": 0.536
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      59
+     ],
+     "score": 0.536
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      12
+     ],
+     "score": 0.536
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      44
+     ],
+     "score": 0.536
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      23
+     ],
+     "score": 0.536
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      9
+     ],
+     "score": 0.536
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      6
+     ],
+     "score": 0.536
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      74
+     ],
+     "score": 0.536
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      73
+     ],
+     "score": 0.536
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      10
+     ],
+     "score": 0.536
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      8
+     ],
+     "score": 0.536
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      25
+     ],
+     "score": 0.536
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      14
+     ],
+     "score": 0.536
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      60
+     ],
+     "score": 0.536
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      78
+     ],
+     "score": 0.536
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      39
+     ],
+     "score": 0.536
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      49
+     ],
+     "score": 0.536
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      46
+     ],
+     "score": 0.536
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      29
+     ],
+     "score": 0.536
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      57
+     ],
+     "score": 0.536
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      19
+     ],
+     "score": 0.536
+    }
+   ],
+   "file@1": false,
+   "page@1": false,
+   "recall@1": 0.0,
+   "file@2": false,
+   "page@2": false,
+   "recall@2": 0.0,
+   "file@3": false,
+   "page@3": false,
+   "recall@3": 0.0,
+   "file@4": false,
+   "page@4": false,
+   "recall@4": 0.0,
+   "file@5": false,
+   "page@5": false,
+   "recall@5": 0.0,
+   "file@6": false,
+   "page@6": false,
+   "recall@6": 0.0,
+   "file@7": false,
+   "page@7": false,
+   "recall@7": 0.0,
+   "file@8": false,
+   "page@8": false,
+   "recall@8": 0.0,
+   "file@9": false,
+   "page@9": false,
+   "recall@9": 0.0,
+   "file@10": false,
+   "page@10": false,
+   "recall@10": 0.0,
+   "file@11": false,
+   "page@11": false,
+   "recall@11": 0.0,
+   "file@12": false,
+   "page@12": false,
+   "recall@12": 0.0,
+   "file@13": false,
+   "page@13": false,
+   "recall@13": 0.0,
+   "file@14": false,
+   "page@14": false,
+   "recall@14": 0.0,
+   "file@15": false,
+   "page@15": false,
+   "recall@15": 0.0,
+   "file@16": false,
+   "page@16": false,
+   "recall@16": 0.0,
+   "file@17": false,
+   "page@17": false,
+   "recall@17": 0.0,
+   "file@18": false,
+   "page@18": false,
+   "recall@18": 0.0,
+   "file@19": false,
+   "page@19": false,
+   "recall@19": 0.0,
+   "file@20": false,
+   "page@20": false,
+   "recall@20": 0.0,
+   "file@21": false,
+   "page@21": false,
+   "recall@21": 0.0,
+   "file@22": false,
+   "page@22": false,
+   "recall@22": 0.0,
+   "file@23": false,
+   "page@23": false,
+   "recall@23": 0.0,
+   "file@24": false,
+   "page@24": false,
+   "recall@24": 0.0,
+   "file@25": false,
+   "page@25": false,
+   "recall@25": 0.0,
+   "file@26": false,
+   "page@26": false,
+   "recall@26": 0.0,
+   "file@27": false,
+   "page@27": false,
+   "recall@27": 0.0,
+   "file@28": false,
+   "page@28": false,
+   "recall@28": 0.0,
+   "file@29": false,
+   "page@29": false,
+   "recall@29": 0.0,
+   "file@30": false,
+   "page@30": false,
+   "recall@30": 0.0
+  },
+  {
+   "question": "How many quizzes are there in units 4, 5, and 6 combined?",
+   "query": "How many quizzes are there in units 4, 5, and 6 combined?",
+   "doc": "f8d3a162ab9507e021d83dd109118b60.pdf",
+   "pages": [
+    4,
+    5,
+    6
+   ],
+   "best_score": 0.548,
+   "found": [
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.548
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      6
+     ],
+     "score": 0.513
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      4
+     ],
+     "score": 0.494
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.481
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      16
+     ],
+     "score": 0.481
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      16
+     ],
+     "score": 0.479
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      4
+     ],
+     "score": 0.475
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      10
+     ],
+     "score": 0.474
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      16
+     ],
+     "score": 0.471
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.471
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.469
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.468
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.465
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.461
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      8
+     ],
+     "score": 0.457
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      6
+     ],
+     "score": 0.456
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      5
+     ],
+     "score": 0.447
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      10
+     ],
+     "score": 0.444
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      6
+     ],
+     "score": 0.441
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      5
+     ],
+     "score": 0.427
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      10
+     ],
+     "score": 0.424
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      5
+     ],
+     "score": 0.422
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      14
+     ],
+     "score": 0.418
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      6
+     ],
+     "score": 0.414
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      11
+     ],
+     "score": 0.407
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      17
+     ],
+     "score": 0.406
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.404
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      6
+     ],
+     "score": 0.404
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      8
+     ],
+     "score": 0.403
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.402
+    }
+   ],
+   "file@1": true,
+   "page@1": false,
+   "recall@1": 0.0,
+   "file@2": true,
+   "page@2": true,
+   "recall@2": 0.333,
+   "file@3": true,
+   "page@3": true,
+   "recall@3": 0.667,
+   "file@4": true,
+   "page@4": true,
+   "recall@4": 0.667,
+   "file@5": true,
+   "page@5": true,
+   "recall@5": 0.667,
+   "file@6": true,
+   "page@6": true,
+   "recall@6": 0.667,
+   "file@7": true,
+   "page@7": true,
+   "recall@7": 0.667,
+   "file@8": true,
+   "page@8": true,
+   "recall@8": 0.667,
+   "file@9": true,
+   "page@9": true,
+   "recall@9": 0.667,
+   "file@10": true,
+   "page@10": true,
+   "recall@10": 0.667,
+   "file@11": true,
+   "page@11": true,
+   "recall@11": 0.667,
+   "file@12": true,
+   "page@12": true,
+   "recall@12": 0.667,
+   "file@13": true,
+   "page@13": true,
+   "recall@13": 0.667,
+   "file@14": true,
+   "page@14": true,
+   "recall@14": 0.667,
+   "file@15": true,
+   "page@15": true,
+   "recall@15": 0.667,
+   "file@16": true,
+   "page@16": true,
+   "recall@16": 0.667,
+   "file@17": true,
+   "page@17": true,
+   "recall@17": 1.0,
+   "file@18": true,
+   "page@18": true,
+   "recall@18": 1.0,
+   "file@19": true,
+   "page@19": true,
+   "recall@19": 1.0,
+   "file@20": true,
+   "page@20": true,
+   "recall@20": 1.0,
+   "file@21": true,
+   "page@21": true,
+   "recall@21": 1.0,
+   "file@22": true,
+   "page@22": true,
+   "recall@22": 1.0,
+   "file@23": true,
+   "page@23": true,
+   "recall@23": 1.0,
+   "file@24": true,
+   "page@24": true,
+   "recall@24": 1.0,
+   "file@25": true,
+   "page@25": true,
+   "recall@25": 1.0,
+   "file@26": true,
+   "page@26": true,
+   "recall@26": 1.0,
+   "file@27": true,
+   "page@27": true,
+   "recall@27": 1.0,
+   "file@28": true,
+   "page@28": true,
+   "recall@28": 1.0,
+   "file@29": true,
+   "page@29": true,
+   "recall@29": 1.0,
+   "file@30": true,
+   "page@30": true,
+   "recall@30": 1.0
+  },
+  {
+   "question": "Format the date mentioned on page 14 as YYYY-MM-DD.",
+   "query": "Format the date mentioned on page 14 as YYYY-MM-DD.",
+   "doc": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+   "pages": [
+    14
+   ],
+   "best_score": 0.443,
+   "found": [
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      81
+     ],
+     "score": 0.443
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      1
+     ],
+     "score": 0.422
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      11
+     ],
+     "score": 0.417
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      78
+     ],
+     "score": 0.412
+    },
+    {
+     "source": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+     "pages": [
+      1,
+      2
+     ],
+     "score": 0.403
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      76
+     ],
+     "score": 0.402
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      13,
+      14
+     ],
+     "score": 0.397
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      76
+     ],
+     "score": 0.394
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      35,
+      36
+     ],
+     "score": 0.393
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      75
+     ],
+     "score": 0.391
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      34
+     ],
+     "score": 0.389
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      53
+     ],
+     "score": 0.387
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      40
+     ],
+     "score": 0.387
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      75
+     ],
+     "score": 0.387
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      65
+     ],
+     "score": 0.387
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      66
+     ],
+     "score": 0.387
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      76
+     ],
+     "score": 0.387
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      28
+     ],
+     "score": 0.387
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      77
+     ],
+     "score": 0.387
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      50
+     ],
+     "score": 0.387
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      33
+     ],
+     "score": 0.387
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      34
+     ],
+     "score": 0.387
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      48
+     ],
+     "score": 0.387
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      37
+     ],
+     "score": 0.387
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      18
+     ],
+     "score": 0.387
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      22
+     ],
+     "score": 0.387
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      56
+     ],
+     "score": 0.387
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      32
+     ],
+     "score": 0.387
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      59
+     ],
+     "score": 0.387
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      27
+     ],
+     "score": 0.387
+    }
+   ],
+   "file@1": false,
+   "page@1": false,
+   "recall@1": 0.0,
+   "file@2": false,
+   "page@2": false,
+   "recall@2": 0.0,
+   "file@3": false,
+   "page@3": false,
+   "recall@3": 0.0,
+   "file@4": false,
+   "page@4": false,
+   "recall@4": 0.0,
+   "file@5": false,
+   "page@5": false,
+   "recall@5": 0.0,
+   "file@6": false,
+   "page@6": false,
+   "recall@6": 0.0,
+   "file@7": true,
+   "page@7": true,
+   "recall@7": 1.0,
+   "file@8": true,
+   "page@8": true,
+   "recall@8": 1.0,
+   "file@9": true,
+   "page@9": true,
+   "recall@9": 1.0,
+   "file@10": true,
+   "page@10": true,
+   "recall@10": 1.0,
+   "file@11": true,
+   "page@11": true,
+   "recall@11": 1.0,
+   "file@12": true,
+   "page@12": true,
+   "recall@12": 1.0,
+   "file@13": true,
+   "page@13": true,
+   "recall@13": 1.0,
+   "file@14": true,
+   "page@14": true,
+   "recall@14": 1.0,
+   "file@15": true,
+   "page@15": true,
+   "recall@15": 1.0,
+   "file@16": true,
+   "page@16": true,
+   "recall@16": 1.0,
+   "file@17": true,
+   "page@17": true,
+   "recall@17": 1.0,
+   "file@18": true,
+   "page@18": true,
+   "recall@18": 1.0,
+   "file@19": true,
+   "page@19": true,
+   "recall@19": 1.0,
+   "file@20": true,
+   "page@20": true,
+   "recall@20": 1.0,
+   "file@21": true,
+   "page@21": true,
+   "recall@21": 1.0,
+   "file@22": true,
+   "page@22": true,
+   "recall@22": 1.0,
+   "file@23": true,
+   "page@23": true,
+   "recall@23": 1.0,
+   "file@24": true,
+   "page@24": true,
+   "recall@24": 1.0,
+   "file@25": true,
+   "page@25": true,
+   "recall@25": 1.0,
+   "file@26": true,
+   "page@26": true,
+   "recall@26": 1.0,
+   "file@27": true,
+   "page@27": true,
+   "recall@27": 1.0,
+   "file@28": true,
+   "page@28": true,
+   "recall@28": 1.0,
+   "file@29": true,
+   "page@29": true,
+   "recall@29": 1.0,
+   "file@30": true,
+   "page@30": true,
+   "recall@30": 1.0
+  },
+  {
+   "question": "What is INF SERCRL LLP FAX No on page fourteen?",
+   "query": "What is INF SERCRL LLP FAX No on page fourteen?",
+   "doc": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+   "pages": [
+    14
+   ],
+   "best_score": 0.501,
+   "found": [
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.501
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      17
+     ],
+     "score": 0.479
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      1
+     ],
+     "score": 0.466
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      16
+     ],
+     "score": 0.462
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      85
+     ],
+     "score": 0.438
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      83
+     ],
+     "score": 0.434
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      80,
+      81
+     ],
+     "score": 0.431
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      84
+     ],
+     "score": 0.43
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      16
+     ],
+     "score": 0.422
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      4
+     ],
+     "score": 0.42
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      5
+     ],
+     "score": 0.42
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      1
+     ],
+     "score": 0.412
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      79
+     ],
+     "score": 0.41
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      5,
+      6
+     ],
+     "score": 0.405
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      12
+     ],
+     "score": 0.405
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      11,
+      12
+     ],
+     "score": 0.402
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.401
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      1
+     ],
+     "score": 0.401
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      17
+     ],
+     "score": 0.4
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      77
+     ],
+     "score": 0.398
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      11
+     ],
+     "score": 0.398
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      8
+     ],
+     "score": 0.394
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      2
+     ],
+     "score": 0.393
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      6
+     ],
+     "score": 0.392
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      16
+     ],
+     "score": 0.392
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      7,
+      8,
+      9
+     ],
+     "score": 0.39
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      77
+     ],
+     "score": 0.39
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      1,
+      2
+     ],
+     "score": 0.388
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      9
+     ],
+     "score": 0.387
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      13
+     ],
+     "score": 0.386
+    }
+   ],
+   "file@1": true,
+   "page@1": false,
+   "recall@1": 0.0,
+   "file@2": true,
+   "page@2": false,
+   "recall@2": 0.0,
+   "file@3": true,
+   "page@3": false,
+   "recall@3": 0.0,
+   "file@4": true,
+   "page@4": false,
+   "recall@4": 0.0,
+   "file@5": true,
+   "page@5": false,
+   "recall@5": 0.0,
+   "file@6": true,
+   "page@6": false,
+   "recall@6": 0.0,
+   "file@7": true,
+   "page@7": false,
+   "recall@7": 0.0,
+   "file@8": true,
+   "page@8": false,
+   "recall@8": 0.0,
+   "file@9": true,
+   "page@9": false,
+   "recall@9": 0.0,
+   "file@10": true,
+   "page@10": false,
+   "recall@10": 0.0,
+   "file@11": true,
+   "page@11": false,
+   "recall@11": 0.0,
+   "file@12": true,
+   "page@12": false,
+   "recall@12": 0.0,
+   "file@13": true,
+   "page@13": false,
+   "recall@13": 0.0,
+   "file@14": true,
+   "page@14": false,
+   "recall@14": 0.0,
+   "file@15": true,
+   "page@15": false,
+   "recall@15": 0.0,
+   "file@16": true,
+   "page@16": false,
+   "recall@16": 0.0,
+   "file@17": true,
+   "page@17": false,
+   "recall@17": 0.0,
+   "file@18": true,
+   "page@18": false,
+   "recall@18": 0.0,
+   "file@19": true,
+   "page@19": false,
+   "recall@19": 0.0,
+   "file@20": true,
+   "page@20": false,
+   "recall@20": 0.0,
+   "file@21": true,
+   "page@21": false,
+   "recall@21": 0.0,
+   "file@22": true,
+   "page@22": false,
+   "recall@22": 0.0,
+   "file@23": true,
+   "page@23": false,
+   "recall@23": 0.0,
+   "file@24": true,
+   "page@24": false,
+   "recall@24": 0.0,
+   "file@25": true,
+   "page@25": false,
+   "recall@25": 0.0,
+   "file@26": true,
+   "page@26": false,
+   "recall@26": 0.0,
+   "file@27": true,
+   "page@27": false,
+   "recall@27": 0.0,
+   "file@28": true,
+   "page@28": false,
+   "recall@28": 0.0,
+   "file@29": true,
+   "page@29": false,
+   "recall@29": 0.0,
+   "file@30": true,
+   "page@30": false,
+   "recall@30": 0.0
+  },
+  {
+   "question": "What type of court is noted on the cover page?",
+   "query": "What type of court is noted on the cover page?",
+   "doc": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+   "pages": [
+    1
+   ],
+   "best_score": 0.504,
+   "found": [
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.504
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      1
+     ],
+     "score": 0.488
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      70
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      4
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      5
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      30
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      44
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      23
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      78
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      14
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      9
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      12
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      8
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      74
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      10
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      60
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      6
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      73
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      25
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      27
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      58
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      47
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      24
+     ],
+     "score": 0.479
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      21
+     ],
+     "score": 0.479
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      62
+     ],
+     "score": 0.479
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      54
+     ],
+     "score": 0.479
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      13
+     ],
+     "score": 0.479
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      43
+     ],
+     "score": 0.479
+    }
+   ],
+   "file@1": true,
+   "page@1": false,
+   "recall@1": 0.0,
+   "file@2": true,
+   "page@2": true,
+   "recall@2": 1.0,
+   "file@3": true,
+   "page@3": true,
+   "recall@3": 1.0,
+   "file@4": true,
+   "page@4": true,
+   "recall@4": 1.0,
+   "file@5": true,
+   "page@5": true,
+   "recall@5": 1.0,
+   "file@6": true,
+   "page@6": true,
+   "recall@6": 1.0,
+   "file@7": true,
+   "page@7": true,
+   "recall@7": 1.0,
+   "file@8": true,
+   "page@8": true,
+   "recall@8": 1.0,
+   "file@9": true,
+   "page@9": true,
+   "recall@9": 1.0,
+   "file@10": true,
+   "page@10": true,
+   "recall@10": 1.0,
+   "file@11": true,
+   "page@11": true,
+   "recall@11": 1.0,
+   "file@12": true,
+   "page@12": true,
+   "recall@12": 1.0,
+   "file@13": true,
+   "page@13": true,
+   "recall@13": 1.0,
+   "file@14": true,
+   "page@14": true,
+   "recall@14": 1.0,
+   "file@15": true,
+   "page@15": true,
+   "recall@15": 1.0,
+   "file@16": true,
+   "page@16": true,
+   "recall@16": 1.0,
+   "file@17": true,
+   "page@17": true,
+   "recall@17": 1.0,
+   "file@18": true,
+   "page@18": true,
+   "recall@18": 1.0,
+   "file@19": true,
+   "page@19": true,
+   "recall@19": 1.0,
+   "file@20": true,
+   "page@20": true,
+   "recall@20": 1.0,
+   "file@21": true,
+   "page@21": true,
+   "recall@21": 1.0,
+   "file@22": true,
+   "page@22": true,
+   "recall@22": 1.0,
+   "file@23": true,
+   "page@23": true,
+   "recall@23": 1.0,
+   "file@24": true,
+   "page@24": true,
+   "recall@24": 1.0,
+   "file@25": true,
+   "page@25": true,
+   "recall@25": 1.0,
+   "file@26": true,
+   "page@26": true,
+   "recall@26": 1.0,
+   "file@27": true,
+   "page@27": true,
+   "recall@27": 1.0,
+   "file@28": true,
+   "page@28": true,
+   "recall@28": 1.0,
+   "file@29": true,
+   "page@29": true,
+   "recall@29": 1.0,
+   "file@30": true,
+   "page@30": true,
+   "recall@30": 1.0
+  },
+  {
+   "question": "what is the email id of the mtre laurent nahmiash ?",
+   "query": "what is the email id of the mtre laurent nahmiash ?",
+   "doc": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+   "pages": [
+    14
+   ],
+   "best_score": 0.629,
+   "found": [
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.629
+    },
+    {
+     "source": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.47
+    },
+    {
+     "source": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+     "pages": [
+      1,
+      2
+     ],
+     "score": 0.398
+    },
+    {
+     "source": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+     "pages": [
+      3,
+      4,
+      5
+     ],
+     "score": 0.396
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      1
+     ],
+     "score": 0.373
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      16
+     ],
+     "score": 0.371
+    },
+    {
+     "source": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+     "pages": [
+      20
+     ],
+     "score": 0.367
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      17
+     ],
+     "score": 0.364
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      14
+     ],
+     "score": 0.362
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      17
+     ],
+     "score": 0.36
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      9
+     ],
+     "score": 0.356
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      13,
+      14
+     ],
+     "score": 0.352
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      69
+     ],
+     "score": 0.348
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      1
+     ],
+     "score": 0.343
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.342
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      68
+     ],
+     "score": 0.342
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.339
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      1
+     ],
+     "score": 0.338
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      16
+     ],
+     "score": 0.337
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      2
+     ],
+     "score": 0.333
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      83
+     ],
+     "score": 0.33
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      70
+     ],
+     "score": 0.329
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.327
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      1
+     ],
+     "score": 0.327
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      79
+     ],
+     "score": 0.325
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      17
+     ],
+     "score": 0.325
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      2
+     ],
+     "score": 0.322
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      1
+     ],
+     "score": 0.319
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      5
+     ],
+     "score": 0.318
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      84
+     ],
+     "score": 0.317
+    }
+   ],
+   "file@1": true,
+   "page@1": false,
+   "recall@1": 0.0,
+   "file@2": true,
+   "page@2": false,
+   "recall@2": 0.0,
+   "file@3": true,
+   "page@3": false,
+   "recall@3": 0.0,
+   "file@4": true,
+   "page@4": false,
+   "recall@4": 0.0,
+   "file@5": true,
+   "page@5": false,
+   "recall@5": 0.0,
+   "file@6": true,
+   "page@6": false,
+   "recall@6": 0.0,
+   "file@7": true,
+   "page@7": false,
+   "recall@7": 0.0,
+   "file@8": true,
+   "page@8": false,
+   "recall@8": 0.0,
+   "file@9": true,
+   "page@9": true,
+   "recall@9": 1.0,
+   "file@10": true,
+   "page@10": true,
+   "recall@10": 1.0,
+   "file@11": true,
+   "page@11": true,
+   "recall@11": 1.0,
+   "file@12": true,
+   "page@12": true,
+   "recall@12": 1.0,
+   "file@13": true,
+   "page@13": true,
+   "recall@13": 1.0,
+   "file@14": true,
+   "page@14": true,
+   "recall@14": 1.0,
+   "file@15": true,
+   "page@15": true,
+   "recall@15": 1.0,
+   "file@16": true,
+   "page@16": true,
+   "recall@16": 1.0,
+   "file@17": true,
+   "page@17": true,
+   "recall@17": 1.0,
+   "file@18": true,
+   "page@18": true,
+   "recall@18": 1.0,
+   "file@19": true,
+   "page@19": true,
+   "recall@19": 1.0,
+   "file@20": true,
+   "page@20": true,
+   "recall@20": 1.0,
+   "file@21": true,
+   "page@21": true,
+   "recall@21": 1.0,
+   "file@22": true,
+   "page@22": true,
+   "recall@22": 1.0,
+   "file@23": true,
+   "page@23": true,
+   "recall@23": 1.0,
+   "file@24": true,
+   "page@24": true,
+   "recall@24": 1.0,
+   "file@25": true,
+   "page@25": true,
+   "recall@25": 1.0,
+   "file@26": true,
+   "page@26": true,
+   "recall@26": 1.0,
+   "file@27": true,
+   "page@27": true,
+   "recall@27": 1.0,
+   "file@28": true,
+   "page@28": true,
+   "recall@28": 1.0,
+   "file@29": true,
+   "page@29": true,
+   "recall@29": 1.0,
+   "file@30": true,
+   "page@30": true,
+   "recall@30": 1.0
+  },
+  {
+   "question": "How many Exhibits are mentioned in the document?",
+   "query": "How many Exhibits are mentioned in the document?",
+   "doc": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+   "pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    9,
+    10,
+    11,
+    12
+   ],
+   "best_score": 0.678,
+   "found": [
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      84
+     ],
+     "score": 0.678
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      85
+     ],
+     "score": 0.667
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      83
+     ],
+     "score": 0.667
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      79
+     ],
+     "score": 0.636
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      82
+     ],
+     "score": 0.635
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      2
+     ],
+     "score": 0.623
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.586
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      2
+     ],
+     "score": 0.579
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      80,
+      81
+     ],
+     "score": 0.577
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      77
+     ],
+     "score": 0.575
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      2
+     ],
+     "score": 0.574
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      55
+     ],
+     "score": 0.567
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      39
+     ],
+     "score": 0.567
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      18
+     ],
+     "score": 0.567
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      53
+     ],
+     "score": 0.567
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      59
+     ],
+     "score": 0.567
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      28
+     ],
+     "score": 0.566
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      50
+     ],
+     "score": 0.566
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      75
+     ],
+     "score": 0.566
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      66
+     ],
+     "score": 0.566
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      65
+     ],
+     "score": 0.566
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      77
+     ],
+     "score": 0.566
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      76
+     ],
+     "score": 0.566
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      48
+     ],
+     "score": 0.566
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      34
+     ],
+     "score": 0.566
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      33
+     ],
+     "score": 0.566
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      37
+     ],
+     "score": 0.566
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      76
+     ],
+     "score": 0.566
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      58
+     ],
+     "score": 0.566
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      19
+     ],
+     "score": 0.566
+    }
+   ],
+   "file@1": false,
+   "page@1": false,
+   "recall@1": 0.0,
+   "file@2": false,
+   "page@2": false,
+   "recall@2": 0.0,
+   "file@3": false,
+   "page@3": false,
+   "recall@3": 0.0,
+   "file@4": false,
+   "page@4": false,
+   "recall@4": 0.0,
+   "file@5": false,
+   "page@5": false,
+   "recall@5": 0.0,
+   "file@6": false,
+   "page@6": false,
+   "recall@6": 0.0,
+   "file@7": true,
+   "page@7": true,
+   "recall@7": 0.1,
+   "file@8": true,
+   "page@8": true,
+   "recall@8": 0.2,
+   "file@9": true,
+   "page@9": true,
+   "recall@9": 0.2,
+   "file@10": true,
+   "page@10": true,
+   "recall@10": 0.2,
+   "file@11": true,
+   "page@11": true,
+   "recall@11": 0.2,
+   "file@12": true,
+   "page@12": true,
+   "recall@12": 0.2,
+   "file@13": true,
+   "page@13": true,
+   "recall@13": 0.2,
+   "file@14": true,
+   "page@14": true,
+   "recall@14": 0.2,
+   "file@15": true,
+   "page@15": true,
+   "recall@15": 0.2,
+   "file@16": true,
+   "page@16": true,
+   "recall@16": 0.2,
+   "file@17": true,
+   "page@17": true,
+   "recall@17": 0.2,
+   "file@18": true,
+   "page@18": true,
+   "recall@18": 0.2,
+   "file@19": true,
+   "page@19": true,
+   "recall@19": 0.2,
+   "file@20": true,
+   "page@20": true,
+   "recall@20": 0.2,
+   "file@21": true,
+   "page@21": true,
+   "recall@21": 0.2,
+   "file@22": true,
+   "page@22": true,
+   "recall@22": 0.2,
+   "file@23": true,
+   "page@23": true,
+   "recall@23": 0.2,
+   "file@24": true,
+   "page@24": true,
+   "recall@24": 0.2,
+   "file@25": true,
+   "page@25": true,
+   "recall@25": 0.2,
+   "file@26": true,
+   "page@26": true,
+   "recall@26": 0.2,
+   "file@27": true,
+   "page@27": true,
+   "recall@27": 0.2,
+   "file@28": true,
+   "page@28": true,
+   "recall@28": 0.2,
+   "file@29": true,
+   "page@29": true,
+   "recall@29": 0.2,
+   "file@30": true,
+   "page@30": true,
+   "recall@30": 0.2
+  },
+  {
+   "question": "How many times does Exhibit P-10 mentioned in the document? List all pages and formatted as a list, for example, [\"1\",\"2\"]",
+   "query": "How many times does Exhibit P-10 mentioned in the document? List all pages and formatted as a list, for example, [\"1\",\"2\"]",
+   "doc": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+   "pages": [
+    1,
+    2,
+    3,
+    10
+   ],
+   "best_score": 0.608,
+   "found": [
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      2
+     ],
+     "score": 0.608
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      1
+     ],
+     "score": 0.564
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      78
+     ],
+     "score": 0.563
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.547
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      2
+     ],
+     "score": 0.542
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.541
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      85
+     ],
+     "score": 0.533
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      2,
+      3
+     ],
+     "score": 0.531
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      84
+     ],
+     "score": 0.529
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      77
+     ],
+     "score": 0.526
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      5
+     ],
+     "score": 0.523
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      2
+     ],
+     "score": 0.522
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      76
+     ],
+     "score": 0.52
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      2
+     ],
+     "score": 0.52
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      2
+     ],
+     "score": 0.517
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      5,
+      6
+     ],
+     "score": 0.513
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      5
+     ],
+     "score": 0.509
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      2
+     ],
+     "score": 0.509
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      83
+     ],
+     "score": 0.508
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      3,
+      4
+     ],
+     "score": 0.505
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      4
+     ],
+     "score": 0.501
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.501
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      5,
+      6
+     ],
+     "score": 0.495
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.494
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      30
+     ],
+     "score": 0.493
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      11
+     ],
+     "score": 0.491
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      82
+     ],
+     "score": 0.49
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      4,
+      5
+     ],
+     "score": 0.489
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      77
+     ],
+     "score": 0.489
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      79
+     ],
+     "score": 0.488
+    }
+   ],
+   "file@1": true,
+   "page@1": true,
+   "recall@1": 0.25,
+   "file@2": true,
+   "page@2": true,
+   "recall@2": 0.5,
+   "file@3": true,
+   "page@3": true,
+   "recall@3": 0.5,
+   "file@4": true,
+   "page@4": true,
+   "recall@4": 0.75,
+   "file@5": true,
+   "page@5": true,
+   "recall@5": 0.75,
+   "file@6": true,
+   "page@6": true,
+   "recall@6": 0.75,
+   "file@7": true,
+   "page@7": true,
+   "recall@7": 0.75,
+   "file@8": true,
+   "page@8": true,
+   "recall@8": 0.75,
+   "file@9": true,
+   "page@9": true,
+   "recall@9": 0.75,
+   "file@10": true,
+   "page@10": true,
+   "recall@10": 0.75,
+   "file@11": true,
+   "page@11": true,
+   "recall@11": 0.75,
+   "file@12": true,
+   "page@12": true,
+   "recall@12": 0.75,
+   "file@13": true,
+   "page@13": true,
+   "recall@13": 0.75,
+   "file@14": true,
+   "page@14": true,
+   "recall@14": 0.75,
+   "file@15": true,
+   "page@15": true,
+   "recall@15": 0.75,
+   "file@16": true,
+   "page@16": true,
+   "recall@16": 0.75,
+   "file@17": true,
+   "page@17": true,
+   "recall@17": 0.75,
+   "file@18": true,
+   "page@18": true,
+   "recall@18": 0.75,
+   "file@19": true,
+   "page@19": true,
+   "recall@19": 0.75,
+   "file@20": true,
+   "page@20": true,
+   "recall@20": 0.75,
+   "file@21": true,
+   "page@21": true,
+   "recall@21": 0.75,
+   "file@22": true,
+   "page@22": true,
+   "recall@22": 0.75,
+   "file@23": true,
+   "page@23": true,
+   "recall@23": 0.75,
+   "file@24": true,
+   "page@24": true,
+   "recall@24": 0.75,
+   "file@25": true,
+   "page@25": true,
+   "recall@25": 0.75,
+   "file@26": true,
+   "page@26": true,
+   "recall@26": 0.75,
+   "file@27": true,
+   "page@27": true,
+   "recall@27": 0.75,
+   "file@28": true,
+   "page@28": true,
+   "recall@28": 0.75,
+   "file@29": true,
+   "page@29": true,
+   "recall@29": 0.75,
+   "file@30": true,
+   "page@30": true,
+   "recall@30": 0.75
+  },
+  {
+   "question": "What are the counties mentioned in the document?",
+   "query": "What are the counties mentioned in the document?",
+   "doc": "698bba535087fa9a7f9009e172a7f763.pdf",
+   "pages": [
+    5,
+    18,
+    13,
+    19
+   ],
+   "best_score": 0.57,
+   "found": [
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.57
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.555
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      2
+     ],
+     "score": 0.549
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      5
+     ],
+     "score": 0.532
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      1
+     ],
+     "score": 0.531
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      5
+     ],
+     "score": 0.516
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      2,
+      3
+     ],
+     "score": 0.513
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      12,
+      13
+     ],
+     "score": 0.511
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      17,
+      18
+     ],
+     "score": 0.501
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      2
+     ],
+     "score": 0.499
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.49
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      1
+     ],
+     "score": 0.487
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      3,
+      5
+     ],
+     "score": 0.486
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      13
+     ],
+     "score": 0.482
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      49
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      57
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      19
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      11
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      46
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      29
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      70
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      59
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      26
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      71
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      58
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      35,
+      36
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      22
+     ],
+     "score": 0.479
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      60
+     ],
+     "score": 0.479
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      78
+     ],
+     "score": 0.479
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      74
+     ],
+     "score": 0.479
+    }
+   ],
+   "file@1": true,
+   "page@1": false,
+   "recall@1": 0.0,
+   "file@2": true,
+   "page@2": false,
+   "recall@2": 0.0,
+   "file@3": true,
+   "page@3": false,
+   "recall@3": 0.0,
+   "file@4": true,
+   "page@4": false,
+   "recall@4": 0.0,
+   "file@5": true,
+   "page@5": false,
+   "recall@5": 0.0,
+   "file@6": true,
+   "page@6": true,
+   "recall@6": 0.25,
+   "file@7": true,
+   "page@7": true,
+   "recall@7": 0.25,
+   "file@8": true,
+   "page@8": true,
+   "recall@8": 0.5,
+   "file@9": true,
+   "page@9": true,
+   "recall@9": 0.75,
+   "file@10": true,
+   "page@10": true,
+   "recall@10": 0.75,
+   "file@11": true,
+   "page@11": true,
+   "recall@11": 0.75,
+   "file@12": true,
+   "page@12": true,
+   "recall@12": 0.75,
+   "file@13": true,
+   "page@13": true,
+   "recall@13": 0.75,
+   "file@14": true,
+   "page@14": true,
+   "recall@14": 0.75,
+   "file@15": true,
+   "page@15": true,
+   "recall@15": 0.75,
+   "file@16": true,
+   "page@16": true,
+   "recall@16": 0.75,
+   "file@17": true,
+   "page@17": true,
+   "recall@17": 0.75,
+   "file@18": true,
+   "page@18": true,
+   "recall@18": 0.75,
+   "file@19": true,
+   "page@19": true,
+   "recall@19": 0.75,
+   "file@20": true,
+   "page@20": true,
+   "recall@20": 0.75,
+   "file@21": true,
+   "page@21": true,
+   "recall@21": 0.75,
+   "file@22": true,
+   "page@22": true,
+   "recall@22": 0.75,
+   "file@23": true,
+   "page@23": true,
+   "recall@23": 0.75,
+   "file@24": true,
+   "page@24": true,
+   "recall@24": 0.75,
+   "file@25": true,
+   "page@25": true,
+   "recall@25": 0.75,
+   "file@26": true,
+   "page@26": true,
+   "recall@26": 0.75,
+   "file@27": true,
+   "page@27": true,
+   "recall@27": 0.75,
+   "file@28": true,
+   "page@28": true,
+   "recall@28": 0.75,
+   "file@29": true,
+   "page@29": true,
+   "recall@29": 0.75,
+   "file@30": true,
+   "page@30": true,
+   "recall@30": 0.75
+  },
+  {
+   "question": "How many square miles does the Hamilton country covers according to the document? Give me an appropriate integer.",
+   "query": "How many square miles does the Hamilton country covers according to the document? Give me an appropriate integer.",
+   "doc": "698bba535087fa9a7f9009e172a7f763.pdf",
+   "pages": [
+    11
+   ],
+   "best_score": 0.722,
+   "found": [
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      11
+     ],
+     "score": 0.722
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      9,
+      10
+     ],
+     "score": 0.694
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.687
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      11
+     ],
+     "score": 0.672
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      7,
+      8,
+      9
+     ],
+     "score": 0.667
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      14,
+      15
+     ],
+     "score": 0.665
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      14
+     ],
+     "score": 0.653
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      10,
+      11
+     ],
+     "score": 0.651
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.65
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      14
+     ],
+     "score": 0.636
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      10
+     ],
+     "score": 0.628
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      14
+     ],
+     "score": 0.613
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      16
+     ],
+     "score": 0.605
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      17
+     ],
+     "score": 0.599
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.587
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.584
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      5
+     ],
+     "score": 0.554
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      12
+     ],
+     "score": 0.553
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      17,
+      18
+     ],
+     "score": 0.553
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      10
+     ],
+     "score": 0.548
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      12
+     ],
+     "score": 0.544
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      10,
+      11
+     ],
+     "score": 0.536
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      11,
+      12
+     ],
+     "score": 0.531
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      9
+     ],
+     "score": 0.524
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      15,
+      16
+     ],
+     "score": 0.523
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      17
+     ],
+     "score": 0.523
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      12
+     ],
+     "score": 0.521
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      14
+     ],
+     "score": 0.519
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      16,
+      17
+     ],
+     "score": 0.518
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.517
+    }
+   ],
+   "file@1": true,
+   "page@1": true,
+   "recall@1": 1.0,
+   "file@2": true,
+   "page@2": true,
+   "recall@2": 1.0,
+   "file@3": true,
+   "page@3": true,
+   "recall@3": 1.0,
+   "file@4": true,
+   "page@4": true,
+   "recall@4": 1.0,
+   "file@5": true,
+   "page@5": true,
+   "recall@5": 1.0,
+   "file@6": true,
+   "page@6": true,
+   "recall@6": 1.0,
+   "file@7": true,
+   "page@7": true,
+   "recall@7": 1.0,
+   "file@8": true,
+   "page@8": true,
+   "recall@8": 1.0,
+   "file@9": true,
+   "page@9": true,
+   "recall@9": 1.0,
+   "file@10": true,
+   "page@10": true,
+   "recall@10": 1.0,
+   "file@11": true,
+   "page@11": true,
+   "recall@11": 1.0,
+   "file@12": true,
+   "page@12": true,
+   "recall@12": 1.0,
+   "file@13": true,
+   "page@13": true,
+   "recall@13": 1.0,
+   "file@14": true,
+   "page@14": true,
+   "recall@14": 1.0,
+   "file@15": true,
+   "page@15": true,
+   "recall@15": 1.0,
+   "file@16": true,
+   "page@16": true,
+   "recall@16": 1.0,
+   "file@17": true,
+   "page@17": true,
+   "recall@17": 1.0,
+   "file@18": true,
+   "page@18": true,
+   "recall@18": 1.0,
+   "file@19": true,
+   "page@19": true,
+   "recall@19": 1.0,
+   "file@20": true,
+   "page@20": true,
+   "recall@20": 1.0,
+   "file@21": true,
+   "page@21": true,
+   "recall@21": 1.0,
+   "file@22": true,
+   "page@22": true,
+   "recall@22": 1.0,
+   "file@23": true,
+   "page@23": true,
+   "recall@23": 1.0,
+   "file@24": true,
+   "page@24": true,
+   "recall@24": 1.0,
+   "file@25": true,
+   "page@25": true,
+   "recall@25": 1.0,
+   "file@26": true,
+   "page@26": true,
+   "recall@26": 1.0,
+   "file@27": true,
+   "page@27": true,
+   "recall@27": 1.0,
+   "file@28": true,
+   "page@28": true,
+   "recall@28": 1.0,
+   "file@29": true,
+   "page@29": true,
+   "recall@29": 1.0,
+   "file@30": true,
+   "page@30": true,
+   "recall@30": 1.0
+  },
+  {
+   "question": "Among the most important applications listed, which one is shown a picture of the interface as an example",
+   "query": "Among the most important applications listed, which one is shown a picture of the interface as an example",
+   "doc": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+   "pages": [
+    7,
+    11
+   ],
+   "best_score": 0.455,
+   "found": [
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.455
+    },
+    {
+     "source": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+     "pages": [
+      3,
+      4,
+      5
+     ],
+     "score": 0.431
+    },
+    {
+     "source": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+     "pages": [
+      1,
+      2
+     ],
+     "score": 0.43
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      6
+     ],
+     "score": 0.428
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      6,
+      7
+     ],
+     "score": 0.427
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.423
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      64
+     ],
+     "score": 0.404
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      61
+     ],
+     "score": 0.404
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      40
+     ],
+     "score": 0.403
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      46
+     ],
+     "score": 0.403
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      57
+     ],
+     "score": 0.403
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      29
+     ],
+     "score": 0.403
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      19
+     ],
+     "score": 0.403
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      11
+     ],
+     "score": 0.403
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      49
+     ],
+     "score": 0.403
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      18
+     ],
+     "score": 0.403
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      34
+     ],
+     "score": 0.402
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      37
+     ],
+     "score": 0.402
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      65
+     ],
+     "score": 0.402
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      50
+     ],
+     "score": 0.402
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      48
+     ],
+     "score": 0.402
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      28
+     ],
+     "score": 0.402
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      75
+     ],
+     "score": 0.402
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      77
+     ],
+     "score": 0.402
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      66
+     ],
+     "score": 0.402
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      33
+     ],
+     "score": 0.402
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      76
+     ],
+     "score": 0.402
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      30
+     ],
+     "score": 0.402
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      5
+     ],
+     "score": 0.402
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.402
+    }
+   ],
+   "file@1": false,
+   "page@1": false,
+   "recall@1": 0.0,
+   "file@2": true,
+   "page@2": false,
+   "recall@2": 0.0,
+   "file@3": true,
+   "page@3": false,
+   "recall@3": 0.0,
+   "file@4": true,
+   "page@4": false,
+   "recall@4": 0.0,
+   "file@5": true,
+   "page@5": false,
+   "recall@5": 0.0,
+   "file@6": true,
+   "page@6": false,
+   "recall@6": 0.0,
+   "file@7": true,
+   "page@7": false,
+   "recall@7": 0.0,
+   "file@8": true,
+   "page@8": false,
+   "recall@8": 0.0,
+   "file@9": true,
+   "page@9": false,
+   "recall@9": 0.0,
+   "file@10": true,
+   "page@10": false,
+   "recall@10": 0.0,
+   "file@11": true,
+   "page@11": false,
+   "recall@11": 0.0,
+   "file@12": true,
+   "page@12": false,
+   "recall@12": 0.0,
+   "file@13": true,
+   "page@13": false,
+   "recall@13": 0.0,
+   "file@14": true,
+   "page@14": false,
+   "recall@14": 0.0,
+   "file@15": true,
+   "page@15": false,
+   "recall@15": 0.0,
+   "file@16": true,
+   "page@16": false,
+   "recall@16": 0.0,
+   "file@17": true,
+   "page@17": false,
+   "recall@17": 0.0,
+   "file@18": true,
+   "page@18": false,
+   "recall@18": 0.0,
+   "file@19": true,
+   "page@19": false,
+   "recall@19": 0.0,
+   "file@20": true,
+   "page@20": false,
+   "recall@20": 0.0,
+   "file@21": true,
+   "page@21": false,
+   "recall@21": 0.0,
+   "file@22": true,
+   "page@22": false,
+   "recall@22": 0.0,
+   "file@23": true,
+   "page@23": false,
+   "recall@23": 0.0,
+   "file@24": true,
+   "page@24": false,
+   "recall@24": 0.0,
+   "file@25": true,
+   "page@25": false,
+   "recall@25": 0.0,
+   "file@26": true,
+   "page@26": false,
+   "recall@26": 0.0,
+   "file@27": true,
+   "page@27": false,
+   "recall@27": 0.0,
+   "file@28": true,
+   "page@28": false,
+   "recall@28": 0.0,
+   "file@29": true,
+   "page@29": false,
+   "recall@29": 0.0,
+   "file@30": true,
+   "page@30": false,
+   "recall@30": 0.0
+  },
+  {
+   "question": "How many lines are highlighted in yellow on the first page? Give me an integer.",
+   "query": "How many lines are highlighted in yellow on the first page? Give me an integer.",
+   "doc": "f8d3a162ab9507e021d83dd109118b60.pdf",
+   "pages": [
+    1
+   ],
+   "best_score": 0.516,
+   "found": [
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      27
+     ],
+     "score": 0.516
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      22
+     ],
+     "score": 0.515
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      70
+     ],
+     "score": 0.514
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      32
+     ],
+     "score": 0.514
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      30
+     ],
+     "score": 0.514
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      4
+     ],
+     "score": 0.514
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.514
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      5
+     ],
+     "score": 0.514
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      53
+     ],
+     "score": 0.513
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      38
+     ],
+     "score": 0.513
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      40
+     ],
+     "score": 0.513
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      51
+     ],
+     "score": 0.513
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      61
+     ],
+     "score": 0.513
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      64
+     ],
+     "score": 0.513
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      55
+     ],
+     "score": 0.513
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      58
+     ],
+     "score": 0.513
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      45
+     ],
+     "score": 0.513
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      41
+     ],
+     "score": 0.513
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      54
+     ],
+     "score": 0.513
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      13
+     ],
+     "score": 0.513
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      62
+     ],
+     "score": 0.513
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      24
+     ],
+     "score": 0.513
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      20
+     ],
+     "score": 0.513
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      21
+     ],
+     "score": 0.513
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      43
+     ],
+     "score": 0.513
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      69
+     ],
+     "score": 0.513
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      28
+     ],
+     "score": 0.513
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      37
+     ],
+     "score": 0.513
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      33
+     ],
+     "score": 0.513
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      34
+     ],
+     "score": 0.513
+    }
+   ],
+   "file@1": false,
+   "page@1": false,
+   "recall@1": 0.0,
+   "file@2": false,
+   "page@2": false,
+   "recall@2": 0.0,
+   "file@3": false,
+   "page@3": false,
+   "recall@3": 0.0,
+   "file@4": false,
+   "page@4": false,
+   "recall@4": 0.0,
+   "file@5": false,
+   "page@5": false,
+   "recall@5": 0.0,
+   "file@6": false,
+   "page@6": false,
+   "recall@6": 0.0,
+   "file@7": false,
+   "page@7": false,
+   "recall@7": 0.0,
+   "file@8": false,
+   "page@8": false,
+   "recall@8": 0.0,
+   "file@9": false,
+   "page@9": false,
+   "recall@9": 0.0,
+   "file@10": false,
+   "page@10": false,
+   "recall@10": 0.0,
+   "file@11": false,
+   "page@11": false,
+   "recall@11": 0.0,
+   "file@12": false,
+   "page@12": false,
+   "recall@12": 0.0,
+   "file@13": false,
+   "page@13": false,
+   "recall@13": 0.0,
+   "file@14": false,
+   "page@14": false,
+   "recall@14": 0.0,
+   "file@15": false,
+   "page@15": false,
+   "recall@15": 0.0,
+   "file@16": false,
+   "page@16": false,
+   "recall@16": 0.0,
+   "file@17": false,
+   "page@17": false,
+   "recall@17": 0.0,
+   "file@18": false,
+   "page@18": false,
+   "recall@18": 0.0,
+   "file@19": false,
+   "page@19": false,
+   "recall@19": 0.0,
+   "file@20": false,
+   "page@20": false,
+   "recall@20": 0.0,
+   "file@21": false,
+   "page@21": false,
+   "recall@21": 0.0,
+   "file@22": false,
+   "page@22": false,
+   "recall@22": 0.0,
+   "file@23": false,
+   "page@23": false,
+   "recall@23": 0.0,
+   "file@24": false,
+   "page@24": false,
+   "recall@24": 0.0,
+   "file@25": false,
+   "page@25": false,
+   "recall@25": 0.0,
+   "file@26": false,
+   "page@26": false,
+   "recall@26": 0.0,
+   "file@27": false,
+   "page@27": false,
+   "recall@27": 0.0,
+   "file@28": false,
+   "page@28": false,
+   "recall@28": 0.0,
+   "file@29": false,
+   "page@29": false,
+   "recall@29": 0.0,
+   "file@30": false,
+   "page@30": false,
+   "recall@30": 0.0
+  },
+  {
+   "question": "How to prepare for Tomorrow's Workplace Skills for QUARTER 3? ",
+   "query": "How to prepare for Tomorrow's Workplace Skills for QUARTER 3? ",
+   "doc": "f8d3a162ab9507e021d83dd109118b60.pdf",
+   "pages": [
+    16
+   ],
+   "best_score": 0.761,
+   "found": [
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      16
+     ],
+     "score": 0.761
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      6
+     ],
+     "score": 0.737
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.725
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      16
+     ],
+     "score": 0.708
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      16
+     ],
+     "score": 0.684
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      8
+     ],
+     "score": 0.654
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      16
+     ],
+     "score": 0.647
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      13,
+      14
+     ],
+     "score": 0.633
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      4
+     ],
+     "score": 0.597
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      5
+     ],
+     "score": 0.587
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      8
+     ],
+     "score": 0.583
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      6
+     ],
+     "score": 0.582
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.581
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      14
+     ],
+     "score": 0.572
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.563
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      6
+     ],
+     "score": 0.56
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.559
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      10
+     ],
+     "score": 0.558
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      16
+     ],
+     "score": 0.558
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      5
+     ],
+     "score": 0.552
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.55
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.55
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      8
+     ],
+     "score": 0.548
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      5
+     ],
+     "score": 0.542
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      12
+     ],
+     "score": 0.539
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      14
+     ],
+     "score": 0.533
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      14
+     ],
+     "score": 0.533
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      9
+     ],
+     "score": 0.526
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.52
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      10
+     ],
+     "score": 0.512
+    }
+   ],
+   "file@1": true,
+   "page@1": true,
+   "recall@1": 1.0,
+   "file@2": true,
+   "page@2": true,
+   "recall@2": 1.0,
+   "file@3": true,
+   "page@3": true,
+   "recall@3": 1.0,
+   "file@4": true,
+   "page@4": true,
+   "recall@4": 1.0,
+   "file@5": true,
+   "page@5": true,
+   "recall@5": 1.0,
+   "file@6": true,
+   "page@6": true,
+   "recall@6": 1.0,
+   "file@7": true,
+   "page@7": true,
+   "recall@7": 1.0,
+   "file@8": true,
+   "page@8": true,
+   "recall@8": 1.0,
+   "file@9": true,
+   "page@9": true,
+   "recall@9": 1.0,
+   "file@10": true,
+   "page@10": true,
+   "recall@10": 1.0,
+   "file@11": true,
+   "page@11": true,
+   "recall@11": 1.0,
+   "file@12": true,
+   "page@12": true,
+   "recall@12": 1.0,
+   "file@13": true,
+   "page@13": true,
+   "recall@13": 1.0,
+   "file@14": true,
+   "page@14": true,
+   "recall@14": 1.0,
+   "file@15": true,
+   "page@15": true,
+   "recall@15": 1.0,
+   "file@16": true,
+   "page@16": true,
+   "recall@16": 1.0,
+   "file@17": true,
+   "page@17": true,
+   "recall@17": 1.0,
+   "file@18": true,
+   "page@18": true,
+   "recall@18": 1.0,
+   "file@19": true,
+   "page@19": true,
+   "recall@19": 1.0,
+   "file@20": true,
+   "page@20": true,
+   "recall@20": 1.0,
+   "file@21": true,
+   "page@21": true,
+   "recall@21": 1.0,
+   "file@22": true,
+   "page@22": true,
+   "recall@22": 1.0,
+   "file@23": true,
+   "page@23": true,
+   "recall@23": 1.0,
+   "file@24": true,
+   "page@24": true,
+   "recall@24": 1.0,
+   "file@25": true,
+   "page@25": true,
+   "recall@25": 1.0,
+   "file@26": true,
+   "page@26": true,
+   "recall@26": 1.0,
+   "file@27": true,
+   "page@27": true,
+   "recall@27": 1.0,
+   "file@28": true,
+   "page@28": true,
+   "recall@28": 1.0,
+   "file@29": true,
+   "page@29": true,
+   "recall@29": 1.0,
+   "file@30": true,
+   "page@30": true,
+   "recall@30": 1.0
+  },
+  {
+   "question": "what are the names of Unit 1 and Unit 2 in Semester 1:quarter 1?",
+   "query": "what are the names of Unit 1 and Unit 2 in Semester 1:quarter 1?",
+   "doc": "f8d3a162ab9507e021d83dd109118b60.pdf",
+   "pages": [
+    1,
+    2
+   ],
+   "best_score": 0.563,
+   "found": [
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      5
+     ],
+     "score": 0.563
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.546
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.541
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.535
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      6
+     ],
+     "score": 0.52
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.515
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.5
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      17
+     ],
+     "score": 0.49
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      6
+     ],
+     "score": 0.49
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      14
+     ],
+     "score": 0.488
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      6
+     ],
+     "score": 0.488
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      16
+     ],
+     "score": 0.481
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.475
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.473
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      12
+     ],
+     "score": 0.472
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      5
+     ],
+     "score": 0.468
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.465
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      13,
+      14
+     ],
+     "score": 0.465
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      16
+     ],
+     "score": 0.462
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      10
+     ],
+     "score": 0.46
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      6
+     ],
+     "score": 0.46
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      4
+     ],
+     "score": 0.455
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      8
+     ],
+     "score": 0.455
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.45
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.445
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.442
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      10
+     ],
+     "score": 0.441
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      9
+     ],
+     "score": 0.441
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      8
+     ],
+     "score": 0.436
+    }
+   ],
+   "file@1": true,
+   "page@1": false,
+   "recall@1": 0.0,
+   "file@2": true,
+   "page@2": false,
+   "recall@2": 0.0,
+   "file@3": true,
+   "page@3": false,
+   "recall@3": 0.0,
+   "file@4": true,
+   "page@4": false,
+   "recall@4": 0.0,
+   "file@5": true,
+   "page@5": false,
+   "recall@5": 0.0,
+   "file@6": true,
+   "page@6": false,
+   "recall@6": 0.0,
+   "file@7": true,
+   "page@7": false,
+   "recall@7": 0.0,
+   "file@8": true,
+   "page@8": false,
+   "recall@8": 0.0,
+   "file@9": true,
+   "page@9": false,
+   "recall@9": 0.0,
+   "file@10": true,
+   "page@10": false,
+   "recall@10": 0.0,
+   "file@11": true,
+   "page@11": false,
+   "recall@11": 0.0,
+   "file@12": true,
+   "page@12": false,
+   "recall@12": 0.0,
+   "file@13": true,
+   "page@13": false,
+   "recall@13": 0.0,
+   "file@14": true,
+   "page@14": false,
+   "recall@14": 0.0,
+   "file@15": true,
+   "page@15": false,
+   "recall@15": 0.0,
+   "file@16": true,
+   "page@16": false,
+   "recall@16": 0.0,
+   "file@17": true,
+   "page@17": false,
+   "recall@17": 0.0,
+   "file@18": true,
+   "page@18": false,
+   "recall@18": 0.0,
+   "file@19": true,
+   "page@19": false,
+   "recall@19": 0.0,
+   "file@20": true,
+   "page@20": false,
+   "recall@20": 0.0,
+   "file@21": true,
+   "page@21": false,
+   "recall@21": 0.0,
+   "file@22": true,
+   "page@22": false,
+   "recall@22": 0.0,
+   "file@23": true,
+   "page@23": false,
+   "recall@23": 0.0,
+   "file@24": true,
+   "page@24": false,
+   "recall@24": 0.0,
+   "file@25": true,
+   "page@25": false,
+   "recall@25": 0.0,
+   "file@26": true,
+   "page@26": false,
+   "recall@26": 0.0,
+   "file@27": true,
+   "page@27": false,
+   "recall@27": 0.0,
+   "file@28": true,
+   "page@28": false,
+   "recall@28": 0.0,
+   "file@29": true,
+   "page@29": false,
+   "recall@29": 0.0,
+   "file@30": true,
+   "page@30": false,
+   "recall@30": 0.0
+  },
+  {
+   "question": "What is the title of case study given under unit-8 in table?",
+   "query": "What is the title of case study given under unit-8 in table?",
+   "doc": "f8d3a162ab9507e021d83dd109118b60.pdf",
+   "pages": [
+    7
+   ],
+   "best_score": 0.588,
+   "found": [
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.588
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.587
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      4
+     ],
+     "score": 0.581
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.57
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.566
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.564
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      6
+     ],
+     "score": 0.56
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      6
+     ],
+     "score": 0.55
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.532
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.532
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      35,
+      36
+     ],
+     "score": 0.525
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.524
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      14
+     ],
+     "score": 0.505
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      8
+     ],
+     "score": 0.504
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.502
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      17
+     ],
+     "score": 0.501
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      8
+     ],
+     "score": 0.489
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.488
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.487
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.482
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.482
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      84
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      1
+     ],
+     "score": 0.478
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      5
+     ],
+     "score": 0.476
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      2
+     ],
+     "score": 0.475
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      79
+     ],
+     "score": 0.475
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.474
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.473
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      17
+     ],
+     "score": 0.473
+    }
+   ],
+   "file@1": true,
+   "page@1": true,
+   "recall@1": 1.0,
+   "file@2": true,
+   "page@2": true,
+   "recall@2": 1.0,
+   "file@3": true,
+   "page@3": true,
+   "recall@3": 1.0,
+   "file@4": true,
+   "page@4": true,
+   "recall@4": 1.0,
+   "file@5": true,
+   "page@5": true,
+   "recall@5": 1.0,
+   "file@6": true,
+   "page@6": true,
+   "recall@6": 1.0,
+   "file@7": true,
+   "page@7": true,
+   "recall@7": 1.0,
+   "file@8": true,
+   "page@8": true,
+   "recall@8": 1.0,
+   "file@9": true,
+   "page@9": true,
+   "recall@9": 1.0,
+   "file@10": true,
+   "page@10": true,
+   "recall@10": 1.0,
+   "file@11": true,
+   "page@11": true,
+   "recall@11": 1.0,
+   "file@12": true,
+   "page@12": true,
+   "recall@12": 1.0,
+   "file@13": true,
+   "page@13": true,
+   "recall@13": 1.0,
+   "file@14": true,
+   "page@14": true,
+   "recall@14": 1.0,
+   "file@15": true,
+   "page@15": true,
+   "recall@15": 1.0,
+   "file@16": true,
+   "page@16": true,
+   "recall@16": 1.0,
+   "file@17": true,
+   "page@17": true,
+   "recall@17": 1.0,
+   "file@18": true,
+   "page@18": true,
+   "recall@18": 1.0,
+   "file@19": true,
+   "page@19": true,
+   "recall@19": 1.0,
+   "file@20": true,
+   "page@20": true,
+   "recall@20": 1.0,
+   "file@21": true,
+   "page@21": true,
+   "recall@21": 1.0,
+   "file@22": true,
+   "page@22": true,
+   "recall@22": 1.0,
+   "file@23": true,
+   "page@23": true,
+   "recall@23": 1.0,
+   "file@24": true,
+   "page@24": true,
+   "recall@24": 1.0,
+   "file@25": true,
+   "page@25": true,
+   "recall@25": 1.0,
+   "file@26": true,
+   "page@26": true,
+   "recall@26": 1.0,
+   "file@27": true,
+   "page@27": true,
+   "recall@27": 1.0,
+   "file@28": true,
+   "page@28": true,
+   "recall@28": 1.0,
+   "file@29": true,
+   "page@29": true,
+   "recall@29": 1.0,
+   "file@30": true,
+   "page@30": true,
+   "recall@30": 1.0
+  },
+  {
+   "question": "How many critical thinking case studies are included in all the assignments?",
+   "query": "How many critical thinking case studies are included in all the assignments?",
+   "doc": "f8d3a162ab9507e021d83dd109118b60.pdf",
+   "pages": [
+    3,
+    4,
+    7,
+    15
+   ],
+   "best_score": 0.635,
+   "found": [
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.635
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.608
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.587
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.576
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.568
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.534
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      4
+     ],
+     "score": 0.527
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.519
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      14
+     ],
+     "score": 0.519
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      14
+     ],
+     "score": 0.511
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      10
+     ],
+     "score": 0.506
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.505
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.501
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.488
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.488
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.476
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.473
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      8
+     ],
+     "score": 0.473
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      8
+     ],
+     "score": 0.466
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      9
+     ],
+     "score": 0.466
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      8
+     ],
+     "score": 0.462
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      5
+     ],
+     "score": 0.462
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      6
+     ],
+     "score": 0.455
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      5
+     ],
+     "score": 0.452
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.452
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.448
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      6
+     ],
+     "score": 0.445
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      16
+     ],
+     "score": 0.444
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      6
+     ],
+     "score": 0.442
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      4
+     ],
+     "score": 0.439
+    }
+   ],
+   "file@1": true,
+   "page@1": true,
+   "recall@1": 0.25,
+   "file@2": true,
+   "page@2": true,
+   "recall@2": 0.5,
+   "file@3": true,
+   "page@3": true,
+   "recall@3": 0.5,
+   "file@4": true,
+   "page@4": true,
+   "recall@4": 0.5,
+   "file@5": true,
+   "page@5": true,
+   "recall@5": 0.75,
+   "file@6": true,
+   "page@6": true,
+   "recall@6": 0.75,
+   "file@7": true,
+   "page@7": true,
+   "recall@7": 1.0,
+   "file@8": true,
+   "page@8": true,
+   "recall@8": 1.0,
+   "file@9": true,
+   "page@9": true,
+   "recall@9": 1.0,
+   "file@10": true,
+   "page@10": true,
+   "recall@10": 1.0,
+   "file@11": true,
+   "page@11": true,
+   "recall@11": 1.0,
+   "file@12": true,
+   "page@12": true,
+   "recall@12": 1.0,
+   "file@13": true,
+   "page@13": true,
+   "recall@13": 1.0,
+   "file@14": true,
+   "page@14": true,
+   "recall@14": 1.0,
+   "file@15": true,
+   "page@15": true,
+   "recall@15": 1.0,
+   "file@16": true,
+   "page@16": true,
+   "recall@16": 1.0,
+   "file@17": true,
+   "page@17": true,
+   "recall@17": 1.0,
+   "file@18": true,
+   "page@18": true,
+   "recall@18": 1.0,
+   "file@19": true,
+   "page@19": true,
+   "recall@19": 1.0,
+   "file@20": true,
+   "page@20": true,
+   "recall@20": 1.0,
+   "file@21": true,
+   "page@21": true,
+   "recall@21": 1.0,
+   "file@22": true,
+   "page@22": true,
+   "recall@22": 1.0,
+   "file@23": true,
+   "page@23": true,
+   "recall@23": 1.0,
+   "file@24": true,
+   "page@24": true,
+   "recall@24": 1.0,
+   "file@25": true,
+   "page@25": true,
+   "recall@25": 1.0,
+   "file@26": true,
+   "page@26": true,
+   "recall@26": 1.0,
+   "file@27": true,
+   "page@27": true,
+   "recall@27": 1.0,
+   "file@28": true,
+   "page@28": true,
+   "recall@28": 1.0,
+   "file@29": true,
+   "page@29": true,
+   "recall@29": 1.0,
+   "file@30": true,
+   "page@30": true,
+   "recall@30": 1.0
+  },
+  {
+   "question": "how many LEARNING OUTCOMES should be ANSWERed in UNIT 8? ",
+   "query": "how many LEARNING OUTCOMES should be ANSWERed in UNIT 8? ",
+   "doc": "f8d3a162ab9507e021d83dd109118b60.pdf",
+   "pages": [
+    6,
+    7
+   ],
+   "best_score": 0.56,
+   "found": [
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.56
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.549
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      6
+     ],
+     "score": 0.527
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.509
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.493
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.483
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.481
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      4
+     ],
+     "score": 0.472
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      5
+     ],
+     "score": 0.461
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.46
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.445
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      5
+     ],
+     "score": 0.442
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      14
+     ],
+     "score": 0.436
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      4
+     ],
+     "score": 0.436
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.429
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      17
+     ],
+     "score": 0.422
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      6
+     ],
+     "score": 0.422
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      6
+     ],
+     "score": 0.42
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      10
+     ],
+     "score": 0.411
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      4
+     ],
+     "score": 0.41
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.409
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      14
+     ],
+     "score": 0.409
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      10
+     ],
+     "score": 0.405
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      16
+     ],
+     "score": 0.404
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      4
+     ],
+     "score": 0.402
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.402
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      9
+     ],
+     "score": 0.401
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.4
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      6
+     ],
+     "score": 0.399
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.398
+    }
+   ],
+   "file@1": true,
+   "page@1": false,
+   "recall@1": 0.0,
+   "file@2": true,
+   "page@2": false,
+   "recall@2": 0.0,
+   "file@3": true,
+   "page@3": true,
+   "recall@3": 0.5,
+   "file@4": true,
+   "page@4": true,
+   "recall@4": 1.0,
+   "file@5": true,
+   "page@5": true,
+   "recall@5": 1.0,
+   "file@6": true,
+   "page@6": true,
+   "recall@6": 1.0,
+   "file@7": true,
+   "page@7": true,
+   "recall@7": 1.0,
+   "file@8": true,
+   "page@8": true,
+   "recall@8": 1.0,
+   "file@9": true,
+   "page@9": true,
+   "recall@9": 1.0,
+   "file@10": true,
+   "page@10": true,
+   "recall@10": 1.0,
+   "file@11": true,
+   "page@11": true,
+   "recall@11": 1.0,
+   "file@12": true,
+   "page@12": true,
+   "recall@12": 1.0,
+   "file@13": true,
+   "page@13": true,
+   "recall@13": 1.0,
+   "file@14": true,
+   "page@14": true,
+   "recall@14": 1.0,
+   "file@15": true,
+   "page@15": true,
+   "recall@15": 1.0,
+   "file@16": true,
+   "page@16": true,
+   "recall@16": 1.0,
+   "file@17": true,
+   "page@17": true,
+   "recall@17": 1.0,
+   "file@18": true,
+   "page@18": true,
+   "recall@18": 1.0,
+   "file@19": true,
+   "page@19": true,
+   "recall@19": 1.0,
+   "file@20": true,
+   "page@20": true,
+   "recall@20": 1.0,
+   "file@21": true,
+   "page@21": true,
+   "recall@21": 1.0,
+   "file@22": true,
+   "page@22": true,
+   "recall@22": 1.0,
+   "file@23": true,
+   "page@23": true,
+   "recall@23": 1.0,
+   "file@24": true,
+   "page@24": true,
+   "recall@24": 1.0,
+   "file@25": true,
+   "page@25": true,
+   "recall@25": 1.0,
+   "file@26": true,
+   "page@26": true,
+   "recall@26": 1.0,
+   "file@27": true,
+   "page@27": true,
+   "recall@27": 1.0,
+   "file@28": true,
+   "page@28": true,
+   "recall@28": 1.0,
+   "file@29": true,
+   "page@29": true,
+   "recall@29": 1.0,
+   "file@30": true,
+   "page@30": true,
+   "recall@30": 1.0
+  },
+  {
+   "question": "what's the topic of UNIT 14?",
+   "query": "what's the topic of UNIT 14?",
+   "doc": "f8d3a162ab9507e021d83dd109118b60.pdf",
+   "pages": [
+    10
+   ],
+   "best_score": 0.538,
+   "found": [
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      14
+     ],
+     "score": 0.538
+    },
+    {
+     "source": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+     "pages": [
+      3,
+      4,
+      5
+     ],
+     "score": 0.488
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.482
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      10
+     ],
+     "score": 0.475
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      5
+     ],
+     "score": 0.471
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.469
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.46
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      9
+     ],
+     "score": 0.46
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      5
+     ],
+     "score": 0.457
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      4
+     ],
+     "score": 0.456
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      1
+     ],
+     "score": 0.456
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      14
+     ],
+     "score": 0.452
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      10
+     ],
+     "score": 0.452
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      6
+     ],
+     "score": 0.449
+    },
+    {
+     "source": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+     "pages": [
+      4,
+      5,
+      6
+     ],
+     "score": 0.449
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      17
+     ],
+     "score": 0.449
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      14
+     ],
+     "score": 0.448
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      2
+     ],
+     "score": 0.448
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      4
+     ],
+     "score": 0.447
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      4
+     ],
+     "score": 0.446
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      8
+     ],
+     "score": 0.445
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      16
+     ],
+     "score": 0.441
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      40
+     ],
+     "score": 0.436
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      13,
+      14
+     ],
+     "score": 0.435
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      53
+     ],
+     "score": 0.435
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      59
+     ],
+     "score": 0.435
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      39
+     ],
+     "score": 0.435
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      27
+     ],
+     "score": 0.435
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      64
+     ],
+     "score": 0.434
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      61
+     ],
+     "score": 0.434
+    }
+   ],
+   "file@1": true,
+   "page@1": false,
+   "recall@1": 0.0,
+   "file@2": true,
+   "page@2": false,
+   "recall@2": 0.0,
+   "file@3": true,
+   "page@3": false,
+   "recall@3": 0.0,
+   "file@4": true,
+   "page@4": true,
+   "recall@4": 1.0,
+   "file@5": true,
+   "page@5": true,
+   "recall@5": 1.0,
+   "file@6": true,
+   "page@6": true,
+   "recall@6": 1.0,
+   "file@7": true,
+   "page@7": true,
+   "recall@7": 1.0,
+   "file@8": true,
+   "page@8": true,
+   "recall@8": 1.0,
+   "file@9": true,
+   "page@9": true,
+   "recall@9": 1.0,
+   "file@10": true,
+   "page@10": true,
+   "recall@10": 1.0,
+   "file@11": true,
+   "page@11": true,
+   "recall@11": 1.0,
+   "file@12": true,
+   "page@12": true,
+   "recall@12": 1.0,
+   "file@13": true,
+   "page@13": true,
+   "recall@13": 1.0,
+   "file@14": true,
+   "page@14": true,
+   "recall@14": 1.0,
+   "file@15": true,
+   "page@15": true,
+   "recall@15": 1.0,
+   "file@16": true,
+   "page@16": true,
+   "recall@16": 1.0,
+   "file@17": true,
+   "page@17": true,
+   "recall@17": 1.0,
+   "file@18": true,
+   "page@18": true,
+   "recall@18": 1.0,
+   "file@19": true,
+   "page@19": true,
+   "recall@19": 1.0,
+   "file@20": true,
+   "page@20": true,
+   "recall@20": 1.0,
+   "file@21": true,
+   "page@21": true,
+   "recall@21": 1.0,
+   "file@22": true,
+   "page@22": true,
+   "recall@22": 1.0,
+   "file@23": true,
+   "page@23": true,
+   "recall@23": 1.0,
+   "file@24": true,
+   "page@24": true,
+   "recall@24": 1.0,
+   "file@25": true,
+   "page@25": true,
+   "recall@25": 1.0,
+   "file@26": true,
+   "page@26": true,
+   "recall@26": 1.0,
+   "file@27": true,
+   "page@27": true,
+   "recall@27": 1.0,
+   "file@28": true,
+   "page@28": true,
+   "recall@28": 1.0,
+   "file@29": true,
+   "page@29": true,
+   "recall@29": 1.0,
+   "file@30": true,
+   "page@30": true,
+   "recall@30": 1.0
+  },
+  {
+   "question": "What is the title of the slide?",
+   "query": "What is the title of the slide?",
+   "doc": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+   "pages": [
+    1
+   ],
+   "best_score": 0.478,
+   "found": [
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      30
+     ],
+     "score": 0.478
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.478
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      4
+     ],
+     "score": 0.478
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      5
+     ],
+     "score": 0.478
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      24
+     ],
+     "score": 0.477
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      41
+     ],
+     "score": 0.477
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      21
+     ],
+     "score": 0.477
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      45
+     ],
+     "score": 0.477
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      54
+     ],
+     "score": 0.477
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      62
+     ],
+     "score": 0.477
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      13
+     ],
+     "score": 0.477
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      69
+     ],
+     "score": 0.477
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      43
+     ],
+     "score": 0.477
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      20
+     ],
+     "score": 0.477
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      44
+     ],
+     "score": 0.477
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      10
+     ],
+     "score": 0.477
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      73
+     ],
+     "score": 0.477
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      23
+     ],
+     "score": 0.477
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      74
+     ],
+     "score": 0.477
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      12
+     ],
+     "score": 0.477
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      78
+     ],
+     "score": 0.477
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      9
+     ],
+     "score": 0.477
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      8
+     ],
+     "score": 0.477
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      25
+     ],
+     "score": 0.477
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      60
+     ],
+     "score": 0.477
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      14
+     ],
+     "score": 0.477
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      6
+     ],
+     "score": 0.477
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      47
+     ],
+     "score": 0.477
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.477
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      53
+     ],
+     "score": 0.477
+    }
+   ],
+   "file@1": false,
+   "page@1": false,
+   "recall@1": 0.0,
+   "file@2": false,
+   "page@2": false,
+   "recall@2": 0.0,
+   "file@3": false,
+   "page@3": false,
+   "recall@3": 0.0,
+   "file@4": false,
+   "page@4": false,
+   "recall@4": 0.0,
+   "file@5": false,
+   "page@5": false,
+   "recall@5": 0.0,
+   "file@6": false,
+   "page@6": false,
+   "recall@6": 0.0,
+   "file@7": false,
+   "page@7": false,
+   "recall@7": 0.0,
+   "file@8": false,
+   "page@8": false,
+   "recall@8": 0.0,
+   "file@9": false,
+   "page@9": false,
+   "recall@9": 0.0,
+   "file@10": false,
+   "page@10": false,
+   "recall@10": 0.0,
+   "file@11": false,
+   "page@11": false,
+   "recall@11": 0.0,
+   "file@12": false,
+   "page@12": false,
+   "recall@12": 0.0,
+   "file@13": false,
+   "page@13": false,
+   "recall@13": 0.0,
+   "file@14": false,
+   "page@14": false,
+   "recall@14": 0.0,
+   "file@15": false,
+   "page@15": false,
+   "recall@15": 0.0,
+   "file@16": false,
+   "page@16": false,
+   "recall@16": 0.0,
+   "file@17": false,
+   "page@17": false,
+   "recall@17": 0.0,
+   "file@18": false,
+   "page@18": false,
+   "recall@18": 0.0,
+   "file@19": false,
+   "page@19": false,
+   "recall@19": 0.0,
+   "file@20": false,
+   "page@20": false,
+   "recall@20": 0.0,
+   "file@21": false,
+   "page@21": false,
+   "recall@21": 0.0,
+   "file@22": false,
+   "page@22": false,
+   "recall@22": 0.0,
+   "file@23": false,
+   "page@23": false,
+   "recall@23": 0.0,
+   "file@24": false,
+   "page@24": false,
+   "recall@24": 0.0,
+   "file@25": false,
+   "page@25": false,
+   "recall@25": 0.0,
+   "file@26": false,
+   "page@26": false,
+   "recall@26": 0.0,
+   "file@27": false,
+   "page@27": false,
+   "recall@27": 0.0,
+   "file@28": false,
+   "page@28": false,
+   "recall@28": 0.0,
+   "file@29": false,
+   "page@29": false,
+   "recall@29": 0.0,
+   "file@30": false,
+   "page@30": false,
+   "recall@30": 0.0
+  },
+  {
+   "question": "who is the presenter of this slide?",
+   "query": "who is the presenter of this slide?",
+   "doc": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+   "pages": [
+    1
+   ],
+   "best_score": 0.483,
+   "found": [
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      78
+     ],
+     "score": 0.483
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      13,
+      14
+     ],
+     "score": 0.478
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      78
+     ],
+     "score": 0.474
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      80,
+      81
+     ],
+     "score": 0.468
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      5
+     ],
+     "score": 0.467
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      5
+     ],
+     "score": 0.46
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      78
+     ],
+     "score": 0.445
+    },
+    {
+     "source": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+     "pages": [
+      1,
+      2
+     ],
+     "score": 0.44
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      5
+     ],
+     "score": 0.439
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      1
+     ],
+     "score": 0.428
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      5
+     ],
+     "score": 0.428
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      5
+     ],
+     "score": 0.419
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.416
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      13
+     ],
+     "score": 0.413
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.411
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      16
+     ],
+     "score": 0.411
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      1
+     ],
+     "score": 0.409
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      77
+     ],
+     "score": 0.407
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.4
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      17
+     ],
+     "score": 0.399
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      10
+     ],
+     "score": 0.399
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      2
+     ],
+     "score": 0.398
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      6
+     ],
+     "score": 0.398
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      16
+     ],
+     "score": 0.398
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      5
+     ],
+     "score": 0.398
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      8
+     ],
+     "score": 0.398
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.397
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      9
+     ],
+     "score": 0.397
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      4
+     ],
+     "score": 0.397
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.396
+    }
+   ],
+   "file@1": false,
+   "page@1": false,
+   "recall@1": 0.0,
+   "file@2": false,
+   "page@2": false,
+   "recall@2": 0.0,
+   "file@3": false,
+   "page@3": false,
+   "recall@3": 0.0,
+   "file@4": false,
+   "page@4": false,
+   "recall@4": 0.0,
+   "file@5": false,
+   "page@5": false,
+   "recall@5": 0.0,
+   "file@6": false,
+   "page@6": false,
+   "recall@6": 0.0,
+   "file@7": false,
+   "page@7": false,
+   "recall@7": 0.0,
+   "file@8": true,
+   "page@8": true,
+   "recall@8": 1.0,
+   "file@9": true,
+   "page@9": true,
+   "recall@9": 1.0,
+   "file@10": true,
+   "page@10": true,
+   "recall@10": 1.0,
+   "file@11": true,
+   "page@11": true,
+   "recall@11": 1.0,
+   "file@12": true,
+   "page@12": true,
+   "recall@12": 1.0,
+   "file@13": true,
+   "page@13": true,
+   "recall@13": 1.0,
+   "file@14": true,
+   "page@14": true,
+   "recall@14": 1.0,
+   "file@15": true,
+   "page@15": true,
+   "recall@15": 1.0,
+   "file@16": true,
+   "page@16": true,
+   "recall@16": 1.0,
+   "file@17": true,
+   "page@17": true,
+   "recall@17": 1.0,
+   "file@18": true,
+   "page@18": true,
+   "recall@18": 1.0,
+   "file@19": true,
+   "page@19": true,
+   "recall@19": 1.0,
+   "file@20": true,
+   "page@20": true,
+   "recall@20": 1.0,
+   "file@21": true,
+   "page@21": true,
+   "recall@21": 1.0,
+   "file@22": true,
+   "page@22": true,
+   "recall@22": 1.0,
+   "file@23": true,
+   "page@23": true,
+   "recall@23": 1.0,
+   "file@24": true,
+   "page@24": true,
+   "recall@24": 1.0,
+   "file@25": true,
+   "page@25": true,
+   "recall@25": 1.0,
+   "file@26": true,
+   "page@26": true,
+   "recall@26": 1.0,
+   "file@27": true,
+   "page@27": true,
+   "recall@27": 1.0,
+   "file@28": true,
+   "page@28": true,
+   "recall@28": 1.0,
+   "file@29": true,
+   "page@29": true,
+   "recall@29": 1.0,
+   "file@30": true,
+   "page@30": true,
+   "recall@30": 1.0
+  },
+  {
+   "question": "TOP security concerns of computerized medical information DIAGRAM DISCUSSED ABOUT WHICH YEAR? List all of them like ['2014', '2018', '2020'].",
+   "query": "TOP security concerns of computerized medical information DIAGRAM DISCUSSED ABOUT WHICH YEAR? List all of them like ['2014', '2018', '2020'].",
+   "doc": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+   "pages": [
+    12
+   ],
+   "best_score": 0.575,
+   "found": [
+    {
+     "source": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+     "pages": [
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ],
+     "score": 0.575
+    },
+    {
+     "source": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+     "pages": [
+      3,
+      4,
+      5
+     ],
+     "score": 0.519
+    },
+    {
+     "source": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+     "pages": [
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+     ],
+     "score": 0.483
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      10
+     ],
+     "score": 0.479
+    },
+    {
+     "source": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+     "pages": [
+      1,
+      2
+     ],
+     "score": 0.473
+    },
+    {
+     "source": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+     "pages": [
+      20
+     ],
+     "score": 0.465
+    },
+    {
+     "source": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+     "pages": [
+      4,
+      5,
+      6
+     ],
+     "score": 0.444
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      10
+     ],
+     "score": 0.408
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      17
+     ],
+     "score": 0.403
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.403
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      17
+     ],
+     "score": 0.389
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.386
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      12
+     ],
+     "score": 0.385
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      14
+     ],
+     "score": 0.381
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      10
+     ],
+     "score": 0.379
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.378
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.378
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      10
+     ],
+     "score": 0.377
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      11,
+      12
+     ],
+     "score": 0.365
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      11
+     ],
+     "score": 0.364
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      17,
+      18
+     ],
+     "score": 0.364
+    },
+    {
+     "source": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.361
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.358
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      2
+     ],
+     "score": 0.357
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      18
+     ],
+     "score": 0.355
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      16
+     ],
+     "score": 0.354
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      11
+     ],
+     "score": 0.353
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      12
+     ],
+     "score": 0.351
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      9
+     ],
+     "score": 0.35
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      17
+     ],
+     "score": 0.349
+    }
+   ],
+   "file@1": true,
+   "page@1": true,
+   "recall@1": 1.0,
+   "file@2": true,
+   "page@2": true,
+   "recall@2": 1.0,
+   "file@3": true,
+   "page@3": true,
+   "recall@3": 1.0,
+   "file@4": true,
+   "page@4": true,
+   "recall@4": 1.0,
+   "file@5": true,
+   "page@5": true,
+   "recall@5": 1.0,
+   "file@6": true,
+   "page@6": true,
+   "recall@6": 1.0,
+   "file@7": true,
+   "page@7": true,
+   "recall@7": 1.0,
+   "file@8": true,
+   "page@8": true,
+   "recall@8": 1.0,
+   "file@9": true,
+   "page@9": true,
+   "recall@9": 1.0,
+   "file@10": true,
+   "page@10": true,
+   "recall@10": 1.0,
+   "file@11": true,
+   "page@11": true,
+   "recall@11": 1.0,
+   "file@12": true,
+   "page@12": true,
+   "recall@12": 1.0,
+   "file@13": true,
+   "page@13": true,
+   "recall@13": 1.0,
+   "file@14": true,
+   "page@14": true,
+   "recall@14": 1.0,
+   "file@15": true,
+   "page@15": true,
+   "recall@15": 1.0,
+   "file@16": true,
+   "page@16": true,
+   "recall@16": 1.0,
+   "file@17": true,
+   "page@17": true,
+   "recall@17": 1.0,
+   "file@18": true,
+   "page@18": true,
+   "recall@18": 1.0,
+   "file@19": true,
+   "page@19": true,
+   "recall@19": 1.0,
+   "file@20": true,
+   "page@20": true,
+   "recall@20": 1.0,
+   "file@21": true,
+   "page@21": true,
+   "recall@21": 1.0,
+   "file@22": true,
+   "page@22": true,
+   "recall@22": 1.0,
+   "file@23": true,
+   "page@23": true,
+   "recall@23": 1.0,
+   "file@24": true,
+   "page@24": true,
+   "recall@24": 1.0,
+   "file@25": true,
+   "page@25": true,
+   "recall@25": 1.0,
+   "file@26": true,
+   "page@26": true,
+   "recall@26": 1.0,
+   "file@27": true,
+   "page@27": true,
+   "recall@27": 1.0,
+   "file@28": true,
+   "page@28": true,
+   "recall@28": 1.0,
+   "file@29": true,
+   "page@29": true,
+   "recall@29": 1.0,
+   "file@30": true,
+   "page@30": true,
+   "recall@30": 1.0
+  },
+  {
+   "question": "What are the HIT applications?",
+   "query": "What are the HIT applications?",
+   "doc": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+   "pages": [
+    4
+   ],
+   "best_score": 0.707,
+   "found": [
+    {
+     "source": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+     "pages": [
+      3,
+      4,
+      5
+     ],
+     "score": 0.707
+    },
+    {
+     "source": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+     "pages": [
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ],
+     "score": 0.584
+    },
+    {
+     "source": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+     "pages": [
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+     ],
+     "score": 0.543
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.479
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      10
+     ],
+     "score": 0.468
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      9
+     ],
+     "score": 0.457
+    },
+    {
+     "source": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.453
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      10
+     ],
+     "score": 0.446
+    },
+    {
+     "source": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+     "pages": [
+      4,
+      5,
+      6
+     ],
+     "score": 0.438
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      6
+     ],
+     "score": 0.432
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.428
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.426
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      14
+     ],
+     "score": 0.422
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.419
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.418
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      1
+     ],
+     "score": 0.414
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.411
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.41
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      16
+     ],
+     "score": 0.41
+    },
+    {
+     "source": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+     "pages": [
+      1,
+      2
+     ],
+     "score": 0.409
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.405
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.404
+    },
+    {
+     "source": "a5879805d70c854ea4361e43a84e3bb2.pdf",
+     "pages": [
+      7
+     ],
+     "score": 0.399
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      4
+     ],
+     "score": 0.398
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      68
+     ],
+     "score": 0.397
+    },
+    {
+     "source": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+     "pages": [
+      20
+     ],
+     "score": 0.396
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      14
+     ],
+     "score": 0.396
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.394
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      16
+     ],
+     "score": 0.393
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      10
+     ],
+     "score": 0.39
+    }
+   ],
+   "file@1": true,
+   "page@1": true,
+   "recall@1": 1.0,
+   "file@2": true,
+   "page@2": true,
+   "recall@2": 1.0,
+   "file@3": true,
+   "page@3": true,
+   "recall@3": 1.0,
+   "file@4": true,
+   "page@4": true,
+   "recall@4": 1.0,
+   "file@5": true,
+   "page@5": true,
+   "recall@5": 1.0,
+   "file@6": true,
+   "page@6": true,
+   "recall@6": 1.0,
+   "file@7": true,
+   "page@7": true,
+   "recall@7": 1.0,
+   "file@8": true,
+   "page@8": true,
+   "recall@8": 1.0,
+   "file@9": true,
+   "page@9": true,
+   "recall@9": 1.0,
+   "file@10": true,
+   "page@10": true,
+   "recall@10": 1.0,
+   "file@11": true,
+   "page@11": true,
+   "recall@11": 1.0,
+   "file@12": true,
+   "page@12": true,
+   "recall@12": 1.0,
+   "file@13": true,
+   "page@13": true,
+   "recall@13": 1.0,
+   "file@14": true,
+   "page@14": true,
+   "recall@14": 1.0,
+   "file@15": true,
+   "page@15": true,
+   "recall@15": 1.0,
+   "file@16": true,
+   "page@16": true,
+   "recall@16": 1.0,
+   "file@17": true,
+   "page@17": true,
+   "recall@17": 1.0,
+   "file@18": true,
+   "page@18": true,
+   "recall@18": 1.0,
+   "file@19": true,
+   "page@19": true,
+   "recall@19": 1.0,
+   "file@20": true,
+   "page@20": true,
+   "recall@20": 1.0,
+   "file@21": true,
+   "page@21": true,
+   "recall@21": 1.0,
+   "file@22": true,
+   "page@22": true,
+   "recall@22": 1.0,
+   "file@23": true,
+   "page@23": true,
+   "recall@23": 1.0,
+   "file@24": true,
+   "page@24": true,
+   "recall@24": 1.0,
+   "file@25": true,
+   "page@25": true,
+   "recall@25": 1.0,
+   "file@26": true,
+   "page@26": true,
+   "recall@26": 1.0,
+   "file@27": true,
+   "page@27": true,
+   "recall@27": 1.0,
+   "file@28": true,
+   "page@28": true,
+   "recall@28": 1.0,
+   "file@29": true,
+   "page@29": true,
+   "recall@29": 1.0,
+   "file@30": true,
+   "page@30": true,
+   "recall@30": 1.0
+  },
+  {
+   "question": "How many times does \"HIT\" appear in slide?",
+   "query": "How many times does \"HIT\" appear in slide?",
+   "doc": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+   "pages": [
+    1,
+    3,
+    4
+   ],
+   "best_score": 0.525,
+   "found": [
+    {
+     "source": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+     "pages": [
+      3,
+      4,
+      5
+     ],
+     "score": 0.525
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      1
+     ],
+     "score": 0.48
+    },
+    {
+     "source": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+     "pages": [
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ],
+     "score": 0.42
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      78
+     ],
+     "score": 0.384
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      11
+     ],
+     "score": 0.382
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      13
+     ],
+     "score": 0.381
+    },
+    {
+     "source": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+     "pages": [
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+     ],
+     "score": 0.381
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      16
+     ],
+     "score": 0.38
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      33
+     ],
+     "score": 0.377
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      17
+     ],
+     "score": 0.374
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      33
+     ],
+     "score": 0.367
+    },
+    {
+     "source": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+     "pages": [
+      1,
+      2
+     ],
+     "score": 0.365
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      56
+     ],
+     "score": 0.362
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      18
+     ],
+     "score": 0.359
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      15
+     ],
+     "score": 0.353
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      56
+     ],
+     "score": 0.351
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      54
+     ],
+     "score": 0.342
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      72
+     ],
+     "score": 0.342
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      51
+     ],
+     "score": 0.341
+    },
+    {
+     "source": "698bba535087fa9a7f9009e172a7f763.pdf",
+     "pages": [
+      17
+     ],
+     "score": 0.339
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      38
+     ],
+     "score": 0.339
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      18
+     ],
+     "score": 0.339
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      33
+     ],
+     "score": 0.339
+    },
+    {
+     "source": "c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+     "pages": [
+      4,
+      5,
+      6
+     ],
+     "score": 0.337
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      25
+     ],
+     "score": 0.336
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      55
+     ],
+     "score": 0.336
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      72
+     ],
+     "score": 0.335
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      79
+     ],
+     "score": 0.335
+    },
+    {
+     "source": "f8d3a162ab9507e021d83dd109118b60.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.333
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      33
+     ],
+     "score": 0.333
+    }
+   ],
+   "file@1": true,
+   "page@1": true,
+   "recall@1": 0.667,
+   "file@2": true,
+   "page@2": true,
+   "recall@2": 0.667,
+   "file@3": true,
+   "page@3": true,
+   "recall@3": 0.667,
+   "file@4": true,
+   "page@4": true,
+   "recall@4": 0.667,
+   "file@5": true,
+   "page@5": true,
+   "recall@5": 0.667,
+   "file@6": true,
+   "page@6": true,
+   "recall@6": 0.667,
+   "file@7": true,
+   "page@7": true,
+   "recall@7": 0.667,
+   "file@8": true,
+   "page@8": true,
+   "recall@8": 0.667,
+   "file@9": true,
+   "page@9": true,
+   "recall@9": 0.667,
+   "file@10": true,
+   "page@10": true,
+   "recall@10": 0.667,
+   "file@11": true,
+   "page@11": true,
+   "recall@11": 0.667,
+   "file@12": true,
+   "page@12": true,
+   "recall@12": 1.0,
+   "file@13": true,
+   "page@13": true,
+   "recall@13": 1.0,
+   "file@14": true,
+   "page@14": true,
+   "recall@14": 1.0,
+   "file@15": true,
+   "page@15": true,
+   "recall@15": 1.0,
+   "file@16": true,
+   "page@16": true,
+   "recall@16": 1.0,
+   "file@17": true,
+   "page@17": true,
+   "recall@17": 1.0,
+   "file@18": true,
+   "page@18": true,
+   "recall@18": 1.0,
+   "file@19": true,
+   "page@19": true,
+   "recall@19": 1.0,
+   "file@20": true,
+   "page@20": true,
+   "recall@20": 1.0,
+   "file@21": true,
+   "page@21": true,
+   "recall@21": 1.0,
+   "file@22": true,
+   "page@22": true,
+   "recall@22": 1.0,
+   "file@23": true,
+   "page@23": true,
+   "recall@23": 1.0,
+   "file@24": true,
+   "page@24": true,
+   "recall@24": 1.0,
+   "file@25": true,
+   "page@25": true,
+   "recall@25": 1.0,
+   "file@26": true,
+   "page@26": true,
+   "recall@26": 1.0,
+   "file@27": true,
+   "page@27": true,
+   "recall@27": 1.0,
+   "file@28": true,
+   "page@28": true,
+   "recall@28": 1.0,
+   "file@29": true,
+   "page@29": true,
+   "recall@29": 1.0,
+   "file@30": true,
+   "page@30": true,
+   "recall@30": 1.0
+  },
+  {
+   "question": "what is the percentage change of  return for allowance from 2016 to  2017? Round your answer to one decimal  ",
+   "query": "what is the percentage change of  return for allowance from 2016 to  2017? Round your answer to one decimal  ",
+   "doc": "AMAZON_2017_10K.pdf",
+   "pages": [
+    43
+   ],
+   "best_score": 0.47,
+   "found": [
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      29
+     ],
+     "score": 0.47
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      64
+     ],
+     "score": 0.469
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      54
+     ],
+     "score": 0.464
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      66
+     ],
+     "score": 0.462
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      21
+     ],
+     "score": 0.461
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      66
+     ],
+     "score": 0.461
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      65
+     ],
+     "score": 0.455
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      17
+     ],
+     "score": 0.451
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      71
+     ],
+     "score": 0.448
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      28
+     ],
+     "score": 0.446
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      54
+     ],
+     "score": 0.445
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      65
+     ],
+     "score": 0.444
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      65
+     ],
+     "score": 0.438
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      64
+     ],
+     "score": 0.436
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      65
+     ],
+     "score": 0.435
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      39
+     ],
+     "score": 0.432
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      46
+     ],
+     "score": 0.429
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      53
+     ],
+     "score": 0.428
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      49
+     ],
+     "score": 0.427
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      64
+     ],
+     "score": 0.423
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      25
+     ],
+     "score": 0.422
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      29
+     ],
+     "score": 0.421
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      4
+     ],
+     "score": 0.42
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      46
+     ],
+     "score": 0.418
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      29
+     ],
+     "score": 0.415
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      1,
+      2
+     ],
+     "score": 0.41
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      69
+     ],
+     "score": 0.407
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      65
+     ],
+     "score": 0.407
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      40
+     ],
+     "score": 0.406
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      66
+     ],
+     "score": 0.406
+    }
+   ],
+   "file@1": true,
+   "page@1": false,
+   "recall@1": 0.0,
+   "file@2": true,
+   "page@2": false,
+   "recall@2": 0.0,
+   "file@3": true,
+   "page@3": false,
+   "recall@3": 0.0,
+   "file@4": true,
+   "page@4": false,
+   "recall@4": 0.0,
+   "file@5": true,
+   "page@5": false,
+   "recall@5": 0.0,
+   "file@6": true,
+   "page@6": false,
+   "recall@6": 0.0,
+   "file@7": true,
+   "page@7": false,
+   "recall@7": 0.0,
+   "file@8": true,
+   "page@8": false,
+   "recall@8": 0.0,
+   "file@9": true,
+   "page@9": false,
+   "recall@9": 0.0,
+   "file@10": true,
+   "page@10": false,
+   "recall@10": 0.0,
+   "file@11": true,
+   "page@11": false,
+   "recall@11": 0.0,
+   "file@12": true,
+   "page@12": false,
+   "recall@12": 0.0,
+   "file@13": true,
+   "page@13": false,
+   "recall@13": 0.0,
+   "file@14": true,
+   "page@14": false,
+   "recall@14": 0.0,
+   "file@15": true,
+   "page@15": false,
+   "recall@15": 0.0,
+   "file@16": true,
+   "page@16": false,
+   "recall@16": 0.0,
+   "file@17": true,
+   "page@17": false,
+   "recall@17": 0.0,
+   "file@18": true,
+   "page@18": false,
+   "recall@18": 0.0,
+   "file@19": true,
+   "page@19": false,
+   "recall@19": 0.0,
+   "file@20": true,
+   "page@20": false,
+   "recall@20": 0.0,
+   "file@21": true,
+   "page@21": false,
+   "recall@21": 0.0,
+   "file@22": true,
+   "page@22": false,
+   "recall@22": 0.0,
+   "file@23": true,
+   "page@23": false,
+   "recall@23": 0.0,
+   "file@24": true,
+   "page@24": false,
+   "recall@24": 0.0,
+   "file@25": true,
+   "page@25": false,
+   "recall@25": 0.0,
+   "file@26": true,
+   "page@26": false,
+   "recall@26": 0.0,
+   "file@27": true,
+   "page@27": false,
+   "recall@27": 0.0,
+   "file@28": true,
+   "page@28": false,
+   "recall@28": 0.0,
+   "file@29": true,
+   "page@29": false,
+   "recall@29": 0.0,
+   "file@30": true,
+   "page@30": false,
+   "recall@30": 0.0
+  },
+  {
+   "question": "what are the components of cost of sales  for Amazon's FY2017?",
+   "query": "what are the components of cost of sales  for Amazon's FY2017?",
+   "doc": "AMAZON_2017_10K.pdf",
+   "pages": [
+    44
+   ],
+   "best_score": 0.642,
+   "found": [
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      27
+     ],
+     "score": 0.642
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      43
+     ],
+     "score": 0.635
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      44
+     ],
+     "score": 0.628
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      27
+     ],
+     "score": 0.626
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      43
+     ],
+     "score": 0.616
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      28
+     ],
+     "score": 0.614
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      28
+     ],
+     "score": 0.611
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      38
+     ],
+     "score": 0.604
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      26
+     ],
+     "score": 0.599
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      44
+     ],
+     "score": 0.598
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      43
+     ],
+     "score": 0.592
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      46
+     ],
+     "score": 0.59
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      25
+     ],
+     "score": 0.585
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      43
+     ],
+     "score": 0.583
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      44
+     ],
+     "score": 0.583
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      27
+     ],
+     "score": 0.576
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      69
+     ],
+     "score": 0.572
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      23
+     ],
+     "score": 0.57
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      43
+     ],
+     "score": 0.566
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      25
+     ],
+     "score": 0.564
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      27
+     ],
+     "score": 0.563
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      28
+     ],
+     "score": 0.562
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      69
+     ],
+     "score": 0.559
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      19
+     ],
+     "score": 0.557
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      68
+     ],
+     "score": 0.553
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      39
+     ],
+     "score": 0.553
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      26
+     ],
+     "score": 0.548
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      28
+     ],
+     "score": 0.547
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      44
+     ],
+     "score": 0.546
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      40
+     ],
+     "score": 0.543
+    }
+   ],
+   "file@1": true,
+   "page@1": false,
+   "recall@1": 0.0,
+   "file@2": true,
+   "page@2": false,
+   "recall@2": 0.0,
+   "file@3": true,
+   "page@3": true,
+   "recall@3": 1.0,
+   "file@4": true,
+   "page@4": true,
+   "recall@4": 1.0,
+   "file@5": true,
+   "page@5": true,
+   "recall@5": 1.0,
+   "file@6": true,
+   "page@6": true,
+   "recall@6": 1.0,
+   "file@7": true,
+   "page@7": true,
+   "recall@7": 1.0,
+   "file@8": true,
+   "page@8": true,
+   "recall@8": 1.0,
+   "file@9": true,
+   "page@9": true,
+   "recall@9": 1.0,
+   "file@10": true,
+   "page@10": true,
+   "recall@10": 1.0,
+   "file@11": true,
+   "page@11": true,
+   "recall@11": 1.0,
+   "file@12": true,
+   "page@12": true,
+   "recall@12": 1.0,
+   "file@13": true,
+   "page@13": true,
+   "recall@13": 1.0,
+   "file@14": true,
+   "page@14": true,
+   "recall@14": 1.0,
+   "file@15": true,
+   "page@15": true,
+   "recall@15": 1.0,
+   "file@16": true,
+   "page@16": true,
+   "recall@16": 1.0,
+   "file@17": true,
+   "page@17": true,
+   "recall@17": 1.0,
+   "file@18": true,
+   "page@18": true,
+   "recall@18": 1.0,
+   "file@19": true,
+   "page@19": true,
+   "recall@19": 1.0,
+   "file@20": true,
+   "page@20": true,
+   "recall@20": 1.0,
+   "file@21": true,
+   "page@21": true,
+   "recall@21": 1.0,
+   "file@22": true,
+   "page@22": true,
+   "recall@22": 1.0,
+   "file@23": true,
+   "page@23": true,
+   "recall@23": 1.0,
+   "file@24": true,
+   "page@24": true,
+   "recall@24": 1.0,
+   "file@25": true,
+   "page@25": true,
+   "recall@25": 1.0,
+   "file@26": true,
+   "page@26": true,
+   "recall@26": 1.0,
+   "file@27": true,
+   "page@27": true,
+   "recall@27": 1.0,
+   "file@28": true,
+   "page@28": true,
+   "recall@28": 1.0,
+   "file@29": true,
+   "page@29": true,
+   "recall@29": 1.0,
+   "file@30": true,
+   "page@30": true,
+   "recall@30": 1.0
+  },
+  {
+   "question": "How do Amazon recognize least cost?",
+   "query": "How do Amazon recognize least cost?",
+   "doc": "AMAZON_2017_10K.pdf",
+   "pages": [
+    47
+   ],
+   "best_score": 0.561,
+   "found": [
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      43
+     ],
+     "score": 0.561
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      27
+     ],
+     "score": 0.558
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      43
+     ],
+     "score": 0.546
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      28
+     ],
+     "score": 0.545
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      46
+     ],
+     "score": 0.54
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      43
+     ],
+     "score": 0.538
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      43
+     ],
+     "score": 0.529
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      49
+     ],
+     "score": 0.513
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.494
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      44
+     ],
+     "score": 0.49
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.485
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      45
+     ],
+     "score": 0.484
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      48
+     ],
+     "score": 0.477
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      21
+     ],
+     "score": 0.476
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      47
+     ],
+     "score": 0.476
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      63
+     ],
+     "score": 0.476
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      44
+     ],
+     "score": 0.475
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      49
+     ],
+     "score": 0.475
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      3
+     ],
+     "score": 0.472
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      63
+     ],
+     "score": 0.468
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      47
+     ],
+     "score": 0.467
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      27
+     ],
+     "score": 0.465
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      4
+     ],
+     "score": 0.464
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      47
+     ],
+     "score": 0.45
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      19
+     ],
+     "score": 0.449
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      44
+     ],
+     "score": 0.448
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      14
+     ],
+     "score": 0.446
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      21
+     ],
+     "score": 0.446
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      28
+     ],
+     "score": 0.441
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      45
+     ],
+     "score": 0.44
+    }
+   ],
+   "file@1": true,
+   "page@1": false,
+   "recall@1": 0.0,
+   "file@2": true,
+   "page@2": false,
+   "recall@2": 0.0,
+   "file@3": true,
+   "page@3": false,
+   "recall@3": 0.0,
+   "file@4": true,
+   "page@4": false,
+   "recall@4": 0.0,
+   "file@5": true,
+   "page@5": false,
+   "recall@5": 0.0,
+   "file@6": true,
+   "page@6": false,
+   "recall@6": 0.0,
+   "file@7": true,
+   "page@7": false,
+   "recall@7": 0.0,
+   "file@8": true,
+   "page@8": false,
+   "recall@8": 0.0,
+   "file@9": true,
+   "page@9": false,
+   "recall@9": 0.0,
+   "file@10": true,
+   "page@10": false,
+   "recall@10": 0.0,
+   "file@11": true,
+   "page@11": false,
+   "recall@11": 0.0,
+   "file@12": true,
+   "page@12": false,
+   "recall@12": 0.0,
+   "file@13": true,
+   "page@13": false,
+   "recall@13": 0.0,
+   "file@14": true,
+   "page@14": false,
+   "recall@14": 0.0,
+   "file@15": true,
+   "page@15": true,
+   "recall@15": 1.0,
+   "file@16": true,
+   "page@16": true,
+   "recall@16": 1.0,
+   "file@17": true,
+   "page@17": true,
+   "recall@17": 1.0,
+   "file@18": true,
+   "page@18": true,
+   "recall@18": 1.0,
+   "file@19": true,
+   "page@19": true,
+   "recall@19": 1.0,
+   "file@20": true,
+   "page@20": true,
+   "recall@20": 1.0,
+   "file@21": true,
+   "page@21": true,
+   "recall@21": 1.0,
+   "file@22": true,
+   "page@22": true,
+   "recall@22": 1.0,
+   "file@23": true,
+   "page@23": true,
+   "recall@23": 1.0,
+   "file@24": true,
+   "page@24": true,
+   "recall@24": 1.0,
+   "file@25": true,
+   "page@25": true,
+   "recall@25": 1.0,
+   "file@26": true,
+   "page@26": true,
+   "recall@26": 1.0,
+   "file@27": true,
+   "page@27": true,
+   "recall@27": 1.0,
+   "file@28": true,
+   "page@28": true,
+   "recall@28": 1.0,
+   "file@29": true,
+   "page@29": true,
+   "recall@29": 1.0,
+   "file@30": true,
+   "page@30": true,
+   "recall@30": 1.0
+  },
+  {
+   "question": "what amount is liabilities for unredeemed gift cards in FY2017 for Amazon? Answer in billion.",
+   "query": "what amount is liabilities for unredeemed gift cards in FY2017 for Amazon? Answer in billion.",
+   "doc": "AMAZON_2017_10K.pdf",
+   "pages": [
+    48
+   ],
+   "best_score": 0.738,
+   "found": [
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      48
+     ],
+     "score": 0.738
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      34
+     ],
+     "score": 0.601
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      59
+     ],
+     "score": 0.562
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      48
+     ],
+     "score": 0.558
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      34
+     ],
+     "score": 0.557
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      59
+     ],
+     "score": 0.551
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      59
+     ],
+     "score": 0.529
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      24
+     ],
+     "score": 0.528
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      56
+     ],
+     "score": 0.527
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      23
+     ],
+     "score": 0.524
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      46
+     ],
+     "score": 0.52
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      51
+     ],
+     "score": 0.518
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      49
+     ],
+     "score": 0.506
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      58
+     ],
+     "score": 0.506
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      58
+     ],
+     "score": 0.505
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      56
+     ],
+     "score": 0.499
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      53
+     ],
+     "score": 0.498
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      67
+     ],
+     "score": 0.498
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      49
+     ],
+     "score": 0.497
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      23
+     ],
+     "score": 0.494
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      57
+     ],
+     "score": 0.493
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      4
+     ],
+     "score": 0.493
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      32
+     ],
+     "score": 0.491
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      46
+     ],
+     "score": 0.49
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      67
+     ],
+     "score": 0.489
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      51
+     ],
+     "score": 0.488
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      23
+     ],
+     "score": 0.487
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      23
+     ],
+     "score": 0.483
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      57
+     ],
+     "score": 0.482
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      43
+     ],
+     "score": 0.481
+    }
+   ],
+   "file@1": true,
+   "page@1": true,
+   "recall@1": 1.0,
+   "file@2": true,
+   "page@2": true,
+   "recall@2": 1.0,
+   "file@3": true,
+   "page@3": true,
+   "recall@3": 1.0,
+   "file@4": true,
+   "page@4": true,
+   "recall@4": 1.0,
+   "file@5": true,
+   "page@5": true,
+   "recall@5": 1.0,
+   "file@6": true,
+   "page@6": true,
+   "recall@6": 1.0,
+   "file@7": true,
+   "page@7": true,
+   "recall@7": 1.0,
+   "file@8": true,
+   "page@8": true,
+   "recall@8": 1.0,
+   "file@9": true,
+   "page@9": true,
+   "recall@9": 1.0,
+   "file@10": true,
+   "page@10": true,
+   "recall@10": 1.0,
+   "file@11": true,
+   "page@11": true,
+   "recall@11": 1.0,
+   "file@12": true,
+   "page@12": true,
+   "recall@12": 1.0,
+   "file@13": true,
+   "page@13": true,
+   "recall@13": 1.0,
+   "file@14": true,
+   "page@14": true,
+   "recall@14": 1.0,
+   "file@15": true,
+   "page@15": true,
+   "recall@15": 1.0,
+   "file@16": true,
+   "page@16": true,
+   "recall@16": 1.0,
+   "file@17": true,
+   "page@17": true,
+   "recall@17": 1.0,
+   "file@18": true,
+   "page@18": true,
+   "recall@18": 1.0,
+   "file@19": true,
+   "page@19": true,
+   "recall@19": 1.0,
+   "file@20": true,
+   "page@20": true,
+   "recall@20": 1.0,
+   "file@21": true,
+   "page@21": true,
+   "recall@21": 1.0,
+   "file@22": true,
+   "page@22": true,
+   "recall@22": 1.0,
+   "file@23": true,
+   "page@23": true,
+   "recall@23": 1.0,
+   "file@24": true,
+   "page@24": true,
+   "recall@24": 1.0,
+   "file@25": true,
+   "page@25": true,
+   "recall@25": 1.0,
+   "file@26": true,
+   "page@26": true,
+   "recall@26": 1.0,
+   "file@27": true,
+   "page@27": true,
+   "recall@27": 1.0,
+   "file@28": true,
+   "page@28": true,
+   "recall@28": 1.0,
+   "file@29": true,
+   "page@29": true,
+   "recall@29": 1.0,
+   "file@30": true,
+   "page@30": true,
+   "recall@30": 1.0
+  },
+  {
+   "question": "what is depreciation expense on property and equipment in 2017 for Amazon? Answer in billion",
+   "query": "what is depreciation expense on property and equipment in 2017 for Amazon? Answer in billion",
+   "doc": "AMAZON_2017_10K.pdf",
+   "pages": [
+    52
+   ],
+   "best_score": 0.704,
+   "found": [
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      71
+     ],
+     "score": 0.704
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      46
+     ],
+     "score": 0.651
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      52
+     ],
+     "score": 0.647
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      71
+     ],
+     "score": 0.627
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      52
+     ],
+     "score": 0.627
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      40
+     ],
+     "score": 0.609
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      71
+     ],
+     "score": 0.608
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      71
+     ],
+     "score": 0.585
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      64
+     ],
+     "score": 0.579
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      23
+     ],
+     "score": 0.577
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      71
+     ],
+     "score": 0.573
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      39
+     ],
+     "score": 0.572
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      52
+     ],
+     "score": 0.567
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      46
+     ],
+     "score": 0.566
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      52
+     ],
+     "score": 0.565
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      47
+     ],
+     "score": 0.562
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      66
+     ],
+     "score": 0.562
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      46
+     ],
+     "score": 0.55
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      37
+     ],
+     "score": 0.55
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      52
+     ],
+     "score": 0.55
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      55
+     ],
+     "score": 0.548
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      46
+     ],
+     "score": 0.545
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      29
+     ],
+     "score": 0.539
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      64
+     ],
+     "score": 0.537
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      34
+     ],
+     "score": 0.534
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      30
+     ],
+     "score": 0.528
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      66
+     ],
+     "score": 0.528
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      23
+     ],
+     "score": 0.524
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      48
+     ],
+     "score": 0.523
+    },
+    {
+     "source": "AMAZON_2017_10K.pdf",
+     "pages": [
+      23
+     ],
+     "score": 0.521
+    }
+   ],
+   "file@1": true,
+   "page@1": false,
+   "recall@1": 0.0,
+   "file@2": true,
+   "page@2": false,
+   "recall@2": 0.0,
+   "file@3": true,
+   "page@3": true,
+   "recall@3": 1.0,
+   "file@4": true,
+   "page@4": true,
+   "recall@4": 1.0,
+   "file@5": true,
+   "page@5": true,
+   "recall@5": 1.0,
+   "file@6": true,
+   "page@6": true,
+   "recall@6": 1.0,
+   "file@7": true,
+   "page@7": true,
+   "recall@7": 1.0,
+   "file@8": true,
+   "page@8": true,
+   "recall@8": 1.0,
+   "file@9": true,
+   "page@9": true,
+   "recall@9": 1.0,
+   "file@10": true,
+   "page@10": true,
+   "recall@10": 1.0,
+   "file@11": true,
+   "page@11": true,
+   "recall@11": 1.0,
+   "file@12": true,
+   "page@12": true,
+   "recall@12": 1.0,
+   "file@13": true,
+   "page@13": true,
+   "recall@13": 1.0,
+   "file@14": true,
+   "page@14": true,
+   "recall@14": 1.0,
+   "file@15": true,
+   "page@15": true,
+   "recall@15": 1.0,
+   "file@16": true,
+   "page@16": true,
+   "recall@16": 1.0,
+   "file@17": true,
+   "page@17": true,
+   "recall@17": 1.0,
+   "file@18": true,
+   "page@18": true,
+   "recall@18": 1.0,
+   "file@19": true,
+   "page@19": true,
+   "recall@19": 1.0,
+   "file@20": true,
+   "page@20": true,
+   "recall@20": 1.0,
+   "file@21": true,
+   "page@21": true,
+   "recall@21": 1.0,
+   "file@22": true,
+   "page@22": true,
+   "recall@22": 1.0,
+   "file@23": true,
+   "page@23": true,
+   "recall@23": 1.0,
+   "file@24": true,
+   "page@24": true,
+   "recall@24": 1.0,
+   "file@25": true,
+   "page@25": true,
+   "recall@25": 1.0,
+   "file@26": true,
+   "page@26": true,
+   "recall@26": 1.0,
+   "file@27": true,
+   "page@27": true,
+   "recall@27": 1.0,
+   "file@28": true,
+   "page@28": true,
+   "recall@28": 1.0,
+   "file@29": true,
+   "page@29": true,
+   "recall@29": 1.0,
+   "file@30": true,
+   "page@30": true,
+   "recall@30": 1.0
+  }
+ ]
+}

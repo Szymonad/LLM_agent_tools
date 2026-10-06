@@ -25,6 +25,8 @@
 !agent_lg_pdf_search/eval/__init__.py
 !agent_lg_pdf_search/eval/evaluate.py
 !agent_lg_pdf_search/eval/answers.py
+!agent_lg_pdf_search/eval/results/
+!agent_lg_pdf_search/eval/results/**
 !scanners/
 !scanners/__init__.py
 !scanners/llama_scanner.py

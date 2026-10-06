@@ -1,0 +1,4 @@
+REPHRASE = """Rewrite the last user question as a standalone English search query. Never answer it.
+
+Use the conversation to work out what the question is about, but add nothing that is not in it.
+Write only the query."""
