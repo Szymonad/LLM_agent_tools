@@ -4,6 +4,8 @@ Run from the repo root:
 
     python -m agent_lg_pdf_search.eval.answers
 """
+import time
+
 from langchain_core.messages import HumanMessage
 
 from agent_lg_pdf_search.agent import build_graph
@@ -33,3 +35,32 @@ def ask(agent, item, number):
         "answer": state["messages"][-1].content,
         "expected": item["answer"],
     }
+
+
+def run():
+    """Ask the agent every evaluation question.
+
+    One line per question is printed on stdout as it finishes. A question
+    that fails does not stop the run: its row gets the error as the answer
+    and an empty query.
+
+    Returns:
+        list[dict]: One row per question, as returned by ``ask``.
+    """
+    agent = build_graph()
+    questions = load_questions()
+    rows = []
+    for number, item in enumerate(questions, start=1):
+        started = time.perf_counter()
+        try:
+            row = ask(agent, item, number)
+        except Exception as error:
+            row = {
+                "question": item["question"],
+                "query": "",
+                "answer": f"ERROR {type(error).__name__}: {error}",
+                "expected": item["answer"],
+            }
+        rows.append(row)
+        print(f"{number:3}/{len(questions)} {time.perf_counter() - started:5.1f} s | {item['question'][:60]}")
+    return rows
