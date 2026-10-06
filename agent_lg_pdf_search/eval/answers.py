@@ -29,8 +29,8 @@ def ask(agent, item, number):
 
     Returns:
         dict: Keys ``question``, ``query`` (the search query the agent
-        wrote), ``answer``, ``chunks`` (ids of the chunks the model got,
-        best first, separated by commas) and ``expected``.
+        wrote), ``answer``, ``expected`` and ``chunks`` (ids of the chunks
+        the model got, best first, separated by commas).
     """
     thread = {"configurable": {"thread_id": str(number)}}
     state = agent.invoke({"messages": [HumanMessage(item["question"])]}, thread)
@@ -39,8 +39,8 @@ def ask(agent, item, number):
         "question": item["question"],
         "query": state["query"],
         "answer": state["messages"][-1].content,
-        "chunks": ", ".join(chunk.id for chunk, score in hits),
         "expected": item["answer"],
+        "chunks": ", ".join(chunk.id for chunk, score in hits),
     }
 
 
@@ -52,7 +52,8 @@ def run():
     and an empty query and chunk list.
 
     Returns:
-        list[dict]: One row per question, as returned by ``ask``.
+        list[dict]: One row per question, as returned by ``ask``, with
+        ``seconds`` added: the time the question took.
     """
     agent = build_graph()
     questions = load_questions()
@@ -66,11 +67,12 @@ def run():
                 "question": item["question"],
                 "query": "",
                 "answer": f"ERROR {type(error).__name__}: {error}",
-                "chunks": "",
                 "expected": item["answer"],
+                "chunks": "",
             }
+        row["seconds"] = round(time.perf_counter() - started, 1)
         rows.append(row)
-        print(f"{number:3}/{len(questions)} {time.perf_counter() - started:5.1f} s | {item['question'][:60]}")
+        print(f"{number:3}/{len(questions)} {row['seconds']:5.1f} s | {item['question'][:60]}")
     return rows
 
 
@@ -78,7 +80,7 @@ def save(rows):
     """Write the answers to ``results/answers.xlsx``.
 
     One row per question, with the columns ``question``, ``query``,
-    ``answer``, ``chunks`` and ``expected``.
+    ``answer``, ``expected``, ``seconds`` and ``chunks``.
 
     Args:
         rows (list[dict]): Rows as returned by ``run``.
@@ -91,7 +93,7 @@ def save(rows):
     """
     RESULTS.mkdir(exist_ok=True)
     out = RESULTS / "answers.xlsx"
-    table = pd.DataFrame(rows, columns=["question", "query", "answer", "chunks", "expected"])
+    table = pd.DataFrame(rows, columns=["question", "query", "answer", "expected", "seconds", "chunks"])
     table.to_excel(out, index=False)
     return out
 
