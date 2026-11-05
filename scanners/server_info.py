@@ -6,7 +6,7 @@ import urllib.request
 from pathlib import Path
 
 SERVER = "http://127.0.0.1:8080"
-MODEL_FILE = Path(r"C:\Users\szymo\Desktop\kodzik\stacjonarny llm\models\llm\Meta-Llama-3.1-8B-Instruct-IQ4_XS.gguf")
+MODEL_FILE = Path(__file__).resolve().parents[1] / "models" / "llm" / "Meta-Llama-3.1-8B-Instruct-IQ4_XS.gguf"
 KV_BYTES = 2  # f16, llama.cpp default for the KV cache
 
 MIB = 1024 * 1024
