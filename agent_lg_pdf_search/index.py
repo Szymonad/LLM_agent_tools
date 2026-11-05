@@ -50,6 +50,8 @@ def read_pages(path):
         pages.append(Document(page_content=text, metadata={"source": path.name, "page": number}))
     return pages
 
+SESSION = requests.Session()
+
 @lru_cache(maxsize=None)
 def count_tokens(text):
     """Count the tokens of a text as the embedding server sees it.
@@ -69,7 +71,7 @@ def count_tokens(text):
         requests.Timeout: If the server does not answer within
             ``HTTP_TIMEOUT``.
     """
-    response = requests.post(f"{EMBED_SERVER}/tokenize", json={"content": text}, timeout=HTTP_TIMEOUT)
+    response = SESSION.post(f"{EMBED_SERVER}/tokenize", json={"content": text}, timeout=HTTP_TIMEOUT)
     response.raise_for_status()
     return len(response.json()["tokens"])
 
@@ -172,6 +174,7 @@ EMBEDDINGS = PrefixedEmbeddings(
     model="embeddinggemma",
     # Otherwise LangChain tokenizes with OpenAI's tiktoken and sends token ids that mean nothing to Gemma.
     check_embedding_ctx_length=False,
+    chunk_size=64,
     timeout=HTTP_TIMEOUT,
 )
 

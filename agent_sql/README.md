@@ -65,6 +65,22 @@ the reasoning of earlier turns - so the counter jumps up and then falls back by 
 
 ## Run
 
+Start Oracle first. The services are installed as `Disabled`, so once, in an administrator PowerShell:
+
+```powershell
+Set-Service OracleOraDB21Home1TNSListener -StartupType Manual; Set-Service OracleServiceXE -StartupType Manual
+```
+
+Then after every boot (administrator PowerShell, listener first):
+
+```powershell
+Start-Service OracleOraDB21Home1TNSListener; Start-Service OracleServiceXE
+lsnrctl status
+```
+
+`lsnrctl status` should list `xepdb1`; it can take about a minute after the database starts.
+Stop with `Stop-Service OracleServiceXE; Stop-Service OracleOraDB21Home1TNSListener`.
+
 In one PowerShell window:
 
 ```powershell

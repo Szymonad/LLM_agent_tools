@@ -14,6 +14,7 @@ from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.graph import END, START, MessagesState, StateGraph
 
 from agent_lg_pdf_search.config import CHUNK_OVERLAP, CHUNK_TOKENS, HTTP_TIMEOUT, SERVER, TOP_K
+from agent_lg_pdf_search.config import REPHRASE as REPHRASE_ENABLED
 from agent_lg_pdf_search.index import load_store, search_scored
 from agent_lg_pdf_search.tools import BEHAVIOUR, REPHRASE, expand_citations, format_chunks, sources_of
 
@@ -35,6 +36,7 @@ MODEL = ChatOpenAI(
     model="qwen3",
     # The answer must come from the fragments, so there is nothing to be creative about.
     temperature=0,
+    max_tokens=2048,
     timeout=HTTP_TIMEOUT,
 )
 
@@ -94,18 +96,24 @@ def rephrase(state):
 
 
 def retrieve(state):
-    """Search the index with the rewritten query.
+    """Search the index with the question or its rewritten form.
+
+    The query is ``state["query"]`` when ``REPHRASE`` is on, otherwise the
+    text of the last message.
 
     Args:
-        state (State): Current state; ``query`` is read.
+        state (State): Current state; ``messages`` is read, and ``query``
+            when ``REPHRASE`` is on.
 
     Returns:
-        dict: Update with ``context``, ``sources`` and ``scores`` (rounded
-        to three decimals), all in the order returned by the search.
+        dict: Update with ``query``, ``context``, ``sources`` and ``scores``
+        (rounded to three decimals), all in the order returned by the search.
     """
-    hits = search_scored(state["query"])
+    query = state["query"] if REPHRASE_ENABLED else state["messages"][-1].content
+    hits = search_scored(query)
     chunks = [chunk for chunk, score in hits]
     return {
+        "query": query,
         "context": format_chunks(chunks),
         "sources": sources_of(chunks),
         "scores": [round(score, 3) for chunk, score in hits],
@@ -135,19 +143,23 @@ def answer(state):
 def build_graph():
     """Build the agent graph.
 
-    Every question goes through ``rephrase``, ``retrieve`` and ``answer``,
-    in that order. An in-memory checkpointer keeps the conversation between
-    questions for as long as the process runs.
+    Every question goes through ``retrieve`` and ``answer``, in that order.
+    When ``REPHRASE`` is on, ``rephrase`` runs first. An in-memory
+    checkpointer keeps the conversation between questions for as long as the
+    process runs.
 
     Returns:
         CompiledStateGraph: The agent, ready for ``invoke`` or ``stream``.
     """
     graph = StateGraph(State)
-    graph.add_node("rephrase", rephrase)
     graph.add_node("retrieve", retrieve)
     graph.add_node("answer", answer)
-    graph.add_edge(START, "rephrase")
-    graph.add_edge("rephrase", "retrieve")
+    if REPHRASE_ENABLED:
+        graph.add_node("rephrase", rephrase)
+        graph.add_edge(START, "rephrase")
+        graph.add_edge("rephrase", "retrieve")
+    else:
+        graph.add_edge(START, "retrieve")
     graph.add_edge("retrieve", "answer")
     graph.add_edge("answer", END)
     # The checkpointer keeps the conversation between questions, under the thread id below. rest are defaut values (for learning)

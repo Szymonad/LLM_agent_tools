@@ -21,7 +21,7 @@ PDF_DIR = Path(__file__).with_name("pdf")
 #: Address of the embedding server (EmbeddingGemma).
 EMBED_SERVER = "http://127.0.0.1:8082"
 #: Seconds to wait for either server. Without it, a hung server stalls the agent forever.
-HTTP_TIMEOUT = 30
+HTTP_TIMEOUT = 120
 #: Prefix put in front of every search query. EmbeddingGemma was trained with it; without it retrieval gets worse.
 QUERY_PREFIX = "task: search result | query: "
 #: Prefix put in front of every chunk. ``none`` stands for a missing document title.
@@ -42,3 +42,8 @@ CHUNK_OVERLAP = 50
 INDEX_PATH = Path(__file__).with_name("index.json")
 #: How many chunks reach the model on each question.
 TOP_K = 5
+
+# --- agent ---
+
+#: Rewrite every question into a standalone search query before the search; off by default because it made retrieval about 8 times slower without finding more pages.
+REPHRASE = False

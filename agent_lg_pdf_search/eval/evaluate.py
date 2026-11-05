@@ -24,14 +24,17 @@ index.PDF_DIR = HERE / "pdf"
 index.INDEX_PATH = HERE / "index.json"
 
 
-def load_questions():
-    """Read the evaluation questions from ``questions.json``.
+def load_questions(path=QUESTIONS):
+    """Read the evaluation questions from a JSON file.
+
+    Args:
+        path (pathlib.Path): Questions file, ``questions.json`` by default.
 
     Returns:
         list[dict]: One item per question, with ``question`` (text),
         ``doc`` (expected file name) and ``pages`` (expected page numbers).
     """
-    return json.loads(QUESTIONS.read_text(encoding="utf-8"))
+    return json.loads(path.read_text(encoding="utf-8"))
 
 
 def rewrite(question, temp):
