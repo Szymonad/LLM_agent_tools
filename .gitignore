@@ -28,6 +28,7 @@
 !agent_lg_pdf_search/eval/answers.py
 !agent_lg_pdf_search/eval/judge.py
 !agent_lg_pdf_search/eval/build_questions.py
+!agent_lg_pdf_search/eval/to_sqlite.py
 !agent_lg_pdf_search/eval/mmlongbench_raw.json
 !agent_lg_pdf_search/eval/questions.json
 !agent_lg_pdf_search/eval/questions_v2.json
@@ -44,3 +45,6 @@
 
 # LibreOffice lock files, created while a file is open
 .~lock.*#
+
+# Built from the xlsx files by eval/to_sqlite.py
+agent_lg_pdf_search/eval/results/results.db
