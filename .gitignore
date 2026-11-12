@@ -43,7 +43,7 @@
 !archive/
 !archive/**
 !docs/
-!docs/jak_dziala.md
+!docs/jak_dziala.pdf
 
 # LibreOffice lock files, created while a file is open
 .~lock.*#
