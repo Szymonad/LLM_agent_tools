@@ -42,6 +42,8 @@
 !scanners/server_info.py
 !archive/
 !archive/**
+!docs/
+!docs/jak_dziala.md
 
 # LibreOffice lock files, created while a file is open
 .~lock.*#
