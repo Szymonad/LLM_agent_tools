@@ -5,6 +5,7 @@
 !.gitignore
 !README.md
 !start_llama.bat
+!requirements-lock.txt
 !.vscode/
 !.vscode/launch.json
 !agent_sql/
@@ -40,3 +41,6 @@
 !scanners/server_info.py
 !archive/
 !archive/**
+
+# LibreOffice lock files, created while a file is open
+.~lock.*#
