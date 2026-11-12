@@ -25,6 +25,11 @@
 !agent_lg_pdf_search/eval/__init__.py
 !agent_lg_pdf_search/eval/evaluate.py
 !agent_lg_pdf_search/eval/answers.py
+!agent_lg_pdf_search/eval/judge.py
+!agent_lg_pdf_search/eval/build_questions.py
+!agent_lg_pdf_search/eval/mmlongbench_raw.json
+!agent_lg_pdf_search/eval/questions.json
+!agent_lg_pdf_search/eval/questions_v2.json
 !agent_lg_pdf_search/eval/results/
 !agent_lg_pdf_search/eval/results/**
 !scanners/
