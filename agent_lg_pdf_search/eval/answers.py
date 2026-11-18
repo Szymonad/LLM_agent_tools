@@ -2,18 +2,41 @@
 
 Run from the repo root:
 
-    python -m agent_lg_pdf_search.eval.answers [--questions FILE] [--out NAME]
+    python -m agent_lg_pdf_search.eval.answers --stage NAME [--questions FILE]
+
+Every run gets its own folder, ``results/<stage>/<date_time>/``, with
+``answers.xlsx`` and ``run.json`` (the settings the answers were made with),
+so earlier runs are never overwritten and the stages can be compared.
 """
 import argparse
+import hashlib
+import json
+import re
+import subprocess
 import time
+from datetime import datetime
 from pathlib import Path
 
 import pandas as pd
+import requests
 from langchain_core.messages import HumanMessage
 
 from agent_lg_pdf_search import index
 from agent_lg_pdf_search.agent import build_graph
+from agent_lg_pdf_search.config import (
+    CHUNK_OVERLAP,
+    CHUNK_TOKENS,
+    EMBED_SERVER,
+    HTTP_TIMEOUT,
+    REPHRASE,
+    SERVER,
+    TOP_K,
+)
 from agent_lg_pdf_search.eval.evaluate import QUESTIONS, RESULTS, load_questions
+
+REPO = Path(__file__).resolve().parents[2]
+#: Stage names become folder names, so only lowercase letters, digits and ``_``.
+STAGE_NAME = re.compile(r"^[a-z0-9_]+$")
 
 
 def ask(agent, item, number):
@@ -101,26 +124,114 @@ def run(questions_path):
     return rows
 
 
-def save(rows, name):
-    """Write the answers to a file in ``results/``.
+def new_run_folder(stage, started):
+    """Create the folder of a new run: ``results/<stage>/<date_time>/``.
 
-    One row per question, with the columns ``question``, ``query``,
-    ``answer``, ``expected``, ``source``, ``correct`` (empty, to be filled
-    in by hand), ``page_hit``, ``seconds``, ``input_tokens``,
-    ``output_tokens`` and ``chunks``.
+    Two runs started in the same minute get ``-2``, ``-3``... appended, so a
+    folder is never reused.
+
+    Args:
+        stage (str): Name of the stage, e.g. ``00_baseline_pypdf``.
+        started (datetime.datetime): Start of the run, gives the folder name.
+
+    Returns:
+        pathlib.Path: The created, empty folder.
+    """
+    base = RESULTS / stage / started.strftime("%Y-%m-%d_%H%M")
+    folder, number = base, 1
+    while folder.exists():
+        number += 1
+        folder = base.with_name(f"{base.name}-{number}")
+    folder.mkdir(parents=True)
+    return folder
+
+
+def git_state():
+    """Commit the code was at and whether it had uncommitted changes.
+
+    Returns:
+        dict: ``commit`` (short hash) and ``dirty`` (bool), both ``None``
+        when git cannot be run.
+    """
+    try:
+        commit = subprocess.run(["git", "rev-parse", "--short", "HEAD"], cwd=REPO, capture_output=True, text=True, check=True).stdout.strip()
+        changes = subprocess.run(["git", "status", "--porcelain", "--untracked-files=no"], cwd=REPO, capture_output=True, text=True, check=True).stdout
+    except (OSError, subprocess.CalledProcessError):
+        return {"commit": None, "dirty": None}
+    return {"commit": commit, "dirty": bool(changes.strip())}
+
+
+def model_file(server):
+    """File name of the model a llama-server instance has loaded.
+
+    Args:
+        server (str): Address of the server, e.g. ``http://127.0.0.1:8081``.
+
+    Returns:
+        str | None: Name of the GGUF file, ``None`` if the server does not answer.
+    """
+    try:
+        response = requests.get(f"{server}/props", timeout=HTTP_TIMEOUT)
+        response.raise_for_status()
+        return Path(response.json()["model_path"]).name
+    except (requests.RequestException, KeyError, ValueError):
+        return None
+
+
+def describe_run(stage, questions_path, rows, started, finished):
+    """Collect what is needed to tell later how a run was made.
+
+    Two runs are comparable only when they used the same questions, so the
+    file's SHA-256 is stored next to its name.
+
+    Args:
+        stage (str): Name of the stage.
+        questions_path (pathlib.Path): Questions file the run used.
+        rows (list[dict]): Rows as returned by ``run``.
+        started (datetime.datetime): Start of the run.
+        finished (datetime.datetime): End of the run.
+
+    Returns:
+        dict: Contents of ``run.json``.
+    """
+    path = Path(questions_path).resolve()
+    return {
+        "stage": stage,
+        "started": started.isoformat(timespec="seconds"),
+        "finished": finished.isoformat(timespec="seconds"),
+        **git_state(),
+        "questions_file": path.relative_to(REPO).as_posix() if path.is_relative_to(REPO) else str(path),
+        "questions_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+        "questions": len(rows),
+        "chat_model": model_file(SERVER),
+        "embedding_model": model_file(EMBED_SERVER),
+        "index_file": Path(index.INDEX_PATH).resolve().relative_to(REPO).as_posix(),
+        "top_k": TOP_K,
+        "chunk_tokens": CHUNK_TOKENS,
+        "chunk_overlap": CHUNK_OVERLAP,
+        "embed_dim": index.EMBED_DIM,
+        "rephrase": REPHRASE,
+    }
+
+
+def save(rows, folder, description):
+    """Write the answers and the run description to the run folder.
+
+    ``answers.xlsx`` has one row per question, with the columns
+    ``question``, ``query``, ``answer``, ``expected``, ``source``,
+    ``correct`` (empty, to be filled in by hand), ``page_hit``, ``seconds``,
+    ``input_tokens``, ``output_tokens`` and ``chunks``.
 
     Args:
         rows (list[dict]): Rows as returned by ``run``.
-        name (str): File name, e.g. ``answers.xlsx``.
+        folder (pathlib.Path): Folder made by ``new_run_folder``.
+        description (dict): Contents of ``run.json``, from ``describe_run``.
 
     Returns:
-        pathlib.Path: The file that was written.
-
-    Raises:
-        PermissionError: If the file is open in Excel.
+        pathlib.Path: The answers file that was written.
     """
-    RESULTS.mkdir(exist_ok=True)
-    out = RESULTS / name
+    (folder / "run.json").write_text(json.dumps(description, ensure_ascii=False, indent=1), encoding="utf-8")
+    out = folder / "answers.xlsx"
     table = pd.DataFrame(rows, columns=["question", "query", "answer", "expected", "source", "correct", "page_hit", "seconds", "input_tokens", "output_tokens", "chunks"])
     table.to_excel(out, index=False)
     return out
@@ -128,8 +239,12 @@ def save(rows, name):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Collect the agent's answers to the evaluation questions.")
+    parser.add_argument("--stage", required=True, help="stage folder in results/, e.g. 00_baseline_pypdf")
     parser.add_argument("--questions", type=Path, default=QUESTIONS, help="questions JSON file")
-    parser.add_argument("--out", default="answers.xlsx", help="name of the file in results/")
     args = parser.parse_args()
+    if not STAGE_NAME.match(args.stage):
+        parser.error("--stage may hold only lowercase letters, digits and _")
+    started = datetime.now()
     rows = run(args.questions)
-    print("saved", save(rows, args.out))
+    folder = new_run_folder(args.stage, started)
+    print("saved", save(rows, folder, describe_run(args.stage, args.questions, rows, started, datetime.now())))
