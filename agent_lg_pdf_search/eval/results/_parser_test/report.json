@@ -1,0 +1,59 @@
+[
+ {
+  "file": "CPIK W06.pdf",
+  "lang": "pl",
+  "pages": 3,
+  "text_layer_s_per_page": 6.16,
+  "text_layer_similarity": 0.691,
+  "easyocr_pl_en": {
+   "s_per_page": 45.33,
+   "similarity": 0.592,
+   "diacritics": 228,
+   "reference_diacritics": 256
+  },
+  "rapidocr_default": {
+   "s_per_page": 14.24,
+   "similarity": 0.59,
+   "diacritics": 242,
+   "reference_diacritics": 256
+  }
+ },
+ {
+  "file": "struktury-json.pdf",
+  "lang": "pl",
+  "pages": 3,
+  "text_layer_s_per_page": 1.75,
+  "text_layer_similarity": 0.982,
+  "easyocr_pl_en": {
+   "s_per_page": 36.32,
+   "similarity": 0.874,
+   "diacritics": 41,
+   "reference_diacritics": 45
+  },
+  "rapidocr_default": {
+   "s_per_page": 10.42,
+   "similarity": 0.908,
+   "diacritics": 43,
+   "reference_diacritics": 45
+  }
+ },
+ {
+  "file": "f8d3a162ab9507e021d83dd109118b60.pdf",
+  "lang": "en",
+  "pages": 17,
+  "text_layer_s_per_page": 1.86,
+  "text_layer_similarity": 0.977,
+  "easyocr_pl_en": {
+   "s_per_page": 39.57,
+   "similarity": 0.76,
+   "diacritics": 0,
+   "reference_diacritics": 0
+  },
+  "rapidocr_default": {
+   "s_per_page": 14.97,
+   "similarity": 0.884,
+   "diacritics": 0,
+   "reference_diacritics": 0
+  }
+ }
+]
