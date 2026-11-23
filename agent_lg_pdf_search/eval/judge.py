@@ -2,16 +2,24 @@
 
 Run from the repo root:
 
-    python -m agent_lg_pdf_search.eval.judge [--file NAME]
+    python -m agent_lg_pdf_search.eval.judge --stage NAME [--run FOLDER]
+
+The grades go into the ``judge`` column of the run's ``answers.xlsx`` (the
+newest run of the stage unless ``--run`` is given), the judge model into its
+``run.json``, and ``results.db`` is rebuilt.
 """
 import argparse
+import json
 import re
-from pathlib import Path
+from datetime import datetime
 
 import pandas as pd
 from langchain_core.messages import HumanMessage, SystemMessage
 
 from agent_lg_pdf_search.agent import MODEL
+from agent_lg_pdf_search.config import SERVER
+from agent_lg_pdf_search.eval import to_sqlite
+from agent_lg_pdf_search.eval.answers import model_file
 from agent_lg_pdf_search.eval.evaluate import RESULTS
 
 JUDGE = """You grade an answer given by an assistant to a question about documents.
@@ -113,16 +121,62 @@ def agreement(table):
     }
 
 
+def run_folder(stage, run=None):
+    """Folder of a run: the given one, or the newest of the stage.
+
+    Args:
+        stage (str): Name of the stage folder in ``results/``.
+        run (str | None): Name of the run folder, ``None`` for the newest.
+
+    Returns:
+        pathlib.Path: Folder holding ``answers.xlsx``.
+
+    Raises:
+        SystemExit: The folder or its ``answers.xlsx`` does not exist.
+    """
+    if run:
+        folder = RESULTS / stage / run
+    else:
+        runs = sorted(path.parent for path in (RESULTS / stage).glob("*/answers.xlsx"))
+        if not runs:
+            raise SystemExit(f"no run with answers.xlsx in {RESULTS / stage}")
+        folder = runs[-1]
+    if not (folder / "answers.xlsx").exists():
+        raise SystemExit(f"no answers.xlsx in {folder}")
+    return folder
+
+
+def note_judge(folder):
+    """Record in the run's ``run.json`` which model graded it and when.
+
+    Runs graded by different judges are not comparable, so this is kept
+    next to the run. A missing ``run.json`` is created.
+
+    Args:
+        folder (pathlib.Path): Folder of the run.
+    """
+    path = folder / "run.json"
+    description = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+    description["judge_model"] = model_file(SERVER)
+    description["judged"] = datetime.now().isoformat(timespec="seconds")
+    path.write_text(json.dumps(description, ensure_ascii=False, indent=1), encoding="utf-8")
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Grade the agent's answers with the model.")
-    parser.add_argument("--file", default="answers.xlsx", help="name of the answers file in results/")
+    parser.add_argument("--stage", required=True, help="stage folder in results/, e.g. 00_baseline_pypdf")
+    parser.add_argument("--run", help="run folder in the stage, the newest if left out")
     args = parser.parse_args()
-    table = run(RESULTS / args.file)
-    out = RESULTS / f"{Path(args.file).stem}_judged.xlsx"
-    table.to_excel(out, index=False)
-    print("saved", out)
+    folder = run_folder(args.stage, args.run)
+    path = folder / "answers.xlsx"
+    table = run(path)
+    table.to_excel(path, index=False)
+    note_judge(folder)
+    print("saved", path)
     print("judge accuracy", table["judge"].dropna().astype(int).mean())
     if "source" in table.columns and table["source"].notna().any():
         for source, part in table.groupby("source"):
             print("judge accuracy", source, part["judge"].dropna().astype(int).mean())
     print("agreement", agreement(table))
+    to_sqlite.build()
+    print("rebuilt", to_sqlite.DATABASE)
