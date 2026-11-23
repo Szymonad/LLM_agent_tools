@@ -1,0 +1,11 @@
+{
+ "stage": "00_baseline_pypdf",
+ "finished": "2026-11-05T17:29:13",
+ "judged": "2026-11-05T17:54:05",
+ "commit": "6522eeb",
+ "dirty": null,
+ "questions_file": "agent_lg_pdf_search/eval/questions_v2.json",
+ "questions_sha256": "a6aa81d5bf6103207952f64211fb9c6f01280dffde5670c1b3882c0b9308e90e",
+ "questions": 143,
+ "note": "Reconstructed on 2026-11-23 from the file dates: commit = last one before the run, questions_v2.json unchanged since 2026-11-05 10:20. Models and retrieval settings were not recorded."
+}
