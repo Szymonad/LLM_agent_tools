@@ -32,6 +32,9 @@
 !agent_lg_pdf_search/eval/mmlongbench_raw.json
 !agent_lg_pdf_search/eval/questions.json
 !agent_lg_pdf_search/eval/questions_v2.json
+!agent_lg_pdf_search/eval/questions_v3.json
+!agent_lg_pdf_search/eval/general_questions.json
+!agent_lg_pdf_search/eval/build_questions_v3.py
 !agent_lg_pdf_search/eval/results/
 !agent_lg_pdf_search/eval/results/**
 !scanners/

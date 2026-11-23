@@ -1,0 +1,3164 @@
+[
+ {
+  "question": "Where was Gestalt psychology concieved?",
+  "doc": "0e94b4197b10096b1f4c699701570fbf.pdf",
+  "pages": [
+   2
+  ],
+  "answer": "Berlin School of Experimental Psychology",
+  "type": "Tutorial/Workshop",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "According to the chart on page 14 how much time was spent with family and friends in 2010?",
+  "doc": "0e94b4197b10096b1f4c699701570fbf.pdf",
+  "pages": [
+   14
+  ],
+  "answer": "21%",
+  "type": "Tutorial/Workshop",
+  "source": "chart",
+  "route": "documents"
+ },
+ {
+  "question": "What range does red color represents in approximate distance from the Mississippi River in the chart that tracks the West NIle Virus in Europe?",
+  "doc": "0e94b4197b10096b1f4c699701570fbf.pdf",
+  "pages": [
+   10
+  ],
+  "answer": "0-375 miles",
+  "type": "Tutorial/Workshop",
+  "source": "chart",
+  "route": "documents"
+ },
+ {
+  "question": "How does this document define the law of good gestalt?",
+  "doc": "0e94b4197b10096b1f4c699701570fbf.pdf",
+  "pages": [
+   11
+  ],
+  "answer": "Elements of objects tend to be perceptually grouped together if they form a pattern that is regular, simple, and orderly.",
+  "type": "Tutorial/Workshop",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "Which category has the most increase from 2005 to 2010 for time spent on weedends?",
+  "doc": "0e94b4197b10096b1f4c699701570fbf.pdf",
+  "pages": [
+   14
+  ],
+  "answer": "Eating out",
+  "type": "Tutorial/Workshop",
+  "source": "chart",
+  "route": "documents"
+ },
+ {
+  "question": "Which continent has the most number of registered participant for advanced science course in CTBTO?",
+  "doc": "0e94b4197b10096b1f4c699701570fbf.pdf",
+  "pages": [
+   13
+  ],
+  "answer": "Europe",
+  "type": "Tutorial/Workshop",
+  "source": "figure",
+  "route": "documents"
+ },
+ {
+  "question": "Which shapes does the slide use to illustrate the closure aspect of Gestalt Principle of Visual Perception?",
+  "doc": "0e94b4197b10096b1f4c699701570fbf.pdf",
+  "pages": [
+   8
+  ],
+  "answer": "['Circle', 'Rectangle']",
+  "type": "Tutorial/Workshop",
+  "source": "figure",
+  "route": "documents"
+ },
+ {
+  "question": "What does the map in the report shows?",
+  "doc": "fdac8d1e9ef56519371df7e6532df27d.pdf",
+  "pages": [
+   17
+  ],
+  "answer": "The centres of Indian Space Programme",
+  "type": "Research report / Introduction",
+  "source": "figure",
+  "route": "documents"
+ },
+ {
+  "question": "What year is the report for?",
+  "doc": "fdac8d1e9ef56519371df7e6532df27d.pdf",
+  "pages": [
+   3
+  ],
+  "answer": "2015-2016",
+  "type": "Research report / Introduction",
+  "source": "layout",
+  "route": "documents"
+ },
+ {
+  "question": "What are the uses of Indian remote sensing satellite constellation?",
+  "doc": "fdac8d1e9ef56519371df7e6532df27d.pdf",
+  "pages": [
+   6
+  ],
+  "answer": "['Agricultural Drough', 'Forest Fire', 'Landslides and Earthquakes monitoring', 'Groundwater Prospects Mapping', 'Inventory', 'Monitoring of Glacial Lakes/Water Bodies', 'Sericulture Development', 'Satellite Aided Search and Rescue']",
+  "type": "Research report / Introduction",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "What is NARL stand for in this document?",
+  "doc": "fdac8d1e9ef56519371df7e6532df27d.pdf",
+  "pages": [
+   19
+  ],
+  "answer": "National Atmospheric Research Laboratory",
+  "type": "Research report / Introduction",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "Of the four missions of Indian Space Program's space mission from 2012 to 2017, which mission includes the launch of least number of satellites?",
+  "doc": "fdac8d1e9ef56519371df7e6532df27d.pdf",
+  "pages": [
+   2
+  ],
+  "answer": "Space Science & Planetary Exploration Satellites.",
+  "type": "Research report / Introduction",
+  "source": "figure",
+  "route": "documents"
+ },
+ {
+  "question": "How many organisations does this report introduce in detail (at least one paragraph) ?",
+  "doc": "fdac8d1e9ef56519371df7e6532df27d.pdf",
+  "pages": [
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   19,
+   20
+  ],
+  "answer": "19",
+  "type": "Research report / Introduction",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "How many exterior photos of organisations does this report provide?",
+  "doc": "fdac8d1e9ef56519371df7e6532df27d.pdf",
+  "pages": [
+   10,
+   11,
+   12,
+   14,
+   15,
+   16,
+   19,
+   20
+  ],
+  "answer": "10",
+  "type": "Research report / Introduction",
+  "source": "figure",
+  "route": "documents"
+ },
+ {
+  "question": "In figure 1, which relation arrows do not point to specific leaf nodes?",
+  "doc": "2310.05634v2.pdf",
+  "pages": [
+   1
+  ],
+  "answer": "['movement', 'birth', 'place of birth', 'member']",
+  "type": "Academic paper",
+  "source": "chart",
+  "route": "documents"
+ },
+ {
+  "question": "In figure 5, what is the color of the line that has no intersection with any other line?",
+  "doc": "2310.05634v2.pdf",
+  "pages": [
+   8
+  ],
+  "answer": "red",
+  "type": "Academic paper",
+  "source": "chart",
+  "route": "documents"
+ },
+ {
+  "question": "How many tables include \"F1\" as a metric?",
+  "doc": "2310.05634v2.pdf",
+  "pages": [
+   7,
+   9
+  ],
+  "answer": "3",
+  "type": "Academic paper",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "For dataset construction, which step takes the most word to describe than the others. ",
+  "doc": "2310.05634v2.pdf",
+  "pages": [
+   12,
+   13
+  ],
+  "answer": "Evolutionary Question Generation",
+  "type": "Academic paper",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "According to author's definition on conscious incompetence, when can a sentence map to both [NA] and a list of sub-graph knowledge?",
+  "doc": "2310.05634v2.pdf",
+  "pages": [
+   2,
+   3
+  ],
+  "answer": "If it can be partially verified by the knowledge graph G",
+  "type": "Academic paper",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "According to author's definition on conscious incompetence, when can a sentence map to either [NA] or a list of sub-graph knowledge?",
+  "doc": "2310.05634v2.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Academic paper",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "In figure 3, how many distinct icons are used?",
+  "doc": "2312.10997v5.pdf",
+  "pages": [
+   4
+  ],
+  "answer": "9",
+  "type": "Academic paper",
+  "source": "figure",
+  "route": "documents"
+ },
+ {
+  "question": "What is the paper that proposes the method that has a retrieval granularity of phrase and augmentation stage of tuning?",
+  "doc": "2312.10997v5.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Academic paper",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "According to table II, which are the datasets that has exactly three methods?",
+  "doc": "2312.10997v5.pdf",
+  "pages": [
+   13
+  ],
+  "answer": "['POPQA', 'MS MARCO', 'SST-2']",
+  "type": "Academic paper",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "Which subsection does the section \"AUGMENTATION PROCESS IN RAG\" include?",
+  "doc": "2312.10997v5.pdf",
+  "pages": [
+   10,
+   11
+  ],
+  "answer": "['Iterative Retrieval ', 'Recursive Retrieval ', 'Adaptive Retrieval ']",
+  "type": "Academic paper",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "Which method integrates knowledge into white-box models via directive fine-tuning?",
+  "doc": "2312.10997v5.pdf",
+  "pages": [
+   9,
+   10
+  ],
+  "answer": "PKG",
+  "type": "Academic paper",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "what is the number of red logos in page 10?",
+  "doc": "379f44022bb27aa53efd5d322c7b57bf.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Research report / Introduction",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "What is the telephone no for The Limes Residential Home?",
+  "doc": "379f44022bb27aa53efd5d322c7b57bf.pdf",
+  "pages": [
+   1
+  ],
+  "answer": "01983 873655",
+  "type": "Research report / Introduction",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "What is the telephone no for the Care Quality Commission",
+  "doc": "379f44022bb27aa53efd5d322c7b57bf.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Research report / Introduction",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "List the primary questions asked about the services in this report.",
+  "doc": "379f44022bb27aa53efd5d322c7b57bf.pdf",
+  "pages": [
+   3
+  ],
+  "answer": "['Is the servife safe?', 'Is the service effective', 'Is the serve caring?', 'Is the service responsive?', 'Is the service well-led?']",
+  "type": "Research report / Introduction",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "List all pages on which the logo of CQC locates. The answer should be formatted as a list like ['Page 2', 'Page 4'].",
+  "doc": "379f44022bb27aa53efd5d322c7b57bf.pdf",
+  "pages": [
+   1,
+   5
+  ],
+  "answer": "['Page 1', 'Page 5']",
+  "type": "Research report / Introduction",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "How many regulations of the HSCA 2008 are breached in all according to this report?",
+  "doc": "379f44022bb27aa53efd5d322c7b57bf.pdf",
+  "pages": [
+   6,
+   7,
+   8,
+   9,
+   10,
+   12,
+   13
+  ],
+  "answer": "7",
+  "type": "Research report / Introduction",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "Which individual lead this program?",
+  "doc": "efd88e41c5f2606c57929cac6c1c0605.pdf",
+  "pages": [
+   14
+  ],
+  "answer": "Allison Crimmins",
+  "type": "Research report / Introduction",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "According to this document, Lebron Brennan belongs to which agency?",
+  "doc": "efd88e41c5f2606c57929cac6c1c0605.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Research report / Introduction",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "How many chapters are in this report?",
+  "doc": "efd88e41c5f2606c57929cac6c1c0605.pdf",
+  "pages": [
+   7
+  ],
+  "answer": "9",
+  "type": "Research report / Introduction",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "What are the last 4 chapters listed in the table of contents?",
+  "doc": "efd88e41c5f2606c57929cac6c1c0605.pdf",
+  "pages": [
+   6
+  ],
+  "answer": "['Climate Impacts on Water-Related Illness', 'Food Safety,Nutrition,and Distribution', 'Mental Health and Well-Being', 'Populations of  Concern']",
+  "type": "Research report / Introduction",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "How many chapter authors of this report come from Columbia University?\n",
+  "doc": "efd88e41c5f2606c57929cac6c1c0605.pdf",
+  "pages": [
+   14,
+   15
+  ],
+  "answer": "3",
+  "type": "Research report / Introduction",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "How many pages include figures which have humans?",
+  "doc": "efd88e41c5f2606c57929cac6c1c0605.pdf",
+  "pages": [
+   1,
+   3,
+   9,
+   11,
+   19,
+   20
+  ],
+  "answer": "6",
+  "type": "Research report / Introduction",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "Where is the complainant from? Your answer should be formatted as \"[City], [State]\"",
+  "doc": "edb88a99670417f64a6b719646aed326.pdf",
+  "pages": [
+   0
+  ],
+  "answer": "Las Vegas, Nevada",
+  "type": "Administration/Industry file",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "is there blue color handwritten words in page 30?",
+  "doc": "edb88a99670417f64a6b719646aed326.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Administration/Industry file",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "When the complainant applied for return? Format your answer as YYYY-MM-DD.",
+  "doc": "edb88a99670417f64a6b719646aed326.pdf",
+  "pages": [
+   15
+  ],
+  "answer": "2014-10-06",
+  "type": "Administration/Industry file",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "How many \"Redacted\" signals in Page 0286 in all?",
+  "doc": "edb88a99670417f64a6b719646aed326.pdf",
+  "pages": [
+   17
+  ],
+  "answer": "8",
+  "type": "Administration/Industry file",
+  "source": "figure",
+  "route": "documents"
+ },
+ {
+  "question": "What is the zip code of the address to which the attached consumer complaint form send?",
+  "doc": "edb88a99670417f64a6b719646aed326.pdf",
+  "pages": [
+   5
+  ],
+  "answer": "89706",
+  "type": "Administration/Industry file",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "What date is mentioned on the second page? Format the date as YYYY-MM",
+  "doc": "698bba535087fa9a7f9009e172a7f763.pdf",
+  "pages": [
+   3
+  ],
+  "answer": "2009-07",
+  "type": "Research report / Introduction",
+  "source": "layout",
+  "route": "documents"
+ },
+ {
+  "question": "What is the Email address in this document on the second cover page?",
+  "doc": "698bba535087fa9a7f9009e172a7f763.pdf",
+  "pages": [
+   3
+  ],
+  "answer": "['combshj@unk.edu']",
+  "type": "Research report / Introduction",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "How many square miles did the Hamilton country covers on year 1882? Return me a rounded integer.",
+  "doc": "698bba535087fa9a7f9009e172a7f763.pdf",
+  "pages": [
+   11
+  ],
+  "answer": "538",
+  "type": "Research report / Introduction",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "How many pages does websites address appeared? List all the pages in list format, for example [\"p1\",\"p2\"]",
+  "doc": "698bba535087fa9a7f9009e172a7f763.pdf",
+  "pages": [
+   12,
+   15,
+   17
+  ],
+  "answer": "['p4', 'p7', 'p9']",
+  "type": "Research report / Introduction",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "What are the bankers' names associated with GODFREY PHILLIPS INDIA LIMITED? ",
+  "doc": "scan_afe620b9beac86c1027b96d31d396407.pdf",
+  "pages": [
+   8
+  ],
+  "answer": "['State Bank of India', 'Bank of Baroda', 'Bank of India', 'Citibank N.A.', 'State Bank of Hyderabad', 'State Bank of Travancore', 'The Hongkong and Shanghai Banking Corporation', 'Unioon Bank of India']",
+  "type": "Financial report",
+  "source": "scan",
+  "route": "documents",
+  "content": "Pure-text (Plain-text)"
+ },
+ {
+  "question": "What are the bankers' names associated with Apple Inc? ",
+  "doc": "scan_afe620b9beac86c1027b96d31d396407.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Financial report",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "What was the value of absolute percentage shortfall in India's GDP growth from 2002 to 2003 compared to the forecast?",
+  "doc": "scan_afe620b9beac86c1027b96d31d396407.pdf",
+  "pages": [
+   1
+  ],
+  "answer": "2.4%",
+  "type": "Financial report",
+  "source": "scan",
+  "route": "documents",
+  "content": "Pure-text (Plain-text)"
+ },
+ {
+  "question": "What was the percentage shortfall in Japan's GDP growth from 2002 to 2023 compared to the forecast?",
+  "doc": "scan_afe620b9beac86c1027b96d31d396407.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Financial report",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "Where are the two plants of GODFREY PHILLIPS INDIA LIMITED located?",
+  "doc": "scan_afe620b9beac86c1027b96d31d396407.pdf",
+  "pages": [
+   15
+  ],
+  "answer": "['V.K.K. MENON ROAD (SAHAR ROAD),CHAKALA,ANDHERI (EAST),MUMBAI-400099', 'International Tobacco Company Ltd. Delhi- Meerut Road, Guldhar, Ghaziabad']",
+  "type": "Financial report",
+  "source": "scan",
+  "route": "documents",
+  "content": "Pure-text (Plain-text)"
+ },
+ {
+  "question": "According this document, where are the two plants of Apple Inc. located?",
+  "doc": "scan_afe620b9beac86c1027b96d31d396407.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Financial report",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "Which executive directors have attended Board Meetings more than 6 times?",
+  "doc": "scan_afe620b9beac86c1027b96d31d396407.pdf",
+  "pages": [
+   9
+  ],
+  "answer": "Mr. S.V. Shanbhag",
+  "type": "Financial report",
+  "source": "scan",
+  "route": "documents",
+  "content": "Table"
+ },
+ {
+  "question": "How many companies do Mr. R.A. Shah, Mr. S.V. Shanbhag, and Mr. C.M. Maniar collectively hold directorships of the Board?",
+  "doc": "scan_afe620b9beac86c1027b96d31d396407.pdf",
+  "pages": [
+   10,
+   11
+  ],
+  "answer": "30",
+  "type": "Financial report",
+  "source": "scan",
+  "route": "documents",
+  "content": "Table"
+ },
+ {
+  "question": "Who are the non-executive and independent directors of GODFREY PHILLIPS INDIA LIMITED? Enumerate all of them in a list.",
+  "doc": "scan_afe620b9beac86c1027b96d31d396407.pdf",
+  "pages": [
+   9
+  ],
+  "answer": "['Mr.R.A.Shah', 'Mr.Lalit Bhasin', 'Mr.Anup N.Kothari', 'Mr.C.M.Maniar', 'Mr.O.P.Vaish']",
+  "type": "Financial report",
+  "source": "scan",
+  "route": "documents",
+  "content": "Table"
+ },
+ {
+  "question": "How much higher was the proposed dividend paid (Rupees in lacs) in 2002 compared to 2001?",
+  "doc": "scan_afe620b9beac86c1027b96d31d396407.pdf",
+  "pages": [
+   20
+  ],
+  "answer": "155.98",
+  "type": "Financial report",
+  "source": "scan",
+  "route": "documents",
+  "content": "Table"
+ },
+ {
+  "question": "How much higher was the dividend paid in 2003 compared to 2002?",
+  "doc": "scan_afe620b9beac86c1027b96d31d396407.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Financial report",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "What were the GDP growth amounts for the first and second quarters respectively?",
+  "doc": "scan_afe620b9beac86c1027b96d31d396407.pdf",
+  "pages": [
+   1
+  ],
+  "answer": "['5.3%', '5.2%']",
+  "type": "Financial report",
+  "source": "scan",
+  "route": "documents",
+  "content": ""
+ },
+ {
+  "question": "What were the GDP growth amounts for the third and fourth quarters respectively?",
+  "doc": "scan_afe620b9beac86c1027b96d31d396407.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Financial report",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "What are the years specified in the pie chart of the document? Format all of the years in a list like ['2006', '2007', '2011']",
+  "doc": "scan_afe620b9beac86c1027b96d31d396407.pdf",
+  "pages": [
+   2
+  ],
+  "answer": "['1981', '1982', '2001', '2002']",
+  "type": "Financial report",
+  "source": "scan",
+  "route": "documents",
+  "content": "Chart"
+ },
+ {
+  "question": "How many figures are there in total in the article?",
+  "doc": "scan_afe620b9beac86c1027b96d31d396407.pdf",
+  "pages": [
+   2,
+   3,
+   4,
+   13
+  ],
+  "answer": "6",
+  "type": "Financial report",
+  "source": "scan",
+  "route": "documents",
+  "content": "Chart"
+ },
+ {
+  "question": "As the Chairman of the Board who serves as the President of the Society of Indian Law Firms (Western Region), how many membership of Board of other companies does he have?",
+  "doc": "scan_afe620b9beac86c1027b96d31d396407.pdf",
+  "pages": [
+   9,
+   10
+  ],
+  "answer": "14",
+  "type": "Financial report",
+  "source": "scan",
+  "route": "documents",
+  "content": "Table"
+ },
+ {
+  "question": "For the year ended March 31,2003, how much less were the shareholders' funds compared to the income in rupees?",
+  "doc": "scan_afe620b9beac86c1027b96d31d396407.pdf",
+  "pages": [
+   18,
+   19
+  ],
+  "answer": "83672770",
+  "type": "Financial report",
+  "source": "scan",
+  "route": "documents",
+  "content": "Table"
+ },
+ {
+  "question": "How many quizzes are there in the entire course?",
+  "doc": "scan_f8d3a162ab9507e021d83dd109118b60.pdf",
+  "pages": [
+   15,
+   16
+  ],
+  "answer": "6",
+  "type": "Administration/Industry file",
+  "source": "scan",
+  "route": "documents",
+  "content": "Table"
+ },
+ {
+  "question": "How many quizzes are there in units 4, 5, and 6 combined?",
+  "doc": "scan_f8d3a162ab9507e021d83dd109118b60.pdf",
+  "pages": [
+   4,
+   5,
+   6
+  ],
+  "answer": "2",
+  "type": "Administration/Industry file",
+  "source": "scan",
+  "route": "documents",
+  "content": "Pure-text (Plain-text)"
+ },
+ {
+  "question": "Who produced the document that was revised on May 2016?",
+  "doc": "e79deb02a0c0e87511080836c5d4347b.pdf",
+  "pages": [
+   2
+  ],
+  "answer": "Florida Department of Health",
+  "type": "Administration/Industry file",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "Who produced the document that was revised on May 2018?",
+  "doc": "e79deb02a0c0e87511080836c5d4347b.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Administration/Industry file",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "What are the words written in the first rectangle on the top of the page two?",
+  "doc": "e79deb02a0c0e87511080836c5d4347b.pdf",
+  "pages": [
+   5
+  ],
+  "answer": "['strategic priority areas', 'strategies', 'objectives']",
+  "type": "Administration/Industry file",
+  "source": "layout",
+  "route": "documents"
+ },
+ {
+  "question": "WHAT IS THE 2nd OBJECTIVE OF REGULATORY EFFICIENCY?",
+  "doc": "e79deb02a0c0e87511080836c5d4347b.pdf",
+  "pages": [
+   5
+  ],
+  "answer": "By December 31,2018, reduce the average time to issue a facility license from 60 days (2015) to 45 days",
+  "type": "Administration/Industry file",
+  "source": "layout",
+  "route": "documents"
+ },
+ {
+  "question": "What is the name of the governor as mentioned on the first page of the document?",
+  "doc": "e79deb02a0c0e87511080836c5d4347b.pdf",
+  "pages": [
+   1
+  ],
+  "answer": "Rick Scott",
+  "type": "Administration/Industry file",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "What is the name of the governor as mentioned on the last page of the document?",
+  "doc": "e79deb02a0c0e87511080836c5d4347b.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Administration/Industry file",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "How many people are there in the images on the cover?",
+  "doc": "e79deb02a0c0e87511080836c5d4347b.pdf",
+  "pages": [
+   1
+  ],
+  "answer": "12",
+  "type": "Administration/Industry file",
+  "source": "figure",
+  "route": "documents"
+ },
+ {
+  "question": "How many cats are there in the images on page 1?",
+  "doc": "e79deb02a0c0e87511080836c5d4347b.pdf",
+  "pages": [
+   4
+  ],
+  "answer": "0",
+  "type": "Administration/Industry file",
+  "source": "figure",
+  "route": "documents"
+ },
+ {
+  "question": "What is the title of the diagram on page 9?",
+  "doc": "e79deb02a0c0e87511080836c5d4347b.pdf",
+  "pages": [
+   12
+  ],
+  "answer": "Leadership, Workforce and Infrastructure",
+  "type": "Administration/Industry file",
+  "source": "chart",
+  "route": "documents"
+ },
+ {
+  "question": "What is the title of the diagram on page 10?",
+  "doc": "e79deb02a0c0e87511080836c5d4347b.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Administration/Industry file",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "What are the top2 texts of the red words in the document?",
+  "doc": "e79deb02a0c0e87511080836c5d4347b.pdf",
+  "pages": [
+   5
+  ],
+  "answer": "['LONG,HEALTHY LIFE', 'READINESS FOR EMERGING HEALTH THREATS']",
+  "type": "Administration/Industry file",
+  "source": "layout",
+  "route": "documents"
+ },
+ {
+  "question": "What are the top2 texts of the yellow words in the document?",
+  "doc": "e79deb02a0c0e87511080836c5d4347b.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Administration/Industry file",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "What is the address of Florida Department of Science?",
+  "doc": "e79deb02a0c0e87511080836c5d4347b.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Administration/Industry file",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "How many strengths and weaknesses are metioned in Appendix C? Represent these two numbers as format of list.",
+  "doc": "e79deb02a0c0e87511080836c5d4347b.pdf",
+  "pages": [
+   13,
+   14
+  ],
+  "answer": "['23', '21']",
+  "type": "Administration/Industry file",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "How many strengths and weaknesses are metioned in Appendix E?",
+  "doc": "e79deb02a0c0e87511080836c5d4347b.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Administration/Industry file",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "How many appendices appear in the document?",
+  "doc": "e79deb02a0c0e87511080836c5d4347b.pdf",
+  "pages": [
+   7,
+   11,
+   13,
+   16,
+   17
+  ],
+  "answer": "5",
+  "type": "Administration/Industry file",
+  "source": "layout",
+  "route": "documents"
+ },
+ {
+  "question": "How many people are there in total in the MQA Executive Leadership and the Prosecution Services Staff?",
+  "doc": "e79deb02a0c0e87511080836c5d4347b.pdf",
+  "pages": [
+   7,
+   9
+  ],
+  "answer": "7",
+  "type": "Administration/Industry file",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "How many people are there in total in the HAQ Executive Leadership?",
+  "doc": "e79deb02a0c0e87511080836c5d4347b.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Administration/Industry file",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "What's the geographic market name for EPS Code AR01?\n\n",
+  "doc": "8dfc21ec151fb9d3578fc32d5c4e5df9.pdf",
+  "pages": [
+   8
+  ],
+  "answer": "Little Rock",
+  "type": "Guidebook",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "According to this document, what's the geographic market name for EPS Code AR03?",
+  "doc": "8dfc21ec151fb9d3578fc32d5c4e5df9.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Guidebook",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "How many geographic markers in Greater Houston, Texas?",
+  "doc": "8dfc21ec151fb9d3578fc32d5c4e5df9.pdf",
+  "pages": [
+   8
+  ],
+  "answer": "4",
+  "type": "Guidebook",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "According to this document, how many geographic markers in the Oxford?",
+  "doc": "8dfc21ec151fb9d3578fc32d5c4e5df9.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Guidebook",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "What is the word written in Green box on page 17?",
+  "doc": "8dfc21ec151fb9d3578fc32d5c4e5df9.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Guidebook",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "How many recorded videos in the Recorded Demonstration section?",
+  "doc": "8dfc21ec151fb9d3578fc32d5c4e5df9.pdf",
+  "pages": [
+   1,
+   2
+  ],
+  "answer": "5",
+  "type": "Guidebook",
+  "source": "layout",
+  "route": "documents"
+ },
+ {
+  "question": "Within the geographic market segments defined by the College Board Search platform, which of the two designated areas, CA19 or Covina and West Covina, encompasses a larger geographic region?",
+  "doc": "8dfc21ec151fb9d3578fc32d5c4e5df9.pdf",
+  "pages": [
+   9,
+   10
+  ],
+  "answer": "Covina and West Covina",
+  "type": "Guidebook",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "On the left or right side of the screen, can you immediately find information about the percentage of the total available students represented by your chosen search criteria? Answer 'left' or 'right'.",
+  "doc": "8dfc21ec151fb9d3578fc32d5c4e5df9.pdf",
+  "pages": [
+   17
+  ],
+  "answer": "Right",
+  "type": "Guidebook",
+  "source": "figure",
+  "route": "documents"
+ },
+ {
+  "question": "What's the color of the 'loss_cls' line in the loss curve image?",
+  "doc": "mmdetection-readthedocs-io-en-v2.18.0.pdf",
+  "pages": [
+   117
+  ],
+  "answer": "Blue",
+  "type": "Guidebook",
+  "source": "figure",
+  "route": "documents"
+ },
+ {
+  "question": "If I want to use the detector in the paper `SOLO: Segmenting Objects by Locations`, what is the implemented class name in `mmdet.models.dense_heads`? ",
+  "doc": "mmdetection-readthedocs-io-en-v2.18.0.pdf",
+  "pages": [
+   336
+  ],
+  "answer": "DecoupledSOLOHead",
+  "type": "Guidebook",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "If I want to use the detector in the paper `V3Det: Vast Vocabulary Visual Detection Dataset`, what is the implemented class name in `mmdet.models.dense_heads`?",
+  "doc": "mmdetection-readthedocs-io-en-v2.18.0.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Guidebook",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "How many data preparation operators in the classical pipeline?",
+  "doc": "mmdetection-readthedocs-io-en-v2.18.0.pdf",
+  "pages": [
+   75
+  ],
+  "answer": "8",
+  "type": "Guidebook",
+  "source": "figure",
+  "route": "documents"
+ },
+ {
+  "question": "Which paper uses the Fast NMS processing?",
+  "doc": "mmdetection-readthedocs-io-en-v2.18.0.pdf",
+  "pages": [
+   229
+  ],
+  "answer": "YOLACT",
+  "type": "Guidebook",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "Since what year has Mr. Kildee been involved with child nutrition?",
+  "doc": "e639029d16094ea71d964e2fb953952b.pdf",
+  "pages": [
+   8
+  ],
+  "answer": "1954",
+  "type": "Administration/Industry file",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "What is the yellow color italic texts in page 9?",
+  "doc": "e639029d16094ea71d964e2fb953952b.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Administration/Industry file",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "What date is mentioned at the beginning of page(1)? Format the date as YYYY-MM-DD",
+  "doc": "e639029d16094ea71d964e2fb953952b.pdf",
+  "pages": [
+   5
+  ],
+  "answer": "2003-10-07",
+  "type": "Administration/Industry file",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "What page has an eight-pointed snowflake image? Give me an integer.",
+  "doc": "e639029d16094ea71d964e2fb953952b.pdf",
+  "pages": [
+   1
+  ],
+  "answer": "1",
+  "type": "Administration/Industry file",
+  "source": "figure",
+  "route": "documents"
+ },
+ {
+  "question": "Format the date mentioned on page 14 as YYYY-MM-DD.",
+  "doc": "scan_a5879805d70c854ea4361e43a84e3bb2.pdf",
+  "pages": [
+   14
+  ],
+  "answer": "2021-02-08",
+  "type": "Administration/Industry file",
+  "source": "scan",
+  "route": "documents",
+  "content": "Pure-text (Plain-text)"
+ },
+ {
+  "question": "What is INF SERCRL LLP FAX No on page fourteen?",
+  "doc": "scan_a5879805d70c854ea4361e43a84e3bb2.pdf",
+  "pages": [
+   14
+  ],
+  "answer": "514-312-0292",
+  "type": "Administration/Industry file",
+  "source": "scan",
+  "route": "documents",
+  "content": "Pure-text (Plain-text)"
+ },
+ {
+  "question": "What is INF SERCRL LLP FAX No on page thirteen?",
+  "doc": "scan_a5879805d70c854ea4361e43a84e3bb2.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Administration/Industry file",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "What type of court is noted on the cover page?",
+  "doc": "scan_a5879805d70c854ea4361e43a84e3bb2.pdf",
+  "pages": [
+   1
+  ],
+  "answer": "SUPERIOR COURT",
+  "type": "Administration/Industry file",
+  "source": "scan",
+  "route": "documents",
+  "content": "Pure-text (Plain-text)"
+ },
+ {
+  "question": "what is the email id of the mtre laurent nahmiash ?",
+  "doc": "scan_a5879805d70c854ea4361e43a84e3bb2.pdf",
+  "pages": [
+   14
+  ],
+  "answer": "lnahmiash@infavocats.com",
+  "type": "Administration/Industry file",
+  "source": "scan",
+  "route": "documents",
+  "content": "Pure-text (Plain-text)"
+ },
+ {
+  "question": "what is the texts of the underlined italic words in page 2?",
+  "doc": "scan_a5879805d70c854ea4361e43a84e3bb2.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Administration/Industry file",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "How many Exhibits are mentioned in the document?",
+  "doc": "scan_a5879805d70c854ea4361e43a84e3bb2.pdf",
+  "pages": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   9,
+   10,
+   11,
+   12
+  ],
+  "answer": "27",
+  "type": "Administration/Industry file",
+  "source": "scan",
+  "route": "documents",
+  "content": "Pure-text (Plain-text)"
+ },
+ {
+  "question": "How many times does Exhibit P-10 mentioned in the document? List all pages and formatted as a list, for example, [\"1\",\"2\"]",
+  "doc": "scan_a5879805d70c854ea4361e43a84e3bb2.pdf",
+  "pages": [
+   1,
+   2,
+   3,
+   10
+  ],
+  "answer": "['1', '2', '3', '10']",
+  "type": "Administration/Industry file",
+  "source": "scan",
+  "route": "documents",
+  "content": "Pure-text (Plain-text)"
+ },
+ {
+  "question": "What are the amounts on checks issued to the Mont Blanc company? Enumerate each amount within a list.",
+  "doc": "3276a5b991c49cf5f9a4af0f7d6fce67.pdf",
+  "pages": [
+   11
+  ],
+  "answer": "['$35,000', '$40,684']",
+  "type": "Administration/Industry file",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "what is the CA, Bar no of the report?",
+  "doc": "3276a5b991c49cf5f9a4af0f7d6fce67.pdf",
+  "pages": [
+   15
+  ],
+  "answer": "239516",
+  "type": "Administration/Industry file",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "According to the complaint, who was interviewed by Traveler's Insurance Companay agents on Oct. 24, 2016?",
+  "doc": "3276a5b991c49cf5f9a4af0f7d6fce67.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Administration/Industry file",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "List all the Chinese universities that have a student exchange programme with SoC. Write the answer in alphabetical order.",
+  "doc": "NUS-FASS-Graduate-Guidebook-2021-small.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Guidebook",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "Which of the following department does not provide a PhD programme, Department of Economics, Department of English Language and Literature, or Department of History? ",
+  "doc": "NUS-FASS-Graduate-Guidebook-2021-small.pdf",
+  "pages": [
+   17,
+   18,
+   20
+  ],
+  "answer": "Department of History",
+  "type": "Guidebook",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "Which of the following department does not provide a MBA programme, Department of Economics, Department of English Language and Literature, or Department of History? ",
+  "doc": "NUS-FASS-Graduate-Guidebook-2021-small.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Guidebook",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "Which department or programme has the most number of people that appears in the guidebook to advertise for it? ",
+  "doc": "NUS-FASS-Graduate-Guidebook-2021-small.pdf",
+  "pages": [
+   15,
+   16,
+   25,
+   26
+  ],
+  "answer": "Cultural Studies in Asia, Department of Psychology",
+  "type": "Guidebook",
+  "source": "figure",
+  "route": "documents"
+ },
+ {
+  "question": "For all the people that appear in the guidebook to speak for their department or programmes, how many of them are assistant professors? ",
+  "doc": "NUS-FASS-Graduate-Guidebook-2021-small.pdf",
+  "pages": [
+   29
+  ],
+  "answer": "1",
+  "type": "Guidebook",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "How many departments/programmes are introduced in the \"Research & Course Work Programmes@FASS\" part (page 11-31)? ",
+  "doc": "NUS-FASS-Graduate-Guidebook-2021-small.pdf",
+  "pages": [
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   18,
+   19,
+   20,
+   21,
+   22,
+   23,
+   24,
+   25,
+   26,
+   27,
+   28,
+   29,
+   30,
+   31
+  ],
+  "answer": "17",
+  "type": "Guidebook",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "In the two styles shown in the \"Parts and Features\" section, are both styles have the egg bin in the picture? Directly answer 'yes' or 'no'.",
+  "doc": "owners-manual-2170416.pdf",
+  "pages": [
+   5,
+   6
+  ],
+  "answer": "Yes",
+  "type": "Guidebook",
+  "source": "figure",
+  "route": "documents"
+ },
+ {
+  "question": "In the two styles shown in the \"Parts and Features\" section, are both styles have the orange in the picture?",
+  "doc": "owners-manual-2170416.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Guidebook",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "In the \"Before Using Your Refrigerator\" Section, \"Installing it properly\" is the step before or after the step \"Plugging it in\"? ",
+  "doc": "owners-manual-2170416.pdf",
+  "pages": [
+   7,
+   8
+  ],
+  "answer": "after",
+  "type": "Guidebook",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "Which creation has more steps, To remove the drop-in trim piece or to remove the crisper?",
+  "doc": "owners-manual-2170416.pdf",
+  "pages": [
+   10,
+   13
+  ],
+  "answer": "Crisper",
+  "type": "Guidebook",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "How many steps are required to replace the grille? Write the answer in float format.",
+  "doc": "owners-manual-2170416.pdf",
+  "pages": [
+   17
+  ],
+  "answer": "3",
+  "type": "Guidebook",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "What is the central component of the table at page 17?",
+  "doc": "Campaign_038_Introducing_AC_Whitepaper_v5e.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Brochure",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "How many ECS components wiil the BaiduCloud DNS go through in the figure at Page 18?",
+  "doc": "Campaign_038_Introducing_AC_Whitepaper_v5e.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Brochure",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "How many data centers does the China's largest cloud provider have?",
+  "doc": "Campaign_038_Introducing_AC_Whitepaper_v5e.pdf",
+  "pages": [
+   5,
+   6
+  ],
+  "answer": "18",
+  "type": "Brochure",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "Which cities does the China's largest cloud provider have teams? Write the answer in list format with alphabetical rder.",
+  "doc": "Campaign_038_Introducing_AC_Whitepaper_v5e.pdf",
+  "pages": [
+   5,
+   6
+  ],
+  "answer": "['Dubai', 'Frankfurt', 'Hong Kong', 'London', 'New York', 'Paris', 'San Mateo', 'Seoul', 'Singapore', 'Sydney', 'Tokyo']",
+  "type": "Brochure",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "What types of charts are in the document?",
+  "doc": "7c3f6204b3241f142f0f8eb8e1fefe7a.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Administration/Industry file",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "Write the filling id and case number in this document?",
+  "doc": "7c3f6204b3241f142f0f8eb8e1fefe7a.pdf",
+  "pages": [
+   1,
+   1
+  ],
+  "answer": "['48897809', '5152012']",
+  "type": "Administration/Industry file",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "What is the name of the person who signed at the end of the opinion?",
+  "doc": "7c3f6204b3241f142f0f8eb8e1fefe7a.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Administration/Industry file",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "Which case is related to the statement that \"PIC also never determined if Hanson's qualified immunity defense would overcome her conflicts of interest.\"?",
+  "doc": "7c3f6204b3241f142f0f8eb8e1fefe7a.pdf",
+  "pages": [
+   13,
+   14
+  ],
+  "answer": "FN54. Wong v. Allison, 208 F.3d 224, 2000 WL 206572",
+  "type": "Administration/Industry file",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "The document represents which judges' opinions?",
+  "doc": "7c3f6204b3241f142f0f8eb8e1fefe7a.pdf",
+  "pages": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15
+  ],
+  "answer": "Scott Bradley.",
+  "type": "Administration/Industry file",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "Who is the defendant of this case?",
+  "doc": "7c3f6204b3241f142f0f8eb8e1fefe7a.pdf",
+  "pages": [
+   1
+  ],
+  "answer": "DELAWARE STATE PUBLIC INTEGRITY COMMISSION.",
+  "type": "Administration/Industry file",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "How many figures are available in the entire document?",
+  "doc": "f1f5242528411b262be447e61e2eb10f.pdf",
+  "pages": [
+   3,
+   4,
+   6,
+   7,
+   8,
+   9,
+   11,
+   12,
+   1418,
+   20
+  ],
+  "answer": "12",
+  "type": "Academic paper",
+  "source": "figure",
+  "route": "documents"
+ },
+ {
+  "question": "what is the color of the stamp in the 6th page?",
+  "doc": "f1f5242528411b262be447e61e2eb10f.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Academic paper",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "What does a point mutation of the codon TTT or thymine-thymine define?",
+  "doc": "f1f5242528411b262be447e61e2eb10f.pdf",
+  "pages": [
+   7
+  ],
+  "answer": "phenylalanine",
+  "type": "Academic paper",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "What DNA repair mechanisms does Figure 11 demonstrate?",
+  "doc": "f1f5242528411b262be447e61e2eb10f.pdf",
+  "pages": [
+   18
+  ],
+  "answer": "['Base Excision Repair (BER)', 'Nucleotide Excision Repair (NER)', 'Mismatch Repair (MMR)', 'Direct Reversal Repair', 'Recombinational Repair']",
+  "type": "Academic paper",
+  "source": "figure",
+  "route": "documents"
+ },
+ {
+  "question": "Which figures depict mutation mechanisms with the double-chain DNA structure?",
+  "doc": "f1f5242528411b262be447e61e2eb10f.pdf",
+  "pages": [
+   6,
+   7,
+   18
+  ],
+  "answer": "['Figure 3', 'Figure 4', 'Figure 11']",
+  "type": "Academic paper",
+  "source": "figure",
+  "route": "documents"
+ },
+ {
+  "question": "What is the web link to this paper?",
+  "doc": "f1f5242528411b262be447e61e2eb10f.pdf",
+  "pages": [
+   1
+  ],
+  "answer": "http://dx.doi.org/10.1016/j.ejmhg.2015.07.002",
+  "type": "Academic paper",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "What are the counties mentioned in the document?",
+  "doc": "698bba535087fa9a7f9009e172a7f763.pdf",
+  "pages": [
+   5,
+   18,
+   13,
+   19
+  ],
+  "answer": "['Hamilton', 'Lucas', 'Murphy', 'York', 'Aurora']",
+  "type": "Research report / Introduction",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "How many square miles does the Hamilton country covers according to the document? Give me an appropriate integer.",
+  "doc": "698bba535087fa9a7f9009e172a7f763.pdf",
+  "pages": [
+   11
+  ],
+  "answer": "538",
+  "type": "Research report / Introduction",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "how many tables are included in the document?",
+  "doc": "698bba535087fa9a7f9009e172a7f763.pdf",
+  "pages": [
+   12,
+   14,
+   17
+  ],
+  "answer": "3",
+  "type": "Research report / Introduction",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "Which application software interfaces are displayed in the slides? ",
+  "doc": "scan_c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+  "pages": [
+   6,
+   7
+  ],
+  "answer": "['Microsoft Office OneNote', 'SOAPWare']",
+  "type": "Tutorial/Workshop",
+  "source": "scan",
+  "route": "documents",
+  "content": "Figure"
+ },
+ {
+  "question": "Among the most important applications listed, which one is shown a picture of the interface as an example",
+  "doc": "scan_c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+  "pages": [
+   7,
+   11
+  ],
+  "answer": "Electronic Medical Records",
+  "type": "Tutorial/Workshop",
+  "source": "scan",
+  "route": "documents",
+  "content": "Pure-text (Plain-text)"
+ },
+ {
+  "question": "How many slides include more than one figure? Here don't consider the charts.  ",
+  "doc": "scan_c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+  "pages": [
+   20
+  ],
+  "answer": "1",
+  "type": "Tutorial/Workshop",
+  "source": "scan",
+  "route": "documents",
+  "content": "Figure"
+ },
+ {
+  "question": "How many lines are highlighted in yellow on the first page? Give me an integer.",
+  "doc": "scan_f8d3a162ab9507e021d83dd109118b60.pdf",
+  "pages": [
+   1
+  ],
+  "answer": "2",
+  "type": "Administration/Industry file",
+  "source": "scan",
+  "route": "documents",
+  "content": "Pure-text (Plain-text)"
+ },
+ {
+  "question": "When will the market open?",
+  "doc": "scan_f8d3a162ab9507e021d83dd109118b60.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Administration/Industry file",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "How to prepare for Tomorrow's Workplace Skills for QUARTER 3? ",
+  "doc": "scan_f8d3a162ab9507e021d83dd109118b60.pdf",
+  "pages": [
+   16
+  ],
+  "answer": "['Use the Google search engine', 'Pick a small business in your community', 'Pick a specific product that you use frequently']",
+  "type": "Administration/Industry file",
+  "source": "scan",
+  "route": "documents",
+  "content": "Pure-text (Plain-text)"
+ },
+ {
+  "question": "what are the names of Unit 1 and Unit 2 in Semester 1:quarter 1?",
+  "doc": "scan_f8d3a162ab9507e021d83dd109118b60.pdf",
+  "pages": [
+   1,
+   2
+  ],
+  "answer": "['Understanding Economic Systems and Business', 'Making Ethical Decisions and Managing a Socially Responsible Business']",
+  "type": "Administration/Industry file",
+  "source": "scan",
+  "route": "documents",
+  "content": "Pure-text (Plain-text)"
+ },
+ {
+  "question": "What is the title of case study given under unit-8 in table?",
+  "doc": "scan_f8d3a162ab9507e021d83dd109118b60.pdf",
+  "pages": [
+   7
+  ],
+  "answer": "Discrimination in the Workplace Continues",
+  "type": "Administration/Industry file",
+  "source": "scan",
+  "route": "documents",
+  "content": "Pure-text (Plain-text)"
+ },
+ {
+  "question": "How many critical thinking case studies are included in all the assignments?",
+  "doc": "scan_f8d3a162ab9507e021d83dd109118b60.pdf",
+  "pages": [
+   3,
+   4,
+   7,
+   15
+  ],
+  "answer": "3",
+  "type": "Administration/Industry file",
+  "source": "scan",
+  "route": "documents",
+  "content": "Pure-text (Plain-text)"
+ },
+ {
+  "question": "how many LEARNING OUTCOMES should be ANSWERed in UNIT 8? ",
+  "doc": "scan_f8d3a162ab9507e021d83dd109118b60.pdf",
+  "pages": [
+   6,
+   7
+  ],
+  "answer": "10",
+  "type": "Administration/Industry file",
+  "source": "scan",
+  "route": "documents",
+  "content": "Pure-text (Plain-text)"
+ },
+ {
+  "question": "what's the topic of UNIT 14?",
+  "doc": "scan_f8d3a162ab9507e021d83dd109118b60.pdf",
+  "pages": [
+   10
+  ],
+  "answer": "Using Financial Information and Accounting",
+  "type": "Administration/Industry file",
+  "source": "scan",
+  "route": "documents",
+  "content": "Pure-text (Plain-text)"
+ },
+ {
+  "question": "In Figure 1, compared the first subfigure, what is the difference of the fifth subfigure?",
+  "doc": "2312.09390v1.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Academic paper",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "How many figures are in Pages 100-120 of this paper ? ",
+  "doc": "2312.09390v1.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Academic paper",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "How many subfigures are in Figure 3?",
+  "doc": "2312.09390v1.pdf",
+  "pages": [
+   8
+  ],
+  "answer": "6",
+  "type": "Academic paper",
+  "source": "chart",
+  "route": "documents"
+ },
+ {
+  "question": "List all the sections that discuss about the experiment setup?",
+  "doc": "2312.09390v1.pdf",
+  "pages": [
+   7,
+   8,
+   9,
+   10,
+   28
+  ],
+  "answer": "['Section 4.1', 'Section 4.2', 'Section 4.3', 'Appendix A']",
+  "type": "Academic paper",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "For the paper by Long Ouyang published in 2022, how many times has it been cited? \n",
+  "doc": "2312.09390v1.pdf",
+  "pages": [
+   1,
+   2,
+   5,
+   7,
+   32,
+   47
+  ],
+  "answer": "6",
+  "type": "Academic paper",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "In Figure 9 including three subfigures, among six different methods, which one is the best?",
+  "doc": "2312.09390v1.pdf",
+  "pages": [
+   14
+  ],
+  "answer": "finetune g.t.",
+  "type": "Academic paper",
+  "source": "chart",
+  "route": "documents"
+ },
+ {
+  "question": "How many steps are needed to apply for housing and themed engagement communities?",
+  "doc": "NYU_graduate.pdf",
+  "pages": [
+   25
+  ],
+  "answer": "3",
+  "type": "Brochure",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "Where is Office of Residential Life & Housing Services?",
+  "doc": "NYU_graduate.pdf",
+  "pages": [
+   28
+  ],
+  "answer": "726 Broadway, 7th Floor New York, NY 10003",
+  "type": "Brochure",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "What's the phone number of Office of Residential Life & Housing Services of NTU?",
+  "doc": "NYU_graduate.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Brochure",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "How many pictures are shown in Pages 25-28?",
+  "doc": "NYU_graduate.pdf",
+  "pages": [
+   25,
+   26,
+   27,
+   28
+  ],
+  "answer": "13",
+  "type": "Brochure",
+  "source": "figure",
+  "route": "documents"
+ },
+ {
+  "question": "How many pictures are shown in Pages 40-50?",
+  "doc": "NYU_graduate.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Brochure",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "List the STAFF MEMBERS IN the RESIDENCE HALL",
+  "doc": "NYU_graduate.pdf",
+  "pages": [
+   21
+  ],
+  "answer": "['Residence Hall Director', 'Residence Hall Assistant Director', 'Residence Hall Resource Manager', 'Resident Assistant']",
+  "type": "Brochure",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "How many people can be found in the figures in Pages 18-19?",
+  "doc": "NYU_graduate.pdf",
+  "pages": [
+   18,
+   19
+  ],
+  "answer": "9",
+  "type": "Brochure",
+  "source": "figure",
+  "route": "documents"
+ },
+ {
+  "question": "How large student community center can be which residents have access? Give me a number of its square.",
+  "doc": "NYU_graduate.pdf",
+  "pages": [
+   18
+  ],
+  "answer": "8300",
+  "type": "Brochure",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "What is the title of the slide?",
+  "doc": "scan_c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+  "pages": [
+   1
+  ],
+  "answer": "Medical Informatics and HIT Systems",
+  "type": "Tutorial/Workshop",
+  "source": "scan",
+  "route": "documents",
+  "content": "Pure-text (Plain-text)"
+ },
+ {
+  "question": "who is the presenter of this slide?",
+  "doc": "scan_c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+  "pages": [
+   1
+  ],
+  "answer": "David Lubliner",
+  "type": "Tutorial/Workshop",
+  "source": "scan",
+  "route": "documents",
+  "content": "Pure-text (Plain-text)"
+ },
+ {
+  "question": "How many lateral bar graphs are present in the document?",
+  "doc": "scan_c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+  "pages": [
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   15,
+   16,
+   17,
+   18
+  ],
+  "answer": "10",
+  "type": "Tutorial/Workshop",
+  "source": "scan",
+  "route": "documents",
+  "content": "Chart"
+ },
+ {
+  "question": "TOP security concerns of computerized medical information DIAGRAM DISCUSSED ABOUT WHICH YEAR? List all of them like ['2014', '2018', '2020'].",
+  "doc": "scan_c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+  "pages": [
+   12
+  ],
+  "answer": "[2005, 2006]",
+  "type": "Tutorial/Workshop",
+  "source": "scan",
+  "route": "documents",
+  "content": "Pure-text (Plain-text)"
+ },
+ {
+  "question": "Mention Tablet Capture Devices used by some hospitals?",
+  "doc": "scan_c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+  "pages": [
+   6,
+   6,
+   6,
+   6,
+   6,
+   6
+  ],
+  "answer": "['Mircosoft Office OneNote', 'Windows Journal', 'Microsoft Educational Pack for Tablet PC', 'Microsoft Experience Pack for Tablet PC', 'Sticky Notes', 'Snipping Tool']",
+  "type": "Tutorial/Workshop",
+  "source": "scan",
+  "route": "documents",
+  "content": ""
+ },
+ {
+  "question": "What are the HIT applications?",
+  "doc": "scan_c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+  "pages": [
+   4
+  ],
+  "answer": "['Patient registration/ demographics', 'Insurance validation', 'Billing systems', 'Appointment systems', 'Computerized Physician Order Entry (CPOE)', 'EMR/EHR/CPR', 'Pharmacy systems', 'Lab systems', 'Imaging systems', 'Telemedicine', 'Patient education', 'Decision Support', 'Library resources', 'Sensors']",
+  "type": "Tutorial/Workshop",
+  "source": "scan",
+  "route": "documents",
+  "content": "Pure-text (Plain-text)"
+ },
+ {
+  "question": "How many times does \"HIT\" appear in slide?",
+  "doc": "scan_c31e6580d0175ab3f9d99d1ff0bfa000.pdf",
+  "pages": [
+   1,
+   3,
+   4
+  ],
+  "answer": "3",
+  "type": "Tutorial/Workshop",
+  "source": "scan",
+  "route": "documents",
+  "content": "Pure-text (Plain-text)"
+ },
+ {
+  "question": "What company is a plaintiff?",
+  "doc": "a4f3ced0696009fec3179f493e4f28c4.pdf",
+  "pages": [
+   1
+  ],
+  "answer": "LIBERTARIAN PARTY OF GEORGIA, INC",
+  "type": "Administration/Industry file",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "WHAT IS USCA CASE NUMBER?",
+  "doc": "a4f3ced0696009fec3179f493e4f28c4.pdf",
+  "pages": [
+   1
+  ],
+  "answer": "21-13199",
+  "type": "Administration/Industry file",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "What is the date of the document? Format your answer as YYYY-MM-DD.",
+  "doc": "a4f3ced0696009fec3179f493e4f28c4.pdf",
+  "pages": [
+   1
+  ],
+  "answer": "2022-01-05",
+  "type": "Administration/Industry file",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "From 2009 to 2013, as for the adviser's organic growth rate,  how many years are higher than 2011?",
+  "doc": "csewt7zsecmmbzjufbyx-signature-24d91a254426c21c3079384270e1f138dc43a271cfe15d6d520d68205855b2a3-poli-150306115347-conversion-gate01_95.pdf",
+  "pages": [
+   9
+  ],
+  "answer": "1",
+  "type": "Brochure",
+  "source": "chart",
+  "route": "documents"
+ },
+ {
+  "question": "From 2009 to 2013, as for the adviser's organic growth rate,  how many years are higher than 2010?",
+  "doc": "csewt7zsecmmbzjufbyx-signature-24d91a254426c21c3079384270e1f138dc43a271cfe15d6d520d68205855b2a3-poli-150306115347-conversion-gate01_95.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Brochure",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "How many years have there been more than 4,000 births (thousands)?",
+  "doc": "csewt7zsecmmbzjufbyx-signature-24d91a254426c21c3079384270e1f138dc43a271cfe15d6d520d68205855b2a3-poli-150306115347-conversion-gate01_95.pdf",
+  "pages": [
+   8
+  ],
+  "answer": "11",
+  "type": "Brochure",
+  "source": "chart",
+  "route": "documents"
+ },
+ {
+  "question": "How many years have there been more than 4,500 births (thousands)?",
+  "doc": "csewt7zsecmmbzjufbyx-signature-24d91a254426c21c3079384270e1f138dc43a271cfe15d6d520d68205855b2a3-poli-150306115347-conversion-gate01_95.pdf",
+  "pages": [],
+  "answer": "Not answerable",
+  "type": "Brochure",
+  "source": "not-answerable",
+  "route": "documents"
+ },
+ {
+  "question": "In the \"Who are you talking to\" section,  what tips does the author give us?",
+  "doc": "csewt7zsecmmbzjufbyx-signature-24d91a254426c21c3079384270e1f138dc43a271cfe15d6d520d68205855b2a3-poli-150306115347-conversion-gate01_95.pdf",
+  "pages": [
+   37,
+   38,
+   39,
+   40,
+   41
+  ],
+  "answer": "['line them up', 'observe your clients', 'build a buyer persons']",
+  "type": "Brochure",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "On what page does the first part end?",
+  "doc": "csewt7zsecmmbzjufbyx-signature-24d91a254426c21c3079384270e1f138dc43a271cfe15d6d520d68205855b2a3-poli-150306115347-conversion-gate01_95.pdf",
+  "pages": [
+   2,
+   18,
+   19
+  ],
+  "answer": "18",
+  "type": "Brochure",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "What are two examples of reflecting surfaces?",
+  "doc": "b3m5kaeqm2w8n4bwcesw-140602121350-phpapp02_95.pdf",
+  "pages": [
+   9
+  ],
+  "answer": "['shiny object', 'mirror']",
+  "type": "Tutorial/Workshop",
+  "source": "figure",
+  "route": "documents"
+ },
+ {
+  "question": "What are used for long-distance communication as introduced in this slide?",
+  "doc": "b3m5kaeqm2w8n4bwcesw-140602121350-phpapp02_95.pdf",
+  "pages": [
+   17,
+   18
+  ],
+  "answer": "['radiowaves', 'microwaves']",
+  "type": "Tutorial/Workshop",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "Does CFCs causes skin burn? Directly answer 'yes' or 'no'.",
+  "doc": "b3m5kaeqm2w8n4bwcesw-140602121350-phpapp02_95.pdf",
+  "pages": [
+   18,
+   20
+  ],
+  "answer": "Yes",
+  "type": "Tutorial/Workshop",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "Cold is the catalyst for what reaction?",
+  "doc": "b3m5kaeqm2w8n4bwcesw-140602121350-phpapp02_95.pdf",
+  "pages": [
+   21
+  ],
+  "answer": "the chemical reaction involving CFCs.",
+  "type": "Tutorial/Workshop",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "What is common equity  for COSTCO in FY2021? ",
+  "doc": "COSTCO_2021_10K.pdf",
+  "pages": [
+   38
+  ],
+  "answer": "18078",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "What is total long-term Liabilities for COSTCO in FY 2021? Anwser in millions",
+  "doc": "COSTCO_2021_10K.pdf",
+  "pages": [
+   38
+  ],
+  "answer": "11749",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "what is EBITDA  for costco in FY2021?",
+  "doc": "COSTCO_2021_10K.pdf",
+  "pages": [
+   36,
+   40
+  ],
+  "answer": "8489",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "what is long-term debt of  Costco in FY 2021? Anwser in millions.",
+  "doc": "COSTCO_2021_10K.pdf",
+  "pages": [
+   38,
+   53
+  ],
+  "answer": "10314",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "what is total debt of COSTCO in FY 2021?Answer in millions.",
+  "doc": "COSTCO_2021_10K.pdf",
+  "pages": [
+   38,
+   53
+  ],
+  "answer": "11407",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "what is total debt to EBITDA ratio of COSTCO in FY2021?round your answer to three decimal places.",
+  "doc": "COSTCO_2021_10K.pdf",
+  "pages": [
+   36,
+   38,
+   40,
+   53
+  ],
+  "answer": "1.344",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "what is total liabilities for COSTCO in FY 2021?Answer in millions.",
+  "doc": "COSTCO_2021_10K.pdf",
+  "pages": [
+   38
+  ],
+  "answer": "41190",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "what is Long-term Debt to Total Liabilities for COSTCO in FY2021? Round your answer to two decimal places.",
+  "doc": "COSTCO_2021_10K.pdf",
+  "pages": [
+   38,
+   53
+  ],
+  "answer": "0.25",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "what is current liabilities to total liabilities for COSTCO in FY2021? Round your answer to three decimal places.",
+  "doc": "COSTCO_2021_10K.pdf",
+  "pages": [
+   38
+  ],
+  "answer": "0.715",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "What is total liabilities for costco in FY 2021?",
+  "doc": "COSTCO_2021_10K.pdf",
+  "pages": [
+   36,
+   38
+  ],
+  "answer": "41190",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "what is total debt to total assets  for costco in FY 2021?\n\n",
+  "doc": "COSTCO_2021_10K.pdf",
+  "pages": [
+   38,
+   53
+  ],
+  "answer": "0.192",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "what is Operating cash flow to Current Liabilitiesfor COSTCO in FY2021? Round your answer to three decimal places.",
+  "doc": "COSTCO_2021_10K.pdf",
+  "pages": [
+   38,
+   40
+  ],
+  "answer": "0.304",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "How much shares did COSTCO repurchase in FY2021?",
+  "doc": "COSTCO_2021_10K.pdf",
+  "pages": [
+   29
+  ],
+  "answer": "1358000",
+  "type": "Financial report",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "How much did COSTCO spend on repurchasing of common stock in FY2021?Answer in millions.\n",
+  "doc": "COSTCO_2021_10K.pdf",
+  "pages": [
+   29
+  ],
+  "answer": "495.00",
+  "type": "Financial report",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "What does Costco rely heavily on for its financial performance in FY2021?",
+  "doc": "COSTCO_2021_10K.pdf",
+  "pages": [
+   9
+  ],
+  "answer": "the financial performance of our U.S. and Canadian operations.",
+  "type": "Financial report",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "How many membership warehouses did COSTCO operate at 2021?",
+  "doc": "COSTCO_2021_10K.pdf",
+  "pages": [
+   19
+  ],
+  "answer": "815",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "what is the FY2015 unadjusted EBITDA % margin for Netflix?Answer in percentage term, round to one decimal place.",
+  "doc": "NETFLIX_2015_10K.pdf",
+  "pages": [
+   40,
+   42
+  ],
+  "answer": "5.4%",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "What is Netflix working capital in FY2015?Answer in thousands.",
+  "doc": "NETFLIX_2015_10K.pdf",
+  "pages": [
+   43
+  ],
+  "answer": "1902216.00",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "What is sales to working capital ratio of Neflix in FY 2015?Round your answer to two decimal places.",
+  "doc": "NETFLIX_2015_10K.pdf",
+  "pages": [
+   40,
+   43
+  ],
+  "answer": "3.56",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "What amount did  personnel-related costs increase for Netfilx in 2015? Answer in millions.",
+  "doc": "NETFLIX_2015_10K.pdf",
+  "pages": [
+   24
+  ],
+  "answer": "253.3",
+  "type": "Financial report",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "what is advertsing expense of Neflix in FY 2015? Answer in millions",
+  "doc": "NETFLIX_2015_10K.pdf",
+  "pages": [
+   47
+  ],
+  "answer": "714.3",
+  "type": "Financial report",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "what is research and development expense of Neflix in FY 2015? Answer in thousands.",
+  "doc": "NETFLIX_2015_10K.pdf",
+  "pages": [
+   24
+  ],
+  "answer": "650788.00",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "what is sales to stockholder equity ratio  of Neflix in FY 2015? Round your answer to three decimal places.",
+  "doc": "NETFLIX_2015_10K.pdf",
+  "pages": [
+   40,
+   43
+  ],
+  "answer": "3.049",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "what method did netflix use to pay the dividend to shareholders in FY2015.",
+  "doc": "NETFLIX_2015_10K.pdf",
+  "pages": [
+   55
+  ],
+  "answer": "seven-for-one stock split",
+  "type": "Financial report",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "what is operating leases occurred in FY 2015 for Netfilx?Answer in million.",
+  "doc": "NETFLIX_2015_10K.pdf",
+  "pages": [
+   54
+  ],
+  "answer": "34.7",
+  "type": "Financial report",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "what percentage did Global streaming memberships increase from 2014 to 2015?Answer in percentage term, round to one decimal places.",
+  "doc": "NETFLIX_2015_10K.pdf",
+  "pages": [
+   19
+  ],
+  "answer": "30.3%",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "what profit  did Memberships contribute to in Domestic Streaming Segment in FY2015? Answer in thousands.",
+  "doc": "NETFLIX_2015_10K.pdf",
+  "pages": [
+   21
+  ],
+  "answer": "1375500.00",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "What is Amazon's FY2017 days payable outstanding (DPO)?Round your answer to two decimal places. ",
+  "doc": "AMAZON_2017_10K.pdf",
+  "pages": [
+   38,
+   40
+  ],
+  "answer": "97.75",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "what is Amazon's FY2017 Operating Profit Margin Before Depreciation? round your answer to three decimal",
+  "doc": "AMAZON_2017_10K.pdf",
+  "pages": [
+   38,
+   71
+  ],
+  "answer": "0.073",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "what is Amazon's FY2017 return on asset ? round your answer to three decimal",
+  "doc": "AMAZON_2017_10K.pdf",
+  "pages": [
+   35,
+   38
+  ],
+  "answer": "0.023",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "what is Amazon's FY2017 return on equity? round your answer to three decimal",
+  "doc": "AMAZON_2017_10K.pdf",
+  "pages": [
+   38,
+   40
+  ],
+  "answer": "0.109",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "what is Amazon's FY2017 effective tax rate? round your answer to three decimal",
+  "doc": "AMAZON_2017_10K.pdf",
+  "pages": [
+   38,
+   64
+  ],
+  "answer": "0.202",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "what is Amazon's FY2017 Interest Expense to Average Long-Term Debt Ratio?  round your answer to three decimal",
+  "doc": "AMAZON_2017_10K.pdf",
+  "pages": [
+   38,
+   40
+  ],
+  "answer": "0.052 ",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "what is Amazon's FY2017 cash balance to total liability ratio? round your answer to three decimal",
+  "doc": "AMAZON_2017_10K.pdf",
+  "pages": [
+   40,
+   50
+  ],
+  "answer": "0.198",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "what is Amazon's FY2017 debt to ebitda ratio? round your answer to three decimal ",
+  "doc": "AMAZON_2017_10K.pdf",
+  "pages": [
+   38,
+   56,
+   71
+  ],
+  "answer": "1.93",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "what is the percentage change of  return for allowance from 2016 to  2017? Round your answer to one decimal  ",
+  "doc": "AMAZON_2017_10K.pdf",
+  "pages": [
+   43
+  ],
+  "answer": "60.3%",
+  "type": "Financial report",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "what are the components of cost of sales  for Amazon's FY2017?",
+  "doc": "AMAZON_2017_10K.pdf",
+  "pages": [
+   44
+  ],
+  "answer": "['the purchase price of consumer products', 'digital media content costs', 'packaging supplies', 'sortation and delivery centers and related equipment costs', 'inbound and outbound shipping costs']",
+  "type": "Financial report",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "How do Amazon recognize least cost?",
+  "doc": "AMAZON_2017_10K.pdf",
+  "pages": [
+   47
+  ],
+  "answer": "straight-line basis without regard to deferred payment terms",
+  "type": "Financial report",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "what amount is liabilities for unredeemed gift cards in FY2017 for Amazon? Answer in billion.",
+  "doc": "AMAZON_2017_10K.pdf",
+  "pages": [
+   48
+  ],
+  "answer": "3.0",
+  "type": "Financial report",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "what is depreciation expense on property and equipment in 2017 for Amazon? Answer in billion",
+  "doc": "AMAZON_2017_10K.pdf",
+  "pages": [
+   52
+  ],
+  "answer": "8.8",
+  "type": "Financial report",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "what is the total amount of  expected future amortization expense of acquired intangible assets as of December 31, 2017 for Amazon? Answer in million",
+  "doc": "AMAZON_2017_10K.pdf",
+  "pages": [
+   55
+  ],
+  "answer": "3362",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "what is the total long-term capital lease obligation related to technology infrastructure, and buildings? Answer in million",
+  "doc": "AMAZON_2017_10K.pdf",
+  "pages": [
+   58
+  ],
+  "answer": "8438",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "what is the change of  Best Buy's gross margins change from FY2022 to FY2021? Answer in percentage terms, round to 2 decimal places.",
+  "doc": "BESTBUY_2023_10K.pdf",
+  "pages": [
+   40
+  ],
+  "answer": "1.08%",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "Among operations, investing, and financing activities, which brought in the most (or lost the least) cash flow for Best Buy in FY2022?",
+  "doc": "BESTBUY_2023_10K.pdf",
+  "pages": [
+   42
+  ],
+  "answer": "Operations activities",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "what is Return on Capital Employed for the fiscal year ending January 28, 2023? round your answer to three decimal places ",
+  "doc": "BESTBUY_2023_10K.pdf",
+  "pages": [
+   25,
+   39
+  ],
+  "answer": "0.263 ",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "what is After-tax Return on Average Equity  for the fiscal year ending January 28, 2023? round your answer to three decimal places",
+  "doc": "BESTBUY_2023_10K.pdf",
+  "pages": [
+   39,
+   40
+  ],
+  "answer": "0.488",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "What is Interest to Average Total Debt for the fiscal year ending January 28, 2023? Answer in percentage term, round to three decimal places",
+  "doc": "BESTBUY_2023_10K.pdf",
+  "pages": [
+   39,
+   40
+  ],
+  "answer": "2.91%",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "what is capitalization ratio for Best Buy for the fiscal year ending January 28, 2023? Answer in percentage term, round to one decimal places.",
+  "doc": "BESTBUY_2023_10K.pdf",
+  "pages": [
+   39
+  ],
+  "answer": "29.6%",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "what is Cash and cash equivalents for Best Buy for the fiscal year ending January 28, 2023? Answer in million",
+  "doc": "BESTBUY_2023_10K.pdf",
+  "pages": [
+   44
+  ],
+  "answer": "1874",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "how does Best Buy record Merchandise inventories?",
+  "doc": "BESTBUY_2023_10K.pdf",
+  "pages": [
+   45
+  ],
+  "answer": "the lower of cost or net realizable value",
+  "type": "Financial report",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "what goodwill does Best Buy have for for the fiscal year ending January 28, 2023?",
+  "doc": "BESTBUY_2023_10K.pdf",
+  "pages": [
+   39
+  ],
+  "answer": "1383",
+  "type": "Financial report",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "what is Gross Profit to Total Assets ratio for Best Buy for the fiscal year ending January 28, 2023? Round Your answer to three decimal places.",
+  "doc": "BESTBUY_2023_10K.pdf",
+  "pages": [
+   39,
+   40
+  ],
+  "answer": "0.627",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "what proportion does Best Buy have female employees in new, salaried field positions  for the fiscal year ending January 28, 2023?",
+  "doc": "BESTBUY_2023_10K.pdf",
+  "pages": [
+   7
+  ],
+  "answer": "25%",
+  "type": "Financial report",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "how many Domestic store does Best Buy have in fiscal 2023?",
+  "doc": "BESTBUY_2023_10K.pdf",
+  "pages": [
+   19
+  ],
+  "answer": "978",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "what is total current assets in FY2023 for Bestbuy? Answer in million.",
+  "doc": "BESTBUY_2023_10K.pdf",
+  "pages": [
+   39
+  ],
+  "answer": "8802",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "what is basic earnings per ordinary share in FY2023 for Bestbuy?",
+  "doc": "BESTBUY_2023_10K.pdf",
+  "pages": [
+   40
+  ],
+  "answer": "6.31",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "what is interest coverage ratio for AMCOR'FY 2020? round your answer to three decimal?",
+  "doc": "BESTBUY_2023_10K.pdf",
+  "pages": [
+   40
+  ],
+  "answer": "51.286",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "What is effective tax ratio of Best Buy for for the fiscal year ending January 28, 2023?Answer in percentage term, round to one decimal places.",
+  "doc": "BESTBUY_2023_10K.pdf",
+  "pages": [
+   40
+  ],
+  "answer": "20.7%",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "what is invested capital  of Best Buy for for the fiscal year ending January 28, 2023? Answer in million.",
+  "doc": "BESTBUY_2023_10K.pdf",
+  "pages": [
+   40
+  ],
+  "answer": "13929 ",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "What is the FY2018 capital expenditure amount (in USD millions) for 3M based on cash flow statement?",
+  "doc": "3M_2018_10K.pdf",
+  "pages": [
+   60
+  ],
+  "answer": "$1577.00",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "what kinds of business or segment does 3M have in FY2018?",
+  "doc": "3M_2018_10K.pdf",
+  "pages": [
+   4,
+   5
+  ],
+  "answer": "['Industrial Business', 'Safety and Graphics Business', 'Health Care Business', 'Electronics and Energy Business', 'Consumer Business']",
+  "type": "Financial report",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "what is the net fair value of derivative instruments for 3M in FY2018? Answer in million.",
+  "doc": "3M_2018_10K.pdf",
+  "pages": [
+   104
+  ],
+  "answer": "93",
+  "type": "Financial report",
+  "source": "table",
+  "route": "documents"
+ },
+ {
+  "question": "What is the growth rate of advertising and merchandising cost for 3M in FY2018? Answer in percentage term, round to two decimal places.",
+  "doc": "3M_2018_10K.pdf",
+  "pages": [
+   64
+  ],
+  "answer": "-3.65%",
+  "type": "Financial report",
+  "source": "pure-text",
+  "route": "documents"
+ },
+ {
+  "question": "Ile to jest 17 razy 23?",
+  "doc": "",
+  "pages": [],
+  "answer": "391",
+  "type": "",
+  "source": "general",
+  "route": "general"
+ },
+ {
+  "question": "What is the capital of Australia?",
+  "doc": "",
+  "pages": [],
+  "answer": "Canberra",
+  "type": "",
+  "source": "general",
+  "route": "general"
+ },
+ {
+  "question": "Jaka jest stolica Kanady?",
+  "doc": "",
+  "pages": [],
+  "answer": "Ottawa",
+  "type": "",
+  "source": "general",
+  "route": "general"
+ },
+ {
+  "question": "Who wrote the novel \"Pride and Prejudice\"?",
+  "doc": "",
+  "pages": [],
+  "answer": "Jane Austen",
+  "type": "",
+  "source": "general",
+  "route": "general"
+ },
+ {
+  "question": "Kto napisał \"Pana Tadeusza\"?",
+  "doc": "",
+  "pages": [],
+  "answer": "Adam Mickiewicz",
+  "type": "",
+  "source": "general",
+  "route": "general"
+ },
+ {
+  "question": "What is the chemical symbol for gold?",
+  "doc": "",
+  "pages": [],
+  "answer": "Au",
+  "type": "",
+  "source": "general",
+  "route": "general"
+ },
+ {
+  "question": "W którym roku Polska wstąpiła do Unii Europejskiej?",
+  "doc": "",
+  "pages": [],
+  "answer": "2004",
+  "type": "",
+  "source": "general",
+  "route": "general"
+ },
+ {
+  "question": "How many days are there in a leap year?",
+  "doc": "",
+  "pages": [],
+  "answer": "366",
+  "type": "",
+  "source": "general",
+  "route": "general"
+ },
+ {
+  "question": "Ile wynosi pierwiastek kwadratowy z 144?",
+  "doc": "",
+  "pages": [],
+  "answer": "12",
+  "type": "",
+  "source": "general",
+  "route": "general"
+ },
+ {
+  "question": "What is the boiling point of water at sea level in degrees Celsius?",
+  "doc": "",
+  "pages": [],
+  "answer": "100 °C",
+  "type": "",
+  "source": "general",
+  "route": "general"
+ },
+ {
+  "question": "Przetłumacz na angielski: \"Dzień dobry, jak się masz?\"",
+  "doc": "",
+  "pages": [],
+  "answer": "Good morning (Hello), how are you?",
+  "type": "",
+  "source": "general",
+  "route": "general"
+ },
+ {
+  "question": "Translate into Polish: \"The cat is sleeping on the sofa.\"",
+  "doc": "",
+  "pages": [],
+  "answer": "Kot śpi na kanapie.",
+  "type": "",
+  "source": "general",
+  "route": "general"
+ },
+ {
+  "question": "Cześć! Jak się masz?",
+  "doc": "",
+  "pages": [],
+  "answer": "Any friendly reply to the greeting, e.g. that it is fine and offers help.",
+  "type": "",
+  "source": "general",
+  "route": "general"
+ },
+ {
+  "question": "Hi, can you help me with something?",
+  "doc": "",
+  "pages": [],
+  "answer": "Any reply agreeing to help and asking what is needed.",
+  "type": "",
+  "source": "general",
+  "route": "general"
+ },
+ {
+  "question": "Napisz w Pythonie wyrażenie, które odwraca listę xs.",
+  "doc": "",
+  "pages": [],
+  "answer": "xs[::-1] (or list(reversed(xs)), or xs.reverse() in place)",
+  "type": "",
+  "source": "general",
+  "route": "general"
+ },
+ {
+  "question": "What does the acronym HTTP stand for?",
+  "doc": "",
+  "pages": [],
+  "answer": "HyperText Transfer Protocol",
+  "type": "",
+  "source": "general",
+  "route": "general"
+ },
+ {
+  "question": "Jaki jest najwyższy szczyt w Polsce?",
+  "doc": "",
+  "pages": [],
+  "answer": "Rysy",
+  "type": "",
+  "source": "general",
+  "route": "general"
+ },
+ {
+  "question": "Which planet is known as the Red Planet?",
+  "doc": "",
+  "pages": [],
+  "answer": "Mars",
+  "type": "",
+  "source": "general",
+  "route": "general"
+ },
+ {
+  "question": "Ile minut ma doba?",
+  "doc": "",
+  "pages": [],
+  "answer": "1440",
+  "type": "",
+  "source": "general",
+  "route": "general"
+ },
+ {
+  "question": "What is 15% of 200?",
+  "doc": "",
+  "pages": [],
+  "answer": "30",
+  "type": "",
+  "source": "general",
+  "route": "general"
+ },
+ {
+  "question": "Kto odkrył penicylinę?",
+  "doc": "",
+  "pages": [],
+  "answer": "Alexander Fleming",
+  "type": "",
+  "source": "general",
+  "route": "general"
+ },
+ {
+  "question": "In which year did World War II end?",
+  "doc": "",
+  "pages": [],
+  "answer": "1945",
+  "type": "",
+  "source": "general",
+  "route": "general"
+ },
+ {
+  "question": "Jaka jest najdłuższa rzeka w Polsce?",
+  "doc": "",
+  "pages": [],
+  "answer": "Wisła",
+  "type": "",
+  "source": "general",
+  "route": "general"
+ },
+ {
+  "question": "What is the largest ocean on Earth?",
+  "doc": "",
+  "pages": [],
+  "answer": "The Pacific Ocean",
+  "type": "",
+  "source": "general",
+  "route": "general"
+ },
+ {
+  "question": "Podaj synonim słowa \"szybki\".",
+  "doc": "",
+  "pages": [],
+  "answer": "Any synonym, e.g. prędki, błyskawiczny, rączy.",
+  "type": "",
+  "source": "general",
+  "route": "general"
+ },
+ {
+  "question": "Explain in one sentence what photosynthesis is.",
+  "doc": "",
+  "pages": [],
+  "answer": "The process in which plants use light energy to turn carbon dioxide and water into glucose (sugar) and oxygen.",
+  "type": "",
+  "source": "general",
+  "route": "general"
+ },
+ {
+  "question": "Ile boków ma sześciokąt?",
+  "doc": "",
+  "pages": [],
+  "answer": "6",
+  "type": "",
+  "source": "general",
+  "route": "general"
+ },
+ {
+  "question": "What is the freezing point of water in degrees Fahrenheit?",
+  "doc": "",
+  "pages": [],
+  "answer": "32 °F",
+  "type": "",
+  "source": "general",
+  "route": "general"
+ },
+ {
+  "question": "Kto był pierwszym człowiekiem na Księżycu?",
+  "doc": "",
+  "pages": [],
+  "answer": "Neil Armstrong",
+  "type": "",
+  "source": "general",
+  "route": "general"
+ },
+ {
+  "question": "Convert 5 kilometres to metres.",
+  "doc": "",
+  "pages": [],
+  "answer": "5000 m",
+  "type": "",
+  "source": "general",
+  "route": "general"
+ }
+]

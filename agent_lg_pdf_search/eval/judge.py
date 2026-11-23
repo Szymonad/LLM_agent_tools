@@ -22,16 +22,20 @@ from agent_lg_pdf_search.eval import to_sqlite
 from agent_lg_pdf_search.eval.answers import model_file
 from agent_lg_pdf_search.eval.evaluate import RESULTS
 
-JUDGE = """You grade an answer given by an assistant to a question about documents.
+JUDGE = """You grade an answer given by an assistant to a question, usually about documents.
 You get the question, the reference answer and the assistant's answer.
 
 Decide whether the assistant's answer agrees with the reference answer.
 - The content counts, not the form. A sentence instead of a bare number is fine.
   A rounding that suits the question is fine.
 - When the reference answer is a list, every element of it is required.
+- A reference answer starting with "Any" describes what is acceptable; alternatives
+  joined by "or" or given after "e.g." are examples, and one of them is enough.
 - An answer saying that the documents do not contain the information is wrong,
   unless the reference answer is "Not answerable". Then only such an answer is
   correct.
+- When the reference answer is general knowledge rather than a fact from documents,
+  judge only whether the content is right; a remark about the documents does not matter.
 
 Write only 1 (correct) or 0 (wrong)."""
 

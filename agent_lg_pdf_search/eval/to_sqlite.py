@@ -21,7 +21,7 @@ import pandas as pd
 RESULTS = Path(__file__).resolve().parent / "results"
 DATABASE = RESULTS / "results.db"
 #: Columns the comparison needs; a run without them gets them empty.
-NEEDED = ["source", "correct", "judge", "page_hit", "seconds"]
+NEEDED = ["source", "correct", "judge", "page_hit", "route_ok", "seconds"]
 
 
 def find_runs(results=RESULTS):
@@ -84,7 +84,9 @@ SELECT
   COUNT(*) AS questions,
   ROUND(100.0 * AVG(a.judge), 1) AS judge_pct,
   ROUND(100.0 * AVG(a.correct), 1) AS human_pct,
-  ROUND(100.0 * AVG(a.page_hit), 1) AS page_hit_pct{per_source},
+  ROUND(100.0 * AVG(a.page_hit), 1) AS page_hit_pct,
+  ROUND(100.0 * AVG(a.route_ok), 1) AS router_pct,
+  ROUND(100.0 * AVG(CASE WHEN a.source = 'general' THEN a.route_ok END), 1) AS router_general_pct{per_source},
   ROUND(AVG(a.seconds), 1) AS avg_seconds,
   r.questions_file,
   SUBSTR(r.questions_sha256, 1, 8) AS questions_sha,
@@ -118,7 +120,8 @@ def build(results=RESULTS, database=DATABASE):
         tables.append(table)
         descriptions.append(description)
     answers = pd.concat(tables, ignore_index=True) if tables else pd.DataFrame(columns=["stage", "run", "number", *NEEDED])
-    answers["page_hit"] = answers["page_hit"].map({True: 1, False: 0, 1: 1, 0: 0}).astype("Int64")
+    for column in ("page_hit", "route_ok"):
+        answers[column] = answers[column].map({True: 1, False: 0, 1: 1, 0: 0}).astype("Int64")
     keys = {"questions_file", "questions_sha256", "chat_model", "judge_model", "commit"}.union(*map(set, descriptions))
     runs = pd.DataFrame(descriptions, columns=["stage", "run", *sorted(keys - {"stage", "run"})])
     runs = runs.rename(columns={"commit": "git_commit"})

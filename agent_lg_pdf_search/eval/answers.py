@@ -60,22 +60,30 @@ def ask(agent, item, number):
         empty if the question has none), ``input_tokens`` and
         ``output_tokens`` (of the answer step only, ``None`` if the server
         did not report them), ``chunks`` (ids of the chunks the model
-        got, best first, separated by commas) and ``page_hit`` (``True``
+        got, best first, separated by commas), ``page_hit`` (``True``
         if any chunk comes from the expected document and has at least one
-        of the expected pages).
+        of the expected pages, ``None`` for a question with no expected page),
+        ``route`` (``documents`` or ``general``, as the agent decided) and
+        ``route_ok`` (whether it matches the question's ``route``, ``None``
+        if the question has none).
     """
     thread = {"configurable": {"thread_id": str(number)}}
     state = agent.invoke({"messages": [HumanMessage(item["question"])]}, thread)
-    hits = index.search_scored(state["query"])
+    # A question the router sent to general knowledge has no search.
+    query = state.get("query", "")
+    hits = index.search_scored(query) if query else []
     reply = state["messages"][-1]
     usage = reply.usage_metadata or {}
-    page_hit = any(
+    # A question with no expected page (``general``, ``not-answerable``) has no page to hit.
+    page_hit = None if not item["pages"] else any(
         chunk.metadata["source"] == item["doc"] and set(chunk.metadata["pages"]) & set(item["pages"])
         for chunk, score in hits
     )
+    # Without a router every question goes to the documents.
+    route = state.get("route", "documents")
     return {
         "question": item["question"],
-        "query": state["query"],
+        "query": query,
         "answer": reply.content,
         "expected": item["answer"],
         "source": item.get("source", ""),
@@ -83,6 +91,8 @@ def ask(agent, item, number):
         "output_tokens": usage.get("output_tokens"),
         "chunks": ", ".join(chunk.id for chunk, score in hits),
         "page_hit": page_hit,
+        "route": route,
+        "route_ok": route == item["route"] if "route" in item else None,
     }
 
 
@@ -119,6 +129,8 @@ def run(questions_path):
                 "output_tokens": None,
                 "chunks": "",
                 "page_hit": None,
+                "route": "",
+                "route_ok": None,
             }
         row["seconds"] = round(time.perf_counter() - started, 1)
         rows.append(row)
@@ -222,7 +234,8 @@ def save(rows, folder, description):
     ``answers.xlsx`` has one row per question, with the columns
     ``question``, ``query``, ``answer``, ``expected``, ``source``,
     ``correct`` (empty, to be filled in by hand), ``page_hit``, ``seconds``,
-    ``input_tokens``, ``output_tokens`` and ``chunks``.
+    ``input_tokens``, ``output_tokens``, ``chunks``, ``route`` and
+    ``route_ok``.
 
     Args:
         rows (list[dict]): Rows as returned by ``run``.
@@ -234,7 +247,7 @@ def save(rows, folder, description):
     """
     (folder / "run.json").write_text(json.dumps(description, ensure_ascii=False, indent=1), encoding="utf-8")
     out = folder / "answers.xlsx"
-    table = pd.DataFrame(rows, columns=["question", "query", "answer", "expected", "source", "correct", "page_hit", "seconds", "input_tokens", "output_tokens", "chunks"])
+    table = pd.DataFrame(rows, columns=["question", "query", "answer", "expected", "source", "correct", "page_hit", "seconds", "input_tokens", "output_tokens", "chunks", "route", "route_ok"])
     table.to_excel(out, index=False)
     return out
 
@@ -246,6 +259,8 @@ if __name__ == "__main__":
     args = parser.parse_args()
     if not STAGE_NAME.match(args.stage):
         parser.error("--stage may hold only lowercase letters, digits and _")
+    if not index.INDEX_PATH.exists():
+        parser.error(f"no index at {index.INDEX_PATH}, build it first")
     started = datetime.now()
     rows = run(args.questions)
     folder = new_run_folder(args.stage, started)
