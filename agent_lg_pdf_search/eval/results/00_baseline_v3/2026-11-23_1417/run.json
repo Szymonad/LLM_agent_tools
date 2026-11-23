@@ -14,5 +14,7 @@
  "chunk_tokens": 200,
  "chunk_overlap": 50,
  "embed_dim": 768,
- "rephrase": false
+ "rephrase": false,
+ "judge_model": "Qwen_Qwen3-8B-IQ4_XS.gguf",
+ "judged": "2026-11-23T16:44:35"
 }
