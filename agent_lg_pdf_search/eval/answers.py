@@ -29,6 +29,7 @@ from agent_lg_pdf_search.config import (
     CHUNK_TOKENS,
     EMBED_SERVER,
     HTTP_TIMEOUT,
+    PARSER,
     REPHRASE,
     SERVER,
     TOP_K,
@@ -219,6 +220,7 @@ def describe_run(stage, questions_path, rows, started, finished):
         "questions": len(rows),
         "chat_model": model_file(SERVER),
         "embedding_model": model_file(EMBED_SERVER),
+        "parser": index.index_parser(),
         "index_file": Path(index.INDEX_PATH).resolve().relative_to(REPO).as_posix(),
         "top_k": TOP_K,
         "chunk_tokens": CHUNK_TOKENS,
@@ -261,6 +263,8 @@ if __name__ == "__main__":
         parser.error("--stage may hold only lowercase letters, digits and _")
     if not index.INDEX_PATH.exists():
         parser.error(f"no index at {index.INDEX_PATH}, build it first")
+    if index.index_parser() != PARSER:
+        parser.error(f"{index.INDEX_PATH} was built with {index.index_parser()}, config says {PARSER}; rebuild it")
     started = datetime.now()
     rows = run(args.questions)
     folder = new_run_folder(args.stage, started)

@@ -17,7 +17,8 @@ If they do not contain the answer, say that the documents do not cover it; never
 from your own knowledge.
 
 After every fact write the number of the fragment it came from, in square brackets, like [2].
-Never write anything else inside square brackets."""
+Never write anything else inside square brackets. A fragment marked [OCR] was read from a scan
+and may contain misread characters; never copy the mark into the answer."""
 
 ROUTER = """Do not answer the last question. The user has a collection of PDF documents: reports,
 papers, manuals, guidebooks, presentations and notes. Decide whether the last question needs them.
@@ -55,8 +56,16 @@ the documents do not cover it; never fill the gap from your own knowledge."""
 
 
 def format_chunks(chunks):
-    """Numbered fragments for the prompt; the model cites numbers, never file names."""
-    return "\n\n".join(f"[{number}]\n{chunk.page_content}" for number, chunk in enumerate(chunks, start=1))
+    """Numbered fragments for the prompt; the model cites numbers, never file names.
+
+    A fragment read by OCR gets ``[OCR]`` after its number, so the model knows
+    the text may hold misread characters. The mark is not part of the chunk,
+    so it does not change the embedding.
+    """
+    return "\n\n".join(
+        f"[{number}]{' [OCR]' if chunk.metadata.get('origin') == 'ocr' else ''}\n{chunk.page_content}"
+        for number, chunk in enumerate(chunks, start=1)
+    )
 
 
 def sources_of(chunks):
@@ -83,7 +92,9 @@ def pdf_names():
 def pages_of(document):
     """Text of every page of a PDF, cached per file name.
 
-    Pages without text are missing from the result.
+    Pages without text are missing from the result. Reading goes through
+    Docling, so the first call per file takes seconds per page (tens of
+    seconds for a scan) and needs Docling installed.
 
     Args:
         document (str): File name from ``pdf_names``.
