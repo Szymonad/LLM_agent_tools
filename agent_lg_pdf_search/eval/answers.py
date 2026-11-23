@@ -7,6 +7,7 @@ Run from the repo root:
 Every run gets its own folder, ``results/<stage>/<date_time>/``, with
 ``answers.xlsx`` and ``run.json`` (the settings the answers were made with),
 so earlier runs are never overwritten and the stages can be compared.
+``results.db`` is rebuilt at the end.
 """
 import argparse
 import hashlib
@@ -32,6 +33,7 @@ from agent_lg_pdf_search.config import (
     SERVER,
     TOP_K,
 )
+from agent_lg_pdf_search.eval import to_sqlite
 from agent_lg_pdf_search.eval.evaluate import QUESTIONS, RESULTS, load_questions
 
 REPO = Path(__file__).resolve().parents[2]
@@ -248,3 +250,5 @@ if __name__ == "__main__":
     rows = run(args.questions)
     folder = new_run_folder(args.stage, started)
     print("saved", save(rows, folder, describe_run(args.stage, args.questions, rows, started, datetime.now())))
+    to_sqlite.build()
+    print("rebuilt", to_sqlite.DATABASE)
