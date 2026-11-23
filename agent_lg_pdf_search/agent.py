@@ -16,7 +16,16 @@ from langgraph.graph import END, START, MessagesState, StateGraph
 from agent_lg_pdf_search.config import CHUNK_OVERLAP, CHUNK_TOKENS, HTTP_TIMEOUT, SERVER, TOP_K
 from agent_lg_pdf_search.config import REPHRASE as REPHRASE_ENABLED
 from agent_lg_pdf_search.index import load_store, search_scored
-from agent_lg_pdf_search.tools import BEHAVIOUR, REPHRASE, expand_citations, format_chunks, sources_of
+from agent_lg_pdf_search.tools import (
+    BEHAVIOUR,
+    GENERAL_BEHAVIOUR,
+    GENERAL_MARK,
+    REPHRASE,
+    ROUTER,
+    expand_citations,
+    format_chunks,
+    sources_of,
+)
 
 logging.basicConfig(
     # Next to this file, not in whatever folder the terminal happens to be in.
@@ -49,6 +58,7 @@ class State(MessagesState):
     overwritten on every turn.
 
     Attributes:
+        route (str): ``documents`` or ``general``, written by ``route``.
         query (str): Standalone search query written by ``rephrase``.
         context (str): Found chunks formatted as one text for the model.
         sources (list[str]): Origin of each chunk, in the order of
@@ -56,11 +66,65 @@ class State(MessagesState):
         scores (list[float]): Similarity of each chunk, in the same order.
     """
 
+    route: str
     query: str
     context: str
     sources: list[str]
     scores: list[float]
     # sources: Annotated[list[str], operator.add]
+
+
+def route(state):
+    """Decide whether the last question needs the documents.
+
+    The model is called with thinking disabled. Only a reply of exactly
+    ``general`` (ignoring case, spaces and a final full stop) sends the
+    question to general knowledge; anything else goes to the documents,
+    because an unanswered document question is worse than a slower general one.
+
+    Args:
+        state (State): Current state; ``messages`` is read.
+
+    Returns:
+        dict: Update with ``route``: ``documents`` or ``general``.
+    """
+    # Same prefix as ``answer`` and ``rephrase``, so the server reuses its cache of the conversation.
+    reply = MODEL.invoke(
+        [SystemMessage(BEHAVIOUR), *state["messages"], SystemMessage(ROUTER)],
+        max_tokens=8,
+        extra_body={"chat_template_kwargs": {"enable_thinking": False}},
+    )
+    word = reply.content.strip().strip(".").lower()
+    return {"route": "general" if word == "general" else "documents"}
+
+
+def after_route(state):
+    """Name of the node that follows ``route``."""
+    if state["route"] == "general":
+        return "general_answer"
+    return "rephrase" if REPHRASE_ENABLED else "retrieve"
+
+
+def general_answer(state):
+    """Answer from the model's own knowledge, with ``GENERAL_MARK`` in front.
+
+    ``GENERAL_BEHAVIOUR`` comes first instead of ``BEHAVIOUR``, which forbids
+    exactly this kind of answer. An empty reply stays empty, without the mark.
+
+    The fields of the document path are cleared, so they never describe an
+    earlier question.
+
+    Args:
+        state (State): Current state; ``messages`` is read.
+
+    Returns:
+        dict: Update with ``messages`` holding the reply, and empty
+        ``query``, ``context``, ``sources`` and ``scores``.
+    """
+    reply = MODEL.invoke([SystemMessage(GENERAL_BEHAVIOUR), *state["messages"]])
+    if reply.content.strip():
+        reply.content = f"{GENERAL_MARK} {reply.content.strip()}"
+    return {"messages": [reply], "query": "", "context": "", "sources": [], "scores": []}
 
 
 def rephrase(state):
@@ -143,8 +207,9 @@ def answer(state):
 def build_graph():
     """Build the agent graph.
 
-    Every question goes through ``retrieve`` and ``answer``, in that order.
-    When ``REPHRASE`` is on, ``rephrase`` runs first. An in-memory
+    ``route`` runs first. A general question then goes to
+    ``general_answer``; a document question goes through ``retrieve`` and
+    ``answer``, with ``rephrase`` before them when ``REPHRASE`` is on. An in-memory
     checkpointer keeps the conversation between questions for as long as the
     process runs.
 
@@ -152,16 +217,18 @@ def build_graph():
         CompiledStateGraph: The agent, ready for ``invoke`` or ``stream``.
     """
     graph = StateGraph(State)
+    graph.add_node("route", route)
+    graph.add_node("general_answer", general_answer)
     graph.add_node("retrieve", retrieve)
     graph.add_node("answer", answer)
+    graph.add_edge(START, "route")
+    graph.add_conditional_edges("route", after_route, ["general_answer", "rephrase", "retrieve"] if REPHRASE_ENABLED else ["general_answer", "retrieve"])
     if REPHRASE_ENABLED:
         graph.add_node("rephrase", rephrase)
-        graph.add_edge(START, "rephrase")
         graph.add_edge("rephrase", "retrieve")
-    else:
-        graph.add_edge(START, "retrieve")
     graph.add_edge("retrieve", "answer")
     graph.add_edge("answer", END)
+    graph.add_edge("general_answer", END)
     # The checkpointer keeps the conversation between questions, under the thread id below. rest are defaut values (for learning)
     return graph.compile(
     checkpointer=InMemorySaver(),
@@ -257,6 +324,8 @@ def ask(agent, question):
             took = time.perf_counter() - previous
             previous = time.perf_counter()
             log.info("TIME:     %s %.1f s", node, took)
+            if node == "route":
+                log.info("ROUTE:    %s", update["route"])
             if node == "rephrase":
                 log.info("QUERY:    %s", update["query"])
             if node == "retrieve":
@@ -264,7 +333,7 @@ def ask(agent, question):
                     "CHUNKS:   %s",
                     " | ".join(f"{score} {source}" for score, source in zip(update["scores"], update["sources"])),
                 )
-            if node == "answer":
+            if node in ("answer", "general_answer"):
                 reply = update["messages"][-1]
                 usage = reply.usage_metadata or {}
                 cached = usage.get("input_token_details", {}).get("cache_read", 0)
