@@ -13,6 +13,7 @@ skipped. Datasette listens on 127.0.0.1 only; do not add ``--host 0.0.0.0``.
 import json
 import re
 import sqlite3
+from contextlib import closing
 from pathlib import Path
 
 import pandas as pd
@@ -122,7 +123,7 @@ def build(results=RESULTS, database=DATABASE):
     runs = pd.DataFrame(descriptions, columns=["stage", "run", *sorted(keys - {"stage", "run"})])
     runs = runs.rename(columns={"commit": "git_commit"})
     sources = sorted(answers["source"].dropna().unique())
-    with sqlite3.connect(database) as connection:
+    with closing(sqlite3.connect(database)) as connection, connection:
         old = connection.execute("SELECT type, name FROM sqlite_master WHERE type IN ('view', 'table') AND name NOT LIKE 'sqlite_%' ORDER BY type DESC").fetchall()
         for kind, name in old:
             connection.execute(f'DROP {kind.upper()} "{name}"')

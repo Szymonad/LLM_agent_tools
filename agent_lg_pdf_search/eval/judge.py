@@ -169,7 +169,18 @@ if __name__ == "__main__":
     args = parser.parse_args()
     folder = run_folder(args.stage, args.run)
     path = folder / "answers.xlsx"
+    try:
+        path.open("r+b").close()
+    except PermissionError:
+        raise SystemExit(f"{path} is open in another program, close it first")
     table = run(path)
+    # Grading takes minutes; read the file again so that grades typed into
+    # ``correct`` meanwhile are kept, and replace only the judge column.
+    current = pd.read_excel(path)
+    if len(current) != len(table):
+        raise SystemExit(f"{path} changed its number of rows while grading, nothing saved")
+    current["judge"] = table["judge"].values
+    table = current
     table.to_excel(path, index=False)
     note_judge(folder)
     print("saved", path)
