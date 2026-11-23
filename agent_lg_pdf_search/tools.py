@@ -19,6 +19,25 @@ from your own knowledge.
 After every fact write the number of the fragment it came from, in square brackets, like [2].
 Never write anything else inside square brackets."""
 
+ROUTER = """Do not answer the last question. The user has a collection of PDF documents: reports,
+papers, manuals, guidebooks, presentations and notes. Decide whether the last question needs them.
+
+Write general only when the question clearly needs no document: greetings and small talk,
+translation, arithmetic, writing code, or textbook common knowledge such as capitals,
+authors of famous books, dates of famous historical events and basic science.
+Write documents for everything else: any question that mentions a document, report, page,
+figure, table or chart; any question about statistics, numbers, money, organisations,
+companies, products, places, contact details or rules; anything that could be in the documents.
+When in doubt, write documents.
+
+Write only one word: documents or general."""
+
+GENERAL_BEHAVIOUR = """You are a helpful assistant. Answer in the language of the question,
+briefly, from your own knowledge. Do not mention documents."""
+
+#: Put in front of every answer that does not come from the documents.
+GENERAL_MARK = "(z wiedzy ogólnej, nie z dokumentów)"
+
 REPHRASE = """Rewrite the last user question as a standalone English search query. Never answer it.
 
 Use the conversation to work out what the question is about, but add nothing that is not in it.
