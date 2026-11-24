@@ -5,6 +5,7 @@
 !.gitignore
 !README.md
 !start_llama.bat
+!start_vlm.bat
 !requirements-lock.txt
 !.vscode/
 !.vscode/launch.json
@@ -22,6 +23,7 @@
 !agent_lg_pdf_search/index.py
 !agent_lg_pdf_search/agent.py
 !agent_lg_pdf_search/tools.py
+!agent_lg_pdf_search/captions.py
 !agent_lg_pdf_search/eval/
 !agent_lg_pdf_search/eval/__init__.py
 !agent_lg_pdf_search/eval/evaluate.py
