@@ -1,0 +1,21 @@
+{
+ "stage": "04_doc_name_embed",
+ "started": "2026-11-24T10:20:58",
+ "finished": "2026-11-24T12:52:44",
+ "commit": "8a256ae",
+ "dirty": false,
+ "questions_file": "agent_lg_pdf_search/eval/questions_v3.json",
+ "questions_sha256": "aec88029b037fa9e7f863e4ffbea41fd4544a0e1328728c56443674b0fc20711",
+ "questions": 279,
+ "chat_model": "Qwen_Qwen3-8B-IQ4_XS.gguf",
+ "embedding_model": "embeddinggemma-300M-Q8_0.gguf",
+ "parser": "docling-rapidocr+qwen3vl4b+docname",
+ "index_file": "agent_lg_pdf_search/eval/index.json",
+ "top_k": 5,
+ "chunk_tokens": 200,
+ "chunk_overlap": 50,
+ "embed_dim": 768,
+ "rephrase": false,
+ "judge_model": "Qwen_Qwen3-8B-IQ4_XS.gguf",
+ "judged": "2026-11-24T13:39:12"
+}
