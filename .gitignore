@@ -6,6 +6,7 @@
 !README.md
 !start_llama.bat
 !start_vlm.bat
+!start_embeddings.bat
 !requirements-lock.txt
 !.vscode/
 !.vscode/launch.json
