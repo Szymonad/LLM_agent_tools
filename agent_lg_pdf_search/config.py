@@ -52,9 +52,9 @@ EMBED_DIM = 768
 # --- chunks ---
 
 #: Maximum size of a chunk, in tokens of the embedding model.
-CHUNK_TOKENS = 200
+CHUNK_TOKENS = 500
 #: Tokens shared by two neighbouring chunks.
-CHUNK_OVERLAP = 50
+CHUNK_OVERLAP = 100
 
 # --- index ---
 
