@@ -1,7 +1,8 @@
 """Build and query the vector index of PDF chunks.
 
-Reading PDFs, splitting them into token-sized chunks, embedding the chunks
-with EmbeddingGemma on llama-server and searching the saved index.
+Reading PDFs with Docling (text layer, OCR of scans and pictures, tables as
+Markdown), splitting them into token-sized chunks, embedding the chunks with
+EmbeddingGemma on llama-server and searching the saved index.
 """
 
 import time
@@ -12,42 +13,89 @@ from langchain_core.documents import Document
 from langchain_core.vectorstores import InMemoryVectorStore
 from langchain_openai import OpenAIEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from pypdf import PdfReader
+import pypdfium2
 
 from agent_lg_pdf_search.config import (
     CHUNK_OVERLAP,
     CHUNK_TOKENS,
+    DOCLING_THREADS,
     EMBED_DIM,
     EMBED_SERVER,
     HTTP_TIMEOUT,
     INDEX_PATH,
     TOP_K,
+    PARSER,
     PASSAGE_PREFIX,
     PDF_DIR,
     QUERY_PREFIX,
+    SCAN_TEXT_CHARS,
 )
+
+@lru_cache(maxsize=1)
+def converter():
+    """Docling converter, built once: loading its models takes seconds.
+
+    OCR runs on the bitmaps of a page (the whole page for a scan) with
+    RapidOCR, which reads Polish diacritics; tables come out as Markdown.
+    Docling is imported here: it pulls in torch, which the agent answering
+    questions from a ready index does not need.
+    """
+    from docling.datamodel.accelerator_options import AcceleratorOptions
+    from docling.datamodel.base_models import InputFormat
+    from docling.datamodel.pipeline_options import PdfPipelineOptions, RapidOcrOptions
+    from docling.document_converter import DocumentConverter, PdfFormatOption
+
+    options = PdfPipelineOptions(do_ocr=True, do_table_structure=True, ocr_options=RapidOcrOptions())
+    options.accelerator_options = AcceleratorOptions(device="cpu", num_threads=DOCLING_THREADS)
+    return DocumentConverter(format_options={InputFormat.PDF: PdfFormatOption(pipeline_options=options)})
+
+
+def text_layer_sizes(path):
+    """Characters (without white space) in the text layer of every page, 1-based."""
+    document = pypdfium2.PdfDocument(path)
+    try:
+        return {
+            number: len("".join(page.get_textpage().get_text_range().split()))
+            for number, page in enumerate(document, start=1)
+        }
+    finally:
+        document.close()
 
 
 def read_pages(path):
-    """Read a PDF into one Document per page.
+    """Read a PDF into one Document per page, as Markdown in reading order.
 
-    Pages without extractable text are skipped and reported on stdout.
+    Pages that give no text even after OCR are skipped and reported on
+    stdout. Picture placeholders are dropped.
 
     Args:
         path (pathlib.Path): PDF file to read.
 
     Returns:
         list[Document]: Pages in file order. Metadata holds ``source``
-        (file name) and ``page`` (1-based page number).
+        (file name), ``page`` (1-based page number) and ``origin``:
+        ``ocr`` for a page with no text layer, otherwise ``text``.
     """
-    reader = PdfReader(path)
+    result = converter().convert(path)
+    if result.status.name != "SUCCESS":
+        print(f"{path.name}: {result.status.name}, {[error.error_message for error in result.errors]}")
+    document = result.document
+    sizes = text_layer_sizes(path)
+    missing = sorted(set(sizes) - set(document.pages))
+    if missing:
+        print(f"{path.name} pages {missing}: not converted, skipped")
+    scans = {number for number, size in sizes.items() if size < SCAN_TEXT_CHARS}
     pages = []
-    for number, page in enumerate(reader.pages, start=1):
-        text = page.extract_text()
-        if not text.strip():
+    for number in sorted(document.pages):
+        # Unescaped, so "R&D" and "first_last" stay as in the PDF; compact tables, so padding does not fill the chunks.
+        text = document.export_to_markdown(
+            page_no=number, escape_underscores=False, escape_html=False, image_placeholder="", compact_tables=True
+        ).strip()
+        if not text:
             print(f"{path.name} page {number}: no text, skipped")
             continue
-        pages.append(Document(page_content=text, metadata={"source": path.name, "page": number}))
+        origin = "ocr" if number in scans else "text"
+        pages.append(Document(page_content=text, metadata={"source": path.name, "page": number, "origin": origin}))
     return pages
 
 SESSION = requests.Session()
@@ -107,13 +155,15 @@ def split(pages):
 
     Returns:
         list[Document]: Chunks in text order. Metadata holds ``source``
-        (file name) and ``pages`` (numbers of the pages the chunk covers).
+        (file name), ``pages`` (numbers of the pages the chunk covers) and
+        ``origin``: ``ocr`` if any of those pages is a scan, else ``text``.
         Empty if ``pages`` is empty.
     """
     if not pages:
         return []
     source = pages[0].metadata["source"]
     text, spans = join_pages(pages)
+    scans = {page.metadata["page"] for page in pages if page.metadata["origin"] == "ocr"}
 
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=CHUNK_TOKENS, chunk_overlap=CHUNK_OVERLAP, length_function=count_tokens
@@ -125,7 +175,8 @@ def split(pages):
         end = start + len(chunk_text)
         print(start, end)
         numbers = [number for number, page_start, page_end in spans if page_start < end and page_end > start]
-        chunks.append(Document(page_content=chunk_text, metadata={"source": source, "pages": numbers}))
+        origin = "ocr" if scans.intersection(numbers) else "text"
+        chunks.append(Document(page_content=chunk_text, metadata={"source": source, "pages": numbers, "origin": origin}))
     return chunks
 
 
@@ -200,7 +251,19 @@ def build():
     # add_documents is what calls EMBEDDINGS.embed_documents under the hood.
     store.add_documents(chunks)
     store.dump(str(INDEX_PATH))
+    parser_file().write_text(PARSER, encoding="utf-8")
     return store
+
+
+def parser_file():
+    """File next to the index naming the parser it was built with."""
+    return INDEX_PATH.with_name(INDEX_PATH.stem + ".parser.txt")
+
+
+def index_parser():
+    """Parser the index at ``INDEX_PATH`` was built with; ``pypdf`` for an index older than this file."""
+    path = parser_file()
+    return path.read_text(encoding="utf-8").strip() if path.exists() else "pypdf"
 
 
 @lru_cache(maxsize=1)

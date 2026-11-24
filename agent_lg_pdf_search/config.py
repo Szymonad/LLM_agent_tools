@@ -16,6 +16,13 @@ SERVER = "http://127.0.0.1:8081"
 #: Folder with the PDFs. Every ``*.pdf`` in it goes into one index.
 PDF_DIR = Path(__file__).with_name("pdf")
 
+#: Name of the parser, written to ``run.json`` of every evaluation run.
+PARSER = "docling-rapidocr"
+#: CPU threads for Docling; the GPU is taken by the chat model.
+DOCLING_THREADS = 8
+#: A page whose text layer has fewer characters than this counts as a scan (``origin`` ``ocr``).
+SCAN_TEXT_CHARS = 20
+
 # --- embeddings ---
 
 #: Address of the embedding server (EmbeddingGemma).
