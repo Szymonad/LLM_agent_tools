@@ -5,9 +5,12 @@ Markdown), splitting them into token-sized chunks, embedding the chunks with
 EmbeddingGemma on llama-server and searching the saved index.
 """
 
+import os
 import re
 import time
+import uuid
 from functools import lru_cache
+from pathlib import Path
 
 import requests
 from langchain_core.documents import Document
@@ -339,10 +342,57 @@ def build():
     finally:
         # Descriptions cost GPU time; keep them even when the build stops halfway.
         cache.save()
-    store = InMemoryVectorStore(EMBEDDINGS)
-    # add_documents is what calls EMBEDDINGS.embed_documents under the hood.
-    store.add_documents(chunks)
+    store = embed_chunks(chunks)
     store.dump(str(INDEX_PATH))
+    parser_file().write_text(PARSER, encoding="utf-8")
+    return store
+
+
+def embedded_text(chunk):
+    """Text that is embedded for a chunk: the PDF's name, then the chunk.
+
+    Docling drops page headers and footers, so a chunk of a table often has
+    no word saying which company or report it is from, and a question naming
+    them misses it. The name goes only into the vector; the chunk's text,
+    which the model reads, stays as it is.
+    """
+    return f"{Path(chunk.metadata['source']).stem}\n{chunk.page_content}"
+
+
+def embed_chunks(chunks, ids=None):
+    """Embed chunks with ``embedded_text`` and put them into a new index.
+
+    ``InMemoryVectorStore.add_documents`` embeds the text it stores, so the
+    entries are written here, in the same form it writes them.
+
+    Args:
+        chunks (list[Document]): Chunks as returned by ``split``.
+        ids (list[str] | None): Their ids; new ones when ``None``.
+
+    Returns:
+        InMemoryVectorStore: The index, not yet saved.
+    """
+    vectors = EMBEDDINGS.embed_documents([embedded_text(chunk) for chunk in chunks])
+    store = InMemoryVectorStore(EMBEDDINGS)
+    for chunk, vector, chunk_id in zip(chunks, vectors, ids or [str(uuid.uuid4()) for _ in chunks]):
+        store.store[chunk_id] = {"id": chunk_id, "vector": vector, "text": chunk.page_content, "metadata": chunk.metadata}
+    return store
+
+
+def reembed():
+    """Embed the chunks of the saved index again, without reading any PDF.
+
+    For a change in ``embedded_text`` only: Docling and the picture
+    descriptions take hours, embedding takes minutes. Ids, texts and
+    metadata stay; ``PARSER`` is written next to the index.
+    """
+    entries = list(InMemoryVectorStore.load(str(INDEX_PATH), EMBEDDINGS).store.values())
+    chunks = [Document(page_content=entry["text"], metadata=entry["metadata"]) for entry in entries]
+    store = embed_chunks(chunks, [entry["id"] for entry in entries])
+    # Written beside and swapped in, so a stop while writing leaves the old index whole.
+    temporary = INDEX_PATH.with_suffix(".tmp")
+    store.dump(str(temporary))
+    os.replace(temporary, INDEX_PATH)
     parser_file().write_text(PARSER, encoding="utf-8")
     return store
 

@@ -17,7 +17,7 @@ SERVER = "http://127.0.0.1:8081"
 PDF_DIR = Path(__file__).with_name("pdf")
 
 #: Name of the parser, written to ``run.json`` of every evaluation run.
-PARSER = "docling-rapidocr+qwen3vl4b"
+PARSER = "docling-rapidocr+qwen3vl4b+docname"
 #: CPU threads for Docling; the GPU is taken by the chat model.
 DOCLING_THREADS = 8
 #: A page whose text layer has fewer characters than this counts as a scan (``origin`` ``ocr``).
