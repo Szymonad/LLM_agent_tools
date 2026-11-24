@@ -39,6 +39,9 @@
 !agent_lg_pdf_search/eval/build_questions_v3.py
 !agent_lg_pdf_search/eval/results/
 !agent_lg_pdf_search/eval/results/**
+!agent_lg_pdf_search/eval/judge_audit/
+!agent_lg_pdf_search/eval/judge_audit/*.py
+!agent_lg_pdf_search/eval/judge_audit/*.csv
 !scanners/
 !scanners/__init__.py
 !scanners/llama_scanner.py
