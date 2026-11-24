@@ -1,0 +1,20 @@
+{
+ "stage": "01_router",
+ "started": "2026-11-24T00:31:22",
+ "finished": "2026-11-24T01:45:08",
+ "commit": "0242eae",
+ "dirty": false,
+ "questions_file": "agent_lg_pdf_search/eval/questions_v3.json",
+ "questions_sha256": "aec88029b037fa9e7f863e4ffbea41fd4544a0e1328728c56443674b0fc20711",
+ "questions": 279,
+ "chat_model": "Qwen_Qwen3-8B-IQ4_XS.gguf",
+ "embedding_model": "embeddinggemma-300M-Q8_0.gguf",
+ "index_file": "agent_lg_pdf_search/eval/index.json",
+ "top_k": 5,
+ "chunk_tokens": 200,
+ "chunk_overlap": 50,
+ "embed_dim": 768,
+ "rephrase": false,
+ "judge_model": "Qwen_Qwen3-8B-IQ4_XS.gguf",
+ "judged": "2026-11-24T02:12:25"
+}
