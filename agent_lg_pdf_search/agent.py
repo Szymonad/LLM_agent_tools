@@ -50,6 +50,11 @@ MODEL = ChatOpenAI(
 )
 
 
+# Answers are read straight from the fragments, so the model replies without
+# thinking first. Passed per call, so the judge, which imports MODEL, still thinks.
+NO_THINKING = {"chat_template_kwargs": {"enable_thinking": False}}
+
+
 class State(MessagesState):
     """State passed between the nodes of the graph.
 
@@ -121,7 +126,7 @@ def general_answer(state):
         dict: Update with ``messages`` holding the reply, and empty
         ``query``, ``context``, ``sources`` and ``scores``.
     """
-    reply = MODEL.invoke([SystemMessage(GENERAL_BEHAVIOUR), *state["messages"]])
+    reply = MODEL.invoke([SystemMessage(GENERAL_BEHAVIOUR), *state["messages"]], extra_body=NO_THINKING)
     if reply.content.strip():
         reply.content = f"{GENERAL_MARK} {reply.content.strip()}"
     return {"messages": [reply], "query": "", "context": "", "sources": [], "scores": []}
@@ -199,7 +204,7 @@ def answer(state):
         to the conversation.
     """
     messages = [SystemMessage(BEHAVIOUR), *state["messages"], SystemMessage(state["context"])]
-    reply = MODEL.invoke(messages)
+    reply = MODEL.invoke(messages, extra_body=NO_THINKING)
     reply.content = expand_citations(reply.content, state["sources"])
     return {"messages": [reply]}
 
